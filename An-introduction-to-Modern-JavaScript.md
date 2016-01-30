@@ -1,10 +1,26 @@
 Introduction to Modern Javascript
 ===========================
 
+A modern Javascript developer can create any application, on any device. From the first line of code to deployment to live environment, javascript developer never has to utilise any other language.  Modern javascript isn't just about the latest revisions of the language but a fundamental shift in simplifying how a developer can create, test and deploy applications.
 
-Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete me, I'm very helpful! I can be recovered anyway in the **Utils** tab of the <i class="icon-cog"></i> **Settings** dialog.
+Javascript, once just used for simple client-side scripting on web sites can now be used to develop games, create mobile applications, web applications, desktop applications, sophisticated data visualisation, complex animations and run intensive computations.
 
-----------
+Javascript, released in 1995, was developed as a way to run scripts within a website. In its early days some derided the language as being simple and lacking the power and sophistication to be taken seriously. Javascript has evolved with the internet and the language has be improved 
+ 
+Javascript build tools:
+ - Gulp
+ - Webpack
+ - Grunt
+
+Javascript test tools:
+ - Mocha
+ - Supertest
+
+Javascript syntax databases:
+ - Mongo
+ - CouchDB
+ - Redis
+
 
 
 Documents
