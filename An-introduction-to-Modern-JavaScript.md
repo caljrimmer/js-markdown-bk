@@ -5,36 +5,26 @@ You can code any sort of application, to run on nearly any device when you build
 
 A modern Javascript developer can create any application, on any device. From the first line of code to deployment to live environment, javascript developer never has to utilise any other language.  Modern javascript isn't just about the latest revisions of the language but a fundamental shift in simplifying how a developer can create, test and deploy applications.
 
+Javascript, released in 1995, was developed as a way to run scripts within a website. In its early days some derided the language as being simple and lacking the power and sophistication to be taken seriously. Javascript has evolved with the internet and the language has be improved over the years. 
+
 Javascript, once just used for simple client-side scripting on web sites can now be used to develop games, create mobile applications, web applications, desktop applications, sophisticated data visualisation, complex animations and run intensive computations.
 
-Javascript, released in 1995, was developed as a way to run scripts within a website. In its early days some derided the language as being simple and lacking the power and sophistication to be taken seriously. Javascript has evolved with the internet and the language has be improved 
+
+> **ES6**
+
+>The latest version of Javascript,  ECMAScript 2015, also known as ES6, is a significant update to the language. It was the first update to the language since ES5 was standardised in 2009. All code examples in this book will utilise ES6 where appropriate. 
  
-Javascript build tools:
- - Gulp
- - Webpack
- - Grunt
+ 
+Getting Started
+------------------
 
-Javascript test tools:
- - Mocha
- - Supertest
+JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a browser.
 
-Javascript syntax databases:
- - Mongo
- - CouchDB
- - Redis
+We will be using Chrome as out browser to develop. Chrome has a number of tools that will help you develop your code. Chrome has a console that allows you to run Javascript directly.
 
-
-
-Documents
--------------
-
-StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible **offline!**
-
-> **Note:**
-
-> - StackEdit is accessible offline after the application has been loaded for the first time.
-> - Your local documents are not shared between different browsers or computers.
-> - Clearing your browser's data may **delete all your local documents!** Make sure your documents are synchronized with **Google Drive** or **Dropbox** (check out the [<i class="icon-refresh"></i> Synchronization](#synchronization) section).
+To begin:
+ - Open Chrome Browser
+ - Right click on the 
 
 #### <i class="icon-file"></i> Create a document
 
