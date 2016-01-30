@@ -24,9 +24,9 @@ We will be using Chrome as our browser to develop on. Javascript can be run on a
 
 To begin:
 
- - Open Chrome Browser
- - Right click and select "Inspect"
- - Click on "Console" tab
+ 1. Open Chrome Browser
+ 2. Right click and select "Inspect"
+ 3. Click on "Console" tab
 
 You now have the Chrome developer tools open and we can write our first bit of Javascript.
 
@@ -37,7 +37,7 @@ window.alert('hello')
 ```
 The **window** object is where all native global JavaScript objects, functions, and variables reside. The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
 
-A function in javascript is invoked with parentheses and inside the parentheses arguments can be passed. 
+A **function** in javascript is invoked with parentheses and inside the parentheses arguments can be passed. 
 
 Now let's make a simple function to capture a users response and return the value.
 ```
@@ -49,17 +49,17 @@ result('Do you confirm this action?');
 
 The console should log *true*, if ok is clicked and *false* if cancel is clicked.
 
-So we have create a new function called **result** that returns a value that we get from another native javascript function called **confirm**. We then invoke our result function with parentheses whilst pass a string as an argument.
+So we have create a new function called **result** that returns a value that we get from another native javascript function called **confirm**. We then invoke our result function with parentheses whilst passing a string of 'Do you confirm this action?' as an argument.
 
 We also use the **const** keyword to declare our function. Const  creates a read-only reference to the function. This means the function can not be amended after it has been declared.
 
 > **Recap**
 
+>The **window** object is global and contains all native Javascript functions and variables 
+
 >A **function** can be passed arguments and is invoked with parentheses.
 
 >**const** is a declaration that is read only
-
->The **window** object is global and contains all native Javascript functions and variables 
 
 #### <i class="icon-file"></i> Create a document
 
