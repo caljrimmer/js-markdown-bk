@@ -15,16 +15,16 @@ Javascript, once just used for simple client-side scripting on web sites can now
 >The latest version of Javascript,  ECMAScript 2015, also known as ES6, is a significant update to the language. It was the first update to the language since ES5 was standardised in 2009. All code examples in this book will utilise ES6 where appropriate. 
  
  
-Getting Started
+Writing some Javascript
 ------------------
 
 JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a browser.
 
-We will be using Chrome as our browser to develop on. Javascript can be run on any browser though. Chrome has a number of developer tools that will help you develop your code. One of those tools is called "Console" and it that allows you to run Javascript directly.
+ Javascript can be run on any browser. We will be using Chrome as our browser develop on. Chrome has a number of developer tools that will help you develop your code. One of those tools is called "Console" and it that allows you to run Javascript directly.
 
 To begin:
 
- 1. Open Chrome Browser
+ 1. Open the Chrome browser
  2. Right click and select "Inspect"
  3. Click on "Console" tab
 
@@ -33,13 +33,15 @@ You now have the Chrome developer tools open and we can write our first bit of J
 Let's try creating a simple pop-up with the text "hello".
  
 ```
-window.alert('hello')
+window.alert('hello');
 ```
-The **window** object is where all native global JavaScript objects, functions, and variables reside. The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
+The **window** object is where all native global JavaScript objects, functions, and variables reside in the browser. The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
 
 A **function** in javascript is invoked with parentheses and inside the parentheses arguments can be passed. 
 
-Now let's make a simple function to capture a users response and return the value.
+we use a semicolon to separate statements. 
+
+Now let's make a simple function to capture a user's response and return the value.
 ```
 const result = (message) => {
 	return window.confirm(message);
@@ -53,17 +55,104 @@ So we have create a new function called **result** that returns a value that we 
 
 We also use the **const** keyword to declare our function. Const  creates a read-only reference to the function. This means the function can not be amended after it has been declared.
 
+We don't need to specify **window** when calling functions. Javascript will assume it for you. Thus these two function do the same thing.
+```
+window.alert('hello');
+alert('hello'); //Same
+
+window.confirm('confirm?');
+confirm('confirm?'); //Same
+```
+
 > **Recap**
 
->The **window** object is global and contains all native Javascript functions and variables 
+>The **window** object is global and contains all native Javascript functions and variables. 
 
 >A **function** can be passed arguments and is invoked with parentheses.
 
->**const** is a declaration that is read only
+Variables and Constants
+-----------------------------
 
-#### <i class="icon-file"></i> Create a document
+Javascript allows us to define containers to store data, objects or functions in. Defining these containers allow us to structure our code and to manage scope (i.e. ability to access the container). There are 3 ways to define a container:
 
-The document panel is accessible using the <i class="icon-folder-open"></i> button in the navigation bar. You can create a new document by clicking <i class="icon-file"></i> **New document** in the document panel.
+Use a **variable** declaration.
+```
+var z;
+var x = 1;
+var y = 2;
+z = x + y; // z equals 3 now
+```
+
+You can define a variable with a value or without a value and populate it later. All JavaScript variables must be identified with unique names.
+
+Use a **let** declaration.
+```
+let sentence;
+let name = 'Ted;
+sentence = 'My name is ' + y; // sentence equals 'My name is Ted'
+```
+
+**Let** is similar to a variable declaration. **Let**, unlike **var**, cannot be hoisted and it exhibits block scope. We will discuss scope and hoisting later in the book. 
+
+Use a **const** declaration.
+```
+const PI = 3.14;
+PI = 3.145 //Throws an error
+```
+
+**Const** declared with a given value can not be changed. It is used, as it's name suggests, to define constants. **Const**, like **let**, also cannot be hoisted and it exhibits block scope.
+
+It is possible to declare a container without using **var**, **let** or **const**.
+
+```
+name = 'Ted'; //same as window.name = 'Ted'
+x = 1; //same as window.x = 1
+```
+
+Declaring a container this way adds the container on to the window object and it becomes globally available. This is considered bad practice because relying too much on global containers can result in collisions between various scripts on the same page.
+
+Best practise is to use **let** and **const**. Block scoping means your containers will act in a more granular and predictable way.
+
+What is Scope
+-----------------
+
+Javascript is loosely typed. That means you can define a variable but not have to describe what it contains.
+
+There are 4 ways to create containers for your 
+In this tutorial I’ll introduce you to two new keywords: let and const. They enhance JavaScript even more by filling the gap with other languages and providing us a way to define block-scope variables and constants. If you want to learn more about them, keep reading.
+
+A simple web page
+-------------------------
+
+A web page consists of HTML, CSS and Javascript. HTML provides the scaffolding of the page. CSS provides the styling of the page. Javascript provides the behaviour. Javascript is what makes a web page dynamic and responsive to the user. 
+
+To make our web page, we will need a text-editor to write our code with. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help you write code more efficiently. The best free options are:
+
+ - Atom - https://atom.io/
+ - Sublime - http://www.sublimetext.com/
+ - Brackets - http://brackets.io/
+
+Next we need to create a new directory to store our web page files in. Let us name it "example-web-page" and save it to your desktop. Now we are going to create 2 files that we will save in this director.
+
+Create and save **index.html**.
+```
+<html>
+	<head>
+		<title>Example Web Page</title>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+	<script src="script.js"></src>
+</html>
+```
+we've put the <kbd>script</kbd> element near the bottom of the HTML file. This is because we wish to have all the HTML loaded before the Javascript is parsed. This will make scripts that interact with the HTML work consistently.
+
+Create and save **script.js**.
+```
+const 
+```
+
 
 #### <i class="icon-folder-open"></i> Switch to another document
 
