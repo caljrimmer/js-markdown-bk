@@ -20,11 +20,46 @@ Getting Started
 
 JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a browser.
 
-We will be using Chrome as out browser to develop. Chrome has a number of tools that will help you develop your code. Chrome has a console that allows you to run Javascript directly.
+We will be using Chrome as our browser to develop on. Javascript can be run on any browser though. Chrome has a number of developer tools that will help you develop your code. One of those tools is called "Console" and it that allows you to run Javascript directly.
 
 To begin:
+
  - Open Chrome Browser
- - Right click on the 
+ - Right click and select "Inspect"
+ - Click on "Console" tab
+
+You now have the Chrome developer tools open and we can write our first bit of Javascript.
+
+Let's try creating a simple pop-up with the text "hello".
+ 
+```
+window.alert('hello')
+```
+The **window** object is where all native global JavaScript objects, functions, and variables reside. The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
+
+A function in javascript is invoked with parentheses and inside the parentheses arguments can be passed. 
+
+Now let's make a simple function to capture a users response and return the value.
+```
+const result = (message) => {
+	return window.confirm(message);
+}
+result('Do you confirm this action?');
+```
+
+The console should log *true*, if ok is clicked and *false* if cancel is clicked.
+
+So we have create a new function called **result** that returns a value that we get from another native javascript function called **confirm**. We then invoke our result function with parentheses whilst pass a string as an argument.
+
+We also use the **const** keyword to declare our function. Const  creates a read-only reference to the function. This means the function can not be amended after it has been declared.
+
+> **Recap**
+
+>A **function** can be passed arguments and is invoked with parentheses.
+
+>**const** is a declaration that is read only
+
+>The **window** object is global and contains all native Javascript functions and variables 
 
 #### <i class="icon-file"></i> Create a document
 
