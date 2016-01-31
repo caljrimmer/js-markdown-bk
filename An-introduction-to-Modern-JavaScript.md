@@ -94,6 +94,9 @@ const noValue; //Undefined as we have no value
 const nullValue = null; //Null
 ```
 
+Javascript, once a data type object is defined, Javascript makes available a number of different methods for that data type. A method is very similar to a function but it exists on the data type object rather than independent of it. These methods help you do work on that particular data type.
+
+
 Strings 
 -----------------------------
 
@@ -109,8 +112,6 @@ To create a string data type, we declare a variable wrapped in either double (")
 
 Once the string data type is defined, we can then use a number of methods to do work on strings. In the example above we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
 
-Javascript, once a data type is defined, makes available a number of different methods for that data type. A method is very similar to a function but it exists on the data type object rather than independent of it. We can use either when craft our code.
-
 ```
 //This is a Function
 const StringLength = (str) => {
@@ -123,18 +124,64 @@ const string = "marvellous";
 string.length; //returns 10
 ```
 
-Numbers 
+Numbers and Maths
 -----------------------------
 
 ```
-const count = 10;
+const total = 9;
 const price = 11.99;
 
-price.toFixed(0); //returns 11
-count.isInteger(); //returns true
-word.substr(0,5);//returns marve
+Number.isInteger(total) // returns true;
+Number.isInteger(price) // returns false;
+Math.sqrt(total); //returns 3
+Math.ceil(price); //returns 12
+Math.floor(price); //returns 11
 ```
 
+To create a number data type, we declare a container of either an integer or a decimal.
+
+We then have the ability to perform numerical or mathematical functions and methods on the value.  In the example above we use **isInteger()** to determine if value is an integer, **Math.sqrt()** to return the square root of a value, **Math.floor()** to round down to the nearest integer and **Math.ceil()** to round up to the nearest integer.
+
+Javascript allows us to replicate most mathematical computations. 
+
+```
+let sum = 0;
+
+const add = (a,b) => {
+	return a + b;
+}
+
+const subtract = (a,b) => {
+	return a - b;
+}
+
+const multiply = (a,b) => {
+	return a * b;
+}
+
+const divide = (a,b) => {
+	return a / b;
+}
+
+sum = add(1,2) //sum equals 3
+sum = multiply(sum,2) // sum equals 6
+sum = divide(sum,3) // sum equals 2
+sum = minus(sum,1) // sum equals 1
+
+```
+
+Notice how we can pass the value of **sum** as a parameter to our new maths functions as it keeps its state (i.e. **sum** retains its previous value and then changes to reflect its new value).
+
+If we tried to pass a string as an argument:
+
+```
+multiply('name',3); // returns NaN
+add('name',3) // returns 'name3'
+```
+
+Javascript stops behaving predictably. With **multiple**, it returns **NaN** (i.e. Not a Number) and with **add**, it returns a new string of the 'name' with '3' tagged on the end.
+
+We can only do numeric or mathematical work on Number data types. 
 
 Variables and Constants
 -----------------------------
