@@ -144,7 +144,7 @@ We then have the ability to perform numerical or mathematical functions and meth
 
 Javascript allows us to replicate most mathematical computations. 
 
-```
+```javascript
 let sum = 0;
 
 const add = (a,b) => {
@@ -189,7 +189,7 @@ Variables and Constants
 Javascript allows us to define containers to store data, objects or functions in. Defining these containers allow us to structure our code and to manage scope (i.e. ability to access the container). There are 3 ways to define a container:
 
 Use a **variable** declaration.
-```
+```javascript
 var z;
 var x = 1;
 var y = 2;
