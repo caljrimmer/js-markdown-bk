@@ -58,17 +58,83 @@ We also use the **const** keyword to declare our function. Const  creates a read
 We don't need to specify **window** when calling functions. Javascript will assume it for you. Thus these two function do the same thing.
 ```
 window.alert('hello');
-alert('hello'); //Same
+alert('hello'); //Same as window.alert
 
 window.confirm('confirm?');
-confirm('confirm?'); //Same
+confirm('confirm?'); //Same as window.confirm
 ```
 
-> **Recap**
 
 >The **window** object is global and contains all native Javascript functions and variables. 
 
 >A **function** can be passed arguments and is invoked with parentheses.
+
+Data Types 
+-----------------------------
+
+In JavaScript there are 5 different data types that can contain values. String, Boolean, Number, Object and Function:
+```
+const age = 16; //Number
+const name = "Ted"; // String
+const isChecked = true; //Boolean
+const obj = {count: 1, name: "MyApp"}; // Object
+const add = (a,b) => { return a + b; } // Function
+```
+
+There also two other data types that are subsets of Object. Date and Array:
+
+```
+const dateOfBirth = new Date('28/12/1980'); //Date
+const teams = ["reds","blues","greens"]; // Array
+```
+
+Finally there are 2 data types that cannot contain values. Null and Undefined:
+```
+const noValue; //Undefined as we have no value
+const nullValue = null; //Null
+```
+
+Strings 
+-----------------------------
+
+```
+const word = "marvellous";
+
+word.length; //returns 10
+word.toUpperCase(); //returns MARVELLOUS
+word.substr(0,5);//returns marve
+```
+
+To create a string data type, we declare a variable wrapped in either double (") or single quotes (').
+
+Once the string data type is defined, we can then use a number of methods to do work on strings. In the example above we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
+
+Javascript, once a data type is defined, makes available a number of different methods for that data type. A method is very similar to a function but it exists on the data type object rather than independent of it. We can use either when craft our code.
+
+```
+//This is a Function
+const StringLength = (str) => {
+	return str.length;
+}
+StringLength("marvellous") // returns 10
+
+//This is a method
+const string = "marvellous";
+string.length; //returns 10
+```
+
+Numbers 
+-----------------------------
+
+```
+const count = 10;
+const price = 11.99;
+
+price.toFixed(0); //returns 11
+count.isInteger(); //returns true
+word.substr(0,5);//returns marve
+```
+
 
 Variables and Constants
 -----------------------------
@@ -113,8 +179,19 @@ Declaring a container this way adds the container on to the window object and it
 
 Best practise is to use **let** and **const**. Block scoping means your containers will act in a more granular and predictable way.
 
-What is Scope
------------------
+```
+const increment = (num) => {
+	let total = 0;
+	total = total + num;
+	return total;
+}
+increment(5) //returns 5
+increment(10) //returns 15
+```
+In this example we use **const** to define our increment function (as we don't want it to change) and **let** for our sum total (as it does change).
+
+What is Scope?
+------------------
 
 Javascript is loosely typed. That means you can define a variable but not have to describe what it contains.
 
