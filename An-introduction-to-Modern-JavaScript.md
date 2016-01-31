@@ -32,7 +32,7 @@ You now have the Chrome developer tools open and we can write our first bit of J
 
 Let's try creating a simple pop-up with the text "hello".
  
-```
+```javascript
 window.alert('hello');
 ```
 The **window** object is where all native global JavaScript objects, functions, and variables reside in the browser. The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
@@ -42,7 +42,8 @@ A **function** in javascript is invoked with parentheses and inside the parenthe
 we use a semicolon to separate statements. 
 
 Now let's make a simple function to capture a user's response and return the value.
-```
+
+```javascript
 const result = (message) => {
 	return window.confirm(message);
 }
@@ -56,7 +57,8 @@ So we have create a new function called **result** that returns a value that we 
 We also use the **const** keyword to declare our function. Const  creates a read-only reference to the function. This means the function can not be amended after it has been declared.
 
 We don't need to specify **window** when calling functions. Javascript will assume it for you. Thus these two function do the same thing.
-```
+
+```javascript
 window.alert('hello');
 alert('hello'); //Same as window.alert
 
@@ -73,7 +75,8 @@ Data Types
 -----------------------------
 
 In JavaScript there are 5 different data types that can contain values. String, Boolean, Number, Object and Function:
-```
+
+```javascript
 const age = 16; //Number
 const name = "Ted"; // String
 const isChecked = true; //Boolean
@@ -83,13 +86,14 @@ const add = (a,b) => { return a + b; } // Function
 
 There also two other data types that are subsets of Object. Date and Array:
 
-```
+```javascript
 const dateOfBirth = new Date('28/12/1980'); //Date
 const teams = ["reds","blues","greens"]; // Array
 ```
 
 Finally there are 2 data types that cannot contain values. Null and Undefined:
-```
+
+```javascript
 const noValue; //Undefined as we have no value
 const nullValue = null; //Null
 ```
@@ -100,7 +104,7 @@ Javascript, once a data type object is defined, Javascript makes available a num
 Strings 
 -----------------------------
 
-```
+```javascript
 const word = "marvellous";
 
 word.length; //returns 10
@@ -112,7 +116,7 @@ To create a string data type, we declare a variable wrapped in either double (")
 
 Once the string data type is defined, we can then use a number of methods to do work on strings. In the example above we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
 
-```
+```javascript
 //This is a Function
 const StringLength = (str) => {
 	return str.length;
@@ -127,7 +131,7 @@ string.length; //returns 10
 Numbers and Maths
 -----------------------------
 
-```
+```javascript
 const total = 9;
 const price = 11.99;
 
@@ -174,7 +178,7 @@ Notice how we can pass the value of **sum** as a parameter to our new maths func
 
 If we tried to pass a string as an argument:
 
-```
+```javascript
 multiply('name',3); // returns NaN
 add('name',3) // returns 'name3'
 ```
@@ -199,7 +203,7 @@ z = x + y; // z equals 3 now
 You can define a variable with a value or without a value and populate it later. All JavaScript variables must be identified with unique names.
 
 Use a **let** declaration.
-```
+```javascript
 let sentence;
 let name = 'Ted;
 sentence = 'My name is ' + y; // sentence equals 'My name is Ted'
@@ -208,7 +212,7 @@ sentence = 'My name is ' + y; // sentence equals 'My name is Ted'
 **Let** is similar to a variable declaration. **Let**, unlike **var**, cannot be hoisted and it exhibits block scope. We will discuss scope and hoisting later in the book. 
 
 Use a **const** declaration.
-```
+```javascript
 const PI = 3.14;
 PI = 3.145 //Throws an error
 ```
@@ -217,7 +221,7 @@ PI = 3.145 //Throws an error
 
 It is possible to declare a container without using **var**, **let** or **const**.
 
-```
+```javascript
 name = 'Ted'; //same as window.name = 'Ted'
 x = 1; //same as window.x = 1
 ```
@@ -226,7 +230,7 @@ Declaring a container this way adds the container on to the window object and it
 
 Best practise is to use **let** and **const**. Block scoping means your containers will act in a more granular and predictable way.
 
-```
+```javascript
 const increment = (num) => {
 	let total = 0;
 	total = total + num;
@@ -235,6 +239,7 @@ const increment = (num) => {
 increment(5) //returns 5
 increment(10) //returns 15
 ```
+
 In this example we use **const** to define our increment function (as we don't want it to change) and **let** for our sum total (as it does change).
 
 What is Scope?
