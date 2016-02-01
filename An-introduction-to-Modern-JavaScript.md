@@ -128,6 +128,28 @@ const string = "marvellous";
 string.length; //returns 10
 ```
 
+Booleans
+-----------------------------
+
+```javascript
+let value = false;
+const toggleChecked = (isChecked) => {
+	if (isChecked) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+value = toggleChecked(value) // value is false;
+value = toggleChecked(value) // value is true;
+```
+
+To create a boolean data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the boolean into a string.
+
+Booleans are used often when you code. In the example we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
+
+
 Numbers and Maths
 -----------------------------
 
@@ -205,8 +227,8 @@ You can define a variable with a value or without a value and populate it later.
 Use a **let** declaration.
 ```javascript
 let sentence;
-let name = 'Ted;
-sentence = 'My name is ' + y; // sentence equals 'My name is Ted'
+let name = "Ted";
+sentence = "My name is " + y; // sentence equals "My name is Ted"
 ```
 
 **Let** is similar to a variable declaration. **Let**, unlike **var**, cannot be hoisted and it exhibits block scope. We will discuss scope and hoisting later in the book. 
