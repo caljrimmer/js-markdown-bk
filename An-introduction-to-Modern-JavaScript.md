@@ -213,6 +213,23 @@ Javascript stops behaving predictably. With **multiple**, it returns **NaN** (i.
 
 We can only do numeric or mathematical work on Number data types. 
 
+Objects
+-----------------------------
+
+```javascript
+const object = {
+	name : "Ted",
+	count : 1,
+	isChecked : true,
+	addToCount : function () {
+		return ++this.count;
+	},
+	nested : {
+		colour : "blue"
+	}
+}
+```
+
 Variables and Constants
 -----------------------------
 
