@@ -140,6 +140,10 @@ const toggleChecked = (isChecked) => {
 		return true;
 	}
 }
+//or short-hand
+const toggleChecked = (isChecked) => {
+	return (isChecked) ? false : true;
+}
 
 value = toggleChecked(value) // value is false;
 value = toggleChecked(value) // value is true;
@@ -147,7 +151,7 @@ value = toggleChecked(value) // value is true;
 
 To create a boolean data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the boolean into a string.
 
-Booleans are used often when you code. In the example we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
+Booleans are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
 
 Numbers and Maths
