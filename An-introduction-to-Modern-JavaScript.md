@@ -268,6 +268,8 @@ When an we have **array** of objects, particularly if they have been return from
 Functions
 ----------
 
+Functions are building blocks in JavaScript. A function is a JavaScript procedure, a set of statements that performs a task or calculates a value.
+
 ```javascript
 function subtract (a,b) {
 	return a - b;
@@ -287,9 +289,49 @@ subtract(6,2); //returns 4
 multiple(2,2); //returns 4
 ```
 
-We can create a **function** in a few different ways. In each case we must define what arguments the **function** expects with parentheses ();
+We can create a **function** in a few different ways. In each case we must define what arguments the **function** expects with parentheses ().  The **function** statements are enclosed in curly brackets {}
 
 In the example, we define 3 functions for adding, subtracting and multiplying. In each can we define the arguments a and b, do an operation on them, and then return result.
+
+It is possible to define a function but not pass it arguments.
+
+```javascript
+
+function staticAdd () {
+	return 10 + 6;
+}
+staticAdd(); //returns 16
+```
+
+It is possible to define a function within a function
+
+```javascript
+
+function internalAdd (a,b) {
+	function add (a,b) {
+		return a + b;
+	}
+	return add(a,b) * 2;
+}
+internalAdd(2,4); //returns 12
+```
+
+A function can also return a function
+
+```javascript
+
+function dynamic (a) {
+	return function (b) {
+		return a * b;
+	};
+}
+
+const multiplyBy2 = dynamic(2);
+multiplyBy2(4); //returns 8
+
+const multiplyBy4 = dynamic(4);
+multiplyBy4(4); //returns 16
+```
 
 
 Objects
