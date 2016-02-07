@@ -44,7 +44,7 @@ we use a semicolon to separate statements.
 Now let's make a simple function to capture a user's response and return the value.
 
 ```javascript
-const result = (message) => {
+function result (message) {
 	return window.confirm(message);
 }
 result('Do you confirm this action?');
@@ -118,7 +118,7 @@ Once the string data type is defined, we can then use a number of methods to do 
 
 ```javascript
 //This is a Function
-const StringLength = (str) => {
+function StringLength (str) {
 	return str.length;
 }
 StringLength("marvellous") // returns 10
@@ -133,7 +133,7 @@ Booleans
 
 ```javascript
 let value = false;
-const toggleChecked = (isChecked) => {
+function toggleChecked (isChecked) {
 	if (isChecked) {
 		return false;
 	} else {
@@ -141,7 +141,7 @@ const toggleChecked = (isChecked) => {
 	}
 }
 //or short-hand
-const toggleChecked = (isChecked) => {
+function toggleChecked (isChecked) {
 	return (isChecked) ? false : true;
 }
 
@@ -153,8 +153,25 @@ To create a **boolean** (i.e. true or false) data type, we declare a container o
 
 Booleans are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
+Dates
+-----------------------------
 
-Numbers and Maths
+```javascript
+const today = new Date();
+const christmas = new Date('12/25/2015');
+
+today.getDate() // returns date of today (i.e. 1-31);
+today.getMonth() // returns month of today (i.e. 1-12);
+today.getHours() // returns hour of today (i.e. 0-23);
+```
+
+To create a **date** data type, we declare a container with the function **Date()**. 
+
+We then have the ability to perform date operations on the data type.  In the example above we use **getDate()** to return the date of today, **getMonth()** to return the month of today, **getHours()** to return the hour of today.
+
+We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
+
+Numbers
 -----------------------------
 
 ```javascript
@@ -177,19 +194,19 @@ Javascript allows us to replicate most mathematical computations.
 ```javascript
 let sum = 0;
 
-const add = (a,b) => {
+function add (a,b) {
 	return a + b;
 }
 
-const subtract = (a,b) => {
+function subtract (a,b) {
 	return a - b;
 }
 
-const multiply = (a,b) => {
+function multiply (a,b) {
 	return a * b;
 }
 
-const divide = (a,b) => {
+function divide (a,b) {
 	return a / b;
 }
 
@@ -248,6 +265,33 @@ const collection = [
 ```
 When an we have **array** of objects, particularly if they have been return from a database, then we call the array a **collection** and the objects **models**.
 
+Functions
+----------
+
+```javascript
+function subtract (a,b) {
+	return a - b;
+}
+
+const multiple = function (a,b) {
+	return a * b;
+}
+
+//Fat Arrow
+const add = (a,b) => {
+	return a + b;
+}
+
+add(2,4); //returns 6
+subtract(6,2); //returns 4
+multiple(2,2); //returns 4
+```
+
+We can create a **function** in a few different ways. In each case we must define what arguments the **function** expects with parentheses ();
+
+In the example, we define 3 functions for adding, subtracting and multiplying. In each can we define the arguments a and b, do an operation on them, and then return result.
+
+
 Objects
 ----------
 
@@ -271,7 +315,7 @@ object.addToCount(); //returns 3
 object.hasOwnProperty('count'); //returns true
 object.hasOwnProperty('notThere'); //returns false
 ```
-To create a object data type, we declare a container with parentheses {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon).
+To create a object data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon).
 
 In the example above we have defined an object with a string, number, boolean, another object and also a function.
 
