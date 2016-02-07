@@ -95,7 +95,7 @@ Finally there are 2 data types that cannot contain values. Null and Undefined:
 
 ```javascript
 const noValue; //Undefined as we have no value
-const nullValue = null; //Null
+const nullValue = null; //Value is defined as null
 ```
 
 Javascript, once a data type object is defined, Javascript makes available a number of different methods for that data type. A method is very similar to a function but it exists on the data type object rather than independent of it. These methods help you do work on that particular data type.
@@ -357,7 +357,7 @@ object.addToCount(); //returns 3
 object.hasOwnProperty('count'); //returns true
 object.hasOwnProperty('notThere'); //returns false
 ```
-To create a object data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon).
+To create a object data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon). This is called an **object literal**.
 
 In the example above we have defined an object with a string, number, boolean, another object and also a function.
 
@@ -366,6 +366,19 @@ Notice that in the function, we reference the object with the **this** keyword. 
 The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
 
 An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what values the object contains.
+
+ES6 has give us new ways of defining an object literal.
+
+```javascript
+const keyName = 'surname';
+const newObject = {
+    value, // Shorthand for value: value
+    add(a,b) { // Shorthand for functions
+     return a + b;
+    },
+    [keyName]: 'Smith' // dynamic key names
+}
+```
 
 Javascript is Loosely Typed
 --------------------------------
