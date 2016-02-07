@@ -357,7 +357,7 @@ object.addToCount(); //returns 3
 object.hasOwnProperty('count'); //returns true
 object.hasOwnProperty('notThere'); //returns false
 ```
-To create a object data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon). This is called an **object literal**.
+To create a **object** data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon). This is called an **object literal**. **Object literals** encapsulate data, enclosing it in a tidy package.
 
 In the example above we have defined an object with a string, number, boolean, another object and also a function.
 
@@ -379,6 +379,22 @@ const newObject = {
     [keyName]: 'Smith' // dynamic key names
 }
 ```
+
+We can amend **object literal** values at any time. We can also add or remove values.
+
+```javascript
+let amendable = {
+	name: 'Ted'
+	age: 32
+}
+
+amendable.name = 'Edward'; //name is now Edward
+amendable.job = 'Accountant'; //adds job value
+
+delete amendable.age; //removes age value
+```
+
+
 
 Javascript is Loosely Typed
 --------------------------------
