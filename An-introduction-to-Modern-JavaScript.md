@@ -228,7 +228,15 @@ const object = {
 		colour : "blue"
 	}
 }
+
+object.addToCount(); //returns 2
+object.addToCount(); //returns 3
 ```
+To create a object data type, we declare a container with parentheses {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon).
+
+In the example above we have defined an object with a string, number, boolean, another object and also a function.
+
+Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object) and **stateful** (in the example) 
 
 Variables and Constants
 -----------------------------
