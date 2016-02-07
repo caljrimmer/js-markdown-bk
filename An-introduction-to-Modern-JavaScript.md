@@ -149,7 +149,7 @@ value = toggleChecked(value) // value is false;
 value = toggleChecked(value) // value is true;
 ```
 
-To create a boolean data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the boolean into a string.
+To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the boolean into a string.
 
 Booleans are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
@@ -168,7 +168,7 @@ Math.ceil(price); //returns 12
 Math.floor(price); //returns 11
 ```
 
-To create a number data type, we declare a container of either an integer or a decimal.
+To create a **number** data type, we declare a container of either an integer or a decimal.
 
 We then have the ability to perform numerical or mathematical functions and methods on the value.  In the example above we use **isInteger()** to determine if value is an integer, **Math.sqrt()** to return the square root of a value, **Math.floor()** to round down to the nearest integer and **Math.ceil()** to round up to the nearest integer.
 
@@ -213,8 +213,43 @@ Javascript stops behaving predictably. With **multiple**, it returns **NaN** (i.
 
 We can only do numeric or mathematical work on Number data types. 
 
+Array
+--------
+```javascript
+const colours = ['blue','red','yellow'];
+const numbers = [20,30,40];
+const mixedList = [1,'blue',false];
+
+colours.length; //returns 3
+
+mixedList.forEach((item) => {
+	console.log(typeof(item)) 
+}); //returns number, string, boolean
+
+numbers.map((num) => {
+	return num / 10; 
+}); //returns [2,3,4]
+```
+
+To create an **array** (i.e. a list) data type, we declare a container with square brackets []. Inside the **array** you can define values of any sort of data type. The values are separated by commas.
+
+In the example above we have defined an 3 different **arrays**. One with string data types, then number data types and finally a mix of different data types.
+
+Arrays have many prototype methods to help you work with them. They have the most prototype methods of all the data types. You are able to loop through **arrays** with **forEach()** or even transform the values of an array with **map()**.
+
+Arrays can be used to create lists of objects:
+
+```javascript
+const collection = [
+	{id:1, name:'Ted'},
+	{id:2, name:'Fred'},
+	{id:3, name:'Ned'}
+]
+```
+When an we have **array** of objects, particularly if they have been return from a database, then we call the array a **collection** and the objects **models**.
+
 Objects
------------------------------
+----------
 
 ```javascript
 const object = {
@@ -232,6 +267,9 @@ const object = {
 
 object.addToCount(); //returns 2
 object.addToCount(); //returns 3
+
+object.hasOwnProperty('count'); //returns true
+object.hasOwnProperty('notThere'); //returns false
 ```
 To create a object data type, we declare a container with parentheses {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon).
 
@@ -240,6 +278,18 @@ In the example above we have defined an object with a string, number, boolean, a
 Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
 
 The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
+
+An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what values the object contains.
+
+Javascript is Loosely Typed
+--------------------------------
+Javascript is loosely typed. This means you can change the data type of a defined container at anytime. Most programming languages do not allow you to do this. 
+
+```javascript
+var changeable = 1; //Data type is a number
+changeable = 'Ted'; //Data type is now a string
+```
+In the example, we change the variable **changeable** to not just have a different value but also to have a different data type. It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
 
 Variables and Constants
 -----------------------------
