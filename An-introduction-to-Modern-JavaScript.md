@@ -221,6 +221,7 @@ const object = {
 	name : "Ted",
 	count : 1,
 	isChecked : true,
+	list : ['blue','red','yellow'],
 	addToCount : function () {
 		return ++this.count;
 	},
@@ -236,7 +237,9 @@ To create a object data type, we declare a container with parentheses {}. Inside
 
 In the example above we have defined an object with a string, number, boolean, another object and also a function.
 
-Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object) and **stateful** (in the example) 
+Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
+
+The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
 
 Variables and Constants
 -----------------------------
