@@ -673,7 +673,7 @@ To make a web application, we will need a text-editor to write the code. Any tex
  - Sublime - http://www.sublimetext.com/
  - Brackets - http://brackets.io/
 
-Next  create a new directory to store our web page files in. Let us name it **example-web-page** and save it. Create 2 files called **index.html** and **script.js**
+Next, we  create a new directory to store our web application files in. Let us name it **example-web-page** and save it. Create two files called **index.html** and **script.js**
 
 Create and save **index.html** with the following content:
 ```html
@@ -689,9 +689,10 @@ Create and save **index.html** with the following content:
 ```
 The **HTML** contains a **div** called with id of **container**. This will hold our web application. We have used the **title** tag to name our web application.
 
-we've put the **script** tag near the bottom of the HTML file. This is because we wish to have all the HTML loaded before the Javascript is parsed.
+The **script** tag is placed near the bottom of the HTML file. This is because all the HTML needs to be loaded before the Javascript is parsed.
 
 Create and save **script.js** with the following content:
+
 ```javascript
 function renderMessage (id, msg) {
 	const el = window.document.getElementById(id);
@@ -704,9 +705,9 @@ To view the web application, click on the **index.html** file to open it in a br
 
 In the **script.js** we have created the **renderMessage()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**.
 
-**6.2 User interaction**
+**6.2 Make a calculator**
 
-In **index.html**
+We now updated the **index.html** with form fields to capture information provided by the user. This will provide the information we need for the calculator.
 
 ```html
 <html>
@@ -738,3 +739,5 @@ In **index.html**
 	
 </html>   
 ```
+
+The **input** elements capture free typed information and the **select** is a drop down that gives the user limited options to choose from.
