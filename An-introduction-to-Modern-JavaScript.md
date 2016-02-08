@@ -15,8 +15,9 @@ Javascript, once just used for simple client-side scripting on web sites can now
 >The latest version of Javascript,  ECMAScript 2015, also known as ES6, is a significant update to the language. It was the first update to the language since ES5 was standardised in 2009. All code examples in this book will utilise ES6 where appropriate. 
  
  
+
 Writing some Javascript
-------------------
+-----------------------
 
 JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a browser.
 
@@ -101,8 +102,7 @@ const nullValue = null; //Value is defined as null
 Javascript, once a data type object is defined, Javascript makes available a number of different methods for that data type. A method is very similar to a function but it exists on the data type object rather than independent of it. These methods help you do work on that particular data type.
 
 
-Strings 
------------------------------
+**Strings** 
 
 ```javascript
 const word = "marvellous";
@@ -128,8 +128,7 @@ const string = "marvellous";
 string.length; //returns 10
 ```
 
-Booleans
------------------------------
+**Booleans**
 
 ```javascript
 let value = false;
@@ -153,8 +152,7 @@ To create a **boolean** (i.e. true or false) data type, we declare a container o
 
 Booleans are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
-Dates
------------------------------
+**Dates**
 
 ```javascript
 const today = new Date();
@@ -171,8 +169,7 @@ We then have the ability to perform date operations on the data type.  In the ex
 
 We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
 
-Numbers
------------------------------
+**Numbers**
 
 ```javascript
 const total = 9;
@@ -230,8 +227,8 @@ Javascript stops behaving predictably. With **multiple**, it returns **NaN** (i.
 
 We can only do numeric or mathematical work on Number data types. 
 
-Array
---------
+**Array**
+
 ```javascript
 const colours = ['blue','red','yellow'];
 const numbers = [20,30,40];
@@ -265,8 +262,7 @@ const collection = [
 ```
 When an we have **array** of objects, particularly if they have been return from a database, then we call the array a **collection** and the objects **models**.
 
-Functions
-----------
+**Functions**
 
 Functions are building blocks in JavaScript. A function is a JavaScript procedure, a set of statements that performs a task or calculates a value.
 
@@ -334,8 +330,7 @@ multiplyBy4(4); //returns 16
 ```
 
 
-Objects
-----------
+**Objects**
 
 ```javascript
 const object = {
@@ -394,10 +389,8 @@ amendable.job = 'Accountant'; //adds job value
 delete amendable.age; //removes age value
 ```
 
+**Javascript is Loosely Typed**
 
-
-Javascript is Loosely Typed
---------------------------------
 Javascript is loosely typed. This means you can change the data type of a defined container at anytime. Most programming languages do not allow you to do this. 
 
 ```javascript
@@ -409,7 +402,7 @@ In the example, we change the variable **changeable** to not just have a differe
 Variables and Constants
 -----------------------------
 
-Javascript allows us to define containers to store data, objects or functions in. Defining these containers allow us to structure our code and to manage scope (i.e. ability to access the container). There are 3 ways to define a container:
+Javascript allows us to define containers to store data, objects or functions. Defining these containers allow us to structure our code and to manage scope (i.e. ability to access the container and the data within). There are 3 ways to define a container:
 
 Use a **variable** declaration.
 ```javascript
@@ -460,6 +453,27 @@ increment(10) //returns 15
 ```
 
 In this example we use **const** to define our increment function (as we don't want it to change) and **let** for our sum total (as it does change).
+
+Operators
+------------------
+
+**Logical Operators**
+
+
+
+Operator | Description | Example (Given x=2)
+------- | -------------|-----------------
+== 		| Equal  | x == 2 *is true* and x == 1 *is false*
+===   	| Equal to value and data type
+!=    	| Not Equal
+!==   	| Not Equal to value and data type
+>    	| Greater than
+\>=    	| Greater than or equal to
+<    	| Less than
+<=    	| Less than or equal to  
+\|\|    	| or 
+&&    	| and 
+?    	| Tertiary    
 
 What is Scope?
 ------------------
