@@ -529,16 +529,46 @@ Operator | Description
 
 ```javascript
 const name = 'Ted';
-
 name === 'Fred'; //returns false
 (name === 'Ted' || name === 'Fred'); //returns true
 (name === 'Ted' && name === 'Fred'); //returns false
 !(name === 'Fred'); //returns true
 
 const x = 10;
-
 (typeof(x) === 'number' && x === 10); //returns true
+```
 
+Logical and comparison operators are often used with **if()** and **switch()** statements
+
+```javascript
+function yourTeam (colour) {
+	if (colour === 'red') {
+		return 'Your team is Liverpool';
+	}else if (colour === 'blue') {
+		return 'Your team is Everton';
+	}else{
+		return 'No suggestion of your team';
+	}
+}
+
+//or
+
+function yourTeam (colour) {
+	switch (colour) {
+		case 'red':
+			return 'Your team is Liverpool';
+			break;
+		case 'blue':
+			return 'Your team is Everton';
+			break;
+		default:
+			return 'No suggestion of your team'; 
+	}
+}
+
+yourTeam('red') // returns Your team is Liverpool
+yourTeam('red') // returns Your team is Everton
+yourTeam('green') // returns No suggestion of your team
 ```
 
 
