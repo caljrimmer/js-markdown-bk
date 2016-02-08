@@ -457,13 +457,11 @@ In this example we use **const** to define our increment function (as we don't w
 Operators
 ------------------
 
-**Logical Operators**
+**Comparison Operators**
 
-
-
-Operator | Description | Example (Given x=2)
-------- | -------------|-----------------
-== 		| Equal  | x == 2 *is true* and x == 1 *is false*
+Operator | Description 
+------- | -------------
+== 		| Equal  
 ===   	| Equal to value and data type
 !=    	| Not Equal
 !==   	| Not Equal to value and data type
@@ -474,6 +472,14 @@ Operator | Description | Example (Given x=2)
 \|\|    	| or 
 &&    	| and 
 ?    	| Tertiary    
+
+**Logical Operators**
+
+Operator | Description 
+------- | -------------
+\|\|    | or 
+&&    	| and   
+
 
 What is Scope?
 ------------------
