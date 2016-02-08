@@ -567,7 +567,7 @@ function yourTeam (colour) {
 }
 
 yourTeam('red') // returns Your team is Liverpool
-yourTeam('red') // returns Your team is Everton
+yourTeam('blue') // returns Your team is Everton
 yourTeam('green') // returns No suggestion of your team
 ```
 
