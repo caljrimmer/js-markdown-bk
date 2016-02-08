@@ -622,8 +622,8 @@ let Soldier = {
 	role: 'Obeys orders'
 }
 
-giveOrder (Sergeant, 'Peel potatoes'); //Error
-giveOrder (Major, 'Peel potatoes'); //Error
+giveOrder (Sergeant, 'Peel potatoes'); //Error - can't access Sergeant
+giveOrder (Major, 'Peel potatoes'); //Error - can't access Major
 
 function barracks () {
 	
@@ -632,8 +632,8 @@ function barracks () {
 		role: 'Gives orders to Soldier'
 	}
   
-	giveOrder (Soldier, 'Peel potatoes'); // returns {name: 'Jones', role: 'Peel potatoes'}
-	giveOrder (Major, 'Peel potatoes'); //Error
+	giveOrder (Soldier, 'Peel potatoes'); //returns {name: 'Jones', role: 'Peel potatoes'}
+	giveOrder (Major, 'Peel potatoes'); //Error - can't access Major
 	
 	function officerMess () {
 	
@@ -649,6 +649,19 @@ function barracks () {
 }();
 
 ```
+
+In the example above, we define three variables **Soldier**, **Sergeant** and **Major**. 
+
+**Soldier** is defined outside all functions and is accessible and amendable everywhere.
+
+**Sergeant** is defined inside the first **barracks()** function and is accessible to everything inside this function but inaccessible outside it.
+
+**Major** is defined inside the innermost **officerMess()** function and is accessible to everything inside this function but inaccessible outside it.
+
+A simple rule of thumb is that the innermost defined function, i.e. anything inside the **officerMess()**, can access and amend everything outside it.
+
+In our example,  any function in the **officerMess()** has the greatest ability to inform variables, then function in the **barracks()** and finally anything outside that.
+
 
 A simple web page
 -------------------------
