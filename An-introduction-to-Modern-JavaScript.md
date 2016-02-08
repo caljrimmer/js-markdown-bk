@@ -710,22 +710,31 @@ In **index.html**
 
 ```html
 <html>
+	
 	<head>
 		<title>Web Application</title>
 	</head>
+	
 	<body>
 		<div id="container">
+
 			<input id="value-a" type="text" value="0" />
+			
 			<select id="operator">
 				<option value="add">Add</option>
 				<option value="subtract">Subtract</option>
 				<option value="multiply">Multiply</option>
 				<option value="divide">Divide</option>
 			</select>
+			
 			<input id="value-b" type="text" value="0" />
+			
 			<div id="result"></div>
+		
 		</div>
 	</body>
+	
 	<script src="script.js"></script>
-</html>
+	
+</html>   
 ```
