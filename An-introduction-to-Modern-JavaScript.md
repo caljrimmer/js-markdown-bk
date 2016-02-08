@@ -507,8 +507,9 @@ x <= 3;  //returns true
 The **ternary** operator (.i.e. **?**) reacts to the previous comparision statement to return a result. In the example above, if the statement before the **ternary** operator is true, then the first option is returned, if it is false, then the second option is returned.
 
 ```javascript
-(x === 2) ? 'option 1' : 'option 2' // returns option 1
-(x !== 2) ? 'option 1' : 'option 2' // returns option 2
+const x = 5;
+(x === 5) ? 'option 1' : 'option 2' // returns option 1
+(x !== 5) ? 'option 1' : 'option 2' // returns option 2
 
 function toggleOn(booleanValue) {
 	return (booleanValue) ? 'on' : 'off'; 
