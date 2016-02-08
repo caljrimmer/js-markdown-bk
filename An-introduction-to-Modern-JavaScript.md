@@ -359,7 +359,7 @@ The defined object is also **stateful**. In the example, we can increment the **
 
 An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what values the object contains.
 
-ES6 has give us new ways of defining an object literal.
+ES6, the latest Javascript engine, has give us additional ways of defining an **object literal**.
 
 ```javascript
 const keyName = 'surname';
