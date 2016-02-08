@@ -70,7 +70,7 @@ Time to look at data types, variables and constants, and operators. There will b
 Data Types 
 -----------------------------
 
-In JavaScript there are 5 different data types that can contain values. String, Boolean, Number, Object and Function:
+In JavaScript there are 5 different data types that can contain values. **String**,** Boolean**,** Number**, **Object** and **Function**:
 
 ```javascript
 const age = 16; //Number
@@ -82,14 +82,14 @@ function add (a,b) {
 } // Function
 ```
 
-There also two other data types that are subsets of Object. Date and Array:
+There also two other data types that are subsets of Object. **Date** and **Array**:
 
 ```javascript
 const dateOfBirth = new Date('28/12/1980'); //Date
 const teams = ["reds","blues","greens"]; // Array
 ```
 
-Finally there are 2 data types that cannot contain values. Null and Undefined:
+Finally there are 2 data types that cannot contain values. **Null** and **Undefined**:
 
 ```javascript
 const noValue; //Undefined as we have no value
@@ -112,19 +112,7 @@ word.substr(0,5);//returns marve
 
 To create a string data type, we declare a variable wrapped in either double (") or single quotes (').
 
-Once the string data type is defined, we can then use a number of methods to do work on strings. In the example above we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
-
-```javascript
-//This is a Function
-function StringLength (str) {
-	return str.length;
-}
-StringLength("marvellous") // returns 10
-
-//This is a method
-const string = "marvellous";
-string.length; //returns 10
-```
+ In the example above, we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
 
 **Booleans**
 
@@ -146,7 +134,7 @@ value = toggleChecked(value) // value is false;
 value = toggleChecked(value) // value is true;
 ```
 
-To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the boolean into a string.
+To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the **boolean** into a **string**.
 
 **Booleans** are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
@@ -161,7 +149,7 @@ today.getMonth() // returns month of today (i.e. 1-12);
 today.getHours() // returns hour of today (i.e. 0-23);
 ```
 
-To create a **date** data type, we declare a container with the function **Date()**. 
+To create a **date** data type, we declare a container with the **Date()** function. 
 
 We then have the ability to perform date operations on the data type.  In the example above we use **getDate()** to return the date of today, **getMonth()** to return the month of today, **getHours()** to return the hour of today.
 
@@ -205,14 +193,12 @@ function divide (a,b) {
 	return a / b;
 }
 
-sum = add(1,2) //sum equals 3
-sum = multiply(sum,2) // sum equals 6
-sum = divide(sum,3) // sum equals 2
-sum = minus(sum,1) // sum equals 1
+add(1,2) //sum equals 3
+multiply(3,2) // sum equals 6
+divide(6,3) // sum equals 2
+minus(2,1) // sum equals 1
 
 ```
-
-Notice how we can pass the value of **sum** as a parameter to our new maths functions as it keeps its state (i.e. **sum** retains its previous value and then changes to reflect its new value).
 
 If we tried to pass a string as an argument:
 
@@ -221,7 +207,7 @@ multiply('name',3); // returns NaN
 add('name',3) // returns 'name3'
 ```
 
-Javascript stops behaving predictably. With **multiple**, it returns **NaN** (i.e. Not a Number) and with **add**, it returns a new string of the 'name' with '3' tagged on the end.
+Javascript stops behaving predictably if we mix data types. With **multiple**, it returns **NaN** (i.e. Not a Number) and with **add**, it returns a new string of the 'name' with '3' tagged on the end.
 
 We can only do numeric or mathematical work on Number data types. 
 
@@ -247,7 +233,7 @@ To create an **array** (i.e. a list) data type, we declare a container with squa
 
 In the example above we have defined an 3 different **arrays**. One with string data types, then number data types and finally a mix of different data types.
 
-Arrays have many prototype methods to help you work with them. They have the most prototype methods of all the data types. You are able to loop through **arrays** with **forEach()** or even transform the values of an array with **map()**.
+Arrays have many prototype methods to help you work with them. You are able to count the items in an array with **length**, to loop through **arrays** with **forEach()** or even transform the values of an array with **map()**.
 
 Arrays can be used to create lists of objects:
 
@@ -258,7 +244,7 @@ const collection = [
 	{id:3, name:'Ned'}
 ]
 ```
-When an we have **array** of objects, particularly if they have been return from a database, then we call the array a **collection** and the objects **models**.
+When an we have **array** of objects, particularly if they have been return from a database, then we can refer to the array as a **collection** and the objects as **models**.
 
 **Functions**
 
@@ -326,6 +312,7 @@ const multiplyBy4 = dynamic(4);
 multiplyBy4(4); //returns 16
 ```
 
+Functions 
 
 **Objects**
 
@@ -380,10 +367,10 @@ let amendable = {
 	age: 32
 }
 
-amendable.name = 'Edward'; //name is now Edward
-amendable.job = 'Accountant'; //adds job value
+amendable.name = 'Edward'; //name value is now Edward
+amendable.job = 'Accountant'; //adds job key and value
 
-delete amendable.age; //removes age value
+delete amendable.age; //removes age key and value
 ```
 
 **Javascript is Loosely Typed**
@@ -569,7 +556,7 @@ yourTeam('green') // returns No suggestion of your team
 ```
 
 
-What is Scope?
+Scope
 ------------------
 
 Scope is what sets of variables, constants or functions that functions have access too.
