@@ -19,9 +19,9 @@ Javascript, once just used for simple client-side scripting on web sites can now
 Writing some Javascript
 -----------------------
 
-JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a browser.
+JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a **browser**.
 
- Javascript can be run on any browser. We will be using Chrome as our browser develop on. Chrome has a number of developer tools that will help you develop your code. One of those tools is called "Console" and it that allows you to run Javascript directly.
+ Javascript can be run on any **browser**. We will be using **Chrome** as our browser of choice. Chrome has a number of developer tools that will help you develop your code. One of those tools is called **Console** and it that allows you to run Javascript directly.
 
 To begin:
 
@@ -53,9 +53,7 @@ result('Do you confirm this action?');
 
 The console should log *true*, if ok is clicked and *false* if cancel is clicked.
 
-So we have create a new function called **result** that returns a value that we get from another native javascript function called **confirm**. We then invoke our result function with parentheses whilst passing a string of 'Do you confirm this action?' as an argument.
-
-We also use the **const** keyword to declare our function. Const  creates a read-only reference to the function. This means the function can not be amended after it has been declared.
+So we have create a new function called **result** that returns a value that we get from another native javascript function called **confirm**. We then invoke our result function with parentheses whilst passing a string of 'Do you confirm this action?' as an **argument**.
 
 We don't need to specify **window** when calling functions. Javascript will assume it for you. Thus these two function do the same thing.
 
@@ -67,10 +65,7 @@ window.confirm('confirm?');
 confirm('confirm?'); //Same as window.confirm
 ```
 
-
->The **window** object is global and contains all native Javascript functions and variables. 
-
->A **function** can be passed arguments and is invoked with parentheses.
+Time to look at data types, variables and constants, and operators. There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
 
 Data Types 
 -----------------------------
@@ -82,7 +77,9 @@ const age = 16; //Number
 const name = "Ted"; // String
 const isChecked = true; //Boolean
 const obj = {count: 1, name: "MyApp"}; // Object
-const add = (a,b) => { return a + b; } // Function
+function add (a,b) { 
+	return a + b; 
+} // Function
 ```
 
 There also two other data types that are subsets of Object. Date and Array:
@@ -99,8 +96,9 @@ const noValue; //Undefined as we have no value
 const nullValue = null; //Value is defined as null
 ```
 
-Javascript, once a data type object is defined, Javascript makes available a number of different methods for that data type. A method is very similar to a function but it exists on the data type object rather than independent of it. These methods help you do work on that particular data type.
+Javascript, once a data type object is defined, Javascript makes available a number of different prototypal methods for that data type. 
 
+A method is very similar to a function but it exists on the data type object rather than independent of it. These methods help you do work on that particular data type.
 
 **Strings** 
 
@@ -139,7 +137,7 @@ function toggleChecked (isChecked) {
 		return true;
 	}
 }
-//or short-hand
+//or short-hand using a ternary operator
 function toggleChecked (isChecked) {
 	return (isChecked) ? false : true;
 }
@@ -150,7 +148,7 @@ value = toggleChecked(value) // value is true;
 
 To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the boolean into a string.
 
-Booleans are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
+**Booleans** are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
 **Dates**
 
@@ -230,19 +228,19 @@ We can only do numeric or mathematical work on Number data types.
 **Array**
 
 ```javascript
-const colours = ['blue','red','yellow'];
+const strings = ['blue','red','yellow'];
 const numbers = [20,30,40];
 const mixedList = [1,'blue',false];
 
-colours.length; //returns 3
-
-mixedList.forEach((item) => {
-	console.log(typeof(item)) 
-}); //returns number, string, boolean
+strings.length; //returns 3
 
 numbers.map((num) => {
 	return num / 10; 
 }); //returns [2,3,4]
+
+mixedList.forEach((item) => {
+	console.log(typeof(item)) 
+}); //returns number, string, boolean
 ```
 
 To create an **array** (i.e. a list) data type, we declare a container with square brackets []. Inside the **array** you can define values of any sort of data type. The values are separated by commas.
@@ -292,30 +290,29 @@ In the example, we define 3 functions for adding, subtracting and multiplying. I
 It is possible to define a function but not pass it arguments.
 
 ```javascript
-
 function staticAdd () {
 	return 10 + 6;
 }
+
 staticAdd(); //returns 16
 ```
 
 It is possible to define a function within a function
 
 ```javascript
-
 function internalAdd (a,b) {
 	function add (a,b) {
 		return a + b;
 	}
 	return add(a,b) * 2;
 }
+
 internalAdd(2,4); //returns 12
 ```
 
 A function can also return a function
 
 ```javascript
-
 function dynamic (a) {
 	return function (b) {
 		return a * b;
@@ -354,7 +351,7 @@ object.hasOwnProperty('notThere'); //returns false
 ```
 To create a **object** data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon). This is called an **object literal**. **Object literals** encapsulate data, enclosing it in a tidy package.
 
-In the example above we have defined an object with a string, number, boolean, another object and also a function.
+In the example above we have defined an **object** with a string, number, boolean, another object and also a function.
 
 Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
 
