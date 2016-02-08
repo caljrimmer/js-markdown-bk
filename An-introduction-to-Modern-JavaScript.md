@@ -654,24 +654,24 @@ If we try and invoke the **giveOrders()** function with a variable whilst in the
 
 We can use scope to organise our applications and provide protection to our variables being accidentally overwritten. 
 
-A simple web page
--------------------------
+Creating a simple web application
+-----------------------------------------
 
-A web page consists of HTML, CSS and Javascript. HTML provides the scaffolding of the page. CSS provides the styling of the page. Javascript provides the behaviour. Javascript is what makes a web page dynamic and responsive to the user. 
+A web application consists of HTML, CSS and Javascript. HTML provides the scaffolding of the page. CSS provides the styling of the page. Javascript provides the behaviour. Javascript is what makes a web page dynamic and responsive to the user. 
 
-To make our web page, we will need a text-editor to write our code with. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help you write code more efficiently. The best free options are:
+To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help in drafting code more efficiently. The best free options are:
 
  - Atom - https://atom.io/
  - Sublime - http://www.sublimetext.com/
  - Brackets - http://brackets.io/
 
-Next we need to create a new directory to store our web page files in. Let us name it "example-web-page" and save it to your desktop. Now we are going to create 2 files that we will save in this director.
+Next  create a new directory to store our web page files in. Let us name it **example-web-page** and save it. Create 2 files called **index.html** and **script.js**
 
 Create and save **index.html**.
 ```
 <html>
 	<head>
-		<title>Example Web Page</title>
+		<title>Web Application</title>
 	</head>
 	<body>
 		<div id="container"></div>
@@ -679,9 +679,21 @@ Create and save **index.html**.
 	<script src="script.js"></src>
 </html>
 ```
-we've put the <kbd>script</kbd> element near the bottom of the HTML file. This is because we wish to have all the HTML loaded before the Javascript is parsed. This will make scripts that interact with the HTML work consistently.
+The HTML contains a **div** called with id of **container**. This will hold our web application. We have used the **title** tag to name our web application.
+
+we've put the **script** tag near the bottom of the HTML file. This is because we wish to have all the HTML loaded before the Javascript is parsed.
 
 Create and save **script.js**.
 ```
-const 
+
+//This function gets query params from the browser url
+//.e.g. ?operator=add&a=2&b=3
+//Don't worry too much about how it works at the moment
+function getQueryParamByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+var app = {
+} 
 ```
