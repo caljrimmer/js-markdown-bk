@@ -623,8 +623,8 @@ let Soldier = {
 	role: 'Obeys orders'
 }
 
-giveOrder (Sergeant, 'Peel potatoes'); //Error - can't access Sergeant
-giveOrder (Major, 'Peel potatoes'); //Error - can't access Major
+giveOrder (Sergeant, 'Peel potatoes'); //ReferenceError: Sergeant is not defined
+giveOrder (Major, 'Peel potatoes'); //ReferenceError: Major is not defined
 
 function barracks () {
 	
@@ -634,7 +634,7 @@ function barracks () {
 	}
   
 	giveOrder (Soldier, 'Peel potatoes'); //returns {name: 'Jones', role: 'Peel potatoes'}
-	giveOrder (Major, 'Peel potatoes'); //Error - can't access Major
+	giveOrder (Major, 'Peel potatoes'); //ReferenceError: Major is not defined
 	
 	function officerMess () {
 	
@@ -651,7 +651,7 @@ function barracks () {
 
 ```
 
-In the example above, we define three variables **Soldier**, **Sergeant** and **Major**. 
+In the example above, we define three variables **Soldier**, **Sergeant** and **Major**. We have a global scoped function called **giveOrders()**.
 
 **Soldier** is defined outside all functions and is accessible and amendable everywhere.
 
@@ -663,6 +663,9 @@ A simple rule of thumb is that the innermost defined function, i.e. anything ins
 
 In our example,  any function in the **officerMess()** has the greatest ability to inform variables, then function in the **barracks()** and finally anything outside that.
 
+If we try and invoke the **giveOrders()** function with a variable whilst in the wrong scope, the browser will throw a **ReferenceError**.
+
+We can use scope to organise our applications and provide protection to our variables being accidentally overwritten. 
 
 A simple web page
 -------------------------
