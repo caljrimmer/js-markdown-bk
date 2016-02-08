@@ -572,10 +572,80 @@ yourTeam('green') // returns No suggestion of your team
 What is Scope?
 ------------------
 
-Javascript is loosely typed. That means you can define a variable but not have to describe what it contains.
+Scope is basically sets of variables, constants or functions that you have access to as you draft your code.
 
-There are 4 ways to create containers for your 
-In this tutorial I’ll introduce you to two new keywords: let and const. They enhance JavaScript even more by filling the gap with other languages and providing us a way to define block-scope variables and constants. If you want to learn more about them, keep reading.
+There are 3 types of scope in Javascript:
+
+ - **Global scope** - i.e. this is accessible from everywhere
+ - **Local or Function scope** - i.e. this is accessible from within the same function
+ - **Block scope** - i.e. this is accessible from inside the expression e.g. inside an **if()** statement 
+
+```javascript
+let name = 'Ted'; //Global scoped 
+function printName (middle) {
+	let newName = 'Edward'; //Function scoped
+	if (middle === 'John') {
+		let surname = 'Smith'; //Block scoped
+		return name + ' ' + middle + ' ' + surname;
+	}
+	return newName + ' ' + middle + ' ' + surname; 
+}
+
+printName('John') // returns Ted John Smith
+printName('Pete') // returns Edward Pete undefined
+
+console.log(name) // returns Ted
+console.log(newName) // returns undefined
+console.log(surname) // returns undefined
+```
+
+In the example above, we have defined three variables **name**, **surname** and **newName**. Where we have defined these variables, determines the scope of the variable.  
+
+If we define a variable outside all functions, then it will be **global scoped**, i.e. **name**.
+
+If we define a variable inside a function, then it will be **function scoped**, i.e. **newName**. This is only accessible inside the function and not outside it. 
+
+if we define a variable inside a statement, then it will be **block scoped**, i.e. **surname**. This is only accessible inside the statement and not outside it (either in the parent function or any other function).
+
+We use scoping to allow us to control what each function can do. We make our function discrete and the variables defined in them private from other functions. 
+
+Another example:
+
+```javascript
+
+function giveOrder (who, what) {
+	who.role = what;
+}
+
+let Soldier = {
+	name: 'Jones',
+	role: 'Obeys orders'
+}
+
+giveOrder (Sergeant, 'Peel potatoes');
+giveOrder (Major, 'Peel potatoes');
+
+function barracks () {
+	
+	let Sergeant = {
+		name: 'Smith',
+		role: 'Gives orders to Soldier'
+	}
+	giveOrder (Soldier, 'Peel potatoes');
+	giveOrder (Major, 'Peel potatoes');
+	
+	function officerMess () {
+		let Major = {
+			name: 'Lee',
+			role: 'Gives orders to Sergeant and Soldier'
+		}
+		giveOrder (Soldier, 'Peel potatoes');
+		giveOrder (Sergeant, 'Peel potatoes');
+	}
+	
+}
+
+```
 
 A simple web page
 -------------------------
