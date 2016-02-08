@@ -459,6 +459,8 @@ Operators
 
 **Comparison Operators**
 
+Comparison operators are used in statements to determine equality or difference between values. The response is generally a **boolean** (i.e. true or false).
+
 Operator | Description 
 ------- | -------------
 == 		| Equal  
@@ -469,14 +471,74 @@ Operator | Description
 \>=    	| Greater than or equal to
 <    	| Less than
 <=    	| Less than or equal to  
-?    	| Tertiary    
+?    	| ternary    
+
+```javascript
+const x = 2;
+
+x == 2;  //returns true
+x == '2';  //returns true (only checks value not type)
+x == 3;  //returns false
+
+x === 2;  //returns true
+x === '2';  //returns false (checks values and type)
+x === 3;  //returns false
+
+x != 2;  //returns false
+x != 1;  //returns true
+
+x > 1;  //returns true
+x > 2;  //returns false
+
+x >= 1;  //returns true
+x >= 2;  //returns true
+
+x < 2;  //returns false
+x < 3;  //returns true
+
+x <= 2;  //returns true
+x <= 3;  //returns true
+
+(x === 2) ? 'option 1' : 'option 2' // returns option 1
+(x !== 2) ? 'option 1' : 'option 2' // returns option 2
+
+```
+
+The **ternary** operator (.i.e. **?**) reacts to the previous comparision statement to return a result. In the example above, if the statement before the **ternary** operator is true, then the first option is returned, if it is false, then the second option is returned.
+
+```javascript
+(x === 2) ? 'option 1' : 'option 2' // returns option 1
+(x !== 2) ? 'option 1' : 'option 2' // returns option 2
+
+function toggleOn(booleanValue) {
+	return (booleanValue) ? 'on' : 'off'; 
+} // returns on if true, off if false
+
+```
 
 **Logical Operators**
+
+Logical operators are used to combine comparison operators. The response is generally a **boolean** (i.e. true or false).
 
 Operator | Description 
 ------- | -------------
 \|\|    | or 
-&&    	| and   
+&&    	| and 
+!    	| not
+
+```javascript
+const name = 'Ted';
+
+name === 'Fred'; //returns false
+(name === 'Ted' || name === 'Fred'); //returns true
+(name === 'Ted' && name === 'Fred'); //returns false
+!(name === 'Fred'); //returns true
+
+const x = 10;
+
+(typeof(x) === 'number' && x === 10); //returns true
+
+```
 
 
 What is Scope?
