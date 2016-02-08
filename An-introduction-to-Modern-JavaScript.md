@@ -612,9 +612,9 @@ We use scoping to allow us to control what each function can do. We make our fun
 Another example:
 
 ```javascript
-
 function giveOrder (who, what) {
 	who.role = what;
+	return who;
 }
 
 let Soldier = {
@@ -622,8 +622,8 @@ let Soldier = {
 	role: 'Obeys orders'
 }
 
-giveOrder (Sergeant, 'Peel potatoes');
-giveOrder (Major, 'Peel potatoes');
+giveOrder (Sergeant, 'Peel potatoes'); //Error
+giveOrder (Major, 'Peel potatoes'); //Error
 
 function barracks () {
 	
@@ -631,19 +631,22 @@ function barracks () {
 		name: 'Smith',
 		role: 'Gives orders to Soldier'
 	}
-	giveOrder (Soldier, 'Peel potatoes');
-	giveOrder (Major, 'Peel potatoes');
+  
+	giveOrder (Soldier, 'Peel potatoes'); // returns {name: 'Jones', role: 'Peel potatoes'}
+	giveOrder (Major, 'Peel potatoes'); //Error
 	
 	function officerMess () {
+	
 		let Major = {
 			name: 'Lee',
 			role: 'Gives orders to Sergeant and Soldier'
 		}
-		giveOrder (Soldier, 'Peel potatoes');
-		giveOrder (Sergeant, 'Peel potatoes');
-	}
-	
-}
+		
+		giveOrder (Soldier, 'Peel potatoes'); //returns {name: 'Jones', role: 'Peel potatoes'}
+		giveOrder (Sergeant, 'Peel potatoes'); //returns {name: 'Peel', role: 'Peel potatoes'}
+		
+	}();
+}();
 
 ```
 
