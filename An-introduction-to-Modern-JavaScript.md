@@ -572,7 +572,7 @@ yourTeam('green') // returns No suggestion of your team
 What is Scope?
 ------------------
 
-Scope is basically sets of variables, constants or functions that you have access to as you draft your code.
+Scope is what sets of variables, constants or functions that functions have access too.
 
 There are 3 types of scope in Javascript:
 
@@ -581,7 +581,8 @@ There are 3 types of scope in Javascript:
  - **Block scope** - i.e. this is accessible from inside the expression e.g. inside an **if()** statement 
 
 ```javascript
-let name = 'Ted'; //Global scoped 
+let name = 'Ted'; //Global scoped
+ 
 function printName (middle) {
 	let newName = 'Edward'; //Function scoped
 	if (middle === 'John') {
@@ -592,11 +593,11 @@ function printName (middle) {
 }
 
 printName('John') // returns Ted John Smith
-printName('Pete') // returns Edward Pete undefined
+printName('Pete') //  ReferenceError: surname is not defined
 
 console.log(name) // returns Ted
-console.log(newName) // returns undefined
-console.log(surname) // returns undefined
+console.log(newName) // ReferenceError: newName is not defined
+console.log(surname) // ReferenceError: surname is not defined
 ```
 
 In the example above, we have defined three variables **name**, **surname** and **newName**. Where we have defined these variables, determines the scope of the variable.  
