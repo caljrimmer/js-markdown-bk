@@ -469,8 +469,6 @@ Operator | Description
 \>=    	| Greater than or equal to
 <    	| Less than
 <=    	| Less than or equal to  
-\|\|    	| or 
-&&    	| and 
 ?    	| Tertiary    
 
 **Logical Operators**
