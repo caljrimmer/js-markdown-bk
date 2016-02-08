@@ -16,8 +16,8 @@ Javascript, once just used for simple client-side scripting on web sites can now
  
  
 
-Writing some Javascript
------------------------
+1.  Javascript in the Browser
+---------------------------------
 
 JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a **browser**.
 
@@ -67,7 +67,7 @@ confirm('confirm?'); //Same as window.confirm
 
 Time to look at data types, variables and constants, and operators. There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
 
-Data Types 
+2. Data Types 
 -----------------------------
 
 In JavaScript there are 5 different data types that can contain values. **String**,** Boolean**,** Number**, **Object** and **Function**:
@@ -100,7 +100,7 @@ Javascript, once a data type object is defined, Javascript makes available a num
 
 A method is very similar to a function but it exists on the data type object rather than independent of it. These methods help you do work on that particular data type.
 
-**Strings** 
+**2.1 Strings** 
 
 ```javascript
 const word = "marvellous";
@@ -114,7 +114,7 @@ To create a string data type, we declare a variable wrapped in either double (")
 
  In the example above, we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
 
-**Booleans**
+**2.2 Booleans**
 
 ```javascript
 let value = false;
@@ -138,7 +138,7 @@ To create a **boolean** (i.e. true or false) data type, we declare a container o
 
 **Booleans** are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
-**Dates**
+**2.3 Dates**
 
 ```javascript
 const today = new Date();
@@ -155,7 +155,7 @@ We then have the ability to perform date operations on the data type.  In the ex
 
 We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
 
-**Numbers**
+**2.4 Numbers**
 
 ```javascript
 const total = 9;
@@ -211,7 +211,7 @@ Javascript stops behaving predictably if we mix data types. With **multiple**, i
 
 We can only do numeric or mathematical work on Number data types. 
 
-**Array**
+**2.5 Array**
 
 ```javascript
 const strings = ['blue','red','yellow'];
@@ -246,7 +246,7 @@ const collection = [
 ```
 When an we have **array** of objects, particularly if they have been return from a database, then we can refer to the array as a **collection** and the objects as **models**.
 
-**Functions**
+**2.6 Functions**
 
 Functions are building blocks in JavaScript. A function is a JavaScript procedure, a set of statements that performs a task or calculates a value.
 
@@ -314,7 +314,7 @@ multiplyBy4(4); //returns 16
 
 Functions 
 
-**Objects**
+**2.7 Objects**
 
 ```javascript
 const object = {
@@ -373,7 +373,7 @@ amendable.job = 'Accountant'; //adds job key and value
 delete amendable.age; //removes age key and value
 ```
 
-**Javascript is Loosely Typed**
+**2.8 Javascript is Loosely Typed**
 
 Javascript is loosely typed. This means you can change the data type of a defined container at anytime. Most programming languages do not allow you to do this. 
 
@@ -383,7 +383,7 @@ changeable = 'Ted'; //Data type is now a string
 ```
 In the example, we change the variable **changeable** to not just have a different value but also to have a different data type. It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
 
-Variables and Constants
+3. Variables and Constants
 -----------------------------
 
 Javascript allows us to define containers to store data, objects or functions. Defining these containers allow us to structure our code and to manage scope (i.e. ability to access the container and the data within). There are 3 ways to define a container:
@@ -438,10 +438,10 @@ increment(10) //returns 15
 
 In this example we use **const** to define our increment function (as we don't want it to change) and **let** for our sum total (as it does change).
 
-Operators
+4. Operators
 ------------------
 
-**Comparison Operators**
+**4.1 Comparison Operators**
 
 Comparison operators are used in statements to determine equality or difference between values. The response is generally a **boolean** (i.e. true or false).
 
@@ -501,7 +501,7 @@ function toggleOn(booleanValue) {
 
 ```
 
-**Logical Operators**
+**4.2 Logical Operators**
 
 Logical operators are used to combine comparison operators. The response is generally a **boolean** (i.e. true or false).
 
@@ -556,7 +556,7 @@ yourTeam('green') // returns No suggestion of your team
 ```
 
 
-Scope
+5. Scope
 ------------------
 
 Scope is what sets of variables, constants or functions that functions have access too.
@@ -654,10 +654,18 @@ If we try and invoke the **giveOrders()** function with a variable whilst in the
 
 We can use scope to organise our applications and provide protection to our variables being accidentally overwritten. 
 
-Creating a simple web application
+6. Creating a simple web application
 -----------------------------------------
 
-A web application consists of HTML, CSS and Javascript. HTML provides the scaffolding of the page. CSS provides the styling of the page. Javascript provides the behaviour. Javascript is what makes a web page dynamic and responsive to the user. 
+A web application consists of **HTML**, **CSS** and **Javascript**. 
+
+**HTML** provides the scaffolding of the page. **HTML** provides a library of tags that are used as containers for content. **HTML** also links to **CSS** and **Javascript** files.
+
+**CSS** provides the styling of the page. **CSS** associates styles to **HTML** tags.  **CSS** can amend fonts, colours, margins, padding, height, width, images and positions. It can also provide provide animation.
+
+**Javascript** is what makes a web page dynamic and responsive to the user. **Javascript** turns static content in to a tool. It allows the creation of applications to create whatever is desired. It turns a website into a web application
+
+**6.1 Get Started** 
 
 To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help in drafting code more efficiently. The best free options are:
 
@@ -667,8 +675,8 @@ To make a web application, we will need a text-editor to write the code. Any tex
 
 Next  create a new directory to store our web page files in. Let us name it **example-web-page** and save it. Create 2 files called **index.html** and **script.js**
 
-Create and save **index.html**.
-```
+Create and save **index.html** with the following content:
+```html
 <html>
 	<head>
 		<title>Web Application</title>
@@ -676,24 +684,48 @@ Create and save **index.html**.
 	<body>
 		<div id="container"></div>
 	</body>
-	<script src="script.js"></src>
+	<script src="script.js"></script>
 </html>
 ```
-The HTML contains a **div** called with id of **container**. This will hold our web application. We have used the **title** tag to name our web application.
+The **HTML** contains a **div** called with id of **container**. This will hold our web application. We have used the **title** tag to name our web application.
 
 we've put the **script** tag near the bottom of the HTML file. This is because we wish to have all the HTML loaded before the Javascript is parsed.
 
-Create and save **script.js**.
-```
-
-//This function gets query params from the browser url
-//.e.g. ?operator=add&a=2&b=3
-//Don't worry too much about how it works at the moment
-function getQueryParamByName(name) {
-    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+Create and save **script.js** with the following content:
+```javascript
+function renderMessage (id, msg) {
+	const el = window.document.getElementById(id);
+	el.innerHTML = msg;   
 }
 
-var app = {
-} 
+renderMessage('container','Hello World');
+```
+To view the web application, click on the **index.html** file to open it in a browser. The web app will render 'Hello World' in the browser.
+
+In the **script.js** we have created the **renderMessage()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**.
+
+**6.2 User interaction**
+
+In **index.html**
+
+```html
+<html>
+	<head>
+		<title>Web Application</title>
+	</head>
+	<body>
+		<div id="container">
+			<input id="value-a" type="text" value="0" />
+			<select id="operator">
+				<option value="add">Add</option>
+				<option value="subtract">Subtract</option>
+				<option value="multiply">Multiply</option>
+				<option value="divide">Divide</option>
+			</select>
+			<input id="value-b" type="text" value="0" />
+			<div id="result"></div>
+		</div>
+	</body>
+	<script src="script.js"></script>
+</html>
 ```
