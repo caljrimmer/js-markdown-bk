@@ -788,7 +788,7 @@ We now have functions to both collect information and render information in our 
 					<option value="divide">Divide</option>
 				</select>
 				<input id="operand-b" type="text" value="0" />
-				<input id="submit" type="submit" value="Submit">
+				<button id="calculate">Calculate</button>
 			</form>
 			
 			<div id="result"></div>
@@ -798,7 +798,49 @@ We now have functions to both collect information and render information in our 
 	
 	<script src="script.js"></script>
 	
-</html>  
+</html> 
 ```
 
-We have create two new elements. The first is a div with id of **result** which will contain the result of the calculation. The second is a **submit** input which we shall use to trigger the calculation. 
+We have create two new elements. The first is a div with id of **result** which will contain the result of the calculation. The second is a **submit** input which we shall use to trigger the calculation.
+
+```javascript
+function render (id, msg) {
+	const el = window.document.getElementById(id);
+	el.innerHTML = msg;   
+}
+
+function getSelectValue (id) {
+	const el = window.document.getElementById(id);
+	return el.options[el.selectedIndex].value;   
+}
+
+function getInputValue (id) {
+	const el = window.document.getElementById(id); 
+	return el.value;   
+}
+
+function getInputValue (id) {
+	const el = window.document.getElementById(id); 
+	return el.value;   
+}
+
+function getAll (e) {
+	e.preventDefault();
+   	const a = getInputValue('operand-a');
+	const b = getInputValue('operand-b'); 
+	const operator = getSelectValue('operator');
+	render('result', a + operator + b);
+}
+
+function listenToClick (id) {
+	const el = window.document.getElementById(id); 
+	el.addEventListener('click', getAll);
+};
+
+listenToClick('calculate');
+``` 
+We have created a **listenToClick()** function to **bind** the a click event on the **calculate button**. When clicked, the **getAll()** function grabs the values from the **inputs** and **select**, combines them and then uses **render()** to write the value to the **result** div.
+
+To view the web application, click on the **index.html**. Clicking on the **calculate button** should write **0add0** to the web page. Next we need to add the calculation functionality.
+
+**6.4 Calculation functions**
