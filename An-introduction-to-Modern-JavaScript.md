@@ -70,7 +70,7 @@ Time to look at data types, variables and constants, and operators. There will b
 2. Data Types 
 -----------------------------
 
-In JavaScript there are 5 different data types that can contain values. **String**,** Boolean**,** Number**, **Object** and **Function**:
+In JavaScript there are 5 different data types that can contain values. **String**,  **Boolean**,  **Number**,  **Object** and **Function**:
 
 ```javascript
 const age = 16; //Number
@@ -104,13 +104,15 @@ A method is very similar to a function but it exists on the data type object rat
 
 ```javascript
 const word = "marvellous";
+//or
+const word = new String("marvellous");
 
 word.length; //returns 10
 word.toUpperCase(); //returns MARVELLOUS
 word.substr(0,5);//returns marve
 ```
 
-To create a string data type, we declare a variable wrapped in either double (") or single quotes (').
+To create a string data type, we declare a variable wrapped in either double (") or single quotes ('), or we can use the **String()** function.
 
  In the example above, we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
 
@@ -118,6 +120,9 @@ To create a string data type, we declare a variable wrapped in either double (")
 
 ```javascript
 let value = false;
+//or
+let value = new Boolean('false');
+
 function toggleChecked (isChecked) {
 	if (isChecked) {
 		return false;
@@ -134,7 +139,7 @@ value = toggleChecked(value) // value is false;
 value = toggleChecked(value) // value is true;
 ```
 
-To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false. Note that we do not wrap true or false in quotations as this would turn the **boolean** into a **string**.
+To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false, or we can use the **Boolean()** function. 
 
 **Booleans** are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
@@ -159,6 +164,9 @@ We also can define a date in the future or past by passing a date to the **Date(
 
 ```javascript
 const total = 9;
+//or
+const total = new Number('9');
+
 const price = 11.99;
 
 Number.isInteger(total) // returns true;
@@ -168,7 +176,7 @@ Math.ceil(price); //returns 12
 Math.floor(price); //returns 11
 ```
 
-To create a **number** data type, we declare a container of either an integer or a decimal.
+To create a **number** data type, we declare a container of either an integer or a decimal, or we can use the **Number()** function.
 
 We then have the ability to perform numerical or mathematical functions and methods on the value.  In the example above we use **isInteger()** to determine if value is an integer, **Math.sqrt()** to return the square root of a value, **Math.floor()** to round down to the nearest integer and **Math.ceil()** to round up to the nearest integer.
 
@@ -218,6 +226,9 @@ const strings = ['blue','red','yellow'];
 const numbers = [20,30,40];
 const mixedList = [1,'blue',false];
 
+//or
+const numbers = new Array(20,30,40)
+
 strings.length; //returns 3
 
 numbers.map((num) => {
@@ -229,7 +240,7 @@ mixedList.forEach((item) => {
 }); //returns number, string, boolean
 ```
 
-To create an **array** (i.e. a list) data type, we declare a container with square brackets []. Inside the **array** you can define values of any sort of data type. The values are separated by commas.
+To create an **array** (i.e. a list) data type, we declare a container with square brackets [], or we can use the **Array()** function. Inside the **array** you can define values of any sort of data type. The values are separated by commas.
 
 In the example above we have defined an 3 different **arrays**. One with string data types, then number data types and finally a mix of different data types.
 
@@ -902,7 +913,7 @@ function listenToClick (id) {
 
 listenToClick('calculate'); 
 ```
-Our simple web app is now complete. The final **calculate()** function takes three arguments of a, b and operator. The **switch** statement chooses the correct operation based on the operator name. The **Number()** function converts a and b from string data type into a number data type so that calculations can be performed. The resultant value is then returned.
+After our final edits to **script.js**, the simple web app is now complete. The final **calculate()** function takes three arguments of a, b and operator. The **switch** statement chooses the correct operation based on the operator name. The **Number()** function converts a and b from string data type into a number data type so that calculations can be performed. The resultant value is then returned.
 
 To view the web application, click on the **index.html**. Enter two numbers either side of the operator and click on the **calculate button**. The calculated value should be rendered on the page.
 
@@ -971,3 +982,5 @@ const app = {
 
 app.listenToClick('calculate');
 ```
+
+We will discuss techniques we have use in our refactor in later chapters. In essence, we have wrapped our code in an **object literal** called **app**. This makes our code re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. 
