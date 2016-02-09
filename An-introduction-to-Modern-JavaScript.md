@@ -839,8 +839,135 @@ function listenToClick (id) {
 
 listenToClick('calculate');
 ``` 
-We have created a **listenToClick()** function to **bind** the a click event on the **calculate button**. When clicked, the **getAll()** function grabs the values from the **inputs** and **select**, combines them and then uses **render()** to write the value to the **result** div.
+We have created a **listenToClick()** function to utilise **addEventListener** which binds the a click event on the **calculate button**. When clicked, the **getAll()** function grabs the values from the **inputs** and **select**, combines them and then uses **render()** to write the value to the **result** div.
 
-To view the web application, click on the **index.html**. Clicking on the **calculate button** should write **0add0** to the web page. Next we need to add the calculation functionality.
+The **preventDefault()** function prevents the browser defaulting it's default behaviour, which is to post the form and reload the page. The **e** we have passed as an argument comes from **addEventListener** 
 
-**6.4 Calculation functions**
+**6.4 Calculation functionality**
+
+```javascript
+function render (id, msg) {
+	const el = window.document.getElementById(id);
+	el.innerHTML = msg;   
+}
+
+function getSelectValue (id) {
+	const el = window.document.getElementById(id);
+	return el.options[el.selectedIndex].value;   
+}
+
+function getInputValue (id) {
+	const el = window.document.getElementById(id); 
+	return el.value;   
+}
+
+function getInputValue (id) {
+	const el = window.document.getElementById(id); 
+	return el.value;   
+} 
+
+function calculate (a,b,operator) {
+	a = new Number(a);
+	b = new Number(b);
+	switch (operator) {
+		case 'add':
+			return a + b;
+			break;
+		case 'subtract':
+			return a - b;
+			break;
+		case 'multiply':
+			return a * b;
+			break;
+		case 'divide':
+			return a / b;
+			break;
+		default:
+			return false
+	}   
+}
+
+function getAll (e) {
+	e.preventDefault();
+   	const a = getInputValue('operand-a');
+	const b = getInputValue('operand-b'); 
+	const operator = getSelectValue('operator');
+	render('result', calculate(a,b,operator));
+}
+
+function listenToClick (id) {
+	const el = window.document.getElementById(id); 
+	el.addEventListener('click', getAll);
+};
+
+listenToClick('calculate'); 
+```
+Our simple web app is now complete. The final **calculate()** function takes three arguments of a, b and operator. The **switch** statement chooses the correct operation based on the operator name. The **Number()** function converts a and b from string data type into a number data type so that calculations can be performed. The resultant value is then returned.
+
+To view the web application, click on the **index.html**. Enter two numbers either side of the operator and click on the **calculate button**. The calculated value should be rendered on the page.
+
+**6.5 Refactoring**
+
+Refactoring means that we tidy and minimise our code. It is important to try and limit repetition in your Javascript code. Your code should also be easy to read and re-useable. 
+
+```javascript
+const app = {
+	
+	find: function (id) {
+		return window.document.getElementById(id);
+	},        
+	
+	render : function (id, msg) {
+		const el = this.find(id);
+		el.innerHTML = msg;	
+	},
+	
+	getValue : function (id, type) {
+		const el = this.find(id);
+		if (type === 'select') {
+			return el.options[el.selectedIndex].value
+		}else{
+			return el.value; 
+		} 
+	},
+	
+	calculate : function (a,b,operator) {
+		a = new Number(a);
+		b = new Number(b);
+		switch (operator) {
+			case 'add':
+				return a + b;
+				break;
+			case 'subtract':
+				return a - b;
+				break;
+			case 'multiply':
+				return a * b;
+				break;
+			case 'divide':
+				return a / b;
+				break;
+			default:
+				return false
+		}   
+	},
+	
+	getAll : function (e) {
+		e.preventDefault(); 
+		const result = this.calculate(
+			this.getValue('operand-a', 'input'),
+			this.getValue('operand-b', 'input'),
+			this.getValue('operator', 'select')
+		);
+		this.render('result', result);
+	},
+	
+	listenToClick : function (id) {
+		const el = this.find(id); 
+		el.addEventListener('click', this.getAll.bind(this));
+	}
+	
+}
+
+app.listenToClick('calculate');
+```
