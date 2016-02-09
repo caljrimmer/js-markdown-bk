@@ -767,23 +767,7 @@ We have created 2 new functions in **script.js**. The **getInputValue()** functi
 
 We now have functions to both collect information and render information in our web application. Next we need to make the web app responsive
 
-**6.2 Make the web app responsive**
-
-```javascript
-function render (id, msg) {
-	const el = window.document.getElementById(id);
-	el.innerHTML = msg;   
-}
-
-render('container','Hello World');
-```
-To view the web application, click on the **index.html** file to open it in a browser. The web app will render 'Hello World' in the browser.
-
-In the **script.js** we have created the **render()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**.
-
-**6.2 Adding inputs**
-
-We now updated the **index.html** with form fields to capture information provided by the user. This will provide the information we need for the calculator.
+**6.3 Adding responsiveness**
 
 ```html
 <html>
@@ -814,5 +798,5 @@ We now updated the **index.html** with form fields to capture information provid
 	
 	<script src="script.js"></script>
 	
-</html>     
+</html>  
 ```
