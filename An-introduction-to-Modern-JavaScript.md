@@ -654,7 +654,7 @@ If we try and invoke the **giveOrders()** function with a variable whilst in the
 
 We can use scope to organise our applications and provide protection to our variables being accidentally overwritten. 
 
-6. Creating a simple web application
+6. Creating a simple calculator web application
 -----------------------------------------
 
 A web application consists of **HTML**, **CSS** and **Javascript**. 
@@ -694,18 +694,18 @@ The **script** tag is placed near the bottom of the HTML file. This is because a
 Create and save **script.js** with the following content:
 
 ```javascript
-function renderMessage (id, msg) {
+function render (id, msg) {
 	const el = window.document.getElementById(id);
 	el.innerHTML = msg;   
 }
 
-renderMessage('container','Hello World');
+render('container','Hello World');
 ```
 To view the web application, click on the **index.html** file to open it in a browser. The web app will render 'Hello World' in the browser.
 
-In the **script.js** we have created the **renderMessage()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**.
+In the **script.js** we have created the **render()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**.
 
-**6.2 Make a calculator**
+**6.2 Adding inputs**
 
 We now updated the **index.html** with form fields to capture information provided by the user. This will provide the information we need for the calculator.
 
@@ -719,7 +719,7 @@ We now updated the **index.html** with form fields to capture information provid
 	<body>
 		<div id="container">
 
-			<input id="value-a" type="text" value="0" />
+			<input id="operand-a" type="text" value="0" />
 			
 			<select id="operator">
 				<option value="add">Add</option>
@@ -728,9 +728,7 @@ We now updated the **index.html** with form fields to capture information provid
 				<option value="divide">Divide</option>
 			</select>
 			
-			<input id="value-b" type="text" value="0" />
-			
-			<div id="result"></div>
+			<input id="operand-b" type="text" value="0" />
 		
 		</div>
 	</body>
@@ -740,4 +738,81 @@ We now updated the **index.html** with form fields to capture information provid
 </html>   
 ```
 
-The **input** elements capture free typed information and the **select** is a drop down that gives the user limited options to choose from.
+The **input** elements capture free-typed information and the **select** is a drop down that gives the user limited options to choose from. The **inputs** will provide the calculator with our two operands (number) and the **select** will provide our operator (i.e. add, subtract, etc.)
+
+```javascript
+
+function render (id, msg) {
+	const el = window.document.getElementById(id);
+	el.innerHTML = msg;   
+}
+
+function getSelectValue (id) {
+	const el = window.document.getElementById(id);
+	return el.options[el.selectedIndex].value;   
+}
+
+function getInputValue (id) {
+	const el = window.document.getElementById(id); 
+	return el.value;   
+}
+
+getSelectValue('operator') // returns add
+getInputValue('operand-a') // returns 0
+getInputValue('operand-b') // returns 0   
+
+```
+
+We have created 2 new functions in **script.js**. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option.
+
+We now have functions to both collect information and render information in our web application. Next we need to make the web app responsive
+
+**6.2 Make the web app responsive**
+
+```javascript
+function render (id, msg) {
+	const el = window.document.getElementById(id);
+	el.innerHTML = msg;   
+}
+
+render('container','Hello World');
+```
+To view the web application, click on the **index.html** file to open it in a browser. The web app will render 'Hello World' in the browser.
+
+In the **script.js** we have created the **render()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**.
+
+**6.2 Adding inputs**
+
+We now updated the **index.html** with form fields to capture information provided by the user. This will provide the information we need for the calculator.
+
+```html
+<html>
+	
+	<head>
+		<title>Web Application</title>
+	</head>
+	
+	<body>
+		<div id="container">
+			
+			<form>
+				<input id="operand-a" type="text" value="0" />
+				<select id="operator">
+					<option value="add">Add</option>
+					<option value="subtract">Subtract</option>
+					<option value="multiply">Multiply</option>
+					<option value="divide">Divide</option>
+				</select>
+				<input id="operand-b" type="text" value="0" />
+				<input id="submit" type="submit" value="Submit">
+			</form>
+			
+			<div id="result"></div>
+			    
+		</div>
+	</body>
+	
+	<script src="script.js"></script>
+	
+</html>     
+```
