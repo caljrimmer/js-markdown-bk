@@ -718,18 +718,18 @@ We now updated the **index.html** with form fields to capture information provid
 	
 	<body>
 		<div id="container">
-
-			<input id="operand-a" type="text" value="0" />
 			
-			<select id="operator">
-				<option value="add">Add</option>
-				<option value="subtract">Subtract</option>
-				<option value="multiply">Multiply</option>
-				<option value="divide">Divide</option>
-			</select>
-			
-			<input id="operand-b" type="text" value="0" />
-		
+			<form>
+				<input id="operand-a" type="text" value="0" />
+				<select id="operator">
+					<option value="add">Add</option>
+					<option value="subtract">Subtract</option>
+					<option value="multiply">Multiply</option>
+					<option value="divide">Divide</option>
+				</select>
+				<input id="operand-b" type="text" value="0" />
+			</form>
+			    
 		</div>
 	</body>
 	
@@ -765,7 +765,7 @@ getInputValue('operand-b') // returns 0
 
 We have created 2 new functions in **script.js**. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option.
 
-We now have functions to both collect information and render information in our web application. Next we need to make the web app responsive
+We now have functions to both collect information and render information in our web application. Next, we shall make the web app responsive
 
 **6.3 Adding responsiveness**
 
@@ -800,3 +800,5 @@ We now have functions to both collect information and render information in our 
 	
 </html>  
 ```
+
+We have create two new elements. The first is a div with id of **result** which will contain the result of the calculation. The second is a **submit** input which we shall use to trigger the calculation. 
