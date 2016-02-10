@@ -199,7 +199,7 @@ const colors = ["red","blue","green"];
 const fruits = new Array("apple","orange","banana");
 ```
 
-**2.1.1 Objects**
+**2.2.1 Objects**
 
 ```javascript
 const object = {
@@ -259,6 +259,8 @@ delete amendable.age; //removes age key and value
 ```
 
 **2.2.2 Dates**
+
+
 
 ```javascript
 const today = new Date();
