@@ -73,7 +73,7 @@ Javascript, once a data type object is defined, makes available a number of diff
 
 A **method** is very similar to a **function** but it exists on the data type object rather than independent of it. These methods help you do operations on that particular data type.
 
-In JavaScript there are three primary data types **String**,  **Boolean** and **Number**, two composite data types  **Object** and **Array**, and two special data types **Null** and **Undefined**.
+In JavaScript there are three primary data types **String**,  **Boolean** and **Number**, three composite data types  **Object**, **Date** and **Array**, and two special data types **Null** and **Undefined**.
 
 **2.1 Primary data types**
 
@@ -202,9 +202,8 @@ const person = {
 	age : 16
 };
 
-const car = new Object();
-car.color = 'red';
-car.make = 'Ford';
+//Date
+const today = new Date();
 
 //Array
 const colors = ["red","blue","green"];
@@ -335,71 +334,9 @@ const nullValue = null;
 console.log(nullValue); //returns null
 ``` 
 
-**2.6 Functions**
+The **null** data type is the absence of other valid data types. You can remove the contents of a variable (without deleting) by assigning it the null value.
 
-Functions are building blocks in JavaScript. A function is a JavaScript procedure, a set of statements that performs a task or calculates a value.
-
-```javascript
-function subtract (a,b) {
-	return a - b;
-}
-
-const multiple = function (a,b) {
-	return a * b;
-}
-
-//Fat Arrow
-const add = (a,b) => {
-	return a + b;
-}
-
-add(2,4); //returns 6
-subtract(6,2); //returns 4
-multiple(2,2); //returns 4
-```
-
-We can create a **function** in a few different ways. In each case we must define what arguments the **function** expects with parentheses ().  The **function** statements are enclosed in curly brackets {}
-
-In the example, we define 3 functions for adding, subtracting and multiplying. In each can we define the arguments a and b, do an operation on them, and then return result.
-
-It is possible to define a function but not pass it arguments.
-
-```javascript
-function staticAdd () {
-	return 10 + 6;
-}
-
-staticAdd(); //returns 16
-```
-
-It is possible to define a function within a function
-
-```javascript
-function internalAdd (a,b) {
-	function add (a,b) {
-		return a + b;
-	}
-	return add(a,b) * 2;
-}
-
-internalAdd(2,4); //returns 12
-```
-
-A function can also return a function
-
-```javascript
-function dynamic (a) {
-	return function (b) {
-		return a * b;
-	};
-}
-
-const multiplyBy2 = dynamic(2);
-multiplyBy2(4); //returns 8
-
-const multiplyBy4 = dynamic(4);
-multiplyBy4(4); //returns 16
-```
+The **undefined** data type when a variable that has been declared but no value is assigned to it.
 
 **2.8 Javascript is Loosely Typed**
 
@@ -411,12 +348,15 @@ changeable = 'Ted'; //Data type is now a string
 ```
 In the example, we change the variable **changeable** to not just have a different value but also to have a different data type. It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
 
-3. Variables and Constants
------------------------------
+3. Variables
+--------------
 
-Javascript allows us to define containers to store data, objects or functions. Defining these containers allow us to structure our code and to manage scope (i.e. ability to access the container and the data within). There are 3 ways to define a container:
+Javascript allows us to define variables to store data types or functions. Variables allow us to structure our code and to manage **scope**. **Scope** is the ability to access functions or variables from within our code. 
 
-Use a **variable** declaration.
+There are 3 ways to define a variable. **Var**, **let** or **const**. All variables must be identified with unique names.
+
+**3.1 Define a var**
+
 ```javascript
 var z;
 var x = 1;
@@ -424,47 +364,38 @@ var y = 2;
 z = x + y; // z equals 3 now
 ```
 
-You can define a variable with a value or without a value and populate it later. All JavaScript variables must be identified with unique names.
+You can define a **var** with a value or without a value and populate it later. A **var** exhibits **functional** and **global** scoping. We will discuss scope later in the book.
 
-Use a **let** declaration.
+**3.2 Define a let**
+
 ```javascript
 let sentence;
 let name = "Ted";
 sentence = "My name is " + y; // sentence equals "My name is Ted"
 ```
 
-**Let** is similar to a variable declaration. **Let**, unlike **var**, cannot be hoisted and it exhibits block scope. We will discuss scope and hoisting later in the book. 
+Defining **let** is similar to a **var** declaration. **Let**, unlike **var**, cannot be **hoisted** and it also exhibits **block** scope as well as **functional** and **global** scope. We hoisting later in the book. 
 
-Use a **const** declaration.
+**3.3 Define a const**
+
 ```javascript
 const PI = 3.14;
-PI = 3.145 //Throws an error
 ```
 
-**Const** declared with a given value can not be changed. It is used, as it's name suggests, to define constants. **Const**, like **let**, also cannot be hoisted and it exhibits block scope.
+Defining a **Const** means the value can not be changed. It is used, as it's name suggests, to define constants. **Const**, like **let**, also cannot be hoisted and it exhibits block scope as well as **functional** and **global** scope.
 
-It is possible to declare a container without using **var**, **let** or **const**.
+**3.3 Define globally**
 
 ```javascript
 name = 'Ted'; //same as window.name = 'Ted'
 x = 1; //same as window.x = 1
 ```
 
+It is possible to declare a variable without using **var**, **let** or **const**. This will set the variable to the **global** scope, which means the variable is available everywhere in your application. 
+
+Defining a variable to the **global** scope is a bad practice as it easy for the variable to be overwritten and it can make your code less maintainable and testable.
+
 Declaring a container this way adds the container on to the window object and it becomes globally available. This is considered bad practice because relying too much on global containers can result in collisions between various scripts on the same page.
-
-Best practise is to use **let** and **const**. Block scoping means your containers will act in a more granular and predictable way.
-
-```javascript
-const increment = (num) => {
-	let total = 0;
-	total = total + num;
-	return total;
-}
-increment(5) //returns 5
-increment(10) //returns 15
-```
-
-In this example we use **const** to define our increment function (as we don't want it to change) and **let** for our sum total (as it does change).
 
 4. Operators
 ------------------
