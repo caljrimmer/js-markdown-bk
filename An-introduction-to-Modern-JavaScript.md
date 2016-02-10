@@ -26,21 +26,18 @@ JavaScript is designed to run as a scripting language in a host environment. The
 To begin:
 
  1. Open the Chrome browser
- 2. Right click and select "Inspect"
- 3. Click on "Console" tab
+ 2. Right click and select "Inspect", and then click on "Console" tab
 
-You now have the Chrome developer tools open and we can write our first bit of Javascript.
+You now have the **Chrome** developer tools open and we can write and test our first bit of Javascript.
 
 Let's try creating a simple pop-up with the text "hello".
  
 ```javascript
 window.alert('hello');
 ```
-The **window** object is where all native global JavaScript objects, functions, and variables reside in the browser. The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
+The **window** object is where all native global JavaScript objects, functions, and variables reside in the browser. The **window** object is globally available (it is accessible from anywhere in your code). The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
 
-A **function** in javascript is invoked with parentheses and inside the parentheses arguments can be passed. 
-
-we use a semicolon to separate statements. 
+A **function** in javascript is invoked with parentheses and inside the parentheses arguments can be passed.  We use a semicolon to separate statements. 
 
 Now let's make a simple function to capture a user's response and return the value.
 
@@ -65,42 +62,36 @@ window.confirm('confirm?');
 confirm('confirm?'); //Same as window.confirm
 ```
 
-Time to look at data types, variables and constants, and operators. There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
+Time to look at **data types**.  There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
 
 2. Data Types 
 -----------------------------
 
-In JavaScript there are 5 different data types that can contain values. **String**,  **Boolean**,  **Number**,  **Object** and **Function**:
+Javascript allows you to define a data type of values that you define. This means you can tell Javascript whether a value is, for example, a **number** or **string**. 
+
+Javascript, once a data type object is defined, makes available a number of different prototypal **methods** for that data type. 
+
+A **method** is very similar to a **function** but it exists on the data type object rather than independent of it. These methods help you do operations on that particular data type.
+
+In JavaScript there are three primary data types **String**,  **Boolean** and **Number**, two composite data types  **Object** and **Array**, and two special data types **Null** and **Undefined**.
+
+**2.1 Primary data types**
 
 ```javascript
-const age = 16; //Number
-const name = "Ted"; // String
-const isChecked = true; //Boolean
-const obj = {count: 1, name: "MyApp"}; // Object
-function add (a,b) { 
-	return a + b; 
-} // Function
+//Number
+const age = 16; 
+const count = new Number('16');
+
+//String
+const name = "Ted";
+const country = new String('USA');
+
+//Boolean
+const isChecked = true;
+const isOpen = new Boolean ('true');
 ```
 
-There also two other data types that are subsets of Object. **Date** and **Array**:
-
-```javascript
-const dateOfBirth = new Date('28/12/1980'); //Date
-const teams = ["reds","blues","greens"]; // Array
-```
-
-Finally there are 2 data types that cannot contain values. **Null** and **Undefined**:
-
-```javascript
-const noValue; //Undefined as we have no value
-const nullValue = null; //Value is defined as null
-```
-
-Javascript, once a data type object is defined, Javascript makes available a number of different prototypal methods for that data type. 
-
-A method is very similar to a function but it exists on the data type object rather than independent of it. These methods help you do work on that particular data type.
-
-**2.1 Strings** 
+**2.1.1 Strings** 
 
 ```javascript
 const word = "marvellous";
@@ -116,7 +107,7 @@ To create a string data type, we declare a variable wrapped in either double (")
 
  In the example above, we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
 
-**2.2 Booleans**
+**2.1.2 Booleans**
 
 ```javascript
 let value = false;
@@ -143,24 +134,7 @@ To create a **boolean** (i.e. true or false) data type, we declare a container o
 
 **Booleans** are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
 
-**2.3 Dates**
-
-```javascript
-const today = new Date();
-const christmas = new Date('12/25/2015');
-
-today.getDate() // returns date of today (i.e. 1-31);
-today.getMonth() // returns month of today (i.e. 1-12);
-today.getHours() // returns hour of today (i.e. 0-23);
-```
-
-To create a **date** data type, we declare a container with the **Date()** function. 
-
-We then have the ability to perform date operations on the data type.  In the example above we use **getDate()** to return the date of today, **getMonth()** to return the month of today, **getHours()** to return the hour of today.
-
-We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
-
-**2.4 Numbers**
+**2.1.3 Numbers**
 
 ```javascript
 const total = 9;
@@ -217,9 +191,103 @@ add('name',3) // returns 'name3'
 
 Javascript stops behaving predictably if we mix data types. With **multiple**, it returns **NaN** (i.e. Not a Number) and with **add**, it returns a new string of the 'name' with '3' tagged on the end.
 
-We can only do numeric or mathematical work on Number data types. 
+We can only do numeric or mathematical work on Number data types.
 
-**2.5 Array**
+**2.2 Composite data types**
+
+```javascript
+//Object
+const person = { 
+	name: 'Ted',
+	age : 16
+};
+
+const car = new Object();
+car.color = 'red';
+car.make = 'Ford';
+
+//Array
+const colors = ["red","blue","green"];
+const fruits = new Array("apple","orange","banana");
+```
+
+**2.1.1 Objects**
+
+```javascript
+const object = {
+	name : "Ted",
+	count : 1,
+	isChecked : true,
+	list : ['blue','red','yellow'],
+	addToCount : function () {
+		return ++this.count;
+	},
+	nested : {
+		colour : "blue"
+	}
+}
+
+object.addToCount(); //returns 2
+object.addToCount(); //returns 3
+
+object.hasOwnProperty('count'); //returns true
+object.hasOwnProperty('notThere'); //returns false
+```
+To create a **object** data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon). This is called an **object literal**. **Object literals** encapsulate data, enclosing it in a tidy package.
+
+In the example above we have defined an **object** with a string, number, boolean, another object and also a function.
+
+Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
+
+The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
+
+An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what values the object contains.
+
+ES6, the latest Javascript engine, has give us additional ways of defining an **object literal**.
+
+```javascript
+const keyName = 'surname';
+const newObject = {
+    value, // Shorthand for value: value
+    add(a,b) { // Shorthand for functions
+     return a + b;
+    },
+    [keyName]: 'Smith' // dynamic key names
+}
+```
+
+We can amend **object literal** values at any time. We can also add or remove values.
+
+```javascript
+let amendable = {
+	name: 'Ted'
+	age: 32
+}
+
+amendable.name = 'Edward'; //name value is now Edward
+amendable.job = 'Accountant'; //adds job key and value
+
+delete amendable.age; //removes age key and value
+```
+
+**2.2.2 Dates**
+
+```javascript
+const today = new Date();
+const christmas = new Date('12/25/2015');
+
+today.getDate() // returns date of today (i.e. 1-31);
+today.getMonth() // returns month of today (i.e. 1-12);
+today.getHours() // returns hour of today (i.e. 0-23);
+```
+
+To create a **date** data type, we declare a container with the **Date()** function. 
+
+We then have the ability to perform date operations on the data type.  In the example above we use **getDate()** to return the date of today, **getMonth()** to return the month of today, **getHours()** to return the hour of today.
+
+We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
+
+**2.2.3 Array**
 
 ```javascript
 const strings = ['blue','red','yellow'];
@@ -256,6 +324,16 @@ const collection = [
 ]
 ```
 When an we have **array** of objects, particularly if they have been return from a database, then we can refer to the array as a **collection** and the objects as **models**.
+
+**2.3 Special data types**
+
+```javascript
+const value;
+console.log(value); //returns undefined
+
+const nullValue = null;
+console.log(nullValue); //returns null
+``` 
 
 **2.6 Functions**
 
@@ -321,67 +399,6 @@ multiplyBy2(4); //returns 8
 
 const multiplyBy4 = dynamic(4);
 multiplyBy4(4); //returns 16
-```
-
-Functions 
-
-**2.7 Objects**
-
-```javascript
-const object = {
-	name : "Ted",
-	count : 1,
-	isChecked : true,
-	list : ['blue','red','yellow'],
-	addToCount : function () {
-		return ++this.count;
-	},
-	nested : {
-		colour : "blue"
-	}
-}
-
-object.addToCount(); //returns 2
-object.addToCount(); //returns 3
-
-object.hasOwnProperty('count'); //returns true
-object.hasOwnProperty('notThere'); //returns false
-```
-To create a **object** data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon). This is called an **object literal**. **Object literals** encapsulate data, enclosing it in a tidy package.
-
-In the example above we have defined an **object** with a string, number, boolean, another object and also a function.
-
-Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
-
-The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
-
-An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what values the object contains.
-
-ES6, the latest Javascript engine, has give us additional ways of defining an **object literal**.
-
-```javascript
-const keyName = 'surname';
-const newObject = {
-    value, // Shorthand for value: value
-    add(a,b) { // Shorthand for functions
-     return a + b;
-    },
-    [keyName]: 'Smith' // dynamic key names
-}
-```
-
-We can amend **object literal** values at any time. We can also add or remove values.
-
-```javascript
-let amendable = {
-	name: 'Ted'
-	age: 32
-}
-
-amendable.name = 'Edward'; //name value is now Edward
-amendable.job = 'Accountant'; //adds job key and value
-
-delete amendable.age; //removes age key and value
 ```
 
 **2.8 Javascript is Loosely Typed**
