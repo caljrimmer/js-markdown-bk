@@ -157,8 +157,6 @@ We then have the ability to perform numerical or mathematical functions and meth
 Javascript allows us to replicate most mathematical computations. 
 
 ```javascript
-let sum = 0;
-
 function add (a,b) {
 	return a + b;
 }
@@ -167,29 +165,20 @@ function subtract (a,b) {
 	return a - b;
 }
 
-function multiply (a,b) {
-	return a * b;
-}
-
-function divide (a,b) {
-	return a / b;
-}
-
-add(1,2) //sum equals 3
-multiply(3,2) // sum equals 6
-divide(6,3) // sum equals 2
-minus(2,1) // sum equals 1
+add(1,2) //returns 3
+subtract(2,1) // returns 1
 
 ```
+We have created functions to **add** and **subtract** two operands (a and b).  When we invoke the function, a new calculated value is returned.
 
 If we tried to pass a string as an argument:
 
 ```javascript
-multiply('name',3); // returns NaN
 add('name',3) // returns 'name3'
+subtract('name',3); // returns NaN
 ```
 
-Javascript stops behaving predictably if we mix data types. With **multiple**, it returns **NaN** (i.e. Not a Number) and with **add**, it returns a new string of the 'name' with '3' tagged on the end.
+Javascript stops behaving predictably if we mix data types. With **subtract**, it returns **NaN** (i.e. Not a Number) and with **add**, it returns a new string of the 'name' with a suffixed '3'.
 
 We can only do numeric or mathematical work on Number data types.
 
