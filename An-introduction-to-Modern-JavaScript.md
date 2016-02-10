@@ -77,6 +77,8 @@ In JavaScript there are three primary data types **String**,  **Boolean** and **
 
 **2.1 Primary data types**
 
+Primary, or primitive, data types are in formats you should be familar with and use in the real world. These include **strings** (words, sentences), **numbers** (both integer and decimal) and **booleans** (true or false).
+
 ```javascript
 //Number
 const age = 16; 
@@ -93,6 +95,8 @@ const isOpen = new Boolean ('true');
 
 **2.1.1 Strings** 
 
+To create a string data type, we declare a variable by wrapping a value in either double (") or single quotes ('), or we can use the **String()** function.
+
 ```javascript
 const word = "marvellous";
 //or
@@ -103,11 +107,11 @@ word.toUpperCase(); //returns MARVELLOUS
 word.substr(0,5);//returns marve
 ```
 
-To create a string data type, we declare a variable wrapped in either double (") or single quotes ('), or we can use the **String()** function.
-
  In the example above, we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
 
 **2.1.2 Booleans**
+
+To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false, or we can use the **Boolean()** function. 
 
 ```javascript
 let value = false;
@@ -130,11 +134,11 @@ value = toggleChecked(value) // value is false;
 value = toggleChecked(value) // value is true;
 ```
 
-To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false, or we can use the **Boolean()** function. 
-
-**Booleans** are often used in Javascript. In the example, we are using them to toggle a value (i.e. hide or show, done or not done, etc.).
+In the example, we have created a **toggleChecked()** function to toggle a value from true to false and back again.
 
 **2.1.3 Numbers**
+
+To create a **number** data type, we declare a variable of either an integer or a decimal, or we can use the **Number()** function.
 
 ```javascript
 const total = 9;
@@ -150,9 +154,9 @@ Math.ceil(price); //returns 12
 Math.floor(price); //returns 11
 ```
 
-To create a **number** data type, we declare a container of either an integer or a decimal, or we can use the **Number()** function.
+Once a number data type is defined, then we the have the ability to perform numerical or mathematical functions on the value.  
 
-We then have the ability to perform numerical or mathematical functions and methods on the value.  In the example above we use **isInteger()** to determine if value is an integer, **Math.sqrt()** to return the square root of a value, **Math.floor()** to round down to the nearest integer and **Math.ceil()** to round up to the nearest integer.
+In the example above we use **isInteger()** to determine if value is an integer, **Math.sqrt()** to return the square root of a value, **Math.floor()** to round down to the nearest integer and **Math.ceil()** to round up to the nearest integer.
 
 Javascript allows us to replicate most mathematical computations. 
 
@@ -169,7 +173,7 @@ add(1,2) //returns 3
 subtract(2,1) // returns 1
 
 ```
-We have created functions to **add** and **subtract** two operands (a and b).  When we invoke the function, a new calculated value is returned.
+We have created functions, **add()** and **subtract()**, which take two operands (a, b).  When we invoke the either function, a new calculated value is returned.
 
 If we tried to pass a string as an argument:
 
@@ -178,26 +182,30 @@ add('name',3) // returns 'name3'
 subtract('name',3); // returns NaN
 ```
 
-Javascript stops behaving predictably if we mix data types. With **subtract**, it returns **NaN** (i.e. Not a Number) and with **add**, it returns a new string of the 'name' with a suffixed '3'.
+Javascript stops behaving predictably if we mix data types. With **subtract()**, it returns **NaN** (i.e. Not a Number) and with **add()**, it returns a new string of the 'name' with a suffixed '3'.
 
-We can only do numeric or mathematical work on Number data types.
+We can only do numeric or mathematical work on **number** data types.
 
 **2.2 Composite data types**
+
+A **composite** data type is any data type which can be constructed using **primitive** data types and other **composite** types.
 
 ```javascript
 //Object
 const person = { 
-	name: 'Ted',
+	name: "Ted",
 	age : 16
 };
+var wordObject = new Object("word");
 
-//Date
-const today = new Date();
+//Date - a special type of object
+const today = new Date("12/25/80");
 
 //Array
 const colors = ["red","blue","green"];
 const fruits = new Array("apple","orange","banana");
 ```
+In our example, not how we are making our **objects** and **arrays** from **primitive** data types.
 
 **2.2.1 Objects**
 
