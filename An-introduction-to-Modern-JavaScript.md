@@ -726,7 +726,8 @@ To make a web application, we will need a text-editor to write the code. Any tex
 
 Next, we  create a new directory to store our web application files in. Let us name it **example-web-page** and save it. Create two files called **index.html** and **script.js**
 
-Create and save **index.html** with the following content:
+Save **index.html** with the following content:
+
 ```html
 <html>
 	
@@ -766,7 +767,7 @@ Finally we have a div with id of **result** which will contain the result of the
 
 The **script** tag for our Javascript is placed near the bottom of the HTML file. This is because all the HTML needs to be loaded before the Javascript is parsed.
 
-Create and save **script.js** with the following content:
+Save **script.js** with the following content:
 
 ```javascript
 function render (id, msg) {
