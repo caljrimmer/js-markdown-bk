@@ -709,16 +709,13 @@ A web application consists of **HTML**, **CSS** and **Javascript**.
 
 To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help you draft code more efficiently. 
 
- - Atom - https://atom.io/
- - Sublime - http://www.sublimetext.com/
- - Brackets - http://brackets.io/
-
 >**Tip**
 
 >The best free code editors are:
+> 
 > - Atom - https://atom.io/
- - Sublime - http://www.sublimetext.com/
- - Brackets - http://brackets.io/
+> - Sublime - http://www.sublimetext.com/
+> - Brackets - http://brackets.io/
 
 Next, we  create a new directory to store our web application files in. Let us name it **example-web-page** and save it. Create two files called **index.html** and **script.js**
 
@@ -754,7 +751,7 @@ Create and save **index.html** with the following content:
 	
 </html> 
 ```
-The **HTML** contains a **div** called with id of **container**. This will hold our web application. 
+This **HTML** block has a number of elements to structure our web application. The **HTML** contains a **div** called with id of **container**. This will hold our web application. 
 
 The **input** elements capture free-typed information and the **select** is a drop down that gives the user limited options to choose from. The **inputs** will provide the calculator with our two operands (numbers) and the **select** will provide our operator (add, subtract, multiply and divide). The last interactive element is a button with id of **calculate** which we shall use to trigger the calculation.
 
@@ -774,6 +771,14 @@ function render (id, msg) {
 In the **script.js** we have created the **render()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. 
 
 The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**. We will discuss how Javascript can interact with the Document Object Model (DOM) later in the book.
+
+> **Tip**
+
+> window.document has a number of methods to select elements:
+> 
+> - **getElementById()** method finds an element by id
+> - **getElementsByClassName()** method finds all element by class
+> - **getElementsByTagName()** method finds all elements by tag
 
 To view the web application, click on the **index.html** file to open it in a browser. You should see something like:
 
@@ -797,7 +802,7 @@ function getInputValue (id) {
  
 ```
 
-We have created two new functions. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option. Both functions create an **el** constant which is the element in the HTML. Javascript then give us the ability to query the element's value.
+We have created two new functions. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option. Both functions create an **el** constant which is the selected element in the **HTML**.  Javascript then gives us the ability to query the element's value.
 
 In out **script.js**, we now have functions to both collect information and render information in our web application. Next, we shall make our web app responsive
 
@@ -998,4 +1003,4 @@ const myApp = {
 myApp.start('calculate'); //This invokes our app
 ```
 
-Our simple web app is now  re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. We will discuss techniques we have used here later in the book.
+Our simple web app is now  re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. We will discuss techniques we have used to refactor later in the book.
