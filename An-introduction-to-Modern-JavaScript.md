@@ -574,7 +574,7 @@ A web application consists of **HTML**, **CSS** and **Javascript**.
 
 **5.1 Get Started** 
 
-To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help in drafting code more efficiently. The best free options are:
+To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help you draft code more efficiently. The best free options are:
 
  - Atom - https://atom.io/
  - Sublime - http://www.sublimetext.com/
@@ -583,99 +583,6 @@ To make a web application, we will need a text-editor to write the code. Any tex
 Next, we  create a new directory to store our web application files in. Let us name it **example-web-page** and save it. Create two files called **index.html** and **script.js**
 
 Create and save **index.html** with the following content:
-```html
-<html>
-	<head>
-		<title>Web Application</title>
-	</head>
-	<body>
-		<div id="container"></div>
-	</body>
-	<script src="script.js"></script>
-</html>
-```
-The **HTML** contains a **div** called with id of **container**. This will hold our web application. We have used the **title** tag to name our web application.
-
-The **script** tag is placed near the bottom of the HTML file. This is because all the HTML needs to be loaded before the Javascript is parsed.
-
-Create and save **script.js** with the following content:
-
-```javascript
-function render (id, msg) {
-	const el = window.document.getElementById(id);
-	el.innerHTML = msg;   
-}
-
-render('container','Hello World');
-```
-To view the web application, click on the **index.html** file to open it in a browser. The web app will render 'Hello World' in the browser.
-
-In the **script.js** we have created the **render()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**.
-
-**5.2 Adding inputs**
-
-We now updated the **index.html** with form fields to capture information provided by the user. This will provide the information we need for the calculator.
-
-```html
-<html>
-	
-	<head>
-		<title>Web Application</title>
-	</head>
-	
-	<body>
-		<div id="container">
-			
-			<form>
-				<input id="operand-a" type="text" value="0" />
-				<select id="operator">
-					<option value="add">Add</option>
-					<option value="subtract">Subtract</option>
-					<option value="multiply">Multiply</option>
-					<option value="divide">Divide</option>
-				</select>
-				<input id="operand-b" type="text" value="0" />
-			</form>
-			    
-		</div>
-	</body>
-	
-	<script src="script.js"></script>
-	
-</html>   
-```
-
-The **input** elements capture free-typed information and the **select** is a drop down that gives the user limited options to choose from. The **inputs** will provide the calculator with our two operands (number) and the **select** will provide our operator (i.e. add, subtract, etc.)
-
-```javascript
-
-function render (id, msg) {
-	const el = window.document.getElementById(id);
-	el.innerHTML = msg;   
-}
-
-function getSelectValue (id) {
-	const el = window.document.getElementById(id);
-	return el.options[el.selectedIndex].value;   
-}
-
-function getInputValue (id) {
-	const el = window.document.getElementById(id); 
-	return el.value;   
-}
-
-getSelectValue('operator') // returns add
-getInputValue('operand-a') // returns 0
-getInputValue('operand-b') // returns 0   
-
-```
-
-We have created 2 new functions in **script.js**. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option.
-
-We now have functions to both collect information and render information in our web application. Next, we shall make the web app responsive
-
-**5.3 Adding responsiveness**
-
 ```html
 <html>
 	
@@ -707,14 +614,36 @@ We now have functions to both collect information and render information in our 
 	
 </html> 
 ```
+The **HTML** contains a **div** called with id of **container**. This will hold our web application. 
 
-We have create two new elements. The first is a div with id of **result** which will contain the result of the calculation. The second is a **submit** input which we shall use to trigger the calculation.
+The **input** elements capture free-typed information and the **select** is a drop down that gives the user limited options to choose from. The **inputs** will provide the calculator with our two operands (numbers) and the **select** will provide our operator (add, subtract, multiply and divide). The last interactive element is a button with id of **calculate** which we shall use to trigger the calculation.
+
+Finally we have a div with id of **result** which will contain the result of the calculation. 
+
+The **script** tag for our Javascript is placed near the bottom of the HTML file. This is because all the HTML needs to be loaded before the Javascript is parsed.
+
+Create and save **script.js** with the following content:
 
 ```javascript
 function render (id, msg) {
 	const el = window.document.getElementById(id);
 	el.innerHTML = msg;   
 }
+```
+
+In the **script.js** we have created the **render()** function which takes two arguments. The first selects where in the HTML we want the message to appear. The second is the message itself. 
+
+The **window.document.getElementById** function locates any element in the HTML by its ID. We can then set the element's content using **innerHTML**. We will discuss how Javascript can interact with the Document Object Model (DOM) later in the book.
+
+To view the web application, click on the **index.html** file to open it in a browser. You should see something like:
+
+[ScreenShot of Simple Calculator App in Browser]
+
+**5.2 Getting values from inputs and select**
+
+In **script.js**, add the following functions:
+
+```javascript
 
 function getSelectValue (id) {
 	const el = window.document.getElementById(id);
@@ -725,19 +654,18 @@ function getInputValue (id) {
 	const el = window.document.getElementById(id); 
 	return el.value;   
 }
+ 
+```
 
-function getInputValue (id) {
-	const el = window.document.getElementById(id); 
-	return el.value;   
-}
+We have created two new functions. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option. Both functions create an **el** constant which is the element in the HTML. Javascript then give us the ability to query the element's value.
 
-function getAll (e) {
-	e.preventDefault();
-   	const a = getInputValue('operand-a');
-	const b = getInputValue('operand-b'); 
-	const operator = getSelectValue('operator');
-	render('result', a + operator + b);
-}
+In out **script.js**, we now have functions to both collect information and render information in our web application. Next, we shall make our web app responsive
+
+**5.3 Adding responsiveness**
+
+In **script.js**, add the following functions:
+
+```javascript
 
 function listenToClick (id) {
 	const el = window.document.getElementById(id); 
@@ -746,11 +674,64 @@ function listenToClick (id) {
 
 listenToClick('calculate');
 ``` 
-We have created a **listenToClick()** function to utilise **addEventListener** which binds the a click event on the **calculate button**. When clicked, the **getAll()** function grabs the values from the **inputs** and **select**, combines them and then uses **render()** to write the value to the **result** div.
+We have created a **listenToClick()** function to utilise **addEventListener** which binds the a click event on the **calculate button**. 
 
-The **preventDefault()** function prevents the browser defaulting it's default behaviour, which is to post the form and reload the page. The **e** we have passed as an argument comes from **addEventListener** 
+```javascript
+function getAll (el) {
+	el.preventDefault();
+   	const a = getInputValue('operand-a');
+	const b = getInputValue('operand-b'); 
+	const operator = getSelectValue('operator');
+	render(calculate(a,b,operator));
+}
+```
+
+When the **calculate button** is clicked, the **getAll()** function grabs the values from the **inputs** and **select**, combines them and then uses **render()** to write the value to the **result** div.
+
+The **preventDefault()** function prevents the browser invoking it's default behaviour, which is to post the form and reload the page. The **el** is passed as an argument comes from **addEventListener()** function. 
 
 **5.4 Calculation functionality**
+
+In **script.js**, add the following functions:
+
+```javascript
+
+function getAll (el) {
+	el.preventDefault();
+   	const a = getInputValue('operand-a');
+	const b = getInputValue('operand-b'); 
+	const operator = getSelectValue('operator');
+	render(calculate(a,b,operator));
+}
+
+function calculate (a,b,operator) {
+	a = new Number(a);
+	b = new Number(b);
+	switch (operator) {
+		case 'add':
+			return a + b;
+			break;
+		case 'subtract':
+			return a - b;
+			break;
+		case 'multiply':
+			return a * b;
+			break;
+		case 'divide':
+			return a / b;
+			break;
+		default:
+			return false
+	}   
+}
+```
+The final **calculate()** function takes three arguments of a, b and operator. The **switch** statement chooses the correct operation based on the operator name. 
+
+The **Number()** function converts **a** and **b** from **string** data type into a **number** data type so that calculations can be performed. The calculated value is then returned.
+
+To view the web application, click on the **index.html**. Enter two numbers either side of the operator and click on the **calculate button**. The calculated value should be rendered on the page.
+
+The complete **script.js** should look like:
 
 ```javascript
 function render (id, msg) {
@@ -768,10 +749,13 @@ function getInputValue (id) {
 	return el.value;   
 }
 
-function getInputValue (id) {
-	const el = window.document.getElementById(id); 
-	return el.value;   
-} 
+function getAll (el) {
+	el.preventDefault();
+   	const a = getInputValue('operand-a');
+	const b = getInputValue('operand-b'); 
+	const operator = getSelectValue('operator');
+	render(calculate(a,b,operator));
+}
 
 function calculate (a,b,operator) {
 	a = new Number(a);
@@ -794,31 +778,22 @@ function calculate (a,b,operator) {
 	}   
 }
 
-function getAll (e) {
-	e.preventDefault();
-   	const a = getInputValue('operand-a');
-	const b = getInputValue('operand-b'); 
-	const operator = getSelectValue('operator');
-	render('result', calculate(a,b,operator));
-}
-
 function listenToClick (id) {
 	const el = window.document.getElementById(id); 
 	el.addEventListener('click', getAll);
 };
 
-listenToClick('calculate'); 
+listenToClick('calculate'); //This invokes our app
 ```
-After our final edits to **script.js**, the simple web app is now complete. The final **calculate()** function takes three arguments of a, b and operator. The **switch** statement chooses the correct operation based on the operator name. The **Number()** function converts a and b from string data type into a number data type so that calculations can be performed. The resultant value is then returned.
-
-To view the web application, click on the **index.html**. Enter two numbers either side of the operator and click on the **calculate button**. The calculated value should be rendered on the page.
 
 **5.5 Refactoring**
 
-Refactoring means that we tidy and minimise our code. It is important to try and limit repetition in your Javascript code. Your code should also be easy to read and re-useable. 
+Refactoring means that we tidy and minimise our code. It is important to try and limit repetition in your Javascript code. Your code should also be easy to read and re-useable.
+
+We take each of our functions and add them to a containing **object literal** called **myApp**.
 
 ```javascript
-const app = {
+const myApp = {
 	
 	find: function (id) {
 		return window.document.getElementById(id);
@@ -872,11 +847,15 @@ const app = {
 	listenToClick : function (id) {
 		const el = this.find(id); 
 		el.addEventListener('click', this.getAll.bind(this));
+	},
+
+	start : function (id) {
+		this.listenToClick(id);
 	}
 	
 }
 
-app.listenToClick('calculate');
+myApp.start('calculate'); //This invokes our app
 ```
 
-We will discuss techniques we have use in our refactor in later chapters. In essence, we have wrapped our code in an **object literal** called **app**. This makes our code re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. 
+Our simple web app is now  re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. 
