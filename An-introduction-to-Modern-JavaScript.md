@@ -19,7 +19,7 @@ Javascript, once just used for simple client-side scripting on web sites can now
 1.  Javascript in the Browser
 ---------------------------------
 
-JavaScript is designed to run as a scripting language in a host environment. The most common host environment is a **browser**.
+Javascript is designed to run as a scripting language in a host environment. The most common host environment is a **browser**.
 
  Javascript can be run on any **browser**. We will be using **Chrome** as our browser of choice. Chrome has a number of developer tools that will help you develop your code. One of those tools is called **Console** and it that allows you to run Javascript directly.
 
@@ -67,17 +67,15 @@ Time to look at **data types**.  There will be code example for each which you c
 2. Data Types 
 -----------------------------
 
-Javascript allows you to define a data type of values that you define. This means you can tell Javascript whether a value is, for example, a **number** or **string**. 
+Javascript allows you to define a data type of a value. This means you can tell Javascript whether a value is, for example, a **number** or **string**. 
 
-Javascript, once a data type object is defined, makes available a number of different prototypal **methods** for that data type. 
-
-A **method** is very similar to a **function** but it exists on the data type object rather than independent of it. These methods help you do operations on that particular data type.
+In Javascript, once a data type object is defined, it makes available a number of different prototypal **methods** for that data type. A **method** is a programmatic tool you can use to do work on a data type.
 
 In JavaScript there are three primary data types **String**,  **Boolean** and **Number**, three composite data types  **Object**, **Date** and **Array**, and two special data types **Null** and **Undefined**.
 
 **2.1 Primary data types**
 
-Primary, or primitive, data types are in formats you should be familar with and use in the real world. These include **strings** (words, sentences), **numbers** (both integer and decimal) and **booleans** (true or false).
+Primary, or primitive, data types are formats you should be familiar with and use in the real world. These include **strings** (words, sentences), **numbers** (both integer and decimal) and **booleans** (true or false).
 
 ```javascript
 //Number
@@ -95,7 +93,7 @@ const isOpen = new Boolean ('true');
 
 **2.1.1 Strings** 
 
-To create a string data type, we declare a variable by wrapping a value in either double (") or single quotes ('), or we can use the **String()** function.
+To create a **string** data type, we declare a variable by wrapping a value in either double (") or single quotes ('), or we can use the **String()** function.
 
 ```javascript
 const word = "marvellous";
@@ -107,7 +105,7 @@ word.toUpperCase(); //returns MARVELLOUS
 word.substr(0,5);//returns marve
 ```
 
- In the example above, 
+ In the example above, the following **methods** are invoked: 
  
  - **length** returns the number of characters in a string
  - **toUpperCase()** returns the string in uppercase characters
@@ -156,7 +154,7 @@ Math.floor(price); //returns 11
 
 Once a number data type is defined, then we the have the ability to perform numerical or mathematical functions on the value.  
 
-In the example above:
+In the example above, the following **methods** are invoked:
 
  - **isInteger()** returns a true boolean if value is an integer
  - **Math.sqrt()**  returns the square root of a value
@@ -178,7 +176,7 @@ add(1,2) //returns 3
 subtract(2,1) // returns 1
 
 ```
-We have created functions, **add()** and **subtract()**, which take two operands (a, b).  When we invoke the either function, a new calculated value is returned.
+We have created functions, **add()** and **subtract()**, which take two operands (**a, b**).  When we invoke the either function, a new calculated value is returned.
 
 If we tried to pass a string as an argument:
 
