@@ -52,15 +52,10 @@ The console should log *true*, if ok is clicked and *false* if cancel is clicked
 
 So we have create a new function called **result** that returns a value that we get from another native javascript function called **confirm**. We then invoke our result function with parentheses whilst passing a string of 'Do you confirm this action?' as an **argument**.
 
-We don't need to specify **window** when calling functions. Javascript will assume it for you. Thus these two function do the same thing.
+> **Tip**
 
-```javascript
-window.alert('hello');
-alert('hello'); //Same as window.alert
+>We don't need to specify **window** when calling native functions. Javascript will assume that all called functions are on the **window object** unless defined otherwise. Thus these two function do the same thing. **window.alert("hello")** is the same as **alert("hello")**
 
-window.confirm('confirm?');
-confirm('confirm?'); //Same as window.confirm
-```
 
 Time to look at **data types**.  There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
 
@@ -212,7 +207,7 @@ In our example, note how we are making our **objects** and **arrays** from **pri
 
 **2.2.1 Objects**
 
-To create a **object** data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. 
+To create a **object** data type, we declare a container with curly brackets **{}**. Inside the object you can define values of any sort of data type. 
 
 ```javascript
 const object = {
@@ -304,8 +299,11 @@ We then have the ability to perform date operations on the data type.  In the ex
  - **getMonth()** to return the month of today
  - **getHours()** to return the hour of today
 
+> **Tip**
 
-We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
+>We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
+
+
 
 **2.2.3 Array**
 
@@ -420,6 +418,16 @@ const multiplyBy4 = dynamic(4);
 multiplyBy4(4); //returns 16
 ```
 
+> **Tip**
+
+>We can immediately invoke a function but adding extra parentheses **()** at the end of the function declaration. 
+
+```javascript
+function add (a,b){ 
+	return a + b; 
+}(); //returns value immediately 
+```
+
 **2.3 Special data types**
 
 ```javascript
@@ -444,7 +452,11 @@ changeable = 'Ted'; //Data type is now a string
 ```
 In the example, we change the variable **changeable** to not just have a different value but also to have a different data type. 
 
-It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
+
+> **Tip**
+
+>It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
+
 
 3. Variables
 --------------
@@ -491,7 +503,11 @@ x = 1; //same as window.x = 1
 
 It is possible to declare a variable without using **var**, **let** or **const**. This will set the variable to the **global** scope, which means the variable is available everywhere in your application. 
 
-Defining a variable to the **global** scope is a bad practice as it easy for the variable to be overwritten and it can make your code less maintainable and testable.
+
+
+> **Tip**
+
+>Defining a variable to the **global** scope is a bad practice. Variable may be overwritten, and it can make your code less maintainable and testable.
 
 
 4. Operators
@@ -626,6 +642,29 @@ whatAmI('medium',false) // returns Human
 whatAmI('small',false) // returns No suggestion
 ```
 
+> **Tip**
+
+>**If** and **switch** statements perform similar operations. In general, the larger the number of conditions, the more suitable using a **switch** statement is. A **switch** statement treats all case checks like the **===** operator.
+
+```javascript
+function yourTeam (color) {
+	switch (color) {
+		case 'red':
+			return 'Liverpool';
+			break;
+		case 'blue':
+			return 'Everton';
+			break;
+		default:
+			return 'No suggestion';
+	}
+}
+
+yourTeam('red') // returns Liverpool
+yourTeam('blue') // returns Everton
+yourTeam('green') // returns No suggestion
+```
+
 **4.3 Arithmetic Operators**
 
 **Arithmetic** operators are perform **arithmetic** operations on operands.  It is possible to use **arithmetic** operators on any data type but it will the operators will perform consistently with **number** data types.
@@ -668,9 +707,16 @@ A web application consists of **HTML**, **CSS** and **Javascript**.
 
 **5.1 Get Started** 
 
-To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help you draft code more efficiently. The best free options are:
+To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help you draft code more efficiently. 
 
  - Atom - https://atom.io/
+ - Sublime - http://www.sublimetext.com/
+ - Brackets - http://brackets.io/
+
+>**Tip**
+
+>The best free code editors are:
+> - Atom - https://atom.io/
  - Sublime - http://www.sublimetext.com/
  - Brackets - http://brackets.io/
 
