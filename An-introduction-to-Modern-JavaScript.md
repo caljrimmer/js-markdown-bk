@@ -427,18 +427,35 @@ Operator | Description
 
 ```javascript
 const x = 2;
-
 x == 2;  //returns true
-x == '2';  //returns true (only checks value not type)
+x == '2';  //returns true
 x == 3;  //returns false
+```
 
+Note that the **==** operator only checks the value and not the data type.
+
+```javascript
+const x = 2;
 x === 2;  //returns true
-x === '2';  //returns false (checks values and type)
+x === '2';  //returns false
 x === 3;  //returns false
+```
 
-x != 2;  //returns false
+Note that the **===** operator checks both the value and the data type.
+
+```javascript
+const x = 2;
+x != '2';  //returns false
 x != 1;  //returns true
 
+x !== '2';  //returns true
+x !== 1;  //returns true
+```
+
+The exclamation mark (**!**) returns the **boolean** opposite of the return value. It provides a **not equal too** operator.
+
+```javascript
+const x = 2;
 x > 1;  //returns true
 x > 2;  //returns false
 
@@ -450,24 +467,16 @@ x < 3;  //returns true
 
 x <= 2;  //returns true
 x <= 3;  //returns true
+```
 
+```javascript
+const x = 2;
 (x === 2) ? 'option 1' : 'option 2' // returns option 1
 (x !== 2) ? 'option 1' : 'option 2' // returns option 2
 
 ```
 
-The **ternary** operator (.i.e. **?**) reacts to the previous comparision statement to return a result. In the example above, if the statement before the **ternary** operator is true, then the first option is returned, if it is false, then the second option is returned.
-
-```javascript
-const x = 5;
-(x === 5) ? 'option 1' : 'option 2' // returns option 1
-(x !== 5) ? 'option 1' : 'option 2' // returns option 2
-
-function toggleOn(booleanValue) {
-	return (booleanValue) ? 'on' : 'off'; 
-} // returns on if true, off if false
-
-```
+The **ternary** operator (**?**) reacts to the previous comparison statement to return a result. In the example above, if the statement before the **ternary** operator is true, then the first option is returned, if it is false, then the second option is returned.
 
 **4.2 Logical Operators**
 
