@@ -37,7 +37,12 @@ Let's try creating a simple pop-up with the text "hello".
 ```javascript
 window.alert('hello');
 ```
-The **window** object is where all native global JavaScript objects, functions, and variables reside in the browser. The **window** object is globally available (it is accessible from anywhere in your code). The **alert** is a function that Javascript provides to allow you to easily create pop-ups. 
+
+The **window.alert()** is a function that Javascript provides to allow you to easily create pop-ups in the browser.
+
+>**Tip**
+
+>The **window** object is where all native global JavaScript objects, functions, and variables reside in the browser. The **window** object is globally available (it is accessible from anywhere in your code). 
 
 A **function** in javascript is invoked with parentheses and inside the parentheses arguments can be passed.  We use a semicolon to separate statements. 
 
