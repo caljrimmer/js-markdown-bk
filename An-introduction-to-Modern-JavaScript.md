@@ -107,7 +107,12 @@ word.toUpperCase(); //returns MARVELLOUS
 word.substr(0,5);//returns marve
 ```
 
- In the example above, we use **length** to get the number of characters in a string, **toUpperCase()** to return the string in uppercase characters and **substr()** to return a the first 5 characters.
+ In the example above, 
+ 
+ - **length** returns the number of characters in a string
+ - **toUpperCase()** returns the string in uppercase characters
+ - **substr()** return a the first 5 characters.
+
 
 **2.1.2 Booleans**
 
@@ -151,7 +156,12 @@ Math.floor(price); //returns 11
 
 Once a number data type is defined, then we the have the ability to perform numerical or mathematical functions on the value.  
 
-In the example above we use **isInteger()** to determine if value is an integer, **Math.sqrt()** to return the square root of a value, **Math.floor()** to round down to the nearest integer and **Math.ceil()** to round up to the nearest integer.
+In the example above:
+
+ - **isInteger()** returns a true boolean if value is an integer
+ - **Math.sqrt()**  returns the square root of a value
+ - **Math.floor()** returns the integer rounded down from a decimal
+ -  **Math.ceil()** returns the integer rounded up from a decimal
 
 Javascript allows us to replicate most mathematical computations. 
 
@@ -229,11 +239,11 @@ object.hasOwnProperty('notThere'); //returns false
 
 This is called an **object literal**. **Object literals** encapsulate data, enclosing it in a tidy package.
 
-In the example above we have defined an **object** with a string, number, boolean, another object data types and also a function.
+In the example above we have defined an **object** with a **string**, **number**, **boolean**, another **object** data types and a **function**.
 
 Notice that in the function, we reference the defined **object** with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
 
-The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
+The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined **object** remembers what the internal values as long as it exists.
 
 An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what **properties** the object contains.
 
@@ -290,13 +300,20 @@ today.getMonth() // returns month of today (i.e. 1-12);
 today.getHours() // returns hour of today (i.e. 0-23);
 ```
 
-We then have the ability to perform date operations on the data type.  In the example above we use **getDate()** to return the date of today, **getMonth()** to return the month of today, **getHours()** to return the hour of today.
+We then have the ability to perform date operations on the data type.  In the example above:
+
+ - **getDate()** to return the date of today
+ - **getMonth()** to return the month of today
+ - **getHours()** to return the hour of today
+
 
 We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
 
 **2.2.3 Array**
 
-To create an **array** (i.e. a list) data type, we declare a container with square brackets [], or we can use the **Array()** function. Inside the **array** you can define values of any sort of data type. The values are separated by commas.
+To create an **array** (i.e. a list) data type, we declare a container with square brackets [], or we can use the **Array()** function. 
+
+Inside the **array** you can define values of any sort of data type. The values are separated by commas.
 
 ```javascript
 const strings = ['blue','red','yellow'];
@@ -319,7 +336,11 @@ mixedList.forEach((item) => {
 
 In the example above we have defined an 3 different **arrays**. One with **string** data types, then **number** data types and finally a mix of different data types.
 
-Arrays have many prototype methods to help you work with them. You are able to count the items in an array with **length**, to loop through **arrays** with **forEach()** or even transform the values of an array with **map()**.
+Arrays have many prototype methods to help you work with them. 
+
+ -  **length** returns the count of items in an array
+ -  **forEach()** iterates through items in an array
+ -  **map()** returns a transformed array
 
 Arrays can be used to create lists of objects:
 
@@ -547,6 +568,24 @@ const x = 2;
 
 The **ternary** operator (**?**) reacts to the previous comparison statement to return a result. In the example above, if the statement before the **ternary** operator is true, then the first option is returned, if it is false, then the second option is returned.
 
+Comparison operators are often used with **if** statements:
+
+```javascript
+function yourTeam (color) {
+	if (color === 'red') {
+		return 'Liverpool';
+	}else if (color === 'blue') {
+		return 'Everton';
+	}else{
+		return 'No suggestion';
+	}
+}
+
+yourTeam('red') // returns Liverpool
+yourTeam('blue') // returns Everton
+yourTeam('green') // returns No suggestion
+```
+
 **4.2 Logical Operators**
 
 Logical operators are used to combine comparison operators. The response is generally a **boolean** (i.e. true or false).
@@ -568,37 +607,25 @@ const x = 10;
 (typeof(x) === 'number' && x === 10); //returns true
 ```
 
-Logical and comparison operators are often used with **if** and **switch** statements
+Logical operators are often used with **if** statements:
 
 ```javascript
-function yourTeam (colour) {
-	if (colour === 'red') {
-		return 'Your team is Liverpool';
-	}else if (colour === 'blue') {
-		return 'Your team is Everton';
+function whatAmI (size, isHairy) {
+	if (size === 'big' && isHairy) {
+		return 'Bear';
+	}else if (size === 'small' && isHairy) {
+		return 'Mouse';
+	}else if (size === 'medium' && !isHairy){
+		return 'Human';
 	}else{
-		return 'No suggestion of your team';
+		return 'No suggestion';
 	}
 }
 
-//or
-
-function yourTeam (colour) {
-	switch (colour) {
-		case 'red':
-			return 'Your team is Liverpool';
-			break;
-		case 'blue':
-			return 'Your team is Everton';
-			break;
-		default:
-			return 'No suggestion of your team'; 
-	}
-}
-
-yourTeam('red') // returns Your team is Liverpool
-yourTeam('blue') // returns Your team is Everton
-yourTeam('green') // returns No suggestion of your team
+whatAmI('big',true) // returns Bear
+whatAmI('small',true) // returns Mouse
+whatAmI('medium',false) // returns Human
+whatAmI('small',false) // returns No suggestion
 ```
 
 **4.3 Arithmetic Operators**
