@@ -240,7 +240,7 @@ Notice that in the function, we reference the defined **object** with the **this
 
 The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
 
-An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what values the object contains.
+An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what **properties** the object contains.
 
 ES6, the latest Javascript engine, has give us additional ways of defining an **object literal**.
 
@@ -268,10 +268,23 @@ amendable.job = 'Accountant'; //adds job key and value
 
 delete amendable.age; //removes age key and value
 ```
+We can use objects to contain your whole web application. This is the basis of object-oriented programming. 
+
+```javascript
+const myApp = {
+	text : 'App Started',
+	start : function (){
+		return this.text;
+	}
+}
+myApp.start();
+```
+
+In the simple example, we create a containing object called **myApp**. We define the object with a property called **text** that contains a string and **start()** function returns the string. We can then start our application with **myApp.start()**.
 
 **2.2.2 Dates**
 
-
+A **date** data type is just a specialised type of **object** data type. To create a **date** data type, we declare a container with the **Date()** function. 
 
 ```javascript
 const today = new Date();
@@ -282,13 +295,13 @@ today.getMonth() // returns month of today (i.e. 1-12);
 today.getHours() // returns hour of today (i.e. 0-23);
 ```
 
-To create a **date** data type, we declare a container with the **Date()** function. 
-
 We then have the ability to perform date operations on the data type.  In the example above we use **getDate()** to return the date of today, **getMonth()** to return the month of today, **getHours()** to return the hour of today.
 
 We also can define a date in the future or past by passing a date to the **Date()** function. We must pass the date in the US format (i.e. month before day).
 
 **2.2.3 Array**
+
+To create an **array** (i.e. a list) data type, we declare a container with square brackets [], or we can use the **Array()** function. Inside the **array** you can define values of any sort of data type. The values are separated by commas.
 
 ```javascript
 const strings = ['blue','red','yellow'];
@@ -308,8 +321,6 @@ mixedList.forEach((item) => {
 	console.log(typeof(item)) 
 }); //returns number, string, boolean
 ```
-
-To create an **array** (i.e. a list) data type, we declare a container with square brackets [], or we can use the **Array()** function. Inside the **array** you can define values of any sort of data type. The values are separated by commas.
 
 In the example above we have defined an 3 different **arrays**. One with string data types, then number data types and finally a mix of different data types.
 
