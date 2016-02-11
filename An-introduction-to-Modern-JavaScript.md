@@ -25,8 +25,8 @@ Javascript is designed to run as a scripting language in a host environment. The
 
 To begin:
 
- 1. Open the Chrome browser
- 2. Right click and select "Inspect", and then click on "Console" tab
+ 1. Open the **Chrome** browser
+ 2. Right click and select **Inspect**, and then click on **Console** tab
 
 [ScreenShot of Chrome Developer Tools in Browser]
 
