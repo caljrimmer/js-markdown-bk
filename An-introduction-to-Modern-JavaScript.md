@@ -44,8 +44,6 @@ The **window.alert()** is a function that Javascript provides to allow you to ea
 
 >The **window** object is where all native global JavaScript objects, functions, and variables reside in the browser. The **window** object is globally available (it is accessible from anywhere in your code). 
 
-A **function** in javascript is invoked with parentheses and inside the parentheses arguments can be passed.  We use a semicolon to separate statements. 
-
 Now let's make a simple function to capture a user's response and return the value.
 
 ```javascript
@@ -55,9 +53,11 @@ function result (message) {
 result('Do you confirm this action?');
 ```
 
-The console should log *true*, if ok is clicked and *false* if cancel is clicked.
+A **function** in javascript is invoked with parentheses **()** and inside the parentheses **arguments** can be passed.  We use a semicolon to separate statements. 
 
-So we have create a new function called **result** that returns a value that we get from another native javascript function called **confirm**. We then invoke our result function with parentheses whilst passing a string of 'Do you confirm this action?' as an **argument**.
+The **Chrome console** should log *true*, if ok is clicked and *false* if cancel is clicked.
+
+So we have create a new function called **result()** that returns a value that we get from another native javascript function called **confirm**. We then invoke our **result()** function by passing a string **argument** of 'Do you confirm this action?'.
 
 > **Tip**
 
