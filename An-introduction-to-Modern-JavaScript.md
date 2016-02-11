@@ -205,9 +205,11 @@ const today = new Date("12/25/80");
 const colors = ["red","blue","green"];
 const fruits = new Array("apple","orange","banana");
 ```
-In our example, not how we are making our **objects** and **arrays** from **primitive** data types.
+In our example, note how we are making our **objects** and **arrays** from **primitive** data types.
 
 **2.2.1 Objects**
+
+To create a **object** data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. 
 
 ```javascript
 const object = {
@@ -216,7 +218,7 @@ const object = {
 	isChecked : true,
 	list : ['blue','red','yellow'],
 	addToCount : function () {
-		return ++this.count;
+		return this.count + 1;
 	},
 	nested : {
 		colour : "blue"
@@ -229,11 +231,12 @@ object.addToCount(); //returns 3
 object.hasOwnProperty('count'); //returns true
 object.hasOwnProperty('notThere'); //returns false
 ```
-To create a **object** data type, we declare a container with curly brackets {}. Inside the object you can define values of any sort of data type. The values are written as name:value pairs (name and value separated by a colon). This is called an **object literal**. **Object literals** encapsulate data, enclosing it in a tidy package.
 
-In the example above we have defined an **object** with a string, number, boolean, another object and also a function.
+This is called an **object literal**. **Object literals** encapsulate data, enclosing it in a tidy package.
 
-Notice that in the function, we reference the object with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
+In the example above we have defined an **object** with a string, number, boolean, another object data types and also a function.
+
+Notice that in the function, we reference the defined **object** with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
 
 The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined object remembers what the internal values as long as it exists.
 
