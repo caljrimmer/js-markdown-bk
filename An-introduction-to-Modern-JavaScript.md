@@ -788,7 +788,7 @@ listenToClick('calculate'); //This invokes our app
 
 **5.5 Refactoring**
 
-Refactoring means that we tidy and minimise our code. It is important to try and limit repetition in your Javascript code. Your code should also be easy to read and re-useable.
+Refactoring means that we tidy and minimise our code. It is important to limit repetition in your Javascript code. Your code should also be easy to read and re-useable.
 
 We take each of our functions and add them to a containing **object literal** called **myApp**.
 
@@ -858,4 +858,4 @@ const myApp = {
 myApp.start('calculate'); //This invokes our app
 ```
 
-Our simple web app is now  re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. 
+Our simple web app is now  re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. We will discuss techniques we have used here later in the book.
