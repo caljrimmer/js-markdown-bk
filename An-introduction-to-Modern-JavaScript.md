@@ -332,6 +332,75 @@ const collection = [
 ```
 When an we have **array** of **objects**, we can refer to the array as a **collection** and the objects as **models**.
 
+**2.2.4 Functions**
+
+**Functions** are regular **objects** data types with but with the additional capability of being callable.
+
+A **function** is a procedure, or a set of statements, that performs a task. **Functions** are always invoked with parentheses **()**
+
+```javascript
+function subtract (a,b) {
+	return a - b;
+}
+
+//Define to a variable
+const multiple = function (a,b) {
+	return a * b;
+}
+
+//Define with Fat Arrow
+const add = (a,b) => {
+	return a + b;
+}
+
+add(2,4); //returns 6
+subtract(6,2); //returns 4
+multiple(2,2); //returns 4
+```
+
+We can create a **function** in a few different ways. In each case we must define what arguments the **function** expects with parentheses **()**.  The **function** statements are enclosed in curly brackets **{}**
+
+In the example, we define 3 functions for **add()**, **subtract()** and **multiply()**. In each can we define the arguments **a** and **b**, do an operation on the arguments, and then return the result.
+
+It is possible to define a function but not pass it arguments.
+
+```javascript
+function staticAdd () {
+	return 10 + 6;
+}
+
+staticAdd(); //returns 16
+```
+
+It is possible to define a function within a function
+
+```javascript
+function internalAdd (a,b) {
+	function add (a,b) {
+		return a + b;
+	}
+	return add(a,b) * 2;
+}
+
+internalAdd(2,4); //returns 12
+```
+
+A function can also return a function
+
+```javascript
+function dynamic (a) {
+	return function (b) {
+		return a * b;
+	};
+}
+
+const multiplyBy2 = dynamic(2);
+multiplyBy2(4); //returns 8
+
+const multiplyBy4 = dynamic(4);
+multiplyBy4(4); //returns 16
+```
+
 **2.3 Special data types**
 
 ```javascript
