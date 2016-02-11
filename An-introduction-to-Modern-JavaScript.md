@@ -348,13 +348,15 @@ The **undefined** data type when a variable that has been declared but no value 
 
 **2.8 Javascript is Loosely Typed**
 
-Javascript is loosely typed. This means you can change the data type of a defined container at anytime. Most programming languages do not allow you to do this. 
+Javascript is loosely typed. This means you can change the data type of a defined container at anytime.
 
 ```javascript
 var changeable = 1; //Data type is a number
 changeable = 'Ted'; //Data type is now a string
 ```
-In the example, we change the variable **changeable** to not just have a different value but also to have a different data type. It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
+In the example, we change the variable **changeable** to not just have a different value but also to have a different data type. 
+
+It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
 
 3. Variables
 --------------
@@ -403,7 +405,6 @@ It is possible to declare a variable without using **var**, **let** or **const**
 
 Defining a variable to the **global** scope is a bad practice as it easy for the variable to be overwritten and it can make your code less maintainable and testable.
 
-Declaring a container this way adds the container on to the window object and it becomes globally available. This is considered bad practice because relying too much on global containers can result in collisions between various scripts on the same page.
 
 4. Operators
 ------------------
