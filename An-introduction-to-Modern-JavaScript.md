@@ -765,7 +765,10 @@ The **input** elements capture free-typed information and the **select** is a dr
 
 Finally we have a div with id of **result** which will contain the result of the calculation. 
 
-The **script** tag for our Javascript is placed near the bottom of the HTML file. This is because all the HTML needs to be loaded before the Javascript is parsed.
+>**Tip**
+
+>The **script** tag for our Javascript is placed near the bottom of the HTML file. This is because all the HTML needs to be loaded before the Javascript is parsed.
+
 
 Save **script.js** with the following content:
 
