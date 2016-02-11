@@ -322,7 +322,7 @@ mixedList.forEach((item) => {
 }); //returns number, string, boolean
 ```
 
-In the example above we have defined an 3 different **arrays**. One with string data types, then number data types and finally a mix of different data types.
+In the example above we have defined an 3 different **arrays**. One with **string** data types, then **number** data types and finally a mix of different data types.
 
 Arrays have many prototype methods to help you work with them. You are able to count the items in an array with **length**, to loop through **arrays** with **forEach()** or even transform the values of an array with **map()**.
 
@@ -335,7 +335,7 @@ const collection = [
 	{id:3, name:'Ned'}
 ]
 ```
-When an we have **array** of objects, particularly if they have been return from a database, then we can refer to the array as a **collection** and the objects as **models**.
+When an we have **array** of **objects**, we can refer to the array as a **collection** and the objects as **models**.
 
 **2.3 Special data types**
 
