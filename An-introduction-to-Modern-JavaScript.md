@@ -28,6 +28,8 @@ To begin:
  1. Open the Chrome browser
  2. Right click and select "Inspect", and then click on "Console" tab
 
+[ScreenShot of Chrome Developer Tools in Browser]
+
 You now have the **Chrome** developer tools open and we can write and test our first bit of Javascript.
 
 Let's try creating a simple pop-up with the text "hello".
@@ -54,7 +56,7 @@ So we have create a new function called **result** that returns a value that we 
 
 > **Tip**
 
->We don't need to specify **window** when calling native functions. Javascript will assume that all called functions are on the **window object** unless defined otherwise. Thus these two function do the same thing. **window.alert("hello")** is the same as **alert("hello")**
+>We don't need to specify **window** when calling native functions. Javascript will assume that all called functions are on the **window object** unless defined otherwise. Thus these two function do the same thing. The **window.alert("hello")** function is the same as **alert("hello")**.
 
 
 Time to look at **data types**.  There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
