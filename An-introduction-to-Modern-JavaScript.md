@@ -499,7 +499,7 @@ const x = 10;
 (typeof(x) === 'number' && x === 10); //returns true
 ```
 
-Logical and comparison operators are often used with **if()** and **switch()** statements
+Logical and comparison operators are often used with **if** and **switch** statements
 
 ```javascript
 function yourTeam (colour) {
@@ -530,6 +530,35 @@ function yourTeam (colour) {
 yourTeam('red') // returns Your team is Liverpool
 yourTeam('blue') // returns Your team is Everton
 yourTeam('green') // returns No suggestion of your team
+```
+
+**4.3 Arithmetic Operators**
+
+**Arithmetic** operators are perform **arithmetic** operations on operands.  It is possible to use **arithmetic** operators on any data type but it will the operators will perform consistently with **number** data types.
+
+Operator | Description 
+------- | -------------
+\+    	| Addition 
+\-    	| Subtraction 
+\*    	| Multiplication
+\\    	| Division
+%    	| Modulus (remainder)
+\++    	| Increment
+\- -   	| Decrement
+
+```javascript
+var x = 10;
+
+x + 1 //returns 11
+x - 1 //returns 9
+x * 2 //returns 20
+x / 2 //returns 5
+
+x % 5 //returns 0
+x % 4 //returns 2 
+
+++x //returns 11
+--x //returns 9
 ```
 
 5. Creating a simple calculator web application
