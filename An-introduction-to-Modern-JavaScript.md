@@ -125,13 +125,8 @@ function toggleChecked (isChecked) {
 		return true;
 	}
 }
-//or short-hand using a ternary operator
-function toggleChecked (isChecked) {
-	return (isChecked) ? false : true;
-}
 
-value = toggleChecked(value) // value is false;
-value = toggleChecked(value) // value is true;
+toggleChecked(true) // returns false;
 ```
 
 In the example, we have created a **toggleChecked()** function to toggle a value from true to false and back again.
