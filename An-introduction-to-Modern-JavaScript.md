@@ -1,14 +1,15 @@
 Introduction to Modern Javascript
 ===========================
 
-You can code any sort of application, to run on nearly any device when you build it with Javascript.  This book is to show you how to create, build, test and deploy your own application using just javascript.
+You can code any sort of application, to run on nearly any device when you build it with Javascript.  This book is to show you how to create, build, test and deploy your own web application using javascript.
 
-A modern Javascript developer can create any application, on any device. From the first line of code to deployment to live environment, javascript developer never has to utilise any other language.  Modern javascript isn't just about the latest revisions of the language but a fundamental shift in simplifying how a developer can create, test and deploy applications.
+From the first line of code to deployment to live environment, javascript developer never has to utilise any other language.  Modern javascript isn't just about the latest revisions of the language but a fundamental shift in simplifying how a developer can create, test and deploy applications.
 
-Javascript, released in 1995, was developed as a way to run scripts within a website. In its early days some derided the language as being simple and lacking the power and sophistication to be taken seriously. Javascript has evolved with the internet and the language has be improved over the years. 
+Javascript, released in 1995, was developed as a way to run scripts within a website. In its early days some derided the language as being simple and lacking the power and sophistication to be taken seriously. Javascript has evolved with the internet into the most popular development language in the world.
 
-Javascript, once just used for simple client-side scripting on web sites can now be used to develop games, create mobile applications, web applications, desktop applications, sophisticated data visualisation, complex animations and run intensive computations.
+Javascript is used to develop games, create mobile applications, web applications, desktop applications, sophisticated data visualisation, complex animations and run intensive computations.
 
+This book will take you, step by step, through everything you need to know to become a modern javascript developer.
 
 > **ES6**
 
@@ -32,10 +33,10 @@ To begin:
 
 You now have the **Chrome** developer tools open and we can write and test our first bit of Javascript.
 
-Let's try creating a simple pop-up with the text "hello".
+Let's try creating a simple pop-up with the text *hello*.
  
 ```javascript
-window.alert('hello');
+window.alert("hello");
 ```
 
 The **window.alert()** is a function that Javascript provides to allow you to easily create pop-ups in the browser.
@@ -50,7 +51,7 @@ Now let's make a simple function to capture a user's response and return the val
 function result (message) {
 	return window.confirm(message);
 }
-result('Do you confirm this action?');
+result("Do you confirm this action?");
 ```
 
 A **function** in javascript is invoked with parentheses **()** and inside the parentheses **arguments** can be passed.  We use a semicolon to separate statements. 
@@ -82,15 +83,15 @@ Primary, or primitive, data types are formats you should be familiar with and us
 ```javascript
 //Number
 const age = 16; 
-const count = new Number('16');
+const count = new Number("16");
 
 //String
 const name = "Ted";
-const country = new String('USA');
+const country = new String("USA");
 
 //Boolean
 const isChecked = true;
-const isOpen = new Boolean ('true');
+const isOpen = new Boolean ("true");
 ```
 
 **2.1.1 Strings** 
@@ -121,7 +122,7 @@ To create a **boolean** (i.e. true or false) data type, we declare a container o
 ```javascript
 let value = false;
 //or
-let value = new Boolean('false');
+let value = new Boolean("false");
 
 function toggleChecked (isChecked) {
 	if (isChecked) {
@@ -143,7 +144,7 @@ To create a **number** data type, we declare a variable of either an integer or 
 ```javascript
 const total = 9;
 //or
-const total = new Number('9');
+const total = new Number("9");
 
 const price = 11.99;
 
@@ -183,8 +184,8 @@ We have created functions, **add()** and **subtract()**, which take two operands
 If we tried to pass a string as an argument:
 
 ```javascript
-add('name',3) // returns 'name3'
-subtract('name',3); // returns NaN
+add("name",3) // returns 'name3'
+subtract("name",3); // returns NaN
 ```
 
 Javascript stops behaving predictably if we mix data types. With **subtract()**, it returns **NaN** (i.e. Not a Number) and with **add()**, it returns a new string of the 'name' with a suffixed '3'.
@@ -214,7 +215,7 @@ In our example, note how we are making our **objects** and **arrays** from **pri
 
 **2.2.1 Objects**
 
-To create a **object** data type, we declare a container with curly brackets **{}**. Inside the object you can define values of any sort of data type. 
+To create a **object** data type, we declare a container with curly brackets **{}**. Inside the object you can define properties with values of any sort of data type. 
 
 ```javascript
 const object = {
@@ -243,7 +244,7 @@ In the example above we have defined an **object** with a **string**, **number**
 
 Notice that in the function, we reference the defined **object** with the **this** keyword. The **this** keyword is very useful in Javascript. It allows us to be **self-referential** (refer to different parts of the same object).
 
-The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined **object** remembers what the internal values as long as it exists.
+The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined **object** stores the **count** property value as long as it exists.
 
 An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what **properties** the object contains.
 
@@ -260,7 +261,7 @@ const newObject = {
 }
 ```
 
-We can amend **object literal** values at any time. We can also add or remove values.
+We can amend **object literal** values at any time. We can add, edit or delete properties.
 
 ```javascript
 let amendable = {
@@ -268,10 +269,9 @@ let amendable = {
 	age: 32
 }
 
-amendable.name = 'Edward'; //name value is now Edward
-amendable.job = 'Accountant'; //adds job key and value
-
-delete amendable.age; //removes age key and value
+amendable.name = 'Edward'; //Edit property
+amendable.job = 'Accountant'; //Add property
+delete amendable.age; // Delete property
 ```
 We can use objects to contain your whole web application. This is the basis of object-oriented programming. 
 
@@ -285,11 +285,11 @@ const myApp = {
 myApp.start();
 ```
 
-In the simple example, we create a containing object called **myApp**. We define the object with a property called **text** that contains a string and **start()** function returns the string. We can then start our application with **myApp.start()**.
+In this simple example, we create an **object literal** called **myApp**. We define the object with a property called **text** that contains a string and **start()** function returns the string. We can then start our application with **myApp.start()**.
 
 **2.2.2 Dates**
 
-A **date** data type is just a specialised type of **object** data type. To create a **date** data type, we declare a container with the **Date()** function. 
+A **date** data type is just a specialised type of the **object** data type. To create a **date** data type, we declare a container with the **Date()** function. 
 
 ```javascript
 const today = new Date();
@@ -319,7 +319,7 @@ To create an **array** (i.e. a list) data type, we declare a container with squa
 Inside the **array** you can define values of any sort of data type. The values are separated by commas.
 
 ```javascript
-const strings = ['blue','red','yellow'];
+const strings = ["blue","red","yellow"];
 const numbers = [20,30,40];
 const mixedList = [1,'blue',false];
 
@@ -328,11 +328,11 @@ const numbers = new Array(20,30,40)
 
 strings.length; //returns 3
 
-numbers.map((num) => {
+numbers.map(function (num) {
 	return num / 10; 
 }); //returns [2,3,4]
 
-mixedList.forEach((item) => {
+mixedList.forEach(function (item) {
 	console.log(typeof(item)) 
 }); //returns number, string, boolean
 ```
@@ -349,9 +349,9 @@ Arrays can be used to create lists of objects:
 
 ```javascript
 const collection = [
-	{id:1, name:'Ted'},
-	{id:2, name:'Fred'},
-	{id:3, name:'Ned'}
+	{id:1, name:"Ted"},
+	{id:2, name:"Fred"},
+	{id:3, name:"Ned"}
 ]
 ```
 When an we have **array** of **objects**, we can refer to the array as a **collection** and the objects as **models**.
