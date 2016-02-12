@@ -360,7 +360,7 @@ When an we have **array** of **objects**, we can refer to the array as a **colle
 
 **Functions** are regular **objects** data types with but with the additional capability of being callable.
 
-A **function** is a procedure, or a set of statements, that performs a task. **Functions** are always invoked with parentheses **()**
+A **function** is a procedure, or a set of statements, that performs a task.
 
 ```javascript
 function subtract (a,b) {
@@ -382,7 +382,7 @@ subtract(6,2); //returns 4
 multiple(2,2); //returns 4
 ```
 
-We can create a **function** in a few different ways. In each case we must define what arguments the **function** expects with parentheses **()**.  The **function** statements are enclosed in curly brackets **{}**
+We can create a **function** in a few different ways. In each case we must define what **arguments** the **function** expects with parentheses **()**.  The **function** statements are enclosed in curly brackets **{}**
 
 In the example, we define 3 functions for **add()**, **subtract()** and **multiply()**. In each can we define the arguments **a** and **b**, do an operation on the arguments, and then return the result.
 
@@ -455,20 +455,19 @@ Javascript is loosely typed. This means you can change the data type of a define
 
 ```javascript
 var changeable = 1; //Data type is a number
-changeable = 'Ted'; //Data type is now a string
+changeable = "Ted"; //Data type is now a string
 ```
 In the example, we change the variable **changeable** to not just have a different value but also to have a different data type. 
 
 
 > **Tip**
 
->It is advisable, even though you can, not to change your data type whilst drafting your code. It can be confusing to maintain and extend your code.
-
+>It is advisable, even though you can, not to change your defined data type whilst drafting your code. It makes your code difficult to test and maintain.
 
 3. Variables
 --------------
 
-Javascript allows us to define variables to store data types or functions. Variables allow us to structure our code and to manage **scope**. **Scope** is the ability to access functions or variables from within our code. 
+Javascript allows us to define variables to store data types or functions. Variables allow us to structure our code and to manage **scope**. **Scope** is the ability to access functions and variables from within our code. 
 
 There are 3 ways to define a variable. **Var**, **let** or **const**. All variables must be identified with unique names.
 
@@ -478,10 +477,10 @@ There are 3 ways to define a variable. **Var**, **let** or **const**. All variab
 var z;
 var x = 1;
 var y = 2;
-z = x + y; // z equals 3 now
+z = x + y; // z equals 3
 ```
 
-You can define a **var** with a value or without a value and populate it later. A **var** exhibits **functional** and **global** scoping. We will discuss scope later in the book.
+You can define a **var** with a value or without a value and populate it later. A **var** exhibits **functional** and **global** scoping. We will discuss **scope** in detail later in the book.
 
 **3.2 Define a let**
 
@@ -491,7 +490,7 @@ let name = "Ted";
 sentence = "My name is " + y; // sentence equals "My name is Ted"
 ```
 
-Defining **let** is similar to a **var** declaration. **Let**, unlike **var**, cannot be **hoisted** and it also exhibits **block** scope as well as **functional** and **global** scope. We hoisting later in the book. 
+Defining **let** is similar to a **var** declaration. **Let**, unlike **var**, cannot be **hoisted** and it also exhibits **block** scope as well as **functional** and **global** scope. We hoisting in detail later in the book. 
 
 **3.3 Define a const**
 
@@ -501,7 +500,7 @@ const PI = 3.14;
 
 Defining a **Const** means the value can not be changed. It is used, as it's name suggests, to define constants. **Const**, like **let**, also cannot be hoisted and it exhibits block scope as well as **functional** and **global** scope.
 
-**3.3 Define globally**
+**3.4 Define globally**
 
 ```javascript
 name = 'Ted'; //same as window.name = 'Ted'
@@ -514,7 +513,7 @@ It is possible to declare a variable without using **var**, **let** or **const**
 
 > **Tip**
 
->Defining a variable to the **global** scope is a bad practice. Variable may be overwritten, and it can make your code less maintainable and testable.
+>Defining a variable to the **global** scope is considered bad practice. The variable may be overwritten, and it can make your code less maintainable and testable.
 
 
 4. Operators
@@ -522,7 +521,7 @@ It is possible to declare a variable without using **var**, **let** or **const**
 
 **4.1 Comparison Operators**
 
-Comparison operators are used in statements to determine equality or difference between values. The response is generally a **boolean** (i.e. true or false).
+Comparison operators are used in statements to determine equality or difference between values. The response is a **boolean** (i.e. true or false).
 
 Operator | Description 
 ------- | -------------
@@ -580,6 +579,18 @@ x <= 2;  //returns true
 x <= 3;  //returns true
 ```
 
+The greater than (**>**) or less than (**<**) operator is useful when we wish to iterate a certain number of times.
+
+```javascript
+let text = "Count up :";
+for (i = 0; i < 5; i++) {
+    text += i;
+}// text equals "Count up :12345";
+```
+
+In the  above example, we use the operator to limit the for loop to 5 iterations. 
+
+
 ```javascript
 const x = 2;
 (x === 2) ? 'option 1' : 'option 2' // returns option 1
@@ -623,9 +634,6 @@ name === 'Fred'; //returns false
 (name === 'Ted' || name === 'Fred'); //returns true
 (name === 'Ted' && name === 'Fred'); //returns false
 !(name === 'Fred'); //returns true
-
-const x = 10;
-(typeof(x) === 'number' && x === 10); //returns true
 ```
 
 Logical operators are often used with **if** statements:
@@ -674,7 +682,7 @@ yourTeam('green') // returns No suggestion
 
 **4.3 Arithmetic Operators**
 
-**Arithmetic** operators are perform **arithmetic** operations on operands.  It is possible to use **arithmetic** operators on any data type but it will the operators will perform consistently with **number** data types.
+**Arithmetic** operators are perform **arithmetic** operations on operands.  The **number** data type utilises **arithmetic** operators.
 
 Operator | Description 
 ------- | -------------
@@ -701,16 +709,25 @@ x % 4 //returns 2
 --x //returns 9
 ```
 
+>**Tip**
+
+> It is possible to use the **+** arthemitic operator with **string** data types to append two strings together. 
+
+```javascript
+let string1 = "Hello" + " World";
+
+```
+
 5. Creating a simple calculator web application
 -----------------------------------------
 
 A web application consists of **HTML**, **CSS** and **Javascript**. 
 
-**HTML** provides the scaffolding of the page. **HTML** provides a library of tags that are used as containers for content. **HTML** also links to **CSS** and **Javascript** files.
+**HTML** (Hyper Text Markup Language) provides the scaffolding of the page. **HTML** provides a library of tags that are used as containers for content. **HTML** links to all the **CSS** and **Javascript** files in your application.
 
-**CSS** provides the styling of the page. **CSS** associates styles to **HTML** tags.  **CSS** can amend fonts, colours, margins, padding, height, width, images and positions. It can also provide provide animation.
+**CSS** (Cascading Style Sheets) provides the styling of the page. **CSS** associates styles to **HTML** tags.  **CSS** can amend fonts, colours, margins, padding, height, width, images and positions. **CSS** can also provide provide animation.
 
-**Javascript** is what makes a web page dynamic and responsive to the user. **Javascript** turns static content in to a tool. It allows the creation of applications to create whatever is desired. It turns a website into a web application
+**Javascript** is what makes a web page dynamic and responsive to the user. **Javascript** turns static content in to a tool. Javascript is what turns a website into a web application
 
 **5.1 Get Started** 
 
@@ -718,7 +735,7 @@ To make a web application, we will need a text-editor to write the code. Any tex
 
 >**Tip**
 
->The best free code editors are:
+>Some excellent free code editors include:
 > 
 > - Atom - https://atom.io/
 > - Sublime - http://www.sublimetext.com/
@@ -787,9 +804,9 @@ The **window.document.getElementById** function locates any element in the HTML 
 
 > window.document has a number of methods to select elements:
 > 
-> - **getElementById()** method finds an element by id
-> - **getElementsByClassName()** method finds all element by class
-> - **getElementsByTagName()** method finds all elements by tag
+> - **getElementById()** finds an element by id
+> - **getElementsByClassName()** finds all element by class
+> - **getElementsByTagName()** finds all elements by tag
 
 To view the web application, click on the **index.html** file to open it in a browser. You should see something like:
 
@@ -813,9 +830,9 @@ function getInputValue (id) {
  
 ```
 
-We have created two new functions. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option. Both functions create an **el** constant which is the selected element in the **HTML**.  Javascript then gives us the ability to query the element's value.
+We have created two new functions. The **getInputValue()** function returns the value of the input field and the **getSelectValue()** function returns the value of the selected drop-down option. Both functions create an **el** constant which is the selected element in the **HTML**.  Javascript gives us the ability to query the element's value.
 
-In out **script.js**, we now have functions to both collect information and render information in our web application. Next, we shall make our web app responsive
+In our **script.js**, we now have functions to both collect information and render information in our web application. Next, we shall make our web app responsive
 
 **5.3 Adding responsiveness**
 
@@ -830,7 +847,7 @@ function listenToClick (id) {
 
 listenToClick('calculate');
 ``` 
-We have created a **listenToClick()** function to utilise **addEventListener** which binds the a click event on the **calculate button**. 
+We have created a **listenToClick()** function to utilise the**addEventListener()** method. We pass the id of the **calculate button** as an argument and the function binds the a click event to the button.
 
 ```javascript
 function getAll (el) {
@@ -844,22 +861,13 @@ function getAll (el) {
 
 When the **calculate button** is clicked, the **getAll()** function grabs the values from the **inputs** and **select**, combines them and then uses **render()** to write the value to the **result** div.
 
-The **preventDefault()** function prevents the browser invoking it's default behaviour, which is to post the form and reload the page. The **el** is passed as an argument comes from **addEventListener()** function. 
+The **preventDefault()** function prevents the browser invoking it's default behaviour, which is to post the input values and reload the page. The **el** is passed as an argument comes from **addEventListener()** function. 
 
 **5.4 Calculation functionality**
 
-In **script.js**, add the following functions:
+In **script.js**, add the following function:
 
 ```javascript
-
-function getAll (el) {
-	el.preventDefault();
-   	const a = getInputValue('operand-a');
-	const b = getInputValue('operand-b'); 
-	const operator = getSelectValue('operator');
-	render(calculate(a,b,operator));
-}
-
 function calculate (a,b,operator) {
 	a = new Number(a);
 	b = new Number(b);
@@ -939,12 +947,12 @@ function listenToClick (id) {
 	el.addEventListener('click', getAll);
 };
 
-listenToClick('calculate'); //This invokes our app
+listenToClick('calculate'); //We invoke our app
 ```
 
 **5.5 Refactoring**
 
-Refactoring means that we tidy and minimise our code. It is important to limit repetition in your Javascript code. Your code should also be easy to read and re-useable.
+Refactoring means that we tidy and minimise our code. It is important to limit repetition in your Javascript code. Your code should also be easy to read, re-useable and testable.
 
 We take each of our functions and add them to a containing **object literal** called **myApp**.
 
@@ -1011,7 +1019,7 @@ const myApp = {
 	
 }
 
-myApp.start('calculate'); //This invokes our app
+myApp.start('calculate'); //We invokes our app
 ```
 
 Our simple web app is now  re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. We will discuss techniques we have used to refactor later in the book.
