@@ -13,7 +13,7 @@ This book will take you, step by step, through everything you need to know to be
 
 > **ES6**
 
->The latest version of Javascript,  ECMAScript 2015, also known as ES6, is a significant update to the language. It was the first update to the language since ES5 was standardised in 2009. All code examples in this book will utilise ES6 where appropriate. 
+>The latest version of Javascript,  ECMAScript 2015, also known as ES6, is a significant update to the language. It was the first update to the language since ES5 was standardized in 2009. All code examples in this book will utilize ES6 where appropriate. 
  
 Intro
 -----
@@ -25,8 +25,8 @@ If you think of your web application as a house, then we will be looking at the 
 By the end of this chapter, you will have all you need to provide the foundations of both your javascript learning, but also the foundations needed to create modern web applications.
 
 
-1.  Running Javascript in the Browser
----------------------------------
+Javascript in the Browser
+------------------------------
 
 Javascript is designed to run as a scripting language in a host environment. The most common host environment is a **browser**.
 
@@ -70,13 +70,13 @@ So we have create a new function called **result()** that returns a value that w
 
 > **Tip**
 
->We don't need to specify **window** when calling native functions. Javascript will assume that all called functions are on the **window object** unless defined otherwise. Thus these two function do the same thing. The **window.alert("hello")** function is the same as **alert("hello")**.
+>We don't need to specify **window** when calling native functions. Javascript will assume that all called functions are on the **window object** unless defined otherwise. Thus these two functions do the same thing. The **window.alert("hello")** function is the same as **alert("hello")**.
 
 
 Time to look at **data types**.  There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
 
-2. What are Data Types? 
------------------------------
+Data Types
+-------------
 
 Javascript allows you to define a data type of a value. This means you can tell Javascript whether a value is, for example, a **number** or **string**. 
 
@@ -84,7 +84,7 @@ In Javascript, once a data type object is defined, it makes available a number o
 
 In JavaScript there are three primary data types **String**,  **Boolean** and **Number**, three composite data types  **Object**, **Date** and **Array**, and two special data types **Null** and **Undefined**.
 
-**2.1 Primary data types**
+**Primary data types**
 
 Primary, or primitive, data types are formats you should be familiar with and use in the real world. These include **strings** (words, sentences), **numbers** (both integer and decimal) and **booleans** (true or false).
 
@@ -102,7 +102,7 @@ const isChecked = true;
 const isOpen = new Boolean ("true");
 ```
 
-**2.1.1 Strings** 
+**Strings** 
 
 To create a **string** data type, we declare a variable by wrapping a value in either double (") or single quotes ('), or we can use the **String()** function.
 
@@ -123,7 +123,7 @@ word.substr(0,5);//returns marve
  - **substr()** return a the first 5 characters.
 
 
-**2.1.2 Booleans**
+**Booleans**
 
 To create a **boolean** (i.e. true or false) data type, we declare a container of either true or false, or we can use the **Boolean()** function. 
 
@@ -145,7 +145,7 @@ toggleChecked(true) // returns false;
 
 In the example, we have created a **toggleChecked()** function to toggle a value from true to false and back again.
 
-**2.1.3 Numbers**
+**Numbers**
 
 To create a **number** data type, we declare a variable of either an integer or a decimal, or we can use the **Number()** function.
 
@@ -200,7 +200,7 @@ Javascript stops behaving predictably if we mix data types. With **subtract()**,
 
 We can only do numeric or mathematical work on **number** data types.
 
-**2.2 Composite data types**
+**Composite data types**
 
 A **composite** data type is any data type which can be constructed using **primitive** data types and other **composite** types.
 
@@ -221,7 +221,7 @@ const fruits = new Array("apple","orange","banana");
 ```
 In our example, note how we are making our **objects** and **arrays** from **primitive** data types.
 
-**2.2.1 Objects**
+**Objects**
 
 To create a **object** data type, we declare a container with curly brackets **{}**. Inside the object you can define properties with values of any sort of data type. 
 
@@ -254,9 +254,9 @@ Notice that in the function, we reference the defined **object** with the **this
 
 The defined object is also **stateful**. In the example, we can increment the **count** value by invoking the **addToCount()** function. The defined **object** stores the **count** property value as long as it exists.
 
-An object data type also has it's own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what **properties** the object contains.
+An object data type also has its own prototype methods. In the example above, we use the **hasOwnProperty()** method to check what **properties** the object contains.
 
-ES6, the latest Javascript engine, has give us additional ways of defining an **object literal**.
+ES6, the latest Javascript engine, has given us additional ways of defining an **object literal**.
 
 ```javascript
 const keyName = 'surname';
@@ -295,9 +295,9 @@ myApp.start();
 
 In this simple example, we create an **object literal** called **myApp**. We define the object with a property called **text** that contains a string and **start()** function returns the string. We can then start our application with **myApp.start()**.
 
-**2.2.2 Dates**
+**Dates**
 
-A **date** data type is just a specialised type of the **object** data type. To create a **date** data type, we declare a container with the **Date()** function. 
+A **date** data type is just a specialized type of the **object** data type. To create a **date** data type, we declare a container with the **Date()** function. 
 
 ```javascript
 const today = new Date();
@@ -320,7 +320,7 @@ We then have the ability to perform date operations on the data type.  In the ex
 
 
 
-**2.2.3 Array**
+**Array**
 
 To create an **array** (i.e. a list) data type, we declare a container with square brackets [], or we can use the **Array()** function. 
 
@@ -345,7 +345,7 @@ mixedList.forEach(function (item) {
 }); //returns number, string, boolean
 ```
 
-In the example above we have defined an 3 different **arrays**. One with **string** data types, then **number** data types and finally a mix of different data types.
+In the example above we have defined an three different **arrays**. One with **string** data types, then **number** data types and finally a mix of different data types.
 
 Arrays have many prototype methods to help you work with them. 
 
@@ -362,9 +362,9 @@ const collection = [
 	{id:3, name:"Ned"}
 ]
 ```
-When an we have **array** of **objects**, we can refer to the array as a **collection** and the objects as **models**.
+When we have an **array** of **objects**, we can refer to the array as a **collection** and the objects as **models**.
 
-**2.2.4 Functions**
+**Functions**
 
 **Functions** are regular **objects** data types with but with the additional capability of being callable.
 
