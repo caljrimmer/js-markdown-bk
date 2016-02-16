@@ -9,7 +9,7 @@ There are 3 types of scope in Javascript:
  - **Local or Function scope** - i.e. this is accessible from within the same function
  - **Block scope** - i.e. this is accessible from inside the expression e.g. inside curly brackets **{}**. 
 
-**1.1 Global Scope**
+**Global Scope**
 
 ```javascript
 name = "Ted";
@@ -32,7 +32,7 @@ When a variable or function is defined outside a bounding function, then it will
 
 >Whilst it might seem useful to have **variables** accessible from everywhere, you should try and structure your code so you have as few **global scoped variables** as possible. This will make your code will be easy to maintain and test your code.
 
-**1.2 Function Scope**
+**Function Scope**
 
 ```javascript
 function printName (surname) {
@@ -46,7 +46,7 @@ console.log(firstname) // ReferenceError
 
 In the example, we have define a **firstname** inside a **function**, then it will be in **function scoped**. This is only accessible inside the function and not outside it.  If we try to access **firstname** outside the function, we will get a reference error.
 
-**1.3 Block Scope**
+**Block Scope**
 
 ```javascript
 function printName (surname) {
@@ -81,10 +81,9 @@ console.log(surname) // ReferenceError
 
 >**Function scope** is just a javascript concept. In other coding languages **block scope** would include **functional scope** (as they both are defined inside curly brackets **{}**).
 
+**Using scope in a web application**
 
-We use scoping to allow us to control what each function can do. We make our function discrete and the variables defined in them private from other functions. 
-
-Another example:
+When we are coding our web applications, we use scoping to allow us to control what each function can do and what variables are readable and writable.
 
 ```javascript
 function giveOrder (who, what) {
