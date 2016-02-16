@@ -41,7 +41,7 @@ function printName (surname) {
 }
 
 printName("Smith") // returns "Edward Smith"
-console.log(newName) // ReferenceError
+console.log(firstname) // ReferenceError
 ```
 
 In the example, we have define a **firstname** inside a **function**, then it will be in **function scoped**. This is only accessible inside the function and not outside it.  If we try to access **firstname** outside the function, we will get a reference error.
