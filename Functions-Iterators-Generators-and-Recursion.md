@@ -50,24 +50,21 @@ In the example, we have define a **firstname** inside a **function**, then it wi
 
 ```javascript
 function printName (surname) {
-	let firstname = "Edward"; //Function scoped
 	if (surname === "Smith") {
-		let middle = "Alan";
-		return firstname + ' ' middle + ' ' + surname;
+		let firstname = "Edward"; //Block scoped
+		return firstname + ' ' + surname;
 	}
-	console.log(middle); // ReferenceError
-	return firstname + ' ' + surname; 
+	console.log(firstname); // ReferenceError
+	return surname; 
 }
 
-console.log(middle); // ReferenceError
-printName("Smith") // returns "Edward Alan Smith"
+console.log(firstname); // ReferenceError
+printName("Smith") // returns "Edward Smith"
 ```
 
-We define a variable inside the **if()** statement, this will now exhibit **block scope**. This is only accessible inside the statement and not outside it (either in the parent function or any other function).
+When we define a variable inside curly brackets **{}**, an **if()** statement in our example, this will now exhibit **block scope**. This is only accessible inside the curly brackets **{}** and not outside it (not in the parent function or any other function).
 
->Tip
-
->Before **ES6**, the latest released javascript version, javascript didn't have the concept of **block scope**. We can be backwards compatible by still using the **var** which doesn't exhibit block scope. **Let** and **const** both exhibit **block scope**.  
+Before **ES6**, the latest released javascript version, javascript didn't have the concept of **block scope**. We can still be backwards compatible by still using the **var** which doesn't exhibit block scope. **Let** and **const** both exhibit **block scope**. 
 
 ```javascript
 if (isChecked) {
@@ -79,6 +76,11 @@ console.log(firstname) // returns Edward
 console.log(middle) // ReferenceError
 console.log(surname) // ReferenceError
 ```
+
+>Tip
+
+>**Function scope** is just a javascript concept. In other coding languages **block scope** would include **functional scope** (as the both use curly brackets **{}**) thus making a redundant concept.
+
 
 We use scoping to allow us to control what each function can do. We make our function discrete and the variables defined in them private from other functions. 
 
