@@ -472,7 +472,7 @@ In the example, we change the variable **changeable** to not just have a differe
 
 >It is advisable, even though you can, not to change your defined data type whilst drafting your code. It makes your code difficult to test and maintain.
 
-3. Variables
+3. What is a Variable?
 --------------
 
 Javascript allows us to define variables to store data types or functions. Variables allow us to structure our code and to manage **scope**. **Scope** is the ability to access functions and variables from within our code. 
@@ -524,7 +524,7 @@ It is possible to declare a variable without using **var**, **let** or **const**
 >Defining a variable to the **global** scope is considered bad practice. The variable may be overwritten, and it can make your code less maintainable and testable.
 
 
-4. Operators
+4. What is an Operator?
 ------------------
 
 **4.1 Comparison Operators**
