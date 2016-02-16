@@ -59,11 +59,26 @@ function printName (surname) {
 	return firstname + ' ' + surname; 
 }
 
-printName("Smith") // returns "Edward Alan Smith"
 console.log(middle); // ReferenceError
+printName("Smith") // returns "Edward Alan Smith"
 ```
 
-if we define a variable inside an **if()** statement, then it will be **block scoped**. This is only accessible inside the statement and not outside it (either in the parent function or any other function).
+We define a variable inside the **if()** statement, this will now exhibit **block scope**. This is only accessible inside the statement and not outside it (either in the parent function or any other function).
+
+>Tip
+
+>Before **ES6**, the latest released javascript version, javascript didn't have the concept of **block scope**. We can be backwards compatible by still using the **var** which doesn't exhibit block scope. **Let** and **const** both exhibit **block scope**.  
+
+```javascript
+if (isChecked) {
+	var firstname = "Edward";
+	const middle = "Alan";
+	let surname = "Smith";
+}
+console.log(firstname) // returns Edward
+console.log(middle) // ReferenceError
+console.log(surname) // ReferenceError
+```
 
 We use scoping to allow us to control what each function can do. We make our function discrete and the variables defined in them private from other functions. 
 
