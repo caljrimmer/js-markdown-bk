@@ -1045,3 +1045,5 @@ We have introduced:
  - How we can make **functions** which contain statements that perform operations on our data and then return the result.
  - How we can use an **object literal** to contain our javascript code.
  - Finally, we combined all these concepts into a simple calculator web application.
+
+In the next chapter, we will look in more detail at **functions**, **iteration**, **recursion** and **generators**. We will also expand on topics we have touched on in this chapter like **hoisting** and **scope**.
