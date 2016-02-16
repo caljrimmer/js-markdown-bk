@@ -1,7 +1,7 @@
-5. Scope
+1. Scope
 ------------------
 
-Scope is what sets of variables, constants or functions that functions have access too.
+The scope of a variable or function communicates where they are accessible in different areas of your code. You create scope by where you define a variable or function.
 
 There are 3 types of scope in Javascript:
 
@@ -9,33 +9,61 @@ There are 3 types of scope in Javascript:
  - **Local or Function scope** - i.e. this is accessible from within the same function
  - **Block scope** - i.e. this is accessible from inside the expression e.g. inside an **if()** statement 
 
+**1.1 Global Scope**
+
 ```javascript
-let name = 'Ted'; //Global scoped
- 
-function printName (middle) {
-	let newName = 'Edward'; //Function scoped
-	if (middle === 'John') {
-		let surname = 'Smith'; //Block scoped
-		return name + ' ' + middle + ' ' + surname;
-	}
-	return newName + ' ' + middle + ' ' + surname; 
+name = "Ted";
+window.name = "Ted";
+
+//or variables defined outside functions
+var name = "Ted";
+let name = "Ted";
+const name = "Ted";
+
+//or functions defined outside other functions
+function sayName (name) {
+	return name;
 }
-
-printName('John') // returns Ted John Smith
-printName('Pete') //  ReferenceError: surname is not defined
-
-console.log(name) // returns Ted
-console.log(newName) // ReferenceError: newName is not defined
-console.log(surname) // ReferenceError: surname is not defined
 ```
 
-In the example above, we have defined three variables **name**, **surname** and **newName**. Where we have defined these variables, determines the scope of the variable.  
+When a variable or function is defined outside a bounding function, then it will always be in **global scope**. These functions and variables can be invoked, read and written from anywhere in your code.
 
-If we define a variable outside all functions, then it will be **global scoped**, i.e. **name**.
+>**Tip**
 
-If we define a variable inside a function, then it will be **function scoped**, i.e. **newName**. This is only accessible inside the function and not outside it. 
+>Whilst it might seem useful to have **variables** accessible from everywhere, you should try and structure your code so you have as few **global scoped variables** as possible. your code will be easy to maintain and test your code, if you limit **global scoping**.
 
-if we define a variable inside a statement, then it will be **block scoped**, i.e. **surname**. This is only accessible inside the statement and not outside it (either in the parent function or any other function).
+**1.2 Function Scope**
+
+```javascript
+function printName (surname) {
+	let firstname = 'Edward'; //Function scoped
+	return firstname + ' ' + surname; 
+}
+
+printName("Smith") // returns "Edward Smith"
+console.log(newName) // ReferenceError
+```
+
+In the example, we have define a **firstname** inside a **function**, then it will be in **function scoped**. This is only accessible inside the function and not outside it.  If we try to access **firstname** outside the function, we will get a reference error.
+
+**1.3 Block Scope**
+
+```javascript
+function printName (surname) {
+	let firstname = "Edward"; //Function scoped
+	if (surname === "Smith") {
+		let middle = "Alan";
+		return firstname + ' ' middle + ' ' + surname;
+	}
+	console.log(middle); // ReferenceError
+	return firstname + ' ' + surname; 
+}
+
+printName("Smith") // returns "Edward Alan Smith"
+console.log(middle); // ReferenceError
+```
+
+if we define a variable inside an **if()** statement, then it will be **block scoped**. This is only accessible inside the statement and not outside it (either in the parent function or any other function).
 
 We use scoping to allow us to control what each function can do. We make our function discrete and the variables defined in them private from other functions. 
 
