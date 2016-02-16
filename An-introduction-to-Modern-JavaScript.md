@@ -30,7 +30,7 @@ By the end of this chapter, you will have all you need to provide the foundation
 
 Javascript is designed to run as a scripting language in a host environment. The most common host environment is a **browser**.
 
- Javascript can be run on any **browser**. We will be using **Chrome** as our browser of choice. Chrome has a number of developer tools that will help you develop your code. One of those tools is called **Console** and it that allows you to run Javascript directly.
+ Javascript can be run on any **browser**. We will be using **Chrome** as our browser of choice. **Chrome** has a number of developer tools that will help you develop your code. One of those tools is called **Console** and it that allows you to run Javascript directly.
 
 To begin:
 
