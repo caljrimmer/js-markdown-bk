@@ -443,21 +443,23 @@ function add (a,b){
 }(); //returns value immediately 
 ```
 
-**2.3 Special data types**
+**Special data types**
+
+The **null** data type is the absence of other valid data types. You can remove the contents of a variable (without deleting) by assigning it the null value.
 
 ```javascript
 const value;
 console.log(value); //returns undefined
+```
 
+The **undefined** data type when a variable that has been declared but no value is assigned to it.
+
+```javascript
 const nullValue = null;
 console.log(nullValue); //returns null
 ``` 
 
-The **null** data type is the absence of other valid data types. You can remove the contents of a variable (without deleting) by assigning it the null value.
-
-The **undefined** data type when a variable that has been declared but no value is assigned to it.
-
-**2.8 Javascript is Loosely Typed**
+**Javascript is Loosely Typed**
 
 Javascript is loosely typed. This means you can change the data type of a defined container at anytime.
 
@@ -472,14 +474,16 @@ In the example, we change the variable **changeable** to not just have a differe
 
 >It is advisable, even though you can, not to change your defined data type whilst drafting your code. It makes your code difficult to test and maintain.
 
-3. What is a Variable?
---------------
+Variables
+-----------
 
 Javascript allows us to define variables to store data types or functions. Variables allow us to structure our code and to manage **scope**. **Scope** is the ability to access functions and variables from within our code. 
 
 There are 3 ways to define a variable. **Var**, **let** or **const**. All variables must be identified with unique names.
 
-**3.1 Define a var**
+**Defining a variable as a var**
+
+You can define a **var** with a value or without a value and populate it later. A **var** exhibits **functional** and **global** scoping.
 
 ```javascript
 var z;
@@ -488,43 +492,43 @@ var y = 2;
 z = x + y; // z equals 3
 ```
 
-You can define a **var** with a value or without a value and populate it later. A **var** exhibits **functional** and **global** scoping. We will discuss **scope** in detail later in the book.
+ We will discuss **scope** in detail later in the book.
 
-**3.2 Define a let**
+**Defining a variable as a let**
+
+Defining **let** is similar to a **var** declaration. **Let**, unlike **var**, cannot be **hoisted** and it also exhibits **block** scope as well as **functional** and **global** scope. 
 
 ```javascript
 let sentence;
 let name = "Ted";
 sentence = "My name is " + y; // sentence equals "My name is Ted"
 ```
+We hoisting in detail later in the book. 
 
-Defining **let** is similar to a **var** declaration. **Let**, unlike **var**, cannot be **hoisted** and it also exhibits **block** scope as well as **functional** and **global** scope. We hoisting in detail later in the book. 
+**Defining a variable as a const**
 
-**3.3 Define a const**
+Defining a **Const** means the value can not be changed. It is used, as it's name suggests, defining constants. **Const**, like **let**, also cannot be hoisted and it exhibits block scope as well as **functional** and **global** scope.
 
 ```javascript
 const PI = 3.14;
 ```
 
-Defining a **Const** means the value can not be changed. It is used, as it's name suggests, to define constants. **Const**, like **let**, also cannot be hoisted and it exhibits block scope as well as **functional** and **global** scope.
+**Define a variable globally**
 
-**3.4 Define globally**
+
+It is possible to declare a variable without using **var**, **let** or **const**. This will set the variable to the **global** scope, which means the variable is available everywhere in your application. 
 
 ```javascript
 name = 'Ted'; //same as window.name = 'Ted'
 x = 1; //same as window.x = 1
 ```
 
-It is possible to declare a variable without using **var**, **let** or **const**. This will set the variable to the **global** scope, which means the variable is available everywhere in your application. 
-
-
-
 > **Tip**
 
 >Defining a variable to the **global** scope is considered bad practice. The variable may be overwritten, and it can make your code less maintainable and testable.
 
 
-4. What is an Operator?
+Operators
 ------------------
 
 **4.1 Comparison Operators**
