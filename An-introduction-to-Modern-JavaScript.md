@@ -850,7 +850,9 @@ We have created two new functions. The **getInputValue()** function returns the 
 
 In our **script.js**, we now have functions to both collect information and render information in our web application. Next, we shall make our web app responsive
 
-**5.3 Adding responsiveness**
+**Adding responsiveness**
+
+We now need to give the user the ability to communicate to us that they have filled in all the information they wish to give us. We can do this by listening to a button being clicked.
 
 In **script.js**, add the following functions:
 
@@ -863,7 +865,7 @@ function listenToClick (id) {
 
 listenToClick('calculate');
 ``` 
-We have created a **listenToClick()** function to utilise the**addEventListener()** method. We pass the id of the **calculate button** as an argument and the function binds the a click event to the button.
+We have created a **listenToClick()** function to utilize the**addEventListener()** method. We pass the id of the **calculate button** as an argument and the function binds a click event to the button.
 
 ```javascript
 function getAll (el) {
@@ -877,9 +879,11 @@ function getAll (el) {
 
 When the **calculate button** is clicked, the **getAll()** function grabs the values from the **inputs** and **select**, combines them and then uses **render()** to write the value to the **result** div.
 
-The **preventDefault()** function prevents the browser invoking it's default behaviour, which is to post the input values and reload the page. The **el** is passed as an argument comes from **addEventListener()** function. 
+The **preventDefault()** function prevents the browser invoking its default behavior, which is to post the input values and reload the page. The **el** is passed as an argument comes from **addEventListener()** function. 
 
-**5.4 Calculation functionality**
+** Calculation functionality**
+
+Now we must build the guts of our web application. We have the operator and the operands. We now make the function that provides the ability to perform calculations.
 
 In **script.js**, add the following function:
 
@@ -910,6 +914,8 @@ The final **calculate()** function takes three arguments of a, b and operator. T
 The **Number()** function converts **a** and **b** from **string** data type into a **number** data type so that calculations can be performed. The calculated value is then returned.
 
 To view the web application, click on the **index.html**. Enter two numbers either side of the operator and click on the **calculate button**. The calculated value should be rendered on the page.
+
+[Screen shot for final rendered result]
 
 The complete **script.js** should look like:
 
@@ -966,9 +972,9 @@ function listenToClick (id) {
 listenToClick('calculate'); //We invoke our app
 ```
 
-**5.5 Refactoring**
+**Refactoring**
 
-Refactoring means that we tidy and minimise our code. It is important to limit repetition in your Javascript code. Your code should also be easy to read, re-useable and testable.
+Refactoring means that we tidy and minimize our code. It is important to limit repetition in your Javascript code. Your code should also be easy to read, re-useable and testable.
 
 We take each of our functions and add them to a containing **object literal** called **myApp**.
 
