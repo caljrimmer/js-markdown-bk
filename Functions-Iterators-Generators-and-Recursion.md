@@ -86,59 +86,67 @@ console.log(surname) // ReferenceError
 When we are coding our web applications, we use scoping to allow us to control what each function can do and what variables are readable and writable.
 
 ```javascript
-function giveOrder (who, what) {
-	who.role = what;
-	return who;
+let soldierRole = "Obeys all orders";
+
+function giveOrder (who, newRole) {
+	who = newRole;
 }
 
-let Soldier = {
-	name: 'Jones',
-	role: 'Obeys orders'
-}
+giveOrder(soldierRole, "Peel potatoes");
+```
 
-giveOrder (Sergeant, 'Peel potatoes'); //ReferenceError: Sergeant is not defined
-giveOrder (Major, 'Peel potatoes'); //ReferenceError: Major is not defined
+We have create a function called **giveOrder()** that amends the  **soldierRole**. The **soldierRole** variable and **giveOrder()** function are both defined in the **global scope**. The **giveOrder()** function can read and write to the **soldierRole**.
+
+```javascript
+
+let soldierRole = "Obeys all orders";
+
+function giveOrder (who, newRole) {
+	who = newRole;
+}
 
 function barracks () {
-	
-	let Sergeant = {
-		name: 'Smith',
-		role: 'Gives orders to Soldier'
-	}
-  
-	giveOrder (Soldier, 'Peel potatoes'); //returns {name: 'Jones', role: 'Peel potatoes'}
-	giveOrder (Major, 'Peel potatoes'); //ReferenceError: Major is not defined
-	
-	function officerMess () {
-	
-		let Major = {
-			name: 'Lee',
-			role: 'Gives orders to Sergeant and Soldier'
-		}
-		
-		giveOrder (Soldier, 'Peel potatoes'); //returns {name: 'Jones', role: 'Peel potatoes'}
-		giveOrder (Sergeant, 'Peel potatoes'); //returns {name: 'Peel', role: 'Peel potatoes'}
-		
-	}();
-}();
+	let sergeantRole = "Gives orders to Soldier";
+	giveOrder(soldierRole, "Peel potatoes");
+	giveOrder(sergeantRole, "Peel potatoes");
+}
+
+giveOrder(sergeantRole, "Peel potatoes"); //Reference Error
+```
+
+Now we define a **barracks()** function and inside this function, we define a **sergeantRole** variable. Inside the **barracks()** function, we can access the **giveOrder()** function and **soldierRole** variable because they are **globally scoped**. 
+
+Inside the **barracks()** function, we can give orders to the **soldierRole** and the **sergeantRole**. Outside the **barracks()**, we can only give orders to the **soldierRole**. The **sergeantRole** variable is functionally scoped.
+
+```javascript
+let SoldierRole = "Obeys all orders";
+function barracks () {
+	let SergeantRole = "Gives orders to Soldier";
+	function officersMess () {
+		let MajorRole = "Gives orders to Sergeant and Soldier";
+		giveOrder (SoldierRole, "Peel potatoes");
+		giveOrder (SergeantRole, "Peel potatoes");
+		giveOrder (MajorRole, "Peel potatoes");		
+	};
+	giveOrder (majorRole, "Peel potatoes"); //Reference Error
+};
+giveOrder (sergeantRole, "Peel potatoes"); //Reference Error
 
 ```
 
-In the example above, we define three variables **Soldier**, **Sergeant** and **Major**. We have a global scoped function called **giveOrders()**.
+In the example above, we define another function called **officersMess()** which exists inside the **barracks()**.
 
-**Soldier** is defined outside all functions and is accessible and amendable everywhere.
+The **majorRole** variable is defined inside the innermost **officerMess()** function. The **majorRole** variable has functional scope to the **officersMess()** function. It is not possible for function outside the **officersMess()** to read or write to the **majorRole** variable.
 
-**Sergeant** is defined inside the first **barracks()** function and is accessible to everything inside this function but inaccessible outside it.
-
-**Major** is defined inside the innermost **officerMess()** function and is accessible to everything inside this function but inaccessible outside it.
-
-A simple rule of thumb is that the innermost defined function, i.e. anything inside the **officerMess()**, can access and amend everything outside it.
-
-In our example,  any function in the **officerMess()** has the greatest ability to inform variables, then function in the **barracks()** and finally anything outside that.
+A simple rule of thumb is that the innermost defined function, i.e. the **officerMess()** function, can access and amend everything outside it.
 
 If we try and invoke the **giveOrders()** function with a variable whilst in the wrong scope, the browser will throw a **ReferenceError**.
 
-We can use scope to organise our applications and provide protection to our variables being accidentally overwritten. 
+When we define a function inside a function, we create a **closure**. An inner function has access to read and write to all outer functions and variables.
+
+**Closures**
+
+
 
 **2.6 Functions**
 
