@@ -531,7 +531,9 @@ x = 1; //same as window.x = 1
 Operators
 ------------------
 
-**4.1 Comparison Operators**
+Operators are used to make comparisons, do arithmetic or add logic to data types and values. They are used extensively in javascript to construct statements in your functions. 
+
+**Comparison Operators**
 
 Comparison operators are used in statements to determine equality or difference between values. The response is a **boolean** (i.e. true or false).
 
@@ -630,7 +632,7 @@ yourTeam('blue') // returns Everton
 yourTeam('green') // returns No suggestion
 ```
 
-**4.2 Logical Operators**
+**Logical Operators**
 
 Logical operators are used to combine comparison operators. The response is generally a **boolean** (i.e. true or false).
 
@@ -692,9 +694,9 @@ yourTeam('blue') // returns Everton
 yourTeam('green') // returns No suggestion
 ```
 
-**4.3 Arithmetic Operators**
+**Arithmetic Operators**
 
-**Arithmetic** operators are perform **arithmetic** operations on operands.  The **number** data type utilises **arithmetic** operators.
+**Arithmetic** operators are performing **arithmetic** operations on operands.  The **number** data type utilizes **arithmetic** operators.
 
 Operator | Description 
 ------- | -------------
@@ -730,18 +732,18 @@ let string1 = "Hello" + " World";
 
 ```
 
-5. Creating a simple calculator web application
------------------------------------------
+Creating a web application
+--------------------------------
 
 A web application consists of **HTML**, **CSS** and **Javascript**. 
 
 **HTML** (Hyper Text Markup Language) provides the scaffolding of the page. **HTML** provides a library of tags that are used as containers for content. **HTML** links to all the **CSS** and **Javascript** files in your application.
 
-**CSS** (Cascading Style Sheets) provides the styling of the page. **CSS** associates styles to **HTML** tags.  **CSS** can amend fonts, colours, margins, padding, height, width, images and positions. **CSS** can also provide provide animation.
+**CSS** (Cascading Style Sheets) provides the styling of the page. **CSS** associates styles to **HTML** tags.  **CSS** can amend fonts, colors, margins, padding, height, width, images and positions. **CSS** can also provide provide animation.
 
-**Javascript** is what makes a web page dynamic and responsive to the user. **Javascript** turns static content in to a tool. Javascript is what turns a website into a web application
+**Javascript** is what makes a web page dynamic and responsive to the user. **Javascript** turns static content into a tool. Javascript is what turns a website into a web application
 
-**5.1 Get Started** 
+**Get Started** 
 
 To make a web application, we will need a text-editor to write the code. Any text editor would work (i.e. Notepad or TextEdit) but there are a number of excellent free options that will help you draft code more efficiently. 
 
@@ -824,7 +826,9 @@ To view the web application, click on the **index.html** file to open it in a br
 
 [ScreenShot of Simple Calculator App in Browser]
 
-**5.2 Getting values from inputs and select**
+**Getting values from inputs and select**
+
+When we are creating a web application, we need to capture information entered by the user. We can use **inputs** and **selects** to provide areas for the user to interact with.
 
 In **script.js**, add the following functions:
 
