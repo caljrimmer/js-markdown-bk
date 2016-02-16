@@ -114,7 +114,9 @@ function barracks () {
 giveOrder(sergeantRole, "Peel potatoes"); //Reference Error
 ```
 
-Now we define a **barracks()** function and inside this function, we define a **sergeantRole** variable. Inside the **barracks()** function, we can access the **giveOrder()** function and **soldierRole** variable because they are **globally scoped**. 
+Now we define a **barracks()** function and inside this function, we define a **sergeantRole** variable. 
+
+Inside the **barracks()** function, we can access the **giveOrder()** function and **soldierRole** variable because they are **globally scoped**. 
 
 Inside the **barracks()** function, we can give orders to the **soldierRole** and the **sergeantRole**. Outside the **barracks()**, we can only give orders to the **soldierRole**. The **sergeantRole** variable is functionally scoped.
 
@@ -124,13 +126,11 @@ function barracks () {
 	let SergeantRole = "Gives orders to Soldier";
 	function officersMess () {
 		let MajorRole = "Gives orders to Sergeant and Soldier";
-		giveOrder (SoldierRole, "Peel potatoes");
-		giveOrder (SergeantRole, "Peel potatoes");
 		giveOrder (MajorRole, "Peel potatoes");		
 	};
-	giveOrder (majorRole, "Peel potatoes"); //Reference Error
+	giveOrder (sergeantRole, "Peel potatoes");
 };
-giveOrder (sergeantRole, "Peel potatoes"); //Reference Error
+giveOrder (soldierRole, "Peel potatoes");
 
 ```
 
@@ -142,7 +142,7 @@ A simple rule of thumb is that the innermost defined function, i.e. the **office
 
 If we try and invoke the **giveOrders()** function with a variable whilst in the wrong scope, the browser will throw a **ReferenceError**.
 
-When we define a function inside a function, we create a **closure**. An inner function has access to read and write to all outer functions and variables.
+When we define a function inside a function, we create a **closure**.
 
 **Closures**
 
