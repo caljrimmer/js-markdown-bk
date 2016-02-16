@@ -1,13 +1,13 @@
 1. Scope
 ------------------
 
-The scope of a variable or function communicates where they are accessible in different areas of your code. You create scope by where you define a variable or function.
+The scope of a variable or function communicates where it is accessible in different areas of your code. You create scope by where you define a variable or function.
 
 There are 3 types of scope in Javascript:
 
  - **Global scope** - i.e. this is accessible from everywhere
  - **Local or Function scope** - i.e. this is accessible from within the same function
- - **Block scope** - i.e. this is accessible from inside the expression e.g. inside an **if()** statement 
+ - **Block scope** - i.e. this is accessible from inside the expression e.g. inside curly brackets **{}**. 
 
 **1.1 Global Scope**
 
@@ -30,7 +30,7 @@ When a variable or function is defined outside a bounding function, then it will
 
 >**Tip**
 
->Whilst it might seem useful to have **variables** accessible from everywhere, you should try and structure your code so you have as few **global scoped variables** as possible. your code will be easy to maintain and test your code, if you limit **global scoping**.
+>Whilst it might seem useful to have **variables** accessible from everywhere, you should try and structure your code so you have as few **global scoped variables** as possible. This will make your code will be easy to maintain and test your code.
 
 **1.2 Function Scope**
 
@@ -79,7 +79,7 @@ console.log(surname) // ReferenceError
 
 >Tip
 
->**Function scope** is just a javascript concept. In other coding languages **block scope** would include **functional scope** (as the both use curly brackets **{}**) thus making a redundant concept.
+>**Function scope** is just a javascript concept. In other coding languages **block scope** would include **functional scope** (as they both are defined inside curly brackets **{}**).
 
 
 We use scoping to allow us to control what each function can do. We make our function discrete and the variables defined in them private from other functions. 
