@@ -15,9 +15,17 @@ This book will take you, step by step, through everything you need to know to be
 
 >The latest version of Javascript,  ECMAScript 2015, also known as ES6, is a significant update to the language. It was the first update to the language since ES5 was standardised in 2009. All code examples in this book will utilise ES6 where appropriate. 
  
- 
+Intro
+-----
 
-1.  Javascript in the Browser
+The aim of this chapter is to introduce you to all the basic building blocks of javascript code. Everything you learn in this chapter will be used regularly when creating your web applications. 
+
+If you think of your web application as a house, then we will be looking at the raw materials (**data types**),  the bricks (**variables** and **constants**), the rooms (**functions**) and the electrics or plumbing (**operators**). 
+
+By the end of this chapter, you will have all you need to provide the foundations of both your javascript learning, but also the foundations needed to create modern web applications.
+
+
+1.  Running Javascript in the Browser
 ---------------------------------
 
 Javascript is designed to run as a scripting language in a host environment. The most common host environment is a **browser**.
@@ -67,7 +75,7 @@ So we have create a new function called **result()** that returns a value that w
 
 Time to look at **data types**.  There will be code example for each which you can use **Console** in **Chrome** to verify and experiment with.
 
-2. Data Types 
+2. What are Data Types? 
 -----------------------------
 
 Javascript allows you to define a data type of a value. This means you can tell Javascript whether a value is, for example, a **number** or **string**. 
@@ -1023,3 +1031,17 @@ myApp.start('calculate'); //We invokes our app
 ```
 
 Our simple web app is now  re-useable and contained. We have also removed any superfluous or repetitious code. We use the **this** keyword to be self-referential. We will discuss techniques we have used to refactor later in the book.
+
+Summary
+-----------
+
+In this chapter we have introduced all the fundamental building blocks need to start writing javascript code. These fundamental concepts will be used every single time you develop any web application. You will use them so often, that they will become second nature.
+
+We have introduced:
+
+ - How we can create containers for our data using **variables** and **constants**.
+ - How we can define our data using different **data types**.
+ - How **operators** to provide logic, arithmetic and comparisons to our data.
+ - How we can make **functions** which contain statements that perform operations on our data and then return the result.
+ - How we can use an **object literal** to contain our javascript code.
+ - Finally, we combined all these concepts into a simple calculator web application.
