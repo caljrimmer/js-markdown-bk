@@ -146,70 +146,77 @@ When we define a function inside a function, we create a **closure**.
 
 **Closures**
 
+The definition of a closure is:
 
+> A function with a function, where the inner function has access to the variables and functions defined in the outer function.
 
-**2.6 Functions**
+Closures allow us to create a new way to contain our web application that is superior to using **object literals**. 
 
-Functions are building blocks in JavaScript. A function is a JavaScript procedure, a set of statements that performs a task or calculates a value.
+From the previous chapter, we demonstrated we could wrap our applications in an **object literal**.
 
 ```javascript
-function subtract (a,b) {
-	return a - b;
+let myApp = {
+    text : 'App Started',
+    start : function (){
+        return this.text;
+    }
 }
+myApp.start(); //returns "App started"
+```
+The disadvantage to this approach is that all the properties of **myApp** are amendable at any time, anywhere in your code. For example:
 
-const multiple = function (a,b) {
-	return a * b;
-}
-
-//Fat Arrow
-const add = (a,b) => {
-	return a + b;
-}
-
-add(2,4); //returns 6
-subtract(6,2); //returns 4
-multiple(2,2); //returns 4
+```javascript
+myApp.text = 'Hacky text';
+myApp.start(); //returns "Hacky text"
 ```
 
-We can create a **function** in a few different ways. In each case we must define what arguments the **function** expects with parentheses ().  The **function** statements are enclosed in curly brackets {}
+This is acceptable when you're the only developer working on the code but the this approach can become unmanageable quickly if properties and methods are being amended with no structure or process.
 
-In the example, we define 3 functions for adding, subtracting and multiplying. In each can we define the arguments a and b, do an operation on them, and then return result.
-
-It is possible to define a function but not pass it arguments.
+**Closures** allow us to create structure and enforce process. Take the following code as an example:
 
 ```javascript
-function staticAdd () {
-	return 10 + 6;
-}
-
-staticAdd(); //returns 16
-```
-
-It is possible to define a function within a function
-
-```javascript
-function internalAdd (a,b) {
-	function add (a,b) {
-		return a + b;
+let myApp = function () {
+	const privateText = "App Started";
+	function start () {
+		return privateText;
 	}
-	return add(a,b) * 2;
-}
+	return {
+		start : start
+	}
+}();
 
-internalAdd(2,4); //returns 12
+myApp.start(); //returns "App Started"
+console.log(privateText) // Reference Error
 ```
 
-A function can also return a function
+We define a function called **myApp** and within that function we define another function called **start()**. We have created a **closure**. We have also defined a variable called **privateText** which is not accessible outside the **myApp()** function.
+
+The trailing parentheses **()** mean the function is immediately invoked. That means the function executes immediately to define **myApp**.
+
+We expand our example to create public and private methods, and public and private properties.
 
 ```javascript
-function dynamic (a) {
-	return function (b) {
-		return a * b;
-	};
-}
+const myApp = function () {
+	const privateText = "Prefix-";
+	const publicText = "Text";
+	
+	function privateMethod () {
+		return privateText;
+	}
+	
+	function publicMethod () {
+		return privateMethod() + this.publicText;
+	}
+	
+	return {
+		publicMethod : publicMethod,
+		publicText : publicText
+	}
+}();
 
-const multiplyBy2 = dynamic(2);
-multiplyBy2(4); //returns 8
-
-const multiplyBy4 = dynamic(4);
-multiplyBy4(4); //returns 16
+myApp.publicMethod(); //returns "Prefix-Text"
+myApp.publicText = "Overwrite";
+myApp.publicMethod(); //returns "Prefix-Overwrite"
 ```
+
+We have now created a container for our web application that allows us to expose just the methods and properties that are necessary.
