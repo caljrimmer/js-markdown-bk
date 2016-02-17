@@ -120,7 +120,7 @@ word.substr(0,5);//returns marve
  
  - **length** returns the number of characters in a string
  - **toUpperCase()** returns the string in uppercase characters
- - **substr()** return a the first 5 characters.
+ - **substr()** returns the first 5 characters.
 
 
 **Booleans**
