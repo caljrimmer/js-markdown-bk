@@ -230,7 +230,7 @@ const object = {
 	name : "Ted",
 	count : 1,
 	isChecked : true,
-	list : ['blue','red','yellow'],
+	list : ["blue","red","yellow"],
 	addToCount : function () {
 		return this.count + 1;
 	},
