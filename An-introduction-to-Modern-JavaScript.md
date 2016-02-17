@@ -143,7 +143,7 @@ function toggleChecked (isChecked) {
 toggleChecked(true) // returns false;
 ```
 
-In the example, we have created a **toggleChecked()** function to toggle a value from true to false and back again.
+In the example, we have created a **toggleChecked()** function to toggle a value from *true* to *false* and back again.
 
 **Numbers**
 
