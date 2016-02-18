@@ -255,8 +255,26 @@ In the above example, both functions preform the same task. They return x.
 
 In **notHoisted()** we declare **x**, then assign **x** a value of 1 and return **x**.
 
-In **hoisted()** we assign **x** a value of 1, then return **x** and finally declare **x**. This looks like it should not work. You would expect an Reference Error, as **x** is not declared. 
+In **hoisted()** we assign **x** a value of 1, then return **x** and finally declare **x**. This looks like it should not work. You would expect an error, as **x** is not declared. 
 
 Javascript will always move the declaration of a variable to the top of a function at run time. This is called **hoisting**.
 
-To avoid **hoisting**, we simply always declare our variables at the top of our code. This makes you code easy to read and perform as you expect.
+**Hoisting** is a little different with **var**, than it is with **let** or **const**. If we initialize and declare a variable at the same time (rather than just declare like the previous example), then we get slightly different errors.
+
+```javascript
+function() {
+    x; // undefined
+    y; // Reference error: y is not defined
+    z; // Reference error: z is not defined
+
+    var x = "local";
+    let y = "local";
+    const z = "local";
+}
+```
+
+To avoid having to worry about **hoisting**, we simply always declare our variables at the top of our code.
+
+>Tip
+
+>Always declare your variables (**var**, **let** or **const**) at the top of your functions. this makes your code easier to read and perform as expected. 
