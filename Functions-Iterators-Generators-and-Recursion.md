@@ -6,7 +6,7 @@ Functions are objects that are invokable with **()** parentheses. A function is 
 
 In order to be able to write functions that work as expected, it is important to understand some of the fundamental expectations of javascript with respect to functions.
 
-We shall look at **scope**, **closures**, **hoisting**, **methods** and **defining our functions**.
+We shall look at **scope**, **closures**, **hoisting** and **methods**
 
 **Scope**
 
@@ -309,3 +309,40 @@ object.add(1,2) //returns 3
 ```
 
 The **add(**) function does the same task as the **object.add()** method. The only difference is that the method defined as the property of an object.
+
+Defining functions
+---------------------
+
+Functions can be define in a several different ways. In this section, we shall look at what ways we can define functions and what difference that can make to how our functions work.
+
+**Anonymous function** 
+
+An **anonymous function** is a function defined without a name.
+
+```javascript
+function () {
+	return "I am an Anonymous Function";
+}
+```
+This, in its current context, is rather useless. We can't refer to the function and we haven't invoked it.
+
+```javascript
+function () {
+	return "I am an Anonymous Function";
+}() //returns "I am an Anonymous Function"
+```
+
+If we invoke the **anonymous function** immediately by add trailing **()** parentheses, then it will return a value. This makes it useful for doing a task once.
+
+**Anonymous function** can also be passed in callbacks or as event handlers. For example:
+
+```javascript
+el.addEventListener("click", function () {
+	return "I was Clicked";
+})
+```
+
+In this example,  we pass an **anonymous function** which returns a string when the element is clicked. We do not need to re-use this function outside the click event. If we use an **anonymous function**, it mean we have to write less code.
+
+
+
