@@ -344,5 +344,59 @@ el.addEventListener("click", function () {
 
 In this example,  we pass an **anonymous function** which returns a string when the element is clicked. We do not need to re-use this function outside the click event. If we use an **anonymous function**, it mean we have to write less code.
 
+**Function declaration**
 
+A **function declaration** is a named **anonymous function**.
 
+```javascript
+function add (a,b) {
+	return a + b;
+}
+
+add(2,3) //returns 5
+```
+
+A **function declaration**, like an **anonymous function**, can be immediately invoked but can also be re-used:
+
+```javascript
+function add (a,b) {
+	return a + b;
+}(1,2) // returns 3
+
+add(3,5) //returns 8
+```
+
+Note that we pass the arguments in the trailing parentheses **()** when we invoke the function immediately. 
+
+We can reuse the **add()** function whenever we like.
+
+**Function constructor**
+
+We can make a function using the **Function()** constructor function.
+
+```javascript
+const add = new Function('a', 'b', 'return a + b');
+```
+We provide the **Function()** constructor with our arguments (**a,b**) and the function body as a string. Any number of arguments can be passed aslong as the function body is the last argument in
+
+**Assign a function to variable**
+
+A function can be assigned to a variable. 
+
+```javascript
+const add = function (a,b) {
+	return a + b;
+}
+
+const subtract = function subtract (a,b) {
+	return a - b;
+}
+
+const multiple = new Function('a', 'b', 'return a * b');
+
+add(1,3); //returns 4
+subtract(3,1); //returns 2
+multiple(2,2) //returns 4
+```
+
+When a function is assigned to a variable, it works the same as a **function declaration**. We can immediately invoke it, or re-use at a later point.
