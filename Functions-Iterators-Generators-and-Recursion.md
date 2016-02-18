@@ -6,6 +6,8 @@ Functions are objects that are invokable with **()** parentheses. A function is 
 
 In order to be able to write functions that work as expected, it is important to understand some of the fundamental expectations of javascript with respect to functions.
 
+We shall look at **scope**, **closures**, **hoisting**, **methods** and **defining our functions**.
+
 **Scope**
 
 Scope defines what a function has access to for reading, writing or invoking. You create scope by where you initially define a variable or function.
