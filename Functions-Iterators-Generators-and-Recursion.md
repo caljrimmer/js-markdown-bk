@@ -1,3 +1,7 @@
+What is a Method?
+----------------------
+
+
 Understanding Functions
 ------------------------------
 
@@ -257,15 +261,15 @@ function hoisted() {
 notHoisted(); //returns 1
 hoisted(); //returns 1
 ```
-In the above example, both functions preform the same task. They return x. 
+In the above example, both functions preform the same task. They return **x**. 
 
 In **notHoisted()** we declare **x**, then assign **x** a value of 1 and return **x**.
 
-In **hoisted()** we assign **x** a value of 1, then return **x** and finally declare **x**. This looks like it should not work. You would expect an error, as **x** is not declared. 
+In **hoisted()** we assign **x** a value of 1, then return **x** and finally declare **x**. This looks like it should not work. You would expect an error, as **x** is not declared when we return it.
 
 Javascript will always move the declaration of a variable to the top of a function at run time. This is called **hoisting**.
 
-**Hoisting** is a little different with **var**, than it is with **let** or **const**. If we initialize and declare a variable at the same time (rather than just declare like the previous example), then we get slightly different errors.
+**Hoisting** is a little different with **var**, than it is with **let** or **const**. If we initialize (assign a value) and declare a variable at the same time, then we get slightly different errors.
 
 ```javascript
 function() {
