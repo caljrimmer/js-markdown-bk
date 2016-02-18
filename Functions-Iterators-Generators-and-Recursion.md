@@ -237,7 +237,7 @@ We have now created a container for our web application that allows us to expose
 
 **Hoisting**
 
-Hoisting is not so much a concept but more of a feature of javascript to beware of. It is important to understand hoisting so that you don't create obscure bugs in your code.
+Hoisting is not so much a concept but more of a feature of javascript to beware of. It is important to understand hoisting so that you don't create bugs in your code.
 
 Hoisting is JavaScript's default behavior of moving variable declarations to the top of a functional block. 
 
