@@ -198,25 +198,31 @@ We expand our example to create public and private methods, and public and priva
 ```javascript
 const myApp = function () {
 	const privateText = "Prefix-";
-	const publicText = "Text";
+	let publicText = "Text";
 	
-	function privateMethod () {
-		return privateText;
+	function setPublicText (newText) {
+		publicText = newText;
 	}
 	
-	function publicMethod () {
-		return privateMethod() + this.publicText;
+	function getAllText () {
+		return privateText + this.publicText;
 	}
 	
 	return {
-		publicMethod : publicMethod,
-		publicText : publicText
+		getAllText : getAllText,
+		setPublicText : setPublicText
 	}
 }();
 
-myApp.publicMethod(); //returns "Prefix-Text"
-myApp.publicText = "Overwrite";
-myApp.publicMethod(); //returns "Prefix-Overwrite"
+myApp.getAllText(); //returns "Prefix-Text"
+myApp.setPublicText("Overwrite");
+myApp.getAllText(); //returns "Prefix-Overwrite"
 ```
 
-We have now created a container for our web application that allows us to expose just the methods and properties that are necessary.
+In the above example, we allow the **publicText** to be amended with the **setPublicText()**, and the **publicText** and **privateText** to be returned with **getAllText()**.  We cannot edit the **privateText**.
+
+We have now created a container for our web application that allows us to expose just the methods and properties that are appropriate.
+
+>Tip
+
+>When we immediately invoke a function, i.e. **function(){}()**, it is called an **Immediately-Invoked Function Expression** or **IIFE**. **IIFEs** are useful for creating self contained code blocks.
