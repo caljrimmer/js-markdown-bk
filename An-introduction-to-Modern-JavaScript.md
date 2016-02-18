@@ -496,18 +496,17 @@ z = x + y; // z equals 3
 
 **Defining a variable as a let**
 
-Defining **let** is similar to a **var** declaration. **Let**, unlike **var**, cannot be **hoisted** and it also exhibits **block** scope as well as **functional** and **global** scope. 
+Defining **let** is similar to a **var** declaration. **Let**, unlike **var**,   exhibits **block** scope as well as **functional** and **global** scope. 
 
 ```javascript
 let sentence;
 let name = "Ted";
 sentence = "My name is " + y; // sentence equals "My name is Ted"
 ```
-We hoisting in detail later in the book. 
 
 **Defining a variable as a const**
 
-Defining a **Const** means the value can not be changed. It is used, as it's name suggests, defining constants. **Const**, like **let**, also cannot be hoisted and it exhibits block scope as well as **functional** and **global** scope.
+Defining a **Const** means the value can not be changed. It is used, as it's name suggests, defining constants. **Const**, like **let**, also exhibits **block** scope as well as **functional** and **global** scope.
 
 ```javascript
 const PI = 3.14;
