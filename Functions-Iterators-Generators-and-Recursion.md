@@ -170,7 +170,7 @@ myApp.text = 'Hacky text';
 myApp.start(); //returns "Hacky text"
 ```
 
-This is acceptable when you're the only developer working on the code but the this approach can become unmanageable quickly if properties and methods are being amended with no structure or process.
+This is acceptable when you're the only developer working on the code but the this approach can become unmanageable in bigger teams. Properties and methods can be amended with no structure or process. This will result in the code becoming brittle.
 
 **Closures** allow us to create structure and enforce process. Take the following code as an example:
 
@@ -189,7 +189,9 @@ myApp.start(); //returns "App Started"
 console.log(privateText) // Reference Error
 ```
 
-We define a function called **myApp** and within that function we define another function called **start()**. We have created a **closure**. We have also defined a variable called **privateText** which is not accessible outside the **myApp()** function.
+We define a function called **myApp** and within that function we define another function called **start()**. We return an object that contains the exposed **start()** function.
+
+We have created a **closure**. We have also defined a variable called **privateText** which is not accessible outside the **myApp()** function.
 
 The trailing parentheses **()** mean the function is immediately invoked. That means the function executes immediately to define **myApp**.
 
@@ -226,3 +228,37 @@ We have now created a container for our web application that allows us to expose
 >Tip
 
 >When we immediately invoke a function, i.e. **function(){}()**, it is called an **Immediately-Invoked Function Expression** or **IIFE**. **IIFEs** are useful for creating self contained code blocks.
+
+**Hoisting**
+
+Hoisting is not so much a concept but more of a feature of javascript to beware of. It is important to understand hoisting so that you don't create obscure bugs in your code.
+
+Hoisting is JavaScript's default behavior of moving variable declarations to the top of a functional block. 
+
+```javascript
+function notHoisted() {
+	var x;
+	x = 1;
+	return x;
+}
+
+function hoisted() {
+	x = 1;
+	return x;
+	var x;
+}
+
+notHoisted(); //returns 1
+hoisted(); //returns 1
+```
+In the above example, both functions preform the same task. They return x. 
+
+In **notHoisted()** we declare **x**, then assign **x** a value of 1 and return **x**.
+
+In **hoisted()** we assign **x** a value of 1, then return **x** and finally declare **x**. This looks like it should not work. You would expect an Reference Error, as **x** is not declared. 
+
+Javascript will always move the declaration of a variable to the top of a function at run time. This is called **hoisting**.
+
+To avoid **hoisting**, we simply always declare our variables at the top of our code. This makes you code easy to read and perform as you expect.
+
+Hoisting doesn't effect **let** and **const**
