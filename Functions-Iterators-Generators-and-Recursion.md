@@ -1,13 +1,10 @@
-What is a Method?
-----------------------
-
 
 Understanding Functions
 ------------------------------
 
 Functions are objects that are invokable with **()** parentheses. A function is a set of statements that perform a task. 
 
-In order to be able to write functions that work as expected, it is important to understand some fundamental expectations in javascript 
+In order to be able to write functions that work as expected, it is important to understand some of the fundamental expectations of javascript with respect to functions.
 
 **Scope**
 
@@ -288,3 +285,25 @@ To avoid having to worry about **hoisting**, we simply always declare our variab
 >Tip
 
 >Always declare your variables (**var**, **let** or **const**) at the top of your functions. this makes your code easier to read and perform as expected. 
+
+**What is the difference between a method and a function?**
+
+A method is just a function that exists as a property of an object. 
+
+```javascript
+
+function add (a, b) {
+	return a + b;
+}
+
+const object = {
+	add : function (a, b) {
+		return a + b;
+	}
+}
+
+add(1,2) //returns 3
+object.add(1,2) //returns 3
+```
+
+The **add(**) function does the same task as the **object.add()** method. The only difference is that the method defined as the property of an object.
