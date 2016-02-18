@@ -1,7 +1,13 @@
-1. Scope
-------------------
+Understanding Functions
+------------------------------
 
-The scope of a variable or function communicates where it is accessible in different areas of your code. You create scope by where you define a variable or function.
+Functions are objects that are invokable with **()** parentheses. A function is a set of statements that perform a task. 
+
+In order to be able to write functions that work as expected, it is important to understand some fundamental expectations in javascript 
+
+**Scope**
+
+Scope defines what a function has access to for reading, writing or invoking. You create scope by where you initially define a variable or function.
 
 There are 3 types of scope in Javascript:
 
@@ -30,13 +36,13 @@ When a variable or function is defined outside a bounding function, then it will
 
 >**Tip**
 
->Whilst it might seem useful to have **variables** accessible from everywhere, you should try and structure your code so you have as few **global scoped variables** as possible. This will make your code will be easy to maintain and test your code.
+>Whilst it might seem useful to have **variables** accessible from everywhere, you should try and structure your code so you have as few **global scoped variables** as possible. This will make your code easier to maintain and to test.
 
 **Function Scope**
 
 ```javascript
 function printName (surname) {
-	let firstname = 'Edward'; //Function scoped
+	const firstname = 'Edward'; //Function scoped
 	return firstname + ' ' + surname; 
 }
 
@@ -44,7 +50,7 @@ printName("Smith") // returns "Edward Smith"
 console.log(firstname) // ReferenceError
 ```
 
-In the example, we have define a **firstname** inside a **function**, then it will be in **function scoped**. This is only accessible inside the function and not outside it.  If we try to access **firstname** outside the function, we will get a reference error.
+In the above example, we have define a **firstname** inside a **function**, then it will be in **functional scope**. This is only accessible inside the function and not outside it.  If we try to access **firstname** outside the function, we will get a reference error.
 
 **Block Scope**
 
@@ -79,7 +85,7 @@ console.log(surname) // ReferenceError
 
 >Tip
 
->**Function scope** is just a javascript concept. In other coding languages **block scope** would include **functional scope** (as they both are defined inside curly brackets **{}**).
+>**Functional scope** is just a javascript concept. In other coding languages **block scope** would include **functional scope** (as they both are defined inside curly brackets **{}**).
 
 **Using scope in a web application**
 
@@ -88,8 +94,8 @@ When we are coding our web applications, we use scoping to allow us to control w
 ```javascript
 let soldierRole = "Obeys all orders";
 
-function giveOrder (who, newRole) {
-	who = newRole;
+function giveOrder (currentRole, newRole) {
+	currentRole = newRole;
 }
 
 giveOrder(soldierRole, "Peel potatoes");
@@ -101,8 +107,8 @@ We have create a function called **giveOrder()** that amends the  **soldierRole*
 
 let soldierRole = "Obeys all orders";
 
-function giveOrder (who, newRole) {
-	who = newRole;
+function giveOrder (currentRole, newRole) {
+	currentRole = newRole;
 }
 
 function barracks () {
