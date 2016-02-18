@@ -260,5 +260,3 @@ In **hoisted()** we assign **x** a value of 1, then return **x** and finally dec
 Javascript will always move the declaration of a variable to the top of a function at run time. This is called **hoisting**.
 
 To avoid **hoisting**, we simply always declare our variables at the top of our code. This makes you code easy to read and perform as you expect.
-
-Hoisting doesn't effect **let** and **const**
