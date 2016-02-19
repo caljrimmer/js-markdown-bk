@@ -39,8 +39,6 @@ To begin:
 
 ![alt text](https://github.com/caljrimmer/js-markdown-bk/blob/master/assets/chrome_console.png "Chrome Console")
 
-[ScreenShot of Chrome Developer Tools in Browser]
-
 You now have the **Chrome** developer tools open and we can write and test our first bit of Javascript.
 
 Let's try creating a simple pop-up with the text *hello*.
@@ -825,7 +823,7 @@ The **window.document.getElementById** function locates any element in the HTML 
 
 To view the web application, click on the **index.html** file to open it in a browser. You should see something like:
 
-[ScreenShot of Simple Calculator App in Browser]
+![alt text](https://github.com/caljrimmer/js-markdown-bk/blob/master/assets/calculator_start.png "Calculator Start")
 
 **Getting values from inputs and select**
 
@@ -916,7 +914,7 @@ The **Number()** function converts **a** and **b** from **string** data type int
 
 To view the web application, click on the **index.html**. Enter two numbers either side of the operator and click on the **calculate button**. The calculated value should be rendered on the page.
 
-[Screen shot for final rendered result]
+![alt text](https://github.com/caljrimmer/js-markdown-bk/blob/master/assets/calculator_result.png "Calculator Result")
 
 The complete **script.js** should look like:
 
