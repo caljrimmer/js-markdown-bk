@@ -481,7 +481,7 @@ Iteration is when a process or sequence repeated. In javascript, we commonly ite
 
 
 
-**Iterating over an array**
+**Iterating over items in an array**
 
 Javascript gives us both native functions and Array prototypal methods (i.e. methods that exist on the array data type) to iterate over arrays.
 
@@ -565,4 +565,4 @@ const ages = people.map((person) => {
 }); //returns [32,18]
 ```
 
-**Map()** means you can transform an array in to another array. In the example above, we pick the ages from the **people** collection and return a simple **ages** array.
+**Map()** allows you can transform an array into another array. In the example above, we pick the ages from the **people** collection and return a simple **ages** array.
