@@ -479,7 +479,37 @@ Iteration is when a process or sequence repeated. In javascript, we commonly ite
 
 **Iterating a set number of times**
 
+Sometimes we may want to perform a task a set number of times. For example, we might want to just select 3 items from a larger list of items or keep iterating until some condition is met.
 
+**while and do while loops**
+
+A wile loop checks a condition and then runs through the loop if met.
+
+```javascript
+let check = true;
+let string = "The count is:";
+let x = 0;
+while (check) {
+	x++;
+	string += x;
+	if(x < 3) {
+		check = false;	
+	}
+}
+```
+
+**Do while** loops are similar to **while** loops but the condition is checked after the loop.
+
+```javascript
+let i = 0;
+let string = "The count is:";
+do {
+	i++;
+	string += i; 
+} while (i < 5); //string is "The count is:12345"
+
+```
+Our condition (**i <5**) happens after we run our loop rather than before. A **do while** loop is guaranteed to run at least once.
 
 **Iterating over items in an array**
 
