@@ -37,6 +37,8 @@ To begin:
  1. Open the **Chrome** browser
  2. Right click and select **Inspect**, and then click on **Console** tab
 
+[alt text](https://github.com/caljrimmer/js-markdown-bk/blob/master/assets/chrome_console.png "Chrome Console")
+
 [ScreenShot of Chrome Developer Tools in Browser]
 
 You now have the **Chrome** developer tools open and we can write and test our first bit of Javascript.
