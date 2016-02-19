@@ -471,3 +471,77 @@ There is no right way to define a function. You can choose whichever you feel be
  - **Anonymous function** are useful for wrapping your web applications (for functional scoping reasons) and when you don't wish to re-use the function
 
 In most web applications, you will see a mix of different ways to define functions. Your main concern is that you should be consistent in how you structure your code.
+
+Iteration
+----------
+
+Iteration is when a process or sequence repeated. In javascript, we commonly iterate through items in an array, iterate over properties in an object or just perform a task a number of times.
+
+**Iterating over an array**
+
+Javascript gives us both native functions and Array prototypal methods (i.e. methods that exist on the array data type) to iterate over arrays.
+
+**For statement**
+
+```javascript
+const fruits = ["banana","apple","orange"];
+
+for(let i = 0; i < fruits.length; i++) {
+	if(fruits[i] === "orange") {
+		window.alert("Array contains an Orange");
+	}
+}
+```
+
+This may look complicate initially. Let us break it down into all its elements and it will become easier to understand. 
+
+We define our **for** statement with an initial expression (**let i = 0**) - start with **i** to equal **0**. The condition (**i < fruits.length**) - keep looping over the array until we have no items left to loop over. Remember that the **length** attribute returns the number of items in an array. Finally, the increment expression (**i++**), increment **i** by one on each loop through.
+
+We have an **If()** statement that checks the value of the item (**fruits[i]**), and if it is **orange**, then we create a popup with the content of "Array contains an Orange".
+
+```javascript
+const fruits = ["banana","apple","orange"];
+
+fruits[0] //equals "banana"
+fruits[1] //equals "apple"
+fruits[2] //equals "orange"
+```
+
+We can pick any item of an array by adding the index (the numeric position in an array) to proceeding square brackets **[]**.
+
+**ForEach method**
+
+**Foreach()** is a method you have available when you define a data type of **array**.
+
+```javascript
+const fruits = ["banana","apple","orange"];
+
+fruits.forEach(function(fruit) {
+	if (fruit === "banana") {
+		window.alert("Array contains an Banana");
+	}
+}); //Using Anonymous Function
+
+fruits.forEach((fruit) => {
+	if (fruit === "banana") {
+		window.alert("Array contains an Banana");
+	}
+}); //Using Arrow Function
+```
+
+In the above example, we use the **forEach()** method to pick out each item in the array, and then pass the item to a function. We then check for the **banana** item and trigger a popup.
+
+**Foreach ()** is useful for dealing with collections (an array of objects).
+
+```javascript
+const people = [
+	{name:'Ted', age: 32 },
+	{name:'Fred', age: 18 }
+];
+
+people.forEach((person) => {
+	console.log(person.name); //returns "Ted" and then "Fred"
+});
+```
+
+We can access the properties of the people with dot notation (i.e. **person.name**).
