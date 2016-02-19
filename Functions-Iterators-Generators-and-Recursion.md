@@ -483,29 +483,32 @@ Sometimes we may want to perform a task a set number of times. For example, we m
 
 **while and do while loops**
 
-A wile loop checks a condition and then runs through the loop if met.
+A **while** loop checks a condition and then runs through the loop if met.
 
 ```javascript
 let check = true;
 let string = "The count is:";
 let x = 0;
+
 while (check) {
 	x++;
 	string += x;
-	if(x < 3) {
+	if(x > 3) {
 		check = false;	
 	}
-}
+} //string is "The count is:123"
 ```
+In this example, we have a condition test on the boolean **check**. If it is *true*, then we loop, if *false* then we stop. In the body of the **while** loop, we increment **x** and append the number to a **string**.
 
 **Do while** loops are similar to **while** loops but the condition is checked after the loop.
 
 ```javascript
 let i = 0;
 let string = "The count is:";
+
 do {
-	i++;
 	string += i; 
+	i++;
 } while (i < 5); //string is "The count is:12345"
 
 ```
