@@ -400,3 +400,74 @@ multiple(2,2) //returns 4
 ```
 
 When a function is assigned to a variable, it works the same as a **function declaration**. We can immediately invoke it, or re-use at a later point.
+
+**What is the difference between a method and a function?**
+
+A method is just a function that exists as a property of an object. 
+
+```javascript
+
+function add (a, b) {
+	return a + b;
+}
+
+const object = {
+	add : function (a, b) {
+		return a + b;
+	},
+	addTwice : function (a,b) {
+		return 2 * this.add(a,b);
+	}
+}
+
+add(1,2) //returns 3
+object.add(1,2) //returns 3
+object.addTwice(1,2) //returns 6
+```
+
+A method performs the same role as a function but is defined as a property on an object. A method allows us use the **this** keyword to be self-referential to its containing object. 
+
+**Arrow function**
+
+The latest javascript version, ES6, we have a new way to create a function.  The **arrow function** means you can express more whilst writing less code.
+
+```javascript
+(a,b) => {
+	return a + b;
+} //example of anonymous function
+
+const add = (a,b) => {
+	return a + b;
+} //example of variable defined function
+```
+
+**Arrow functions** don't need the function keyword, which is replaced with an arrow (**=>**).
+
+```javascript
+const multiplyBy2 = (num) => {
+	return num * 2;
+}
+
+const multiplyBy4 = num => num * 4;
+
+multiplyBy2(2); //returns 4
+multiplBy4(2); //returns 8 
+```
+In the above example, we can remove the **return** keyword and parentheses **()** but still perform the same task. **Arrow functions** allow us to do more, with less code. 
+
+The **arrow function** deals with **scope** and the **this** keyword differently than any other function definition. We shall address this later in the book.
+
+>Tip
+
+>The **Arrow function** can also be called **Fat Arrow**.
+
+**What is the best way to define a function?**
+
+There is no right way to define a function. You can choose whichever you feel best suits what you are trying to achieve. A function will always take arguments, run through the defined statements and then return the result. 
+
+ - **Methods** are used most when taking an object oriented approach to structuring your code
+ - **Function declarations** are useful if you are taking a functional programming approach to structuring your code
+ - **Arrow functions** are useful when you wish to limit the amount of code you write
+ - **Anonymous function** are useful for wrapping your web applications (for functional scoping reasons) and when you don't wish to re-use the function
+
+In most web applications, you will see a mix of different ways to define functions. Your main concern is that you should be consistent in how you structure your code.
