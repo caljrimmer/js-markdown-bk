@@ -477,6 +477,10 @@ Iteration
 
 Iteration is when a process or sequence repeated. In javascript, we commonly iterate through items in an array, iterate over properties in an object or just perform a task a number of times.
 
+**Iterating a set number of times**
+
+
+
 **Iterating over an array**
 
 Javascript gives us both native functions and Array prototypal methods (i.e. methods that exist on the array data type) to iterate over arrays.
@@ -545,3 +549,20 @@ people.forEach((person) => {
 ```
 
 We can access the properties of the people with dot notation (i.e. **person.name**).
+
+**Map method**
+
+The **map()** method, like the **foreach()** method, is a available to all array data types. **Map()** will iterate over an array, but unlike **foreach()**, will return an array back.
+
+```javascript
+const people = [
+	{name:'Ted', age: 32 },
+	{name:'Fred', age: 18 }
+];
+
+const ages = people.map((person) => {
+	return person.age;
+}); //returns [32,18]
+```
+
+**Map()** means you can transform an array in to another array. In the example above, we pick the ages from the **people** collection and return a simple **ages** array.
