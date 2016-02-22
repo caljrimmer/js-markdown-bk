@@ -763,9 +763,29 @@ In this example, we aren't providing a condition that stops recursion. The funct
 
 >You must always provide a condition that will be met when writing recursive functions. If not, you can crash the browser.
 
+**Recursion to calculate a factorial**
+
+A factorial is a product of an integer and all the integers below it.
+
+```javascript
+function factorial (n) {
+    if (n === 0) {
+        return 1
+    } else {
+        return n * factorial(n - 1);
+    }
+};
+
+factorial(3) //Returns 6 (e.g 3 * 2 * 1)
+factorial(4) //Returns 24 (e.g 4 * 3 * 2 * 1)
+factorial(5) //Returns 120 (e.g 5 * 4 * 3 * 2 * 1)
+```
+
+In the above example, we recursively call **factorial()** until the condition is met (**n ===0**) and then we return the result.
+
 **Recursion to calculate the Fibonacci sequence**
 
-The Fibonacci sequence is an idealized representation of a rabbit population. 
+The Fibonacci sequence was developed as an idealized representation of a rabbit population. 
 
 The assumption is a newly born pair of rabbits, one male, one female, are put in a field. The rabbits are able to mate at the age of one month so that at the end of its second month a female can produce another pair of rabbits;. The rabbits never die and a mating pair always produces one new pair. 
 
