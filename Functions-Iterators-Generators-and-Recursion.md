@@ -695,3 +695,29 @@ The **generator function** is defined with an asterisk (\*) and has one or more 
 
 We invoke the **countToThree()** generator function to the **count** constant. **Count** is now iterable. We can step through each iteration when we call **next()**. The returned object has a **value**, which is  yielded by the **generator** function, and a **done** boolean, which indicates if we have complete all yields.
 
+**Why use generator functions?**
+
+Generator functions initially can look cumbersome compared to simple **for** statements or **while** loops. Generators can be powerful when considering iterables that have no end.
+
+```javascript
+function *stateful(x) {
+    while(true) {
+        x = x * 2;
+        yield x;
+    }
+}
+
+const state = stateful(1);
+state.next(); // {value: 2, done: false}
+state.next(); // {value: 4, done: false}
+state.next(); // {value: 8, done: false}
+```
+
+In the above example, notice how the value of **x** is maintained on every **next()**.  We do not need to manage the value of **x** outside the generator function like we do with **for** statements and **while** loops.
+
+Our generator function has also created a potentially infinite iterable value, i.e., we will never reach **{ done : true }**. We have not had to define a huge array to iterate through, it has been created programmatically.
+
+Recursion
+------------
+
+
