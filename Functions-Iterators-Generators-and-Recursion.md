@@ -693,7 +693,9 @@ count.next(); //Returns {value: undefined, done: true}
 
 The **generator function** is defined with an asterisk (\*) and has one or more **yield** expressions.
 
-We invoke the **countToThree()** generator function to the **count** constant. **Count** is now iterable. We can step through each iteration when we call **next()**. The returned object has a **value**, which is  yielded by the **generator** function, and a **done** boolean, which indicates if we have complete all yields.
+We invoke the **countToThree()** generator function to the **count** constant. **Count** is now iterable. We can step through each iteration when we call **next()**. 
+
+The returned object has a **value**, which is  yielded by the **generator** function, and a **done** boolean, which indicates if we have complete all yields.
 
 **Why use generator functions?**
 
@@ -735,6 +737,31 @@ countdown(5); //Returns 5,4,3,2,1
 ```
 
 In the example above, we define a function called **countdown()**. **Countdown()** can re-invoke itself if a condition is met (**value > 0**) otherwise it just returns the result. **Countdown()** is a **recursive function**.
+
+**When to use recursion**
+
+Most **for** statements and **while** loops can be rewritten in a recursive style. **Recursive** functions can be used in many situations, it is most effective for:
+
+ - solving iterative mathematical problems (fibonacci, factorials)
+ - traversing the nodes of complex **object literals**.
+ - sorting large data sets
+
+**When to not use recursion**
+
+It is possible to crash the browser with incorrectly written recursive functions. 
+
+```javascript
+const countdown = function(value) {
+    return countdown(value - 1);
+};
+
+countdown(5); //Error Maximum call stack size exceeded
+```
+In this example, we aren't providing a condition that stops recursion. The function will keep running until the browser throws a **Maximum call stack size exceeded** error.
+
+>**Tip**
+
+>You must always provide a condition that will be met when writing recursive functions. If not, you can crash the browser.
 
 
 
