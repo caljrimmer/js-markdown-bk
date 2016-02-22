@@ -720,4 +720,21 @@ Our generator function has also created a potentially infinite iterable value, i
 Recursion
 ------------
 
+**Recursion** is a form of iteration where a **recursive** function repeatedly calls itself until it arrives at a result.
+
+```javascript
+const countdown = function(value) {
+    if (value > 0) {
+        return countdown(value - 1);
+    } else {
+        return value;
+    }
+};
+
+countdown(5); //Returns 5,4,3,2,1
+```
+
+In the example above, we define a function called **countdown()**. **Countdown()** can re-invoke itself if a condition is met (**value > 0**) otherwise it just returns the result. **Countdown()** is a **recursive function**.
+
+
 
