@@ -598,4 +598,100 @@ const ages = people.map((person) => {
 }); //returns [32,18]
 ```
 
-**Map()** allows you can transform an array into another array. In the example above, we pick the ages from the **people** collection and return a simple **ages** array.
+**Map()** allows you can transform an array into another array. In the example above, we pick the ages from the **people** collection and return an **ages** array.
+
+**Iterating through properties of an object**
+
+Often **objects literals** are structured in such a way to help retrieval of data. Object that have a objects as properties can be referred to as **nested objects**.
+
+**For in statement**
+
+The **for in** statements, unlike the **for** statement, is used with objects rather than arrays.
+
+```javascript
+const family = {
+	ted : {
+		age : 14,
+		gender : "male"
+	},
+	sally : {
+		age : 16,
+		gender : "female"
+	},
+	peter : {
+		age : 46,
+		gender : "male"
+	}
+};
+
+console.log(family.ted.age); //returns 14
+console.log(family.peter.gender); //returns male
+
+for (let person in family) {
+	console.log(person); //Returns ted,sally,peter
+	console.log(family[person].age) //Returns 14,16,46
+}
+
+```
+
+In the above example, we have defined an **object literal** called family. We use the **for in** loop to iterate over each of the top-level  properties of the object (ted, sally and peter) and exposes them as **person** in the **for** loop. 
+
+We can then use the **person** response to inspect the **family** object. Note how we can traverse the **family** object with **dot notation**
+
+>Tip
+
+>**Dot notation** (for example, **family.ted.age**) is used to navigate to data within the **nested object**. The dot is used to signify a property that exists on an object.
+
+**Getting keys from an object**
+
+We can turn the **keys** (properties) of an object in to an array and iterate through the new array to traverse an **object**.
+
+```javascript
+const family = {
+	ted : {
+		age : 14,
+		gender : "male"
+	},
+	sally : {
+		age : 16,
+		gender : "female"
+	},
+	peter : {
+		age : 46,
+		gender : "male"
+	}
+};
+
+const keys = Object.keys(family); //returns ["ted","sally","peter"] 
+
+keys.forEach((key) => {
+	console.log(family[key].age) //returns 14,16,46
+});
+```
+
+We have used the **Object.keys()** method to pick the top level property names from the **family** object and put them in an array called **keys**. We can then use the **forEach()** method to loop through the **keys** array and traverse the **family** object.
+
+Generator Functions
+------------------------------
+
+**Generator functions** are new to javascript in ES6. A generator function is used for defining an iterator that can maintain its own state. The generated iterator can also be paused and resumed.
+
+```javascript
+function *countToThree() {
+	yield 1;
+	yield 2;
+	yield 3;
+}
+
+const count = countToThree();
+
+count.next(); //Returns {value: 1, done: false}
+count.next(); //Returns {value: 2, done: false}
+count.next(); //Returns {value: 3, done: false}
+count.next(); //Returns {value: undefined, done: true}
+```  
+
+The **generator function** is defined with an asterisk (\*) and has one or more **yield** expressions.
+
+We invoke the **countToThree()** generator function to the **count** constant. **Count** is now iterable. We can step through each iteration when we call **next()**. The returned object has a **value**, which is  yielded by the **generator** function, and a **done** boolean, which indicates if we have complete all yields.
+
