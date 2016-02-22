@@ -740,10 +740,10 @@ In the example above, we define a function called **countdown()**. **Countdown()
 
 **When to use recursion**
 
-Most **for** statements and **while** loops can be rewritten in a recursive style. **Recursive** functions can be used in many situations, it is most effective for:
+Most **for** statements and **while** loops can be rewritten in a **recursive** style. **Recursive** functions are most effective for:
 
  - solving iterative mathematical problems (fibonacci, factorials)
- - traversing the nodes of complex **object literals**.
+ - traversing the nodes of complex **objects**.
  - sorting large data sets
 
 **When to not use recursion**
@@ -762,6 +762,38 @@ In this example, we aren't providing a condition that stops recursion. The funct
 >**Tip**
 
 >You must always provide a condition that will be met when writing recursive functions. If not, you can crash the browser.
+
+**Recursion to calculate the Fibonacci sequence**
+
+The Fibonacci sequence is an idealized representation of a rabbit population. 
+
+The assumption is a newly born pair of rabbits, one male, one female, are put in a field. The rabbits are able to mate at the age of one month so that at the end of its second month a female can produce another pair of rabbits;. The rabbits never die and a mating pair always produces one new pair. 
+
+The sequence, after twelve months, looks like:
+
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
+
+```javascript
+function fibonacci(n) {
+	if (n <= 1){
+	    return n;
+	} else {
+	    return fib(n-1) + fib(n - 2);
+	}
+}
+
+console.log(fib(9)); //Returns 34
+console.log(fib(11)); //Returns 89
+console.log(fib(12)); //Returns 144
+```
+
+The above **fibonacci()** takes an argument of the number of months and returns the number of rabbits.
+
+>**Tip**
+
+>We can improve this function by taking in to account **Tail Call Optimization** which improves the memory footprint of our recursive functions. We shall address this latter in the book.
+
+
 
 
 
