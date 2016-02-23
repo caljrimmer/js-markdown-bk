@@ -6,7 +6,22 @@ Functions are objects that are invokable with **()** parentheses. A function is 
 
 In order to be able to write functions that work as expected, it is important to understand some of the fundamental expectations of javascript with respect to functions.
 
-We shall look at **scope**, **closures**, **hoisting** and **methods**
+We shall look at **scope**, **closures**, **arguments**, **hoisting** and **methods**.
+
+**Arguments**
+
+Functions are passed parameters via the parentheses **()**. We can define the default value of parameters by:
+
+```javascript
+function add (a,b=10) {
+	return a + b;
+}
+
+add(5); //Returns 15;
+add(5,2); //Returns 7;
+```
+
+In the example above, we assign the **b** parameter a default value of 10 (**b=10**).  This default value can be overridden by passing a parameter when invoked.
 
 **Scope**
 
@@ -472,6 +487,7 @@ There is no right way to define a function. You can choose whichever you feel be
 
 In most web applications, you will see a mix of different ways to define functions. Your main concern is that you should be consistent in how you structure your code.
 
+
 Iteration
 ----------
 
@@ -671,10 +687,11 @@ keys.forEach((key) => {
 
 We have used the **Object.keys()** method to pick the top level property names from the **family** object and put them in an array called **keys**. We can then use the **forEach()** method to loop through the **keys** array and traverse the **family** object.
 
+
 Generator Functions
 ------------------------------
 
-**Generator functions** are new to javascript in ES6. A generator function is used for defining an iterator that can maintain its own state. The generated iterator can also be paused and resumed.
+**Generator functions** are new to javascript in ES6. A **generator function** is used for defining an iterator that can maintain its own state. The generated iterator can also be paused and resumed.
 
 ```javascript
 function *countToThree() {
