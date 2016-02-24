@@ -1,4 +1,15 @@
 
+Working with JS Syntax
+====================
+
+Intro
+------
+
+In the previous chapter, we looked at the basic building blocks of javascript code. In this chapter, we will start to look at how we can use these building block enrich our functions.
+
+This chapter will address how to declare functions and understanding how to use functions properly. We will then look at iterations and recursion over arrays and objects. Finally, we shall look at generator functions, new to javascript, which combine functions and iteration. 
+
+
 Understanding Functions
 ------------------------------
 
