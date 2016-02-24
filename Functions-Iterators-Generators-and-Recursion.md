@@ -759,55 +759,6 @@ keys.forEach((key) => {
 
 We have used the **Object.keys()** method to pick the top level property names from the **family** object and put them in an array called **keys**. We can then use the **forEach()** method to loop through the **keys** array and traverse the **family** object.
 
-
-Generator Functions
-------------------------------
-
-**Generator functions** are new to javascript in ES6. A **generator function** is used for defining an iterator that can maintain its own state. The generated iterator can also be paused and resumed.
-
-```javascript
-function *countToThree() {
-	yield 1;
-	yield 2;
-	yield 3;
-}
-
-const count = countToThree();
-
-count.next(); //Returns {value: 1, done: false}
-count.next(); //Returns {value: 2, done: false}
-count.next(); //Returns {value: 3, done: false}
-count.next(); //Returns {value: undefined, done: true}
-```  
-
-The **generator function** is defined with an asterisk (\*) and has one or more **yield** expressions.
-
-We invoke the **countToThree()** generator function to the **count** constant. **Count** is now iterable. We can step through each iteration when we call **next()**. 
-
-The returned object has a **value**, which is  yielded by the **generator** function, and a **done** boolean, which indicates if we have complete all yields.
-
-**Why use generator functions?**
-
-Generator functions initially can look cumbersome compared to simple **for** statements or **while** loops. Generators can be powerful when considering iterables that have no end.
-
-```javascript
-function *stateful(x) {
-    while(true) {
-        x = x * 2;
-        yield x;
-    }
-}
-
-const state = stateful(1);
-state.next(); // {value: 2, done: false}
-state.next(); // {value: 4, done: false}
-state.next(); // {value: 8, done: false}
-```
-
-In the above example, notice how the value of **x** is maintained on every **next()**.  We do not need to manage the value of **x** outside the generator function like we do with **for** statements and **while** loops.
-
-Our generator function has also created a potentially infinite iterable value, i.e., we will never reach **{ done : true }**. We have not had to define a huge array to iterate through, it has been created programmatically.
-
 Recursion
 ------------
 
@@ -902,6 +853,57 @@ The above **fibonacci()** takes an argument of the number of months and returns 
 
 >We can improve this function by taking in to account **Tail Call Optimization** which improves the memory footprint of our recursive functions. We shall address this latter in the book.
 
+Generator Functions
+------------------------------
+
+**Generator functions** are new to javascript in ES6. A **generator function** is used for defining an iterator that can maintain its own state. The generated iterator can also be paused and resumed.
+
+```javascript
+function *countToThree() {
+	yield 1;
+	yield 2;
+	yield 3;
+}
+
+const count = countToThree();
+
+count.next(); //Returns {value: 1, done: false}
+count.next(); //Returns {value: 2, done: false}
+count.next(); //Returns {value: 3, done: false}
+count.next(); //Returns {value: undefined, done: true}
+```  
+
+The **generator function** is defined with an asterisk (\*) and has one or more **yield** expressions.
+
+We invoke the **countToThree()** generator function to the **count** constant. **Count** is now iterable. We can step through each iteration when we call **next()**. 
+
+The returned object has a **value**, which is  yielded by the **generator** function, and a **done** boolean, which indicates if we have complete all yields.
+
+**Why use generator functions?**
+
+Generator functions initially can look cumbersome compared to simple **for** statements or **while** loops. Generators can be powerful when considering iterables that have no end.
+
+```javascript
+function *stateful(x) {
+    while(true) {
+        x = x * 2;
+        yield x;
+    }
+}
+
+const state = stateful(1);
+state.next(); // {value: 2, done: false}
+state.next(); // {value: 4, done: false}
+state.next(); // {value: 8, done: false}
+```
+
+In the above example, notice how the value of **x** is maintained on every **next()**.  We do not need to manage the value of **x** outside the generator function like we do with **for** statements and **while** loops.
+
+Our generator function has also created a potentially infinite iterable value, i.e., we will never reach **{ done : true }**. We have not had to define a huge array to iterate through, it has been created programmatically.
+
+
+Summary
+-----------
 
 
 
