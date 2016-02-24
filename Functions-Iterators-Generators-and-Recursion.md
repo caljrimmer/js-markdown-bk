@@ -7,7 +7,169 @@ Intro
 
 In the previous chapter, we looked at the basic building blocks of javascript code. In this chapter, we will start to look at how we can use these building block enrich our functions.
 
-This chapter will address how to declare functions and understanding how to use functions properly. We will then look at iterations and recursion over arrays and objects. Finally, we shall look at generator functions, new to javascript, which combine functions and iteration. 
+This chapter will address how to define functions and understanding how to use functions properly. We will then look at iterations and recursion over arrays and objects. Finally, we shall look at generator functions, new to javascript, which combine functions and iteration. 
+
+Defining functions
+---------------------
+
+Functions can be define in a several different ways. In this section, we shall look at what ways we can define functions and what difference that can make to how our functions work.
+
+**Anonymous function** 
+
+An **anonymous function** is a function defined without a name.
+
+```javascript
+function () {
+	return "I am an Anonymous Function";
+}
+```
+This, in its current context, is rather useless. We can't refer to the function and we haven't invoked it.
+
+```javascript
+function () {
+	return "I am an Anonymous Function";
+}() //returns "I am an Anonymous Function"
+```
+
+If we invoke the **anonymous function** immediately by add trailing **()** parentheses, then it will return a value. This makes it useful for doing a task once.
+
+**Anonymous function** can also be passed in callbacks or as event handlers. For example:
+
+```javascript
+el.addEventListener("click", function () {
+	return "I was Clicked";
+})
+```
+
+In this example,  we pass an **anonymous function** which returns a string when the element is clicked. We do not need to re-use this function outside the click event. If we use an **anonymous function**, it mean we have to write less code.
+
+**Function declaration**
+
+A **function declaration** is a named **anonymous function**.
+
+```javascript
+function add (a,b) {
+	return a + b;
+}
+
+add(2,3) //returns 5
+```
+
+A **function declaration**, like an **anonymous function**, can be immediately invoked but can also be re-used:
+
+```javascript
+function add (a,b) {
+	return a + b;
+}(1,2) // returns 3
+
+add(3,5) //returns 8
+```
+
+Note that we pass the arguments in the trailing parentheses **()** when we invoke the function immediately. 
+
+We can reuse the **add()** function whenever we like.
+
+**Function constructor**
+
+We can make a function using the **Function()** constructor function.
+
+```javascript
+const add = new Function('a', 'b', 'return a + b');
+```
+We provide the **Function()** constructor with our arguments (**a,b**) and the function body as a string. Any number of arguments can be passed aslong as the function body is the last argument in
+
+**Assign a function to variable**
+
+A function can be assigned to a variable. 
+
+```javascript
+const add = function (a,b) {
+	return a + b;
+}
+
+const subtract = function subtract (a,b) {
+	return a - b;
+}
+
+const multiple = new Function('a', 'b', 'return a * b');
+
+add(1,3); //returns 4
+subtract(3,1); //returns 2
+multiple(2,2) //returns 4
+```
+
+When a function is assigned to a variable, it works the same as a **function declaration**. We can immediately invoke it, or re-use at a later point.
+
+**What is the difference between a method and a function?**
+
+A method is just a function that exists as a property of an object. 
+
+```javascript
+
+function add (a, b) {
+	return a + b;
+}
+
+const object = {
+	add : function (a, b) {
+		return a + b;
+	},
+	addTwice : function (a,b) {
+		return 2 * this.add(a,b);
+	}
+}
+
+add(1,2) //returns 3
+object.add(1,2) //returns 3
+object.addTwice(1,2) //returns 6
+```
+
+A method performs the same role as a function but is defined as a property on an object. A method allows us use the **this** keyword to be self-referential to its containing object. 
+
+**Arrow function**
+
+The latest javascript version, ES6, we have a new way to create a function.  The **arrow function** means you can express more whilst writing less code.
+
+```javascript
+(a,b) => {
+	return a + b;
+} //example of anonymous function
+
+const add = (a,b) => {
+	return a + b;
+} //example of variable defined function
+```
+
+**Arrow functions** don't need the function keyword, which is replaced with an arrow (**=>**).
+
+```javascript
+const multiplyBy2 = (num) => {
+	return num * 2;
+}
+
+const multiplyBy4 = num => num * 4;
+
+multiplyBy2(2); //returns 4
+multiplBy4(2); //returns 8 
+```
+In the above example, we can remove the **return** keyword and parentheses **()** but still perform the same task. **Arrow functions** allow us to do more, with less code. 
+
+The **arrow function** deals with **scope** and the **this** keyword differently than any other function definition. We shall address this later in the book.
+
+>Tip
+
+>The **Arrow function** can also be called **Fat Arrow**.
+
+**What is the best way to define a function?**
+
+There is no right way to define a function. You can choose whichever you feel best suits what you are trying to achieve. A function will always take arguments, run through the defined statements and then return the result. 
+
+ - **Methods** are used most when taking an object oriented approach to structuring your code
+ - **Function declarations** are useful if you are taking a functional programming approach to structuring your code
+ - **Arrow functions** are useful when you wish to limit the amount of code you write
+ - **Anonymous function** are useful for wrapping your web applications (for functional scoping reasons) and when you don't wish to re-use the function
+
+In most web applications, you will see a mix of different ways to define functions. Your main concern is that you should be consistent in how you structure your code.
 
 
 Understanding Functions
@@ -396,168 +558,6 @@ object.add(1,2) //returns 3
 ```
 
 The **add(**) function does the same task as the **object.add()** method. The only difference is that the method defined as the property of an object.
-
-Defining functions
----------------------
-
-Functions can be define in a several different ways. In this section, we shall look at what ways we can define functions and what difference that can make to how our functions work.
-
-**Anonymous function** 
-
-An **anonymous function** is a function defined without a name.
-
-```javascript
-function () {
-	return "I am an Anonymous Function";
-}
-```
-This, in its current context, is rather useless. We can't refer to the function and we haven't invoked it.
-
-```javascript
-function () {
-	return "I am an Anonymous Function";
-}() //returns "I am an Anonymous Function"
-```
-
-If we invoke the **anonymous function** immediately by add trailing **()** parentheses, then it will return a value. This makes it useful for doing a task once.
-
-**Anonymous function** can also be passed in callbacks or as event handlers. For example:
-
-```javascript
-el.addEventListener("click", function () {
-	return "I was Clicked";
-})
-```
-
-In this example,  we pass an **anonymous function** which returns a string when the element is clicked. We do not need to re-use this function outside the click event. If we use an **anonymous function**, it mean we have to write less code.
-
-**Function declaration**
-
-A **function declaration** is a named **anonymous function**.
-
-```javascript
-function add (a,b) {
-	return a + b;
-}
-
-add(2,3) //returns 5
-```
-
-A **function declaration**, like an **anonymous function**, can be immediately invoked but can also be re-used:
-
-```javascript
-function add (a,b) {
-	return a + b;
-}(1,2) // returns 3
-
-add(3,5) //returns 8
-```
-
-Note that we pass the arguments in the trailing parentheses **()** when we invoke the function immediately. 
-
-We can reuse the **add()** function whenever we like.
-
-**Function constructor**
-
-We can make a function using the **Function()** constructor function.
-
-```javascript
-const add = new Function('a', 'b', 'return a + b');
-```
-We provide the **Function()** constructor with our arguments (**a,b**) and the function body as a string. Any number of arguments can be passed aslong as the function body is the last argument in
-
-**Assign a function to variable**
-
-A function can be assigned to a variable. 
-
-```javascript
-const add = function (a,b) {
-	return a + b;
-}
-
-const subtract = function subtract (a,b) {
-	return a - b;
-}
-
-const multiple = new Function('a', 'b', 'return a * b');
-
-add(1,3); //returns 4
-subtract(3,1); //returns 2
-multiple(2,2) //returns 4
-```
-
-When a function is assigned to a variable, it works the same as a **function declaration**. We can immediately invoke it, or re-use at a later point.
-
-**What is the difference between a method and a function?**
-
-A method is just a function that exists as a property of an object. 
-
-```javascript
-
-function add (a, b) {
-	return a + b;
-}
-
-const object = {
-	add : function (a, b) {
-		return a + b;
-	},
-	addTwice : function (a,b) {
-		return 2 * this.add(a,b);
-	}
-}
-
-add(1,2) //returns 3
-object.add(1,2) //returns 3
-object.addTwice(1,2) //returns 6
-```
-
-A method performs the same role as a function but is defined as a property on an object. A method allows us use the **this** keyword to be self-referential to its containing object. 
-
-**Arrow function**
-
-The latest javascript version, ES6, we have a new way to create a function.  The **arrow function** means you can express more whilst writing less code.
-
-```javascript
-(a,b) => {
-	return a + b;
-} //example of anonymous function
-
-const add = (a,b) => {
-	return a + b;
-} //example of variable defined function
-```
-
-**Arrow functions** don't need the function keyword, which is replaced with an arrow (**=>**).
-
-```javascript
-const multiplyBy2 = (num) => {
-	return num * 2;
-}
-
-const multiplyBy4 = num => num * 4;
-
-multiplyBy2(2); //returns 4
-multiplBy4(2); //returns 8 
-```
-In the above example, we can remove the **return** keyword and parentheses **()** but still perform the same task. **Arrow functions** allow us to do more, with less code. 
-
-The **arrow function** deals with **scope** and the **this** keyword differently than any other function definition. We shall address this later in the book.
-
->Tip
-
->The **Arrow function** can also be called **Fat Arrow**.
-
-**What is the best way to define a function?**
-
-There is no right way to define a function. You can choose whichever you feel best suits what you are trying to achieve. A function will always take arguments, run through the defined statements and then return the result. 
-
- - **Methods** are used most when taking an object oriented approach to structuring your code
- - **Function declarations** are useful if you are taking a functional programming approach to structuring your code
- - **Arrow functions** are useful when you wish to limit the amount of code you write
- - **Anonymous function** are useful for wrapping your web applications (for functional scoping reasons) and when you don't wish to re-use the function
-
-In most web applications, you will see a mix of different ways to define functions. Your main concern is that you should be consistent in how you structure your code.
 
 
 Iteration
