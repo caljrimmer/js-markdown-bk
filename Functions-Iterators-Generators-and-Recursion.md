@@ -6,11 +6,15 @@ Functions are objects that are invokable with **()** parentheses. A function is 
 
 In order to be able to write functions that work as expected, it is important to understand some of the fundamental expectations of javascript with respect to functions.
 
-We shall look at **scope**, **closures**, **arguments**, **hoisting** and **methods**.
+We shall look at **parameters**, **scope**, **closures**, **arguments**, **hoisting** and **methods**.
 
-**Arguments**
+**Parameters**
 
-Functions are passed parameters via the parentheses **()**. We can define the default value of parameters by:
+Functions are passed parameters via the parentheses **()**. 
+
+**Default parameters**
+
+We can define the default value of parameters by:
 
 ```javascript
 function add (a,b=10) {
@@ -22,6 +26,28 @@ add(5,2); //Returns 7;
 ```
 
 In the example above, we assign the **b** parameter a default value of 10 (**b=10**).  This default value can be overridden by passing a parameter when invoked.
+
+**Arguments**
+
+Functions have a property called arguments that allow us to get all the arguments passed as an array.
+
+```javascript
+function recipe (ing1,ing2,ing3) {
+	return ing1 + " " + ing2 + " " + ing3;
+}
+
+//is same as
+function recipe (ing1,ing2,ing3) {
+	const args = arguments;
+	return args[0] + " " + args[1] + " " + args[2];
+}
+
+function recipe ("onion", "carrot", "salt");
+```
+
+**Spread parameters**
+
+
 
 **Scope**
 
