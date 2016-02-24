@@ -10,7 +10,7 @@ We shall look at **parameters**, **scope**, **closures**, **arguments**, **hoist
 
 **Parameters**
 
-Functions are passed parameters via the parentheses **()**. 
+Functions are passed parameters via the parentheses **()**. A function can have up to 256 different parameters.
 
 **Default parameters**
 
@@ -39,15 +39,50 @@ function recipe (ing1,ing2,ing3) {
 //is same as
 function recipe (ing1,ing2,ing3) {
 	const args = arguments;
-	return args[0] + " " + args[1] + " " + args[2];
+	let str = "";
+	for (var i = 1; i < args.length; i++) {
+	    str += " " + args[i];
+	}
+	return str;
 }
 
-function recipe ("onion", "carrot", "salt");
+recipe ("onion", "carrot", "salt"); //Returns "onion carrots salt"
 ```
+
+We can use the **arguments** array to get the supplied parameters as an array. We can iterate over the arguments array to create out return string.
 
 **Spread parameters**
 
+**Spread parameters**, available in **ES6**, are an improvement on arguments. Spread parameters allow us to represent an array without having to be explicit what is in the array.
 
+```javascript
+function recipe (...ings) {
+	let str = "";
+	ings.forEach((ing) => {
+		str += " " + ing;
+	});
+	return str;
+}
+
+recipe ("onion", "carrot", "salt"); //Returns "onion carrots salt"
+
+recipe ("onion", "carrot", "salt", "pepper"); //Returns "onion carrots salt pepper"
+```
+
+Spread parameters have two advantages over using arguments.
+
+ - You can iterate through the values with forEach.
+ - We write less code
+
+we can also use the **spread parameter** to combine arrays.
+
+```javascript
+var eFruits = ["pineapple","kiwi"];
+var fruits = ["apple",...eFruits,"orange"]
+
+console.log(fruits) //Returns ["apple","pineapple","kiwi","orange"]
+
+```
 
 **Scope**
 
