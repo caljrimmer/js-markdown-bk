@@ -881,7 +881,7 @@ The returned object has a **value**, which is  yielded by the **generator** func
 
 **Why use generator functions?**
 
-Generator functions initially can look cumbersome compared to simple **for** statements or **while** loops. Generators can be powerful when considering iterables that have no end.
+Generator functions initially can look cumbersome compared to simple **for** statements or **while** loops. Generators can be powerful when considering iterables are not finite.
 
 ```javascript
 function *stateful(x) {
