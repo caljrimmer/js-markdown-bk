@@ -12,7 +12,7 @@ This chapter will address how to define functions and understanding how to use f
 Defining functions
 ---------------------
 
-Functions can be define in a several different ways. In this section, we shall look at what ways we can define functions and what difference that can make to how our functions work.
+Functions can be define in a several different ways. In this section, we shall look at what ways we can define functions and what difference that makes to how our functions execute.
 
 **Anonymous function** 
 
@@ -33,6 +33,10 @@ function () {
 
 If we invoke the **anonymous function** immediately by add trailing **()** parentheses, then it will return a value. This makes it useful for doing a task once.
 
+>Tip
+
+>When we immediately invoke a function, i.e. **function(){}()**, it is called an **Immediately-Invoked Function Expression** or **IIFE**. **IIFEs** are useful for creating self contained code blocks.
+
 **Anonymous function** can also be passed in callbacks or as event handlers. For example:
 
 ```javascript
@@ -45,7 +49,7 @@ In this example,  we pass an **anonymous function** which returns a string when 
 
 **Function declaration**
 
-A **function declaration** is a named **anonymous function**.
+A **function declaration** is a **named anonymous function**.
 
 ```javascript
 function add (a,b) {
@@ -76,7 +80,7 @@ We can make a function using the **Function()** constructor function.
 ```javascript
 const add = new Function('a', 'b', 'return a + b');
 ```
-We provide the **Function()** constructor with our arguments (**a,b**) and the function body as a string. Any number of arguments can be passed aslong as the function body is the last argument in
+We provide the **Function()** constructor with our arguments (**a,b**) and the function body as a string. Any number of arguments can be passed aslong as the function body is the last argument provided.
 
 **Assign a function to variable**
 
@@ -95,7 +99,7 @@ const multiple = new Function('a', 'b', 'return a * b');
 
 add(1,3); //returns 4
 subtract(3,1); //returns 2
-multiple(2,2) //returns 4
+multiple(4,2) //returns 8
 ```
 
 When a function is assigned to a variable, it works the same as a **function declaration**. We can immediately invoke it, or re-use at a later point.
@@ -108,12 +112,12 @@ A method is just a function that exists as a property of an object.
 
 function add (a, b) {
 	return a + b;
-}
+}// This is a function
 
 const object = {
 	add : function (a, b) {
 		return a + b;
-	},
+	}, // This is a method
 	addTwice : function (a,b) {
 		return 2 * this.add(a,b);
 	}
@@ -128,7 +132,7 @@ A method performs the same role as a function but is defined as a property on an
 
 **Arrow function**
 
-The latest javascript version, ES6, we have a new way to create a function.  The **arrow function** means you can express more whilst writing less code.
+The latest javascript version, **ES6**, we have a new way to create a function.  The **arrow function** means you can express more whilst writing less code.
 
 ```javascript
 (a,b) => {
@@ -147,6 +151,7 @@ const multiplyBy2 = (num) => {
 	return num * 2;
 }
 
+//is equivalent to
 const multiplyBy4 = num => num * 4;
 
 multiplyBy2(2); //returns 4
@@ -158,18 +163,20 @@ The **arrow function** deals with **scope** and the **this** keyword differently
 
 >Tip
 
->The **Arrow function** can also be called **Fat Arrow**.
+>The **Arrow function** can also be called a **Fat Arrow function**.
 
 **What is the best way to define a function?**
 
-There is no right way to define a function. You can choose whichever you feel best suits what you are trying to achieve. A function will always take arguments, run through the defined statements and then return the result. 
+There is no wrong way to define a function. You can choose whichever you feel best suits what you are trying to achieve. 
+
+A function will always take arguments, execute the defined statements and then return the result. 
 
  - **Methods** are used most when taking an object oriented approach to structuring your code
  - **Function declarations** are useful if you are taking a functional programming approach to structuring your code
  - **Arrow functions** are useful when you wish to limit the amount of code you write
  - **Anonymous function** are useful for wrapping your web applications (for functional scoping reasons) and when you don't wish to re-use the function
 
-In most web applications, you will see a mix of different ways to define functions. Your main concern is that you should be consistent in how you structure your code.
+In most web applications, you will see a mix of different ways to define functions. You should try to be consistent in how you structure your code but not over concerned which approach you take.
 
 
 Understanding Functions
@@ -183,7 +190,7 @@ We shall look at **parameters**, **scope**, **closures**, **arguments**, **hoist
 
 **Parameters**
 
-Functions are passed parameters via the parentheses **()**. A function can have up to 256 different parameters.
+Functions are passed parameters via the parentheses **()**. Parameters can be any sort of data type including other functions.
 
 **Default parameters**
 
@@ -202,7 +209,7 @@ In the example above, we assign the **b** parameter a default value of 10 (**b=1
 
 **Arguments**
 
-Functions have a property called arguments that allow us to get all the arguments passed as an array.
+Functions have a property called arguments that allow us to get all the parameters passed as an array.
 
 ```javascript
 function recipe (ing1,ing2,ing3) {
@@ -212,17 +219,13 @@ function recipe (ing1,ing2,ing3) {
 //is same as
 function recipe (ing1,ing2,ing3) {
 	const args = arguments;
-	let str = "";
-	for (var i = 1; i < args.length; i++) {
-	    str += " " + args[i];
-	}
-	return str;
+	return args[0] + " " + args[1] + " " + args[2];
 }
 
 recipe ("onion", "carrot", "salt"); //Returns "onion carrots salt"
 ```
 
-We can use the **arguments** array to get the supplied parameters as an array. We can iterate over the arguments array to create out return string.
+We can use the **arguments** array to get the supplied parameters as an array. We can then pick our parameters from the arguments array.
 
 **Spread parameters**
 
@@ -245,7 +248,7 @@ recipe ("onion", "carrot", "salt", "pepper"); //Returns "onion carrots salt pepp
 Spread parameters have two advantages over using arguments.
 
  - You can iterate through the values with forEach.
- - We write less code
+ - We write less code to do more.
 
 we can also use the **spread parameter** to combine arrays.
 
@@ -259,7 +262,7 @@ console.log(fruits) //Returns ["apple","pineapple","kiwi","orange"]
 
 **Scope**
 
-Scope defines what a function has access to for reading, writing or invoking. You create scope by where you initially define a variable or function.
+**Scope** defines what a function has access to for reading, writing or invoking. You create **scope** by where you initially define a variable or function.
 
 There are 3 types of scope in Javascript:
 
@@ -302,7 +305,9 @@ printName("Smith") // returns "Edward Smith"
 console.log(firstname) // ReferenceError
 ```
 
-In the above example, we have define a **firstname** inside a **function**, then it will be in **functional scope**. This is only accessible inside the function and not outside it.  If we try to access **firstname** outside the function, we will get a reference error.
+In the above example, we have define a **firstname** inside a **function**, then it will be in **functional scope**. This is only accessible inside the function and not outside it. 
+ 
+If we try to access **firstname** outside the function, we will get a reference error.
 
 **Block Scope**
 
@@ -322,7 +327,9 @@ printName("Smith") // returns "Edward Smith"
 
 When we define a variable inside curly brackets **{}**, an **if()** statement in our example, this will now exhibit **block scope**. This is only accessible inside the curly brackets **{}** and not outside it (not in the parent function or any other function).
 
-Before **ES6**, the latest released javascript version, javascript didn't have the concept of **block scope**. We can still be backwards compatible by still using the **var** which doesn't exhibit block scope. **Let** and **const** both exhibit **block scope**. 
+Before **ES6**, the latest released javascript version, javascript didn't have the concept of **block scope**. 
+
+We can still be backwards compatible by still using the **var** which doesn't exhibit block scope. **Let** and **const** both exhibit **block scope**. 
 
 ```javascript
 if (isChecked) {
@@ -350,10 +357,12 @@ function giveOrder (currentRole, newRole) {
 	currentRole = newRole;
 }
 
-giveOrder(soldierRole, "Peel potatoes");
+giveOrder(soldierRole, "Peel potatoes"); //soldierRole is now "Peel potatoes"
 ```
 
-We have create a function called **giveOrder()** that amends the  **soldierRole**. The **soldierRole** variable and **giveOrder()** function are both defined in the **global scope**. The **giveOrder()** function can read and write to the **soldierRole**.
+We have create a function called **giveOrder()** that amends the  **soldierRole**. The **soldierRole** variable and **giveOrder()** function are both defined in the **global scope**. 
+
+The **giveOrder()** function can read and write to the **soldierRole**.
 
 ```javascript
 
@@ -365,8 +374,8 @@ function giveOrder (currentRole, newRole) {
 
 function barracks () {
 	let sergeantRole = "Gives orders to Soldier";
-	giveOrder(soldierRole, "Peel potatoes");
-	giveOrder(sergeantRole, "Peel potatoes");
+	giveOrder(soldierRole, "Peel potatoes"); //soldierRole is now "Peel potatoes"
+	giveOrder(sergeantRole, "Peel potatoes"); //sergeantRole is now "Peel potatoes"
 }
 
 giveOrder(sergeantRole, "Peel potatoes"); //Reference Error
@@ -376,7 +385,9 @@ Now we define a **barracks()** function and inside this function, we define a **
 
 Inside the **barracks()** function, we can access the **giveOrder()** function and **soldierRole** variable because they are **globally scoped**. 
 
-Inside the **barracks()** function, we can give orders to the **soldierRole** and the **sergeantRole**. Outside the **barracks()**, we can only give orders to the **soldierRole**. The **sergeantRole** variable is functionally scoped.
+Inside the **barracks()** function, we can give orders to the **soldierRole** and the **sergeantRole**. Outside the **barracks()**, we can only give orders to the **soldierRole**. 
+
+The **sergeantRole** variable is functionally scoped.
 
 ```javascript
 let SoldierRole = "Obeys all orders";
@@ -428,7 +439,9 @@ myApp.text = 'Hacky text';
 myApp.start(); //returns "Hacky text"
 ```
 
-This is acceptable when you're the only developer working on the code but the this approach can become unmanageable in bigger teams. Properties and methods can be amended with no structure or process. This will result in the code becoming brittle.
+This is acceptable when you're the only developer working on the code but the this approach can become unmanageable in bigger teams. 
+
+Properties and methods can be amended with no structure or process. This will result in the code becoming brittle.
 
 **Closures** allow us to create structure and enforce process. Take the following code as an example:
 
@@ -453,7 +466,7 @@ We have created a **closure**. We have also defined a variable called **privateT
 
 The trailing parentheses **()** mean the function is immediately invoked. That means the function executes immediately to define **myApp**.
 
-We expand our example to create public and private methods, and public and private properties.
+We expand our example to create **public** and **private methods**, and **public** and **private properties**.
 
 ```javascript
 const myApp = function () {
@@ -481,11 +494,7 @@ myApp.getAllText(); //returns "Prefix-Overwrite"
 
 In the above example, we allow the **publicText** to be amended with the **setPublicText()**, and the **publicText** and **privateText** to be returned with **getAllText()**.  We cannot edit the **privateText**.
 
-We have now created a container for our web application that allows us to expose just the methods and properties that are appropriate.
-
->Tip
-
->When we immediately invoke a function, i.e. **function(){}()**, it is called an **Immediately-Invoked Function Expression** or **IIFE**. **IIFEs** are useful for creating self contained code blocks.
+We have used **closures** to create a container for our web application. The **closure** that allows us to expose just the methods and properties that are appropriate.
 
 **Hoisting**
 
@@ -536,6 +545,17 @@ To avoid having to worry about **hoisting**, we simply always declare our variab
 >Tip
 
 >Always declare your variables (**var**, **let** or **const**) at the top of your functions. this makes your code easier to read and perform as expected. 
+
+```javascript
+function() {
+    var x = "local";
+    let y = "local";
+    const z = "local";
+
+	//Define the rest of your statements below the variable definitions
+}
+
+```
 
 **What is the difference between a method and a function?**
 
@@ -620,7 +640,11 @@ for(let i = 0; i < fruits.length; i++) {
 
 This may look complicate initially. Let us break it down into all its elements and it will become easier to understand. 
 
-We define our **for** statement with an initial expression (**let i = 0**) - start with **i** to equal **0**. The condition (**i < fruits.length**) - keep looping over the array until we have no items left to loop over. Remember that the **length** attribute returns the number of items in an array. Finally, the increment expression (**i++**), increment **i** by one on each loop through.
+We define our **for** statement with an initial expression (**let i = 0**) - start with **i** to equal **0**. 
+
+The condition (**i < fruits.length**) - keep looping over the array until we have no items left to loop over. Remember that the **length** attribute returns the number of items in an array. 
+
+Finally, the increment expression (**i++**), increment **i** by one on each loop through.
 
 We have an **If()** statement that checks the value of the item (**fruits[i]**), and if it is **orange**, then we create a popup with the content of "Array contains an Orange".
 
@@ -633,6 +657,10 @@ fruits[2] //equals "orange"
 ```
 
 We can pick any item of an array by adding the index (the numeric position in an array) to proceeding square brackets **[]**.
+
+>**Tip**
+
+>Array indexes always start with 0 (and not 1). The length of an array will bring back the number of items. We can get the last item in an array with **array[array.length -1]**.
 
 **ForEach method**
 
@@ -656,7 +684,9 @@ fruits.forEach((fruit) => {
 
 In the above example, we use the **forEach()** method to pick out each item in the array, and then pass the item to a function. We then check for the **banana** item and trigger a popup.
 
-**Foreach ()** is useful for dealing with collections (an array of objects).
+We pass a function to **ForEach()** to do work in the items of the array. This passed function is called a **callback**. The **callback** function is usually an **anonymous** function.
+
+**Foreach ()** is useful for dealing with collections (an **array** of **objects**).
 
 ```javascript
 const people = [
@@ -757,7 +787,9 @@ keys.forEach((key) => {
 });
 ```
 
-We have used the **Object.keys()** method to pick the top level property names from the **family** object and put them in an array called **keys**. We can then use the **forEach()** method to loop through the **keys** array and traverse the **family** object.
+We have used the **Object.keys()** method to pick the top level property names from the **family** object and put them in an array called **keys**. 
+
+We can then use the **forEach()** method to loop through the **keys** array and traverse the **family** object.
 
 Recursion
 ------------
@@ -776,7 +808,9 @@ const countdown = function(value) {
 countdown(5); //Returns 5,4,3,2,1
 ```
 
-In the example above, we define a function called **countdown()**. **Countdown()** can re-invoke itself if a condition is met (**value > 0**) otherwise it just returns the result. **Countdown()** is a **recursive function**.
+In the example above, we define a function called **countdown()**. **Countdown()** can re-invoke itself if a condition is met (**value > 0**) otherwise it just returns the result. 
+
+**Countdown()** is a **recursive function**.
 
 **When to use recursion**
 
@@ -899,11 +933,12 @@ state.next(); // {value: 8, done: false}
 
 In the above example, notice how the value of **x** is maintained on every **next()**.  We do not need to manage the value of **x** outside the generator function like we do with **for** statements and **while** loops.
 
-Our generator function has also created a potentially infinite iterable value, i.e., we will never reach **{ done : true }**. We have not had to define a huge array to iterate through, it has been created programmatically.
+Our generator function has also created a potentially infinite iterable value, we will never reach **{ done : true }**. We have not had to define a huge array to iterate through, it has been created programmatically.
 
 
 Summary
 -----------
+
 
 
 
