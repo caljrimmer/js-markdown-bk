@@ -939,7 +939,18 @@ Our generator function has also created a potentially infinite iterable value, w
 Summary
 -----------
 
+In this chapter, we have introduced a number of core concepts and behaviour that inform how you code Javascript applications.
 
+We have introduced:
+
+ - How we can define our functions.
+ - How scope determines what our functions can access
+ - How closures can be used to structure our applications
+ - How to iterate over arrays and objects
+ - How we can use recursion to enhance our iteration
+ - How generator functions work, and their advantages used to iterate
+ 
+In the next chapter, we will at how to create classes. Classes, introduced in ES6, are a new canonical (preferred) way to structure your web applications. 
 
 
 
