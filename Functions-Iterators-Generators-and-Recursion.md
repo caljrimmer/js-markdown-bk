@@ -12,7 +12,7 @@ This chapter will address how to define functions and understanding how to use f
 Defining functions
 ---------------------
 
-Functions can be define in a several different ways. In this section, we shall look at what ways we can define functions and what difference that makes to how our functions execute.
+Functions can be defined in a several different ways. In this section, we shall look at what ways we can define functions and what difference that makes to how our functions execute.
 
 **Anonymous function** 
 
@@ -45,7 +45,7 @@ el.addEventListener("click", function () {
 })
 ```
 
-In this example,  we pass an **anonymous function** which returns a string when the element is clicked. We do not need to re-use this function outside the click event. If we use an **anonymous function**, it mean we have to write less code.
+In this example,  we pass an **anonymous function** which returns a string when the element is clicked. We do not need to re-use this function outside the click event. If we use an **anonymous function**, it means we have to write less code.
 
 **Function declaration**
 
@@ -250,7 +250,7 @@ Spread parameters have two advantages over using arguments.
  - You can iterate through the values with forEach.
  - We write less code to do more.
 
-we can also use the **spread parameter** to combine arrays.
+We can also use the **spread parameter** to combine arrays.
 
 ```javascript
 var eFruits = ["pineapple","kiwi"];
@@ -305,7 +305,7 @@ printName("Smith") // returns "Edward Smith"
 console.log(firstname) // ReferenceError
 ```
 
-In the above example, we have define a **firstname** inside a **function**, then it will be in **functional scope**. This is only accessible inside the function and not outside it. 
+In the above example, we have defined a **firstname** inside a **function**, and then it will be in **functional scope**. This is only accessible inside the function and not outside it. 
  
 If we try to access **firstname** outside the function, we will get a reference error.
 
@@ -417,7 +417,7 @@ When we define a function inside a function, we create a **closure**.
 
 The definition of a closure is:
 
-> A function with a function, where the inner function has access to the variables and functions defined in the outer function.
+> a function with a function, where the inner function has access to the variables and functions defined in the outer function.
 
 Closures allow us to create a new way to contain our web application that is superior to using **object literals**. 
 
@@ -518,7 +518,7 @@ function hoisted() {
 notHoisted(); //returns 1
 hoisted(); //returns 1
 ```
-In the above example, both functions preform the same task. They return **x**. 
+In the above example, both functions perform the same task. They return **x**. 
 
 In **notHoisted()** we declare **x**, then assign **x** a value of 1 and return **x**.
 
@@ -752,7 +752,7 @@ for (let person in family) {
 
 ```
 
-In the above example, we have defined an **object literal** called family. We use the **for in** loop to iterate over each of the top-level  properties of the object (ted, sally and peter) and exposes them as **person** in the **for** loop. 
+In the above example, we have defined an **object literal** called family. We use the **for in** loop to iterate over each of the top level  properties of the object (ted, sally and peter) and exposes them as **person** in the **for** loop. 
 
 We can then use the **person** response to inspect the **family** object. Note how we can traverse the **family** object with **dot notation**
 
@@ -939,7 +939,7 @@ Our generator function has also created a potentially infinite iterable value, w
 Summary
 -----------
 
-In this chapter, we have introduced a number of core concepts and behaviour that inform how you code Javascript applications.
+In this chapter, we have introduced a number of core concepts and behavior that inform how you code Javascript applications.
 
 We have introduced:
 
