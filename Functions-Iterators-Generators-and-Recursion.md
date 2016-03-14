@@ -603,29 +603,6 @@ function() {
 
 ```
 
-**What is the difference between a method and a function?**
-
-A method is just a function that exists as a property of an object. 
-
-```javascript
-
-function add (a, b) {
-	return a + b;
-}
-
-const object = {
-	add : function (a, b) {
-		return a + b;
-	}
-}
-
-add(1,2) //returns 3
-object.add(1,2) //returns 3
-```
-
-The **add(**) function does the same task as the **object.add()** method. The only difference is that the method defined as the property of an object.
-
-
 Iteration
 ----------
 
