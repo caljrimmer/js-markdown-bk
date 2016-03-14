@@ -48,7 +48,7 @@ In this example,  we pass an **anonymous function** which returns a string when 
 
 **Function declaration**
 
-A **function declaration** is a **named anonymous function**.
+A **function declaration** is just a **named anonymous function**. We provide our **function declaration** with a name so it can be referenced at a later point in your code.
 
 ```javascript
 function add (a,b) {
@@ -71,6 +71,15 @@ add(3,5) //returns 8
 Note that we pass the arguments in the trailing parentheses **()** when we invoke the function immediately. 
 
 We can reuse the **add()** function whenever we like.
+
+We can also access the name of the function declaration, inside our defined function using:
+
+```javascript
+function add() {
+	return arguments.callee.name;
+}
+add(); // returns "add";
+```
 
 **Function constructor**
 
