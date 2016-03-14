@@ -261,7 +261,7 @@ recipe ("onion", "carrot", "salt"); //Returns "onion carrots salt"
 
 We can use the **arguments** array to get the supplied parameters as an array. We can then pick our parameters from the arguments array. 
 
-We access items in an array by using the index (position) in any array in square brackets e.g. **array[1]**.
+We can access any item of an array by adding the index (the numeric position in an array) to proceeding square brackets **[]**. e.g. **array[1]**.
 
 **Spread parameters**
 
