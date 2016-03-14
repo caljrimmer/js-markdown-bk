@@ -308,6 +308,8 @@ There are 3 types of scope in Javascript:
 
 **Global Scope**
 
+**Global scope** is available everywhere in your code. It exists outside functional blocks and code encapsulation. **Global scope** also means that the defined functions or variables exist on the **window object**. 
+
 ```javascript
 name = "Ted";
 window.name = "Ted";
@@ -331,6 +333,10 @@ When a variable or function is defined outside a bounding function, then it will
 
 **Function Scope**
 
+**Function scope** does encapsulate you variables and functions within your application. 
+
+You use **function scope** to make code and information only accessible to your application and not any other applications that might be also be running.
+
 ```javascript
 function printName (surname) {
 	const firstname = 'Edward'; //Function scoped
@@ -343,9 +349,11 @@ console.log(firstname) // ReferenceError
 
 In the above example, we have defined a **firstname** inside a **function**, and then it will be in **functional scope**. This is only accessible inside the function and not outside it. 
  
-If we try to access **firstname** outside the function, we will get a reference error.
+If we try to access **firstname** outside the function, we will get a **reference error**.
 
 **Block Scope**
+
+**Block scope** is even more granular than **function scope**. **Block scope** can be used to make even smaller areas of an application can access only specific code and information.
 
 ```javascript
 function printName (surname) {
@@ -361,7 +369,9 @@ console.log(firstname); // ReferenceError
 printName("Smith") // returns "Edward Smith"
 ```
 
-When we define a variable inside curly brackets **{}**, an **if()** statement in our example, this will now exhibit **block scope**. This is only accessible inside the curly brackets **{}** and not outside it (not in the parent function or any other function).
+When we define a variable inside curly brackets **{}**, an **if()** statement in our example, this will now exhibit **block scope**. T
+
+his is only accessible inside the curly brackets **{}** and not outside it (not in the parent function or any other function).
 
 Before **ES6**, the latest released javascript version, javascript didn't have the concept of **block scope**. 
 
