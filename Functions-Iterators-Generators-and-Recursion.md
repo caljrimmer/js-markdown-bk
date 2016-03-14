@@ -9,11 +9,13 @@ This chapter will address how to define functions and understanding how to use f
 Defining functions
 ---------------------
 
+Functions are used to contain blocks of code designed to perform a particular task. We created our functions to be small, reusable and testable.
+
 Functions can be defined in a several different ways. In this section, we shall look at what ways we can define functions and what difference that makes to how our functions execute.
 
 **Anonymous function** 
 
-An **anonymous function** is a function defined without a name.
+An **anonymous function** is a function defined without a name. It is the easiest way to define a function and you will see **anonymous functions** used often in javascript.
 
 ```javascript
 function () {
