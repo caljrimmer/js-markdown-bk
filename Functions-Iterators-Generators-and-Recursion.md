@@ -224,7 +224,9 @@ Functions are passed parameters via the parentheses **()**. Parameters can be an
 
 **Default parameters**
 
-We can define the default value of parameters by:
+A default parameter allows us to set the initial value of a parameter. We can over write the parameter value or accept the default value when evaluating our function. 
+
+We can define the default value of parameters by using the **=** operator.
 
 ```javascript
 function add (a,b=10) {
@@ -239,7 +241,9 @@ In the example above, we assign the **b** parameter a default value of 10 (**b=1
 
 **Arguments**
 
-Functions have a property called arguments that allow us to get all the parameters passed as an array.
+Functions have a property called **arguments** that allow us to get all the parameters passed as an array. 
+
+**Arguments** allow us to access **parameters** without having to explicitly define them. This is useful if we have more than the defined number of parameters passed to a function.
 
 ```javascript
 function recipe (ing1,ing2,ing3) {
@@ -247,7 +251,7 @@ function recipe (ing1,ing2,ing3) {
 }
 
 //is same as
-function recipe (ing1,ing2,ing3) {
+function recipe () {
 	const args = arguments;
 	return args[0] + " " + args[1] + " " + args[2];
 }
@@ -255,7 +259,9 @@ function recipe (ing1,ing2,ing3) {
 recipe ("onion", "carrot", "salt"); //Returns "onion carrots salt"
 ```
 
-We can use the **arguments** array to get the supplied parameters as an array. We can then pick our parameters from the arguments array.
+We can use the **arguments** array to get the supplied parameters as an array. We can then pick our parameters from the arguments array. 
+
+We access items in an array by using the index (position) in any array in square brackets e.g. **array[1]**.
 
 **Spread parameters**
 
