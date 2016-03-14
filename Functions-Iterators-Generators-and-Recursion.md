@@ -132,9 +132,9 @@ augmentAdd(2);
 add(1,2) // Returns 5
 ```
 
-**What is the difference between a method and a function?**
+**Differentiation between a method and a function**
 
-A method is just a function that exists as a property of an object. 
+A method is a function that exists as a property of an object. Functions and methods perform exactly the same but are invoked differently. Take the follwoing example:
 
 ```javascript
 
@@ -156,7 +156,9 @@ object.add(1,2) //returns 3
 object.addTwice(1,2) //returns 6
 ```
 
-A method performs the same role as a function but is defined as a property on an object. A method allows us use the **this** keyword to be self-referential to its containing object. 
+We invoke a **function** with it's name **add()** and with a **method**, we invoke it based on it's parent object and then dot followed by name **object.add()**. **Methods** use dot notation to be accessed and invoked.
+
+A method allows us use the **this** keyword to be self-referential to its containing object. 
 
 **Arrow function**
 
