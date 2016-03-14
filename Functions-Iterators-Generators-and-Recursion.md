@@ -48,7 +48,9 @@ In this example,  we pass an **anonymous function** which returns a string when 
 
 **Function declaration**
 
-A **function declaration** is just a **named anonymous function**. We provide our **function declaration** with a name so it can be referenced at a later point in your code.
+A **function declaration** is just a **named anonymous function**. We provide our **function declaration** with a name so it can be referenced at a later point in your code. 
+
+Note that we define the **name** after the **function** keyword and before the **parenthesis** **()**
 
 ```javascript
 function add (a,b) {
@@ -92,7 +94,7 @@ We provide the **Function()** constructor with our arguments (**a,b**) and the f
 
 **Assign a function to variable**
 
-A function can be assigned to a variable. 
+A function can be assigned to a variable.  This is very similar to our **function declaration** but can assign the function as a value of a variable so we can reuse it later in our code.
 
 ```javascript
 const add = function (a,b) {
@@ -111,6 +113,24 @@ multiple(4,2) //returns 8
 ```
 
 When a function is assigned to a variable, it works the same as a **function declaration**. We can immediately invoke it, or re-use at a later point.
+
+An important difference between **assigning a function to a variable** and a **function declaration** is that when assigning to a variable, you can change the function at run time. This means you can change what the function does at anytime in your code.
+
+```javascript
+let add = function (a,b) {
+	return a + b;
+}
+
+const augmentAdd = function (c) {
+	add = function (a,b) {
+		return a + b + c;
+	}
+}
+
+add(1,2) // Returns 3
+augmentAdd(2);
+add(1,2) // Returns 5
+```
 
 **What is the difference between a method and a function?**
 
