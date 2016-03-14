@@ -817,7 +817,7 @@ We can then use the **forEach()** method to loop through the **keys** array and 
 Recursion
 ------------
 
-**Recursion** is a form of iteration where a **recursive** function repeatedly calls itself until it arrives at a result.
+**Recursion** is a form of iteration where a function repeatedly calls itself until it arrives at a result. **Recursive** functions can be used instead of **for** or **while** loop to perform repetitive tasks.
 
 ```javascript
 const countdown = function(value) {
@@ -862,7 +862,7 @@ In this example, we aren't providing a condition that stops recursion. The funct
 
 **Recursion to calculate a factorial**
 
-A factorial is a product of an integer and all the integers below it.
+A **factorial** is a product of an integer and all the integers below it. We can use **recursion** to iterate a defined number of times and return the resultant **factorial**.
 
 ```javascript
 function factorial (n) {
