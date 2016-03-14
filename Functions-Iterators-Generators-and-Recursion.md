@@ -195,7 +195,7 @@ The **arrow function** deals with **scope** and the **this** keyword differently
 
 >The **Arrow function** can also be called a **Fat Arrow function**.
 
-**What is the best way to define a function?**
+**Defining a function correctly**
 
 There is no wrong way to define a function. You can choose whichever you feel best suits what you are trying to achieve. 
 
@@ -835,7 +835,7 @@ In the example above, we define a function called **countdown()**. **Countdown()
 
 **Countdown()** is a **recursive function**.
 
-**When to use recursion**
+**Using recursion correctly**
 
 Most **for** statements and **while** loops can be rewritten in a **recursive** style. **Recursive** functions are most effective for:
 
@@ -843,7 +843,7 @@ Most **for** statements and **while** loops can be rewritten in a **recursive** 
  - traversing the nodes of complex **objects**.
  - sorting large data sets
 
-**When to not use recursion**
+**Using recursion incorrectly**
 
 It is possible to crash the browser with incorrectly written recursive functions. 
 
