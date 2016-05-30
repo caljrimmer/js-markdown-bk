@@ -32,25 +32,16 @@ const items = ['eggs','milk','bread'];
 const addItem = event => {
     items.push(event.value);
 }
-<TodoContainer>
-    <h1>Shopping List</h1>
-    <TodoList className="list" owner="Mrs Smith" listItems={items} />
-    <TodoControls className="controls" addItemHandler={addItem} />
-</TodoContainer>
-```
 
-React.js without JSX:
-```javascript
-const items = ['eggs','milk','bread'];
-const addItem = event => {
-    items.push(event.value);
-}
-React.createElement(
-    TodoContainer,
-    React.createElement("h1", null, "Shoppping List"),
-    React.createElement(TodoList, { className: "list", listItems: items})
-    React.createElement(TodoControls, { className: "controls", addItemHandler: addItem})
+ReactDOM.render(
+    <TodoContainer>
+        <h1>Shopping List</h1>
+        <TodoList className="list" owner="Mrs Smith" listItems={items} />
+        <TodoControls className="controls" addItemHandler={addItem} />
+    </TodoContainer>,
+    document.getElementById('body')
 );
+
 ```
 
 The above example demonstrates how React components are broken up. A TodoContainer component contains a TodoList and TodoControls component. Each component has a defined job. The more granular the components, the easy they are to test, re-use and maintain.
@@ -85,67 +76,187 @@ The smart diffing algorithm allows you to create more functional approach to dev
 Functional react components are deterministic, i.e. you provide an input and the output will always be the same. You can wrtie tests easily because you design your application to only function one way when provided with a given state.
 
 
-Props and state
----------------------
+React.js props and state
+------------------------
 
-**Props** and **state** are JS objects that provide the data which will be used to render HTML in the React component.
+All React components use both props and state to communicate the data to be boudn to the virtual DOM. **Props** and **state** can be JS objects, functions or primitives (strings, numbers, booleans).
 
-**What are Props**
-
-**Props** are provided to the React component when it is defined and are passed as configuration. Props are immutable, i..e. they don't change.
+**Props** are provided to the React component when it is defined and are passed as configuration. Props are immutable, i.e. they don't change.
 
 ```javascript
-const type = 'car';
-const color = 'red';
-<Vehicle type={type} color={red} />
+const specs = {
+    engineSize : 1.2,
+    color: 'red'
+};
+
+ReactDOM.render(
+  <Vehicle type="car" specs={specs} />,
+  document.getElementById('body')
+);
+
 ```
-The vehicle has **props** (i.e. attributes) which configure the type and color of the vehicle.
+The vehicle has **props** (i.e. attributes) which configure the type and specs of the vehicle.
 
-**What is State**
-
-State is defined within the React component. They maintain the internal state of the component. React components change their own internal **state** but not that of their child or parent React components. State is mutable, i.e. state can be changed.
+**State** is defined within the React component. They maintain the internal state of the component. React components change their own internal **state** but not that of their child or parent React components. State is mutable, i.e. state can be changed.
 
 ```javascript
-import React from 'React';
+import React, {Component} from 'React';
 
-class Vehicle extend React.Component () {
+class Vehicle extend Component () {
 	
 	constructor (props) {
 		super(props)
 		this.state = {
-			speed : 0,
+			engineSize : 1.2,
+            color: 'red',
 			type : this.props.type
 		}
 	}
 	
-	goFaster () {
-		this.setState({
-			speed : speed + 10
-		})
-	}
-
-	render () {
-		const color = this.props.color || 'blue';
-		const type = this.props.type || 'boat';
-		const speed = this.state.speed;
-		return (
-			<p>The {this.props.color} {this.state.type} has a speed of {this.state.speed} mph. <a onClick={this.goFaster} href="">Click me to go Faster</a></p>
-		)
-	}
 }
+
+ReactDOM.render(
+  <Vehicle type="car" />,
+  document.getElementById('body')
+);
+
 ```
 
-We set the **state** of the React component in the constructor.  The **state** can be informed from your **props** or they can be given a default value.
+We set the **state** of the React component in the class constructor.  The **state** can be informed from your **props** or they can be given a default value.
 
-We update the **state** using the **setState()** method. This will automatically call the **render()** method to create the HTML.
+The anatomy of a React Component
+-------------------------------
 
-**Types of Components**
+A React components does not need to have many moving parts. Infact it is better to keep your React componets simple. You should always look to make your React components do to as little as possible which will aid in make them re-usable throughout your applications.
 
-**Stateless Components** contains only props, no state. All the logic revolves around the props they receive. This makes them very easy to follow (and test for that matter). We sometimes call these dumb-as-f*ck Components (which turns out to be the only way to misuse the F-word in the English language).
+We are going to create a simple counter component that increments a count when a button is clicked.
+
+```javascript
+import React, {Component} from 'react';
+
+class Counter extend Component () {
+    
+    constructor (props) {
+        super(props)
+        this.state = {
+            count : 0
+    }
+
+    increment () {
+        this.setState({
+            count : this.state.count + 1
+        });
+    }
+
+    render () {
+        <div>
+            <div className="counter">{this.state.count}</div>
+            <button onClick={::this.increment}>+</button>
+        </div>
+    }
+    
+}
+
+```
+We create our **Counter** component class by extending the React component class. This provides us will all the baked in React methods which you can augment in your new component.
+
+We define the component **state** in the class constructor. We use the **super** method to inherit any other props that might be passed down to the **counter** component. The only **state** we are concerned with is the **count** which we initially set to 0.
+
+Next we define a click handler called **increment()** which will update our **count** state. We use the React method **setState()** to update the new count value. **SetState()** will automatically make the **render()** method re-invoke. Therefore, the DOM will automatically update with the new count value when it is changed.
+
+Finally, we define our **render()** method for the React component. React componets expect there to be a render method defined. This **render()** method informs the virtual DOM on how to map changes to bound data to the DOM. We use curly brackets ({}) to inject the **count** state value in to the DOM.  
+
+**Render()** also provides a way of binding events ot the DOM. We have used the onClick even handler to bind the **increment()** method to a click on the button.
+
+> **Tip**
+> 
+> The onCLick method uses a double colon **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
+
+
+Creating a simple Todo React web application
+----------------------------------------
+
+Before we start, we need to have a base index.html page to instansiate our React aplication.
+
+```html
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0-alpha1/react-with-addons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0-alpha1/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/jsx"></script>
+  </body>
+</html>
+```
+We include React and also a JSX transformer script. We can do JSX transformation as a build step (which we will demonstrate later) but we will add a shim here for brevity. We also have a container element which will contain the React application.
+
+We provide a **text/jsx** type for our script which is used by the JSX Transformer. This can be removed when we have our JSX transpliation as part of the build tools. 
+
+**Creating the Todo Container**
+
+First, we create a Todo Container React component. This will be our parent React container and instansiate all the children React components of our application.
+
+```javascript
+import React, {Component} from 'react';
+
+class TodoContainer extends Component({
+    
+    constructor (props) {
+        super(props);
+        this.state = {
+            items : []
+        }
+    }
+
+    addListItem (item) {
+        this.setState({
+            items : [...this.state.items, item]
+        });
+    }
+
+    removeListItem (item) {
+        const index = this.state.items.findIndex(x => x === item);
+        this.setState({
+            items : this.state.items.splice(index, 1)
+        })
+    }
+
+    render () {
+        return (
+            <div className="todos">
+                <h1>{this.props.title}</h1>
+                <TodoInput addItem={::this.addListItem} />
+                <TodoList 
+                    items={this.state.items} 
+                    removeItem={::this.removeListItem}
+                />
+            </div>
+        );
+    }
+});
+
+ReactDOM.render(
+    <TodoContainer title="Todo List" />,
+    document.getElementById('container')
+);
+```
+We extend a React class to create a **TodoContainer** parent component that takes a **title** prop. The **render()** method paints the title and invokes two undefined React Components called **TodoList** and **TodoInput**.
+
+We create the application state in the parent which contains the **items** array and also the handler methods for the state. These are passed down as props to the children components. This means we only have to manage state in one place (i.e. the parent component).
+
+We inject **TodoContainer** in to the container element with the title set as "Todo List".
+
+
+Tips when writing components
+------------------------
+
+**Stateless Components** contains only props, no state. All the logic revolves around the props they receive. This makes them very easy to follow (and test for that matter). We sometimes call these dumb Components.
 
 **Stateful Components** contain both props and state. We also call these state managers. They are in charge of client-server communication (XHR, web sockets, etc.), processing data and responding to user events. These sort of logistics should be encapsulated in a moderate number of Stateful Components, while all visualization and formatting logic should move downstream into as many Stateless Components as possible.
 
-**What is Flux**
+**Flux Architecture**
 
 Flux is an architecture rather than a framework. It provides a way to structure your React web applications so that they are maintainable and easy to debug.
 
@@ -226,5 +337,7 @@ class List extends React.Component () {
 ```
 
 **Testing React**
+
+**Redux**
 
 
