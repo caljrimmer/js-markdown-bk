@@ -294,15 +294,15 @@ class TodoList extends Component({
 
     render () {
 
-        const Items = this.props.items.map(item => {
+        const ListItems = this.props.items.map(item => {
             return (
-                <li>{item} <a onClick={::this.removeTodoItem}>x</a></li>
+                <li onClick={::this.removeTodoItem}>{item}</li>
             )
         });
 
         return (
             <ul className="todo-items">
-                {Items}            
+                {ListItems}            
             </ul>
         );
     }
@@ -310,6 +310,7 @@ class TodoList extends Component({
 
 ```
 
+The **render()** method has the **ListItems** array which is mapped from the original **items** array passed down through the props.  The **ListItems** are iterated through when the component is instantiated in the DOM.
 
 Tips when writing components
 ------------------------
@@ -401,5 +402,3 @@ class List extends React.Component () {
 **Testing React**
 
 **Redux**
-
-
