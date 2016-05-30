@@ -242,11 +242,73 @@ ReactDOM.render(
     document.getElementById('container')
 );
 ```
+
 We extend a React class to create a **TodoContainer** parent component that takes a **title** prop. The **render()** method paints the title and invokes two undefined React Components called **TodoList** and **TodoInput**.
 
 We create the application state in the parent which contains the **items** array and also the handler methods for the state. These are passed down as props to the children components. This means we only have to manage state in one place (i.e. the parent component).
 
 We inject **TodoContainer** in to the container element with the title set as "Todo List".
+
+```javascript
+
+class TodoInput extends Component({
+
+    constructor (props) {
+        super(props);
+    }
+
+    validateInput () {
+        const value = this.refs.addItem.value;
+        if (!value === '') {
+            this.props.addItem(value);
+        }
+    }
+
+    render () {
+        return (
+            <div className="todo-input">
+                <input type="text" ref="addItem" placeholder="Enter Task" />
+                <button onClick={::this.validateInput}>Add Task</button>
+            </div>
+        );
+    }
+});
+
+```
+We create our **TodoInput** component which adds new todo items. We pass the addItems **prop** to the component through the constructor.
+
+The **validateInput()** method validates that the inputed todo is not an empty string before passing it through the **addItem** prop. We have introduced the **this.refs** locator which allows your react component to pick out a DOM element which is decorated with a **ref** attribute.
+
+```javascript
+
+class TodoList extends Component({
+
+    constructor (props) {
+        super(props);
+    }
+
+    removeTodoItem (event) {
+        const value = event.target.innerText;
+        this.props.removeTodo(value)
+    }
+
+    render () {
+
+        const Items = this.props.items.map(item => {
+            return (
+                <li>{item} <a onClick={::this.removeTodoItem}>x</a></li>
+            )
+        });
+
+        return (
+            <ul className="todo-items">
+                {Items}            
+            </ul>
+        );
+    }
+});
+
+```
 
 
 Tips when writing components
