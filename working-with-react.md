@@ -172,6 +172,13 @@ Finally, we define our **render()** method for the React component. React compon
 > 
 > The onCLick method uses a double colon **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
 
+React Lifecycle Methods
+-----------------------------
+
+React gives us methods to control what our components do before and after they mount, or receive state or prop changes, or even when they unmount.
+
+Lifecycle methods can be used to help initiate your components and make them more performant.
+
 Todo React Web Application
 ----------------------------------------
 
@@ -326,7 +333,7 @@ class NameList extends Component({
 	
 	constructor (props) {
 		this.state = {
-			names : []
+			persons : []
 		}
 	}
 	
@@ -346,9 +353,9 @@ class NameList extends Component({
     }
 
 	render () {
-		const Names = this.state.names.map((name) => {
+		const Persons = this.state.persons.map((person) => {
 			return (
-				<li>{name.fname} {name.lname}</li>
+				<li>{person.name} {person.surname}</li>
 			)
 		});
 		return (
@@ -357,7 +364,19 @@ class NameList extends Component({
 	}
 
 });
+
+ReactDOM.render(
+    <NameList url="http://uinames.com/api/?amount=10" />,
+    document.getElementById('body')
+);
 ```
+
+**ComponentWillMount** and **ComponentWillUnmount** are lifecycle methods native to React. The first is called before the React component writes to the DOM and the latter when the component is removed from the DOM.
+
+We request the **persons** data via **$.get()** in **ComponentWillMount** and we then set the state of the component. This request happens before component mounts and the will re-render the list items when the request is successful.
+
+We can tidy the request object up when we unmount the component by invoking **abort()** in **ComponentWillUnmount()**.
+
 
 
 Tips when writing components
