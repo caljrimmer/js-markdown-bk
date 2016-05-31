@@ -346,7 +346,7 @@ class NameList extends Component({
     }
 
 	render () {
-		const Names = this.state.names.map((name) =>{
+		const Names = this.state.names.map((name) => {
 			return (
 				<li>{name.fname} {name.lname}</li>
 			)
