@@ -172,8 +172,7 @@ Finally, we define our **render()** method for the React component. React compon
 > 
 > The onCLick method uses a double colon **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
 
-
-Creating a simple Todo React web application
+Todo React Web Application
 ----------------------------------------
 
 Before we start, we need to have a base index.html page to instansiate our React aplication.
@@ -206,7 +205,7 @@ class TodoContainer extends Component({
     constructor (props) {
         super(props);
         this.state = {
-            items : []
+            items : ['get milk', 'clean car']
         }
     }
 
@@ -310,7 +309,56 @@ class TodoList extends Component({
 
 ```
 
-The **render()** method has the **ListItems** array which is mapped from the original **items** array passed down through the props.  The **ListItems** are iterated through when the component is instantiated in the DOM.
+The **render()** method has the **ListItems** array which is mapped from the original **items** array passed down through the props. 
+
+The **ListItems** are iterated through when the component is instantiated in the DOM. Clicking on the list element removes the item from the items array.
+
+Loading data into React
+----------------------------
+
+We can fetch data from external resources to populate our react components. Let's use JQuery's ajax methods to fetch random names and populate a React component.
+
+```javascript
+import React, { Component } from 'react';
+import $ from 'jquery';
+
+class NameList extends Component({
+	
+	constructor (props) {
+		this.state = {
+			names : []
+		}
+	}
+	
+	componentDidMount () {
+	    this.request = $.get(
+		    this.props.url, 
+		    (results) => {
+			    this.setState({
+			        names: results 
+			    });
+		    }
+	    );
+	}
+
+    componentWillUnmount () {
+	    this.request.abort();
+    }
+
+	render () {
+		const Names = this.state.names.map((name) =>{
+			return (
+				<li>{name.fname} {name.lname}</li>
+			)
+		});
+		return (
+			<ul>{Names}</ul>
+		)
+	}
+
+});
+```
+
 
 Tips when writing components
 ------------------------
