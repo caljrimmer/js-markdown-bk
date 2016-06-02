@@ -511,18 +511,13 @@ ReactDOM.render(
 
 We request the **persons** data via **$.get()** in **ComponentWillMount** and we then set the state of the component. This request happens before component mounts and the will re-render the list items when the request is successful.
 
+We map the **persons** array to return list elements that we inject in the DOM.
+
 We can tidy the request object up when we unmount the component by invoking **abort()** in **ComponentWillUnmount()**.
 
 
-
-Tips when writing components
-------------------------
-
-**Stateless Components** contains only props, no state. All the logic revolves around the props they receive. This makes them very easy to follow (and test for that matter). We sometimes call these dumb Components.
-
-**Stateful Components** contain both props and state. We also call these state managers. They are in charge of client-server communication (XHR, web sockets, etc.), processing data and responding to user events. These sort of logistics should be encapsulated in a moderate number of Stateful Components, while all visualization and formatting logic should move downstream into as many Stateless Components as possible.
-
-**Flux Architecture**
+Flux Architecture
+----------------------------
 
 Flux is an architecture rather than a framework. It provides a way to structure your React web applications so that they are maintainable and easy to debug.
 
