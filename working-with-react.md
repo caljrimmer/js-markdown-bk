@@ -243,6 +243,10 @@ class TodoContainer extends Component({
     }
 });
 
+TodoContainer.propTypes = {
+	title : React.PropTypes.string
+}
+
 ReactDOM.render(
     <TodoContainer title="Todo List" />,
     document.getElementById('container')
@@ -280,6 +284,10 @@ class TodoInput extends Component({
     }
 });
 
+TodoInput.propTypes = {
+	addItem : React.PropTypes.func
+}
+
 ```
 We create our **TodoInput** component which adds new todo items. We pass the addItems **prop** to the component through the constructor.
 
@@ -313,6 +321,11 @@ class TodoList extends Component({
         );
     }
 });
+
+TodoInput.propTypes = {
+	removeTodo : React.PropTypes.func,
+	items : React.PropTypes.array
+}
 
 ```
 
