@@ -53,7 +53,7 @@ JSX tags have a name, attributes, and children. If an attribute value is enclose
 >React uses *className* instead of the *class*. React.js DOM components expect DOM property names like className and htmlFor, rather than DOM attributes like class or for.
 
 
-React.js Virtual DOM
+Virtual DOM
 --------------------
 
 React.js is very effcient at rendering to the DOM because it has the concept of a virtual DOM. A virtual DOM combines an *in-memory* representation of the actual DOM with a smart diffing algorthim which compares differences in the web application model.
@@ -64,7 +64,7 @@ This optimisation all happens behind the scenes.You can code your JSX, Javascrip
 
 React also only interacts with specific parts of the normal DOM that needs to change. React.js, unlike say Backbone, will not re-render whole sections of the DOM but just the necessary DOM nodes where the bound data changes.
 
-Addition advantages of the smart diffing algorthim
+Smart diffing algorithm
 ---------------------------------------------------
 
 Most popular web application frameworks (i.e. Angular 1.x, Backbone) follow a MVC architecture. The views re-render when the model changes. the changes are propgated by events emitted when the model changes. Models can have a one-to-many relationship with the views, and the views can have a one-to-many relationship to the models. 
@@ -75,8 +75,7 @@ The smart diffing algorithm allows you to create more functional approach to dev
 
 Functional react components are deterministic, i.e. you provide an input and the output will always be the same. You can wrtie tests easily because you design your application to only function one way when provided with a given state.
 
-
-React.js props and state
+Props and state
 ------------------------
 
 All React components use both props and state to communicate the data to be boudn to the virtual DOM. **Props** and **state** can be JS objects, functions or primitives (strings, numbers, booleans).
@@ -274,6 +273,29 @@ Finally we inject the component in the the body of our HTML document. **Componen
 > **Tip**
 > 
 > The onClick method uses a double colon **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
+
+Structuring your React Application
+-----------------------------------------
+
+React components are meant to be re-useable and as simple as possible. A React component should ideally only do one thing.  Your application will end up being a parent component that is broken up into many maintainable and testable subcomponents.
+
+```javascript
+<Table>
+	<TableHeader />
+	<TableBody>
+		<TableRow />
+	</TableBody>
+	<TableFooter />
+</Table>
+```
+
+There are two kind of components that can be created. Stateless and stateful components.
+
+**Stateless Components** (or dumb components) contains only props, no state. All the logic and handlers is provided props they receive.
+
+**Stateful Components** contain both props and state. They manage the applications state and provide handlers for children stateless components. A stateful component generally handles client-server communication (XHR, web sockets). The majority of visualization and formatting logic happens in stateless components.
+
+Your application will be made of a small number of stateful components and a larger number of stateless components. The aim is to keep all the state management in as few places as possible.
 
 
 Todo React Web Application
@@ -474,6 +496,10 @@ class NameList extends Component({
 	}
 
 });
+
+NameList.propTypes = {
+	url : React.PropTypes.string
+}
 
 ReactDOM.render(
     <NameList url="http://uinames.com/api/?amount=10" />,
