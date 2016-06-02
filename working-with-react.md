@@ -124,7 +124,95 @@ ReactDOM.render(
 
 We set the **state** of the React component in the class constructor.  The **state** can be informed from your **props** or they can be given a default value.
 
-The anatomy of a React Component
+React Common Methods
+---------------------------- 
+
+React has a number of methods and variables available to aid in creating your application. There are certain methods that will use time and time again.
+
+**constructor**
+We need to augment the constructor with the props that are passed down to the React component. If we don't do this then our React application won't work. We should also set our React state in this constructor
+
+```javascript
+constructor (props) {
+	super(props);
+	this.state = {
+		data : []
+	}
+} 
+```
+
+**render**
+
+Render is mandatory for any react component. Render is where all the JSX code is placed. The render method is what gets painted to the DOM.
+
+```javascript
+render () {
+	return (
+		<div></div>
+	)
+}
+```
+**setState**
+SetState updates the state of the React Component. The method also invokes render() to paint the new state to the DOM.
+
+```javascript
+this.setState({
+	data : ['one','two','three']
+})
+```
+
+**componentWillMount**
+
+This is a lifecycle methods this is called before the component mounts on the DOM. This is useful for fetching or parsing data before the render method is called.
+
+```javascript
+componentWillMount (){
+	$.get(this.props.url, (data) => {
+		this.setState({
+			data : data
+		})
+	})
+}
+```
+
+**componentDidMount**
+
+These is also a lifecycle method that are called after the component mounts on the DOM. This is useful when you wish to reference a mounted element in the DOM. 
+
+```javascript
+componentDidMount () {
+	this.refs.title.disabled = true;
+}
+
+render () {
+	return (
+		<div>
+			<input type="text" name="title" ref="title" />
+		</div>
+	)
+}
+```
+
+**propTypes**
+
+React allow you to define the props that you pass in to your react component. Proptypes make it easy for the you to validate and document your React application.  You will see a warning on the console if you invalidate one of your props.
+
+```javascript
+<Component
+	items = {['one','two','three']}
+	title = 'New Entry'
+	count = {10}
+/>
+
+Component.propTypes = {
+	items : React.PropTypes.array,
+	title : React.PropTypes.string,
+	count : React.PropTypes.number,
+}
+```
+
+
+Counter React Component
 -------------------------------
 
 A React components does not need to have many moving parts. Infact it is better to keep your React componets simple. You should always look to make your React components do to as little as possible which will aid in make them re-usable throughout your applications.
@@ -139,8 +227,12 @@ class Counter extend Component () {
     constructor (props) {
         super(props)
         this.state = {
-            count : 0
+            count : this.props.start
     }
+    
+	componentDidMount () {
+		console.log('mounted');
+	}
 
     increment () {
         this.setState({
@@ -157,27 +249,32 @@ class Counter extend Component () {
     
 }
 
+Counter.propTypes = {
+	start : React.PropTypes.number
+}
+
+ReactDOM.render(
+    <Counter start={2} />,
+    document.getElementById('body')
+);
+
 ```
 We create our **Counter** component class by extending the React component class. This provides us will all the baked in React methods which you can augment in your new component.
 
-We define the component **state** in the class constructor. We use the **super** method to inherit any other props that might be passed down to the **counter** component. The only **state** we are concerned with is the **count** which we initially set to 0.
+We define the component **state** in the class constructor. We use the **super** method to inherit any other props that might be passed down to the **counter** component. The only **state** we are concerned with is the **count** which we initially set to the value of the **start prop**.
 
 Next we define a click handler called **increment()** which will update our **count** state. We use the React method **setState()** to update the new count value. **SetState()** will automatically make the **render()** method re-invoke. Therefore, the DOM will automatically update with the new count value when it is changed.
 
-Finally, we define our **render()** method for the React component. React componets expect there to be a render method defined. This **render()** method informs the virtual DOM on how to map changes to bound data to the DOM. We use curly brackets ({}) to inject the **count** state value in to the DOM.  
+We define our **render()** method for the React component. React componets expect there to be a render method defined. This **render()** method informs the virtual DOM on how to map changes to bound data to the DOM. We use curly brackets ({}) to inject the **count** state value in to the DOM.  
 
 **Render()** also provides a way of binding events ot the DOM. We have used the onClick even handler to bind the **increment()** method to a click on the button.
 
+Finally we inject the component in the the body of our HTML document. **ComponentDidMount()** will fire and console out the message 'mounted'.
+
 > **Tip**
 > 
-> The onCLick method uses a double colon **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
+> The onClick method uses a double colon **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
 
-React Lifecycle Methods
------------------------------
-
-React gives us methods to control what our components do before and after they mount, or receive state or prop changes, or even when they unmount.
-
-Lifecycle methods can be used to help initiate your components and make them more performant.
 
 Todo React Web Application
 ----------------------------------------
