@@ -391,7 +391,7 @@ class TodoContainer extends Component({
     constructor (props) {
         super(props);
         this.state = {
-            items : ['get milk', 'clean car']
+            items : this.props.items
         }
     }
 
@@ -411,7 +411,7 @@ class TodoContainer extends Component({
     render () {
         return (
             <div className="todos">
-                <h1>{this.props.title}</h1>
+                <h1 className="todo-title">{this.props.title}</h1>
                 <TodoInput addItem={::this.addListItem} />
                 <TodoList 
                     items={this.state.items} 
@@ -423,16 +423,20 @@ class TodoContainer extends Component({
 });
 
 TodoContainer.propTypes = {
-	title : React.PropTypes.string
+	title : React.PropTypes.string,
+	items : React.PropTypes.array
 }
 
 ReactDOM.render(
-    <TodoContainer title="Todo List" />,
+    <TodoContainer 
+	    title='Todo List' 
+	    items=['get milk', 'walk the dog']  
+	/>,
     document.getElementById('container')
 );
 ```
 
-We extend a React class to create a **TodoContainer** parent component that takes a **title** prop. The **render()** method paints the title and invokes two undefined React Components called **TodoList** and **TodoInput**.
+We extend a React class to create a **TodoContainer** parent component that takes a **title** and **items** props. The **render()** method paints the title and invokes two undefined React Components called **TodoList** and **TodoInput**.
 
 We create the application state in the parent which contains the **items** array and also the handler methods for the state. These are passed down as props to the children components. This means we only have to manage state in one place (i.e. the parent component).
 
@@ -547,7 +551,7 @@ class NameList extends Component({
 	render () {
 		const Persons = this.state.persons.map((person) => {
 			return (
-				<li>{person.name} {person.surname}</li>
+				<li className="todo-list-item">{person.name} {person.surname}</li>
 			)
 		});
 		return (
@@ -620,6 +624,126 @@ The rendered React Component uses behaviour to amend state which affects the ren
  - State can be interacted with by multiple components. Smart components manage this state (or in the case of Flux, the store). We need to make sure we understand how the state should change with both interactions from events but also from data fetched from external sources.
 
 **Test harnessing frameworks**
-We can't test our components just using React TestUtils alone. We need an assertion framework (we shall use **expect**) and a headless browser environment to instantiate our components (we shall use **JSdom**).
+We can't test our components just using React TestUtils alone. We need an assertion framework (**expect**), a reporting framework (**mocha**) and a headless browser environment to instantiate our components (**JSdom**).
+
+**Setup Tests**
+
+We need to create **NPM** script to run our tests. We shall cover **NPM** and **Node** in detail in our next chapter.  Our NPM script just allows us to run our test from the **command line** or to automate our testing in a continuous integration solution.
+
+Don't worry too much about how this works at the moment, it will be described in more detail in the next chapter. For the moment let us just understand how to write our React tests.
+
+We need to create an entry script called setup.js which starts **JSDom** (our headless browser).
+
+```javascript
+//setup.js
+import jsdom from 'jsdom';
+
+global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
+global.window = document.parentWindow;
+```
+
+This script just creates a fake DOM for us to place our React component in. It is like having an index.html page served by a web server but much quicker as it only exists in memory.
+
+**Global** is a **Node** enviroment variable that does a similar function as **window** in the browser. We copy the **window** object to global so that is can be re-used in your tests.
+
+When **mocha** (our test reporting framework) runs our tests, it pulls in the **setup.js** first before our tests. The complete setting up of your test environment will be documented in the next chapter.
+
+```
+/tests
+    - setup.js
+    /TodoContainer
+        - behaviour.spec.js
+        - state.spec.js
+        - render.spec.js
+```
+
+We structure or test by component and suffix the name with **.spec.js** . This is just a naming convention but it highlights what files contain tests and what contain app related code. It also means we can **glob** (search by name) the test files easily to include them in our test harness. 
+
+**Render Test** 
+
+We are going to test the **TodoContainer** we built earlier.  First we look at how our component renders. We are interested the DOM structure and the fact it instantiates correctly.
+
+```javascript
+//render.spec.js
+
+import React from 'react';
+import addons from 'react/addons';
+const TestUtils = React.addons.TestUtils;
+import expect from 'expect';
+import TodoContainer from './TodoContainer';
+
+describe('TodoContainer render',() => {
+	
+	it('Component elements should exist',() => {
+	});
+
+});
+```
+
+We include our React component, the **TestUtils** from React and the **expect** framework for making assertions. 
+
+The **describe()** and **it()** functions are parsed by mocha to produce descriptive reporting. **Describe()** provides descriptive and grouping context to your tests and **it()** is the individual tests
+
+```javascript
+//render.spec.js
+
+describe('TodoContainer render',() => {
+
+	const items =  ['get milk', 'walk the dog'];
+    const title = 'New List'
+
+    before('render and locate element',() => {
+    
+	    const renderedComponent = TestUtils.renderIntoDocument(
+	    	<TodoContainer title={title} items={items} />
+	    );
+    
+        this.todoList = TestUtils.findRenderedDOMComponentWithClass(
+	        renderedComponent,
+	        'todo-list'
+	    );
+    
+        this.todoInput = TestUtils.findRenderedDOMComponentWithClass(
+	        renderedComponent,
+	        'todo-input'
+        );
+    
+        this.todoTitle = TestUtils.findRenderedDOMComponentWithClass(
+	        renderedComponent,
+	        'todo-title'
+        );
+    
+        this.todoItems = TestUtils.scryRenderedDOMComponentsWithClass(
+	        renderedComponent,
+	        'todo-list-item'
+        );
+    
+    });
+  
+    it('Component elements should exist',() => {
+	    expect(this.todoList).toExist();
+	    expect(this.todoList).toExist();
+	    expect(this.todoInput).toExist();
+	    expect(this.todoItems).toExist();
+    });
+  
+    it('title should be "' + title+ '"',() => {
+	    expect(this.todoTitle.textContent).toBe(title);
+    });
+  
+    it('There should be "' + items.length+ '" list items',() => {
+        expect(this.listItems.length).toBe(items.length);
+    });
+  
+    it('The list item names should be Correct',() => {
+	    expect(this.listItems[0].textContent).toBe(items[0]);
+    
+		expect(this.listItems[1].textContent).toBe(items[1]);
+    });
+
+});
+```
+
+The 
 
 **Redux**
