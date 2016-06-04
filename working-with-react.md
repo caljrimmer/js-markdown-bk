@@ -689,27 +689,27 @@ describe('TodoContainer render',() => {
 
     before('render and locate element',() => {
     
-	    const renderedComponent = TestUtils.renderIntoDocument(
+	    this.renderedComponent = TestUtils.renderIntoDocument(
 	    	<TodoContainer title={title} items={items} />
 	    );
     
         this.todos = TestUtils.findRenderedDOMComponentWithClass(
-	        renderedComponent,
+	        this.renderedComponent,
 	        'todos'
 	    );
 	    
         this.todoInput = TestUtils.findRenderedDOMComponentWithClass(
-	        renderedComponent,
+	        this.renderedComponent,
 	        'todo-input'
 	    );
     
         this.todoTitle = TestUtils.findRenderedDOMComponentWithClass(
-	        renderedComponent,
+	        this.renderedComponent,
 	        'todo-title'
         );
     
         this.todoItems = TestUtils.scryRenderedDOMComponentsWithClass(
-	        renderedComponent,
+	        this.renderedComponent,
 	        'todo-list-item'
         );
     
@@ -757,21 +757,27 @@ Behaviour tests are to look at how a user would interact with our React componen
 ```javascript
 //behaviour.spec.js
 
-it('click to li to add todo item', () => {
-	const input = this.todoInput.querySelectAll('input');
-	const btn = this.todoInput.querySelectAll('button');
-	input.value = 'wash car';
-    TestUtils.Simulate.click(btn);
-    expect(this.listItems.length).toBe(3);
-    expect(this.listItems[2].textContent).toBe('wash car');
-});
+describe('Todo Behaviour ', () => {
 
-it('click to li to delete todo item', () => {
-	expect(this.listItems[0].textContent).toBe('get milk');
-    expect(this.listItems.length).toBe(2);
-    TestUtils.Simulate.click(this.listItem[0]);
-    expect(this.listItems.length).toBe(1);
-    expect(this.listItems[0].textContent).toBe('walk the dog');
+	...before()...
+
+	it('click to li to add todo item', () => {
+		const input = this.todoInput.querySelectAll('input');
+		const btn = this.todoInput.querySelectAll('button');
+		input.value = 'wash car';
+	    TestUtils.Simulate.click(btn);
+	    expect(this.listItems.length).toBe(3);
+	    expect(this.listItems[2].textContent).toBe('wash car');
+	});
+	
+	it('click to li to delete todo item', () => {
+		expect(this.listItems[0].textContent).toBe('get milk');
+	    expect(this.listItems.length).toBe(2);
+	    TestUtils.Simulate.click(this.listItem[0]);
+	    expect(this.listItems.length).toBe(1);
+	    expect(this.listItems[0].textContent).toBe('walk the dog');
+	});
+	
 });
 ```
 
@@ -781,3 +787,36 @@ We have confidence that our user interactions work correctly. Next we look at th
 
 **State test** 
 
+Finally, we test that the state is correct on the initialising our component and also when we fire methods that touch our state. Our Todo components state interaction all exist in the smart component (.i.e. our parent **TodoContainer** component).
+
+```javascript
+describe('Todo State', () => {
+
+	before()...
+
+	it('Correct default state', function() {
+	    expect(this.renderedComponent.getState().items).toExist();
+	});
+
+	it('Default state to instantiate with...', function() {
+	    expect(this.renderedComponent.getState().items.length).toBe(2);
+	    expect(this.renderedComponent.getState().items[0]).toBe('get milk');
+	    expect(this.renderedComponent.getState().items[1]).toBe('walk the dog');
+    });
+
+	it('addListItem state change', function() {
+	    this.renderedComponent.addListItem('wash the car');
+	    expect(this.renderedComponent.getState().items.length).toBe(3);
+	    expect(this.renderedComponent.getState().items[2]).toBe('wash the car');
+	});
+	
+	it('removeListItem state change', function() {
+	    this.renderedComponent.removeListItem('get milk');
+	    expect(this.renderedComponent.getState().items.length).toBe(1);
+	    expect(this.renderedComponent.getState().items[0]).toBe('walk the dog');
+	});
+
+});
+```
+
+We have now tested our state is correct when instansiated from props. We also test that our state handling methods of **addListItem()** and **removeListItem()** correctly change the state.
