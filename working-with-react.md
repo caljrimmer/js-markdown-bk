@@ -6,20 +6,22 @@ React is a JavaScript library for creating user interfaces created by Facebook a
 
 React is analogous to Web Components, the upcoming standard for custom HTML5 user interface elements. React enforce building of components and subcomponents to provide a clean separation of concerns between different sections of your web application.
 
-React is just the view layer of your web application. You cannot build a fully functioning web application with React.js alone. You can either augment other MVCframeworks with React.js (i.e. Angular 1.x or Backbone) or couched React.js in a statement framework (i.e. Fluxxor or Redux).
+React is just the view layer of your web application. You cannot build a fully functioning web application with React.js alone. You can either augment other MVC frameworks with React.js (i.e. Angular 1.x or Backbone) or couching React.js in flux framework (i.e. Fluxxor, alt or Redux).
 
 Why use React.js
 ------------------
 
-React gives you a template language called *JSX* and helper functions to efficiently render HTML. That's all React outputs, HTML. Your created HTML an Javascript, are called "Components".
+Traditionally HTML would be seperated from functionality. Javascript wouldn't includes in HTML directly ()i.e. onClick()). This make both the HTML easier to read and parse at runtime. 
 
-React.js enforces all the rendering and functionality to exist in the same component. Traditionally HTML would be seperated from functionality. Javascript wouldn't be includes in HTML directly ()i.e. onClick()). This was to make both the HTML easier to read and parse at runtime. 
+React, however,  enforces all the rendering and functionality to exist in the same component. React uses its own markup language called **JSX** to tie functionality directly to markup. At runtime, the javascript and HTML are sperated from each other. This allows you create an easy to maintian, self contained Component when developing. The rendered HTML remains clean and readable in the DOM.
 
-React.js uses its own markup language called JSX to tie functionality directly to markup. At runtime, the javascript and HTML are sperated from each other. This allows you create an easy to maintian, self contained Component when developing. The rendered HTML remains clean and readable in the DOM.
+React is very effcient when rendering HTML to the DOM. It is ideal either in low latency applications (i.e. data changes quickly) or large data sets (1000+ rows worth of data need rendering). This achieve with React's virtual DOM implementation.
 
-React is very effcient when rendering HTML to the DOM. It is ideal either in low latency applications (i.e. data changes quickly) or large data sets (1000+ rows worth of data need rendering).
+React is also **Isomorphic**. This mean you can write React componenets that with either render on the client or on the server. This gives you flexibility on how you serve your views to users of your application. Server rendered pages can render faster and also provide better meta information for being indexed by search engines.
 
-React is also *Isomorphic*. This mean you can write React componenets that with either render on the client or on the server. This gives you flexibility on how you serve your views to users of your application. Server rendered pages can render faster and also provide better meta information for being indexed by search engines.
+**React Native** is a couching framework for React that lets you write applications that will run as apps on mobile devices. You can have very similar React code that can run in the browser and also on mobile applications. This allows you to build hybrid applications that can run in multiple environments.
+
+**React Developer Tools** is a Chrome DevTools extension. It provides a new tab called React in your Chrome DevTools. Within the tools, you can inspect and edit a component's current props and state.  Also you can easily find which component threw an error during rendering, and what state or props lead to it.
 
 JSX
 ---
@@ -75,10 +77,12 @@ The smart diffing algorithm allows you to create more functional approach to dev
 
 Functional react components are deterministic, i.e. you provide an input and the output will always be the same. You can wrtie tests easily because you design your application to only function one way when provided with a given state.
 
-Props and state
+Props, state and context
 ------------------------
 
-All React components use both props and state to communicate the data to be boudn to the virtual DOM. **Props** and **state** can be JS objects, functions or primitives (strings, numbers, booleans).
+All React components use both props and state to communicate the data to be bound to the virtual DOM. **Props** and **state** can be JS objects,  functions or primitives (strings, numbers, booleans).
+
+**Props**
 
 **Props** are provided to the React component when it is defined and are passed as configuration. Props are immutable, i.e. they don't change.
 
@@ -95,6 +99,8 @@ ReactDOM.render(
 
 ```
 The vehicle has **props** (i.e. attributes) which configure the type and specs of the vehicle.
+
+**State**
 
 **State** is defined within the React component. They maintain the internal state of the component. React components change their own internal **state** but not that of their child or parent React components. State is mutable, i.e. state can be changed.
 
@@ -123,7 +129,55 @@ ReactDOM.render(
 
 We set the **state** of the React component in the class constructor.  The **state** can be informed from your **props** or they can be given a default value.
 
-React Common Methods
+**Context**
+
+**Context** provides you with the ability to pass data through the component tree without having to pass the **props** down manually. This has the advantage of you writing less code to achieve the same affect. The disadvantage is that **context** makes your components more coupled and less reusable. 
+
+```javascript
+class Parent extend Component () {
+	
+	static childContextTypes = {
+	    item: React.PropTypes.string
+	}
+	
+	getChildContext () {
+	    return {
+	      item: this.props.item
+	    };
+	}
+	
+	render () {
+	    return (
+	      <div>
+	        <Child />
+	      </div>
+	    );
+	}
+}
+
+```
+
+We define a **childContextTypes** and **getChildContext()** which inform the context of all child React components (in this case the **Child** component).
+
+```javascript
+class Child extend Component {
+
+	render() {
+	    return (
+		    <p>Item is {this.context.item}</p>
+	    );
+	}
+	
+}
+
+Child.contextTypes = {
+	item: PropTypes.string.isRequired
+}
+```
+
+In the **Child** component we can we can reference the **items** which have been passed down via context. 
+
+Common React methods
 ---------------------------- 
 
 React has a number of methods and variables available to aid in creating your application. There are certain methods that will use time and time again.
@@ -214,7 +268,7 @@ Component.propTypes = {
 Counter React Component
 -------------------------------
 
-A React components does not need to have many moving parts. Infact it is better to keep your React componets simple. You should always look to make your React components do to as little as possible which will aid in make them re-usable throughout your applications.
+A React components does not need to have many moving parts. Infact it is better to keep your React components simple. You should always look to make your React components do to as little as possible which will aid in make them re-usable throughout your applications.
 
 We are going to create a simple counter component that increments a count when a button is clicked.
 
@@ -272,7 +326,7 @@ Finally we inject the component in the the body of our HTML document. **Componen
 
 > **Tip**
 > 
-> The onClick method uses a double colon **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
+> The onClick method uses a double colon (::) **Bind Operator** to provide context mapping to our **increment()** method. This makes the **this** in the **increment()** method to have the correct context and map to **setState()**
 
 Structuring your React Application
 -----------------------------------------
