@@ -178,6 +178,31 @@ Child.contextTypes = {
 
 In the **Child** component we can we can reference the **items** which have been passed down via context. 
 
+Isomorphic javascript
+-------------------------
+
+Isomorphic javascript JavaScript is shared code that runs on both the in the browser and on the server. React is isomorphic ready. It means you can use the same React component on for server side rendering and for client side rendering.
+
+The advantages of server side rendering include:
+
+ - On first page load, serve server-rendered HTML which is inflated with data. This is quicker than loading the HTML, pulling in the JS and then making requests back to the server for more data. It will increase the speed of your application when it first loads.
+ - Search engine optimisation is improved as crawlers can access the raw html to decide what your application does. It is provides the least resistance for getting your application indexed well in a search engine.
+ - A server rendered React component can seamlessly become a client side rendered application after initial load. This retains all the advantages of client-side rendered apps (e.g. low data transfer between server and client, mobile optimisation) 
+
+Client-side rendering of React component which creates a DOM element in the browser.
+```javascript
+ReactDOM.render(
+    <Component />,
+    document.getElementById('body')
+);
+```
+
+Server-side rendering of React component which creates a string which can be sent to the browser and parsed.
+```javascript
+React.renderToString(<Component />);
+```
+Later in the book we will look at how to create a Node server which will demonstrate how to serve this string representation of the your React component to the browser.
+
 Common React methods
 ---------------------------- 
 
@@ -450,7 +475,7 @@ We provide a **text/jsx** type for our script which is used by the JSX Transform
 
 **Creating the Todo Container**
 
-First, we create a Todo Container React component. This will be our parent React container and instansiate all the children React components of our application.
+First, we create a **TodoContainer** React component. This will be our parent React container and instansiate all the children React components of our application. **TodoContainer** is our smart component as it has **state**.
 
 ```javascript
 import React, {Component} from 'react';
@@ -505,11 +530,11 @@ ReactDOM.render(
 );
 ```
 
-We extend a React class to create a **TodoContainer** parent component that takes a **title** and **items** props. The **render()** method paints the title and invokes two undefined React Components called **TodoList** and **TodoInput**.
+We extend a React class to create a **TodoContainer** parent component that takes a **title** and **items** props. The **render()** method paints the **title** and invokes two React Components called **TodoList** and **TodoInput**.
 
-We create the application state in the parent which contains the **items** array and also the handler methods for the state. These are passed down as props to the children components. This means we only have to manage state in one place (i.e. the parent component).
+We create the application state in the parent which contains the **items** array and also the handler methods (**addListItem()**, **removeListItem()**) for the state. These are passed down as props to the children components.
 
-We inject **TodoContainer** in to the container element with the title set as "Todo List".
+We inject **TodoContainer** in to the container element with the **title** set as "Todo List".
 
 ```javascript
 
@@ -543,7 +568,7 @@ TodoInput.propTypes = {
 ```
 We create our **TodoInput** component which adds new todo items. We pass the addItems **prop** to the component through the constructor.
 
-The **validateInput()** method validates that the inputed todo is not an empty string before passing it through the **addItem** prop. We have introduced the **this.refs** locator which allows your react component to pick out a DOM element which is decorated with a **ref** attribute.
+The **validateInput()** method validates that the inputed todo is not an empty string before passing it through the **addItem** handler which updates the items array state in the parent **TodoContainer**. We have introduced the **this.refs** locator which allows your react component to pick out a DOM element which is decorated with a **ref** attribute.
 
 ```javascript
 
@@ -583,12 +608,12 @@ TodoInput.propTypes = {
 
 The **render()** method has the **ListItems** array which is mapped from the original **items** array passed down through the props. 
 
-The **ListItems** are iterated through when the component is instantiated in the DOM. Clicking on the list element removes the item from the items array.
+The **ListItems** are iterated through when the component is instantiated in the DOM. Clicking on the list element removes the item from the items array state in the parent **TodoContainer**.
 
 Loading data into React
 ----------------------------
 
-We can fetch data from external resources to populate our react components. Let's use JQuery's ajax methods to fetch random names and populate a React component.
+We can fetch data from external resources to populate our react components. React doesn't care how we provide it with date. We can provide inline data or, fetch data using http request or web sockets.  
 
 ```javascript
 import React, { Component } from 'react';
@@ -639,39 +664,15 @@ ReactDOM.render(
     document.getElementById('body')
 );
 ```
+In the example, use JQuery's ajax methods to fetch random names to populate a React component.
 
 **ComponentWillMount** and **ComponentWillUnmount** are lifecycle methods native to React. The first is called before the React component writes to the DOM and the latter when the component is removed from the DOM.
 
 We request the **persons** data via **$.get()** in **ComponentWillMount** and we then set the state of the component. This request happens before component mounts and the will re-render the list items when the request is successful.
 
-We map the **persons** array to return list elements that we inject in the DOM.
+We map the **persons** array to return **li** elements that we inject into the DOM. React tracks what data is bound to which **li** element.
 
 We can tidy the request object up when we unmount the component by invoking **abort()** in **ComponentWillUnmount()**.
-
-Isomorphic javascript
--------------------------
-
-Isomorphic javascript JavaScript is shared code that runs on both the in the browser and on the server. React is isomorphic ready. It means you can use the same React component on for server side rendering and for client side rendering.
-
-The advantages of server side rendering include:
-
- - On first page load, serve server-rendered HTML which is inflated with data. This is quicker than loading the HTML, pulling in the JS and then making requests back to the server for more data. It will increase the speed of your application when it first loads.
- - Search engine optimisation is improved as crawlers can access the raw html to decide what your application does. It is provides the least resistance for getting your application indexed well in a search engine.
- - A server rendered React component can seamlessly become a client side rendered application after initial load. This retains all the advantages of client-side rendered apps (e.g. low data transfer between server and client, mobile optimisation) 
-
-Client-side rendering of React component which creates a DOM element in the browser.
-```javascript
-ReactDOM.render(
-    <Component />,
-    document.getElementById('body')
-);
-```
-
-Server-side rendering of React component which creates a string which can be sent to the browser and parsed.
-```javascript
-React.renderToString(<Component />);
-```
-Later in the book we will look at how to create a Node server which will demonstrate how to serve this string representation of the your React component to the browser.
 
 Testing React Components
 -------------------------------------
