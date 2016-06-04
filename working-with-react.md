@@ -11,7 +11,7 @@ React is just the view layer of your web application. You cannot build a fully f
 Why use React.js
 ------------------
 
-React gives you a template language called *JSX* and helper functions to effciently render HTML. That's all React outputs, HTML. Your created HTML an Javascript, are called "Components".
+React gives you a template language called *JSX* and helper functions to efficiently render HTML. That's all React outputs, HTML. Your created HTML an Javascript, are called "Components".
 
 React.js enforces all the rendering and functionality to exist in the same component. Traditionally HTML would be seperated from functionality. Javascript wouldn't be includes in HTML directly ()i.e. onClick()). This was to make both the HTML easier to read and parse at runtime. 
 
@@ -297,6 +297,66 @@ There are two kind of components that can be created. Stateless and stateful com
 
 Your application will be made of a small number of stateful components and a larger number of stateless components. The aim is to keep all the state management in as few places as possible.
 
+You can create simpler applications just by creating a collection of React components that manage their own state. This can become difficult to work with as your application grows.
+
+**Flux**
+
+Flux is an architecture to structure larger React applications. The idea was to remove state management to outside your react components and to manage the interaction your components have with that store.
+
+Flux was developed by Facebook as a way to move away from the more standard MVC (model-view-controller) towards a pattern with a uni-directional data flow.  
+
+```javascript
+//MVC
+model -> view -> model
+
+//Flux
+store -> view -> action -> dispatcher -> store
+```
+
+The MVC approach meant that the view could change a model and the model change a view, this could create spaghetti events that are difficult to debug. Backbone and Angular (1.x) can use React for the view components and follow MVC patterns.
+
+The Flux approach enforces the rule that the view never informs the model/store. A view, dispatcher and store have distinct inputs and outputs. It is a more functional approach to coding that relieves on an immutable data store and props of a React Components to pass down the new state.
+
+Flux manages your state by passing **actions** to your Components these actions are **dispatched** and creates a new **store** which is passed back to the component.
+
+**Store**
+
+A **store** is just a simple object literal. It has no listeners bound to it (like a model) and gets amended when a **dispatcher** interacts with it.
+
+```javascript
+const store = {
+	items : [],
+	lastUpdated : ''
+};
+```
+
+**Actions**
+
+An **action** is a method that is generally initiated from a **view** (but can also be initiated by server interactions). The **action** will contain a **value** which is the data you wish to augment the store with and a **type** which informs the **dispatcher** how to deal with that data.
+
+```javascript
+const addItemAction = {
+	type : 'INSERT_ITEM',
+	value : {
+		task : 'Buy socks',
+		created : new Date()
+	}
+})
+```
+The example action method has a **type** of 'UPDATING_LIST', and a **value** which has a task and the date it was created. An action will always send a payload with atleast a type and a value. It is possible to add additional parameters.
+
+**Dispatcher**
+
+The **dispatcher** manages data flow in your application. It provides a bridge between the data **store** and the **actions**. It has no logic of its own. The dispatcher uses the **type** of the action to inform the store what it should do with the **value** via a callback. 
+
+Whilst you could create all your own flux management code, there are a number of libraries that provide helper methods and scaffolding to make your Flux architectured applications. These include:
+
+ - Fluxxor
+ - Redux
+ - Alt
+
+Each flows the same paradigms but have different ways of implementing flux. It is worth reading about which suits your solution best.
+
 
 Todo React Web Application
 ----------------------------------------
@@ -515,87 +575,30 @@ We map the **persons** array to return list elements that we inject in the DOM.
 
 We can tidy the request object up when we unmount the component by invoking **abort()** in **ComponentWillUnmount()**.
 
+Isomorphic javascript
+-------------------------
 
-Flux Architecture
-----------------------------
+Isomorphic javascript JavaScript is shared code that runs on both the in the browser and on the server. React is isomorphic ready. It means you can use the same React component on for server side rendering and for client side rendering.
 
-Flux is an architecture rather than a framework. It provides a way to structure your React web applications so that they are maintainable and easy to debug.
+The advantages of server side rendering include:
 
-Flux was developed by Facebook as a way to move away from the more standard MVC (model-view-controller) towards a pattern with a uni-directional data flow. 
+ - On first page load, serve server-rendered HTML which is inflated with data. This is quicker than loading the HTML, pulling in the JS and then making requests back to the server for more data. It will increase the speed of your application when it first loads.
+ - Search engine optimisation is improved as crawlers can access the raw html to decide what your application does. It is provides the least resistance for getting your application indexed well in a search engine.
+ - A server rendered React component can seamlessly become a client side rendered application after initial load. This retains all the advantages of client-side rendered apps (e.g. low data transfer between server and client, mobile optimisation) 
 
+Client-side rendering of React component which creates a DOM element in the browser.
 ```javascript
-//MVC
-model -> view -> model
-
-//Flux
-store -> view -> action -> dispatcher -> store
+ReactDOM.render(
+    <Component />,
+    document.getElementById('body')
+);
 ```
 
-The MVC approach meant that the view could change a model and the model change a view, this could create spaghetti events that were difficult to debug.
-
-The Flux approach enforces the rule that the view never informs the model/store. A view, dispatcher and store have distinct inputs and outputs. It is a more functional approach to coding that makes it easier to test and debug our code.
-
-**Store**
-
-A **store** is just a simple object literal. It has no listeners bound to it (like a model) but just gets amended when a **dispatcher** interacts with it.
-
+Server-side rendering of React component which creates a string which can be sent to the browser and parsed.
 ```javascript
-const store = {
-	items : [],
-	lastUpdated : ''
-};
+React.renderToString(<Component />);
 ```
-
-**Actions**
-
-An **action** is a method that is generally initiated from a **view** (but can also be initiated by server interactions). The **action** will contain a **value** which is the data you wish to augment the store with and a **type** which informs the **dispatcher** how to deal with that data.
-
-```javascript
-const addItemAction = {
-	type : 'INSERT_ITEM',
-	value : {
-		task : 'Buy socks',
-		created : new Date()
-	}
-})
-```
-The example action method has a **type** of 'UPDATING_LIST', and a **value** which has a task and the date it was created. An action will always send a payload with atleast a type and a value. It is possible to add additional parameters.
-
-**Dispatcher**
-
-The **dispatcher** manages data flow in your application. It provides a bridge between the data **store** and the **actions**. It has no logic of its own. The dispatcher uses the **type** of the action to inform the store what it should do with the **value** via a callback. 
-
-```javascript
-const dispatcher = function(action) {
-    switch (action.type) {
-      case 'INSERT_ITEM':
-	      store.items.push(action.value);
-	      store.lastUpdated = action.value.created;
-      default:
-	      return store;
-}
-```
-
-**View**
-
-The view is just your React component that has been enriched with actions.
-
-```javascript
-import { addItemAction } from 'actions'
-class List extends React.Component () {
-	
-	constructor (props) {
-		this.addItem = this.handleAddItem.bind(this);
-	}
-
-	addItem () {
-		this.dispatch({
-			type : 'ADD'
-		});
-	}
-	
-}
-```
+We will look at how to create a node server which will demonstrate how to serve this string representation of the your React component to the browser.
 
 **Testing React**
 
