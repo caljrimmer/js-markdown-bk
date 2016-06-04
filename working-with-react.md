@@ -479,6 +479,8 @@ First, we create a **TodoContainer** React component. This will be our parent Re
 
 ```javascript
 import React, {Component} from 'react';
+import TodoInput from './TodoInput';
+import TodoList from './TodoList';
 
 class TodoContainer extends Component({
     
@@ -610,6 +612,7 @@ The **render()** method has the **ListItems** array which is mapped from the ori
 
 The **ListItems** are iterated through when the component is instantiated in the DOM. Clicking on the list element removes the item from the items array state in the parent **TodoContainer**.
 
+
 Loading data into React
 ----------------------------
 
@@ -677,9 +680,9 @@ We can tidy the request object up when we unmount the component by invoking **ab
 Testing React Components
 -------------------------------------
 
-We should be testing all our components to give you confidence when developing and deploying your applications. Testing React components is made easy with React's Test Utilities. 
+We should be testing all our components to give us confidence when developing and deploying applications. Testing React components is made easy with React's Test Utilities. 
 
-We can create React components in the Virtual DOM and then simulate interacting with these components. We can mock data, clicks and how the component would render in the DOM.
+We can create React components in the Virtual DOM and then simulate interacting with these components. We can mock data, interactions and how the component would render in the DOM.
 
 **What to test**
 
@@ -714,7 +717,7 @@ global.window = document.parentWindow;
 
 This script just creates a fake DOM for us to place our React component in. It is like having an index.html page served by a web server but much quicker as it only exists in memory.
 
-**Global** is a **Node** enviroment variable that does a similar function as **window** in the browser. We copy the **window** object to global so that is can be re-used in your tests.
+**Global** is a **Node** enviroment variable that does a similar function as **window** in the browser. We copy the **window** object to **global** so that is can be accessed and used in your tests.
 
 When **mocha** (our test reporting framework) runs our tests, it pulls in the **setup.js** first before our tests. The complete setting up of your test environment will be documented in the next chapter.
 
@@ -727,11 +730,11 @@ When **mocha** (our test reporting framework) runs our tests, it pulls in the **
         - render.spec.js
 ```
 
-We structure or test by component and suffix the name with **.spec.js** . This is just a naming convention but it highlights what files contain tests and what contain app related code. It also means we can **glob** (search by name) the test files easily to include them in our test harness. 
+We arrange our tests by component and suffix the name with **.spec.js** . This is just a naming convention but it highlights what files contain tests and which contain app related code. It also means we can **glob** (search by name) the test files easily to include them in our test harness. 
 
 **Render Test** 
 
-We are going to test the **TodoContainer** we built earlier.  First we look at how our component renders. We are interested the DOM structure and the fact it instantiates correctly.
+We are going to test the **TodoContainer** we built earlier.  First we look at how our component renders. We are interested the DOM structure and that it instantiates correctly.
 
 ```javascript
 //render.spec.js
@@ -743,13 +746,14 @@ import expect from 'expect';
 import TodoContainer from './TodoContainer';
 
 describe('TodoContainer render',() => {
-	it('Component elements should exist',() => {});
+	it('Component elements should exist',() => {
+	});
 });
 ```
 
 We include our React component, the **TestUtils** from React and the **expect** framework for making assertions. 
 
-The **describe()** and **it()** functions are parsed by mocha to produce descriptive reporting. **Describe()** provides descriptive and grouping context to your tests and **it()** is the individual tests
+The **describe()** and **it()** functions are parsed by **mocha** to produce test reporting in the console. **Describe()** provides descriptive and grouping context to your tests and **it()** is the individual tests themselves.
 
 ```javascript
 describe('TodoContainer render',() => {
@@ -790,9 +794,10 @@ describe('TodoContainer render',() => {
 
 We next create a **before()** function that is run before each of our tests.  We render **TodoContainer** into the Virtual DOM and then pick out the elements that we are interested in testing. 
 
-**FindRenderedDOMComponentWithClass()** finds one element buy classNameand **scryRenderedDOMComponentsWithClass()** find multiple elemtents by className.
+**FindRenderedDOMComponentWithClass()** finds one element buy className and **scryRenderedDOMComponentsWithClass()** find multiple elemtents by className.
 
-We now have out tests ready to run assertions with **expect**.
+Our test suite is now ready to run assertions with **expect**.
+
 ```javascript
    it('Component elements should exist', () => {
 	    expect(this.todos).toExist();
@@ -814,15 +819,15 @@ We now have out tests ready to run assertions with **expect**.
 
 ```
 
-We have tested that our components main container exist and then we test the content of those containers.
+We have tested that our components main container exists and then we test the content of those containers.
 
 If these tests pass then we know with confidence that our component will render the correct items, if it is give the correct props.
 
 **Behaviour test**
 
-We put our behaviour tests in a new file called **behaviour.spec.js**. We have the same imported files and the same **before()** function as our render tests.
+We put our behaviour tests in a new file called **behaviour.spec.js**. We have the same imported files and the same **before()** function as our **render.spec.js** tests.
 
-Behaviour tests are to look at how a user would interact with our React component. We will be looking at adding and deleting the of the todo items.
+Behaviour tests are to look at how a user would interact with our React component. We will be looking at adding and deleting the todo items.
 
 ```javascript
 //behaviour.spec.js
@@ -851,13 +856,15 @@ describe('Todo Behaviour ', () => {
 });
 ```
 
-We create a new todo called 'wash car' in the first test. The second test is reset by the **before()** method (i.e. the 'wash car' no longer exists) and we delete the 'get milk' item.
+We create a new todo called 'wash car' in the first test but simulating the input value and click. 
+
+The second test is reset by the **before()** method (i.e. the 'wash car' no longer exists). In the second test, we delete the 'get milk' item by simulating a click on the list item.
 
 We have confidence that our user interactions work correctly. Next we look at the state of our React component.
 
 **State test** 
 
-Finally, we test that the state is correct on the initialising our component and also when we fire methods that touch our state. Our Todo components state interaction all exist in the smart component (.i.e. our parent **TodoContainer** component).
+Finally, we test that the state is correct on the initialising our component. We test on state changes  by firing the handler methods that touch our state. Our Todo components state interaction all exist in the smart component (.i.e. our parent **TodoContainer** component).
 
 ```javascript
 describe('Todo State', () => {
