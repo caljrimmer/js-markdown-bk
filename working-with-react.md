@@ -598,8 +598,28 @@ Server-side rendering of React component which creates a string which can be sen
 ```javascript
 React.renderToString(<Component />);
 ```
-We will look at how to create a node server which will demonstrate how to serve this string representation of the your React component to the browser.
+Later in the book we will look at how to create a Node server which will demonstrate how to serve this string representation of the your React component to the browser.
 
-**Testing React**
+Testing React Components
+-------------------------------------
+
+We should be testing all our components to give you confidence when developing and deploying your applications. Testing React components is made easy with React's Test Utilities. 
+
+We can create React components in the Virtual DOM and then simulate interacting with these components. We can mock data, clicks and how the component would render in the DOM.
+
+**What to test**
+
+ - The rendering of a React component given a particular state.
+ - The behaviour of a React component and how it affects the state.
+ - The state or the application (the default values and expected state)
+
+The rendered React Component uses behaviour to amend state which affects the rendered Component. You should cover all this in your tests to provide you app with extensive test coverage. 
+
+ - All components will be rendered. Thus you will need rendering tests for each component.
+ - Some components will have events bound to them which will affect the state. Thus you will will need behavioural tests for all components with bound events.
+ - State can be interacted with by multiple components. Smart components manage this state (or in the case of Flux, the store). We need to make sure we understand how the state should change with both interactions from events but also from data fetched from external sources.
+
+**Test harnessing frameworks**
+We can't test our components just using React TestUtils alone. We need an assertion framework (we shall use **expect**) and a headless browser environment to instantiate our components (we shall use **JSdom**).
 
 **Redux**
