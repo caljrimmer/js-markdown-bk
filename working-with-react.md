@@ -17,9 +17,9 @@ React, however,  enforces all the rendering and functionality to exist in the sa
 
 React is very effcient when rendering HTML to the DOM. It is ideal either in low latency applications (i.e. data changes quickly) or large data sets (1000+ rows worth of data need rendering). This achieve with React's virtual DOM implementation.
 
-React is also **Isomorphic**. This mean you can write React componenets that with either render on the client or on the server. This gives you flexibility on how you serve your views to users of your application. Server rendered pages can render faster and also provide better meta information for being indexed by search engines.
+React is also **Isomorphic**. This mean you can write React components that with either render on the client or on the server. This gives you flexibility on how you serve your views to users of your application. Server rendered pages can render faster and also provide better meta information for being indexed by search engines.
 
-**React Native** is a couching framework for React that lets you write applications that will run as apps on mobile devices. You can have very similar React code that can run in the browser and also on mobile applications. This allows you to build hybrid applications that can run in multiple environments.
+**React Native** is a couching framework for React that lets you write applications that will run as apps on mobile devices. You can have very similar React code that can run in the browser and also on mobile applications. This allows you to build one hybrid code base that can run in multiple environments.
 
 **React Developer Tools** is a Chrome DevTools extension. It provides a new tab called React in your Chrome DevTools. Within the tools, you can inspect and edit a component's current props and state.  Also you can easily find which component threw an error during rendering, and what state or props lead to it.
 
@@ -37,7 +37,6 @@ const addItem = event => {
 
 ReactDOM.render(
     <TodoContainer>
-        <h1>Shopping List</h1>
         <TodoList className="list" owner="Mrs Smith" listItems={items} />
         <TodoControls className="controls" addItemHandler={addItem} />
     </TodoContainer>,
@@ -50,6 +49,8 @@ The above example demonstrates how React components are broken up. A TodoContain
 
 JSX tags have a name, attributes, and children. If an attribute value is enclosed in quotes, the value is a string (or a number without quotes). If the attribute is wrapped in curly braces ({}) the value is a JavaScript expression or object.
 
+JSX needs to be either compiler or transpiled before consumed by the browser. JSX isn't supported natively in the browser. This means we have to have either have a build step (which we will discuss in the next chapter) or a javascript shim to provide support for our React components.
+
 > **Note**
 
 >React uses *className* instead of the *class*. React.js DOM components expect DOM property names like className and htmlFor, rather than DOM attributes like class or for.
@@ -58,24 +59,22 @@ JSX tags have a name, attributes, and children. If an attribute value is enclose
 Virtual DOM
 --------------------
 
-React.js is very effcient at rendering to the DOM because it has the concept of a virtual DOM. A virtual DOM combines an *in-memory* representation of the actual DOM with a smart diffing algorthim which compares differences in the web application model.
+React is very efficient at rendering to the DOM because it has the concept of a **virtual DOM**. A virtual DOM combines an in-memory representation of the actual DOM with a smart diffing algorithm which compares differences in the web application model.
 
-React.js provides a series of Javascript methods that create an in-memory DOM tree and performs updates in memory when data bound to it changes (determined by the diffing algorthim). Updating the virtual DOM is much quicker than updating the normal DOM directly. React does the hard work in the in-memory DOM and then, once all work is finsihed, renders the result in the normal DOM.
+React provides a series of Javascript methods that create an in-memory DOM tree and performs updates in-memory when data bound to it changes (determined by a smart diffing algorithm). Updating the virtual DOM is much quicker than updating the normal DOM directly. React does the hard work in the in-memory and then, once all the work is finished, renders the result in the normal DOM.
 
-This optimisation all happens behind the scenes.You can code your JSX, Javascript and data bindings without having to worry about interacting with the virtual DOM. You will just experience the normal DOM updating very fast.
+This optimisation all happens behind the scenes. You can code your JSX, Javascript and event bindings without having to worry about interacting with the virtual DOM. You will just experience the normal DOM updating very fast.
 
-React also only interacts with specific parts of the normal DOM that needs to change. React.js, unlike say Backbone, will not re-render whole sections of the DOM but just the necessary DOM nodes where the bound data changes.
+React also only interacts with specific parts of the DOM that needs to change. React., unlike say Backbone, will not re-render whole sections of the DOM but just the necessary DOM nodes where the bound data has changed.
 
 Smart diffing algorithm
 ---------------------------------------------------
 
-Most popular web application frameworks (i.e. Angular 1.x, Backbone) follow a MVC architecture. The views re-render when the model changes. the changes are propgated by events emitted when the model changes. Models can have a one-to-many relationship with the views, and the views can have a one-to-many relationship to the models. 
+Most popular web application frameworks (e.g. Angular 1.x, Backbone) follow a MVC architecture. The views re-render when the model changes. the changes are propgated by events emitted when the model changes. Models can have a one-to-many relationship with the views, and the views can have a one-to-many relationship to the models. 
 
-This means a model change can be reflected in a number of views, and an event triggered in a view can change multiple models. This can lead to *spaghetti events*, i.e. code that is dificult to maintains and understand. An event can create unexpected consequences. It is also difficult to test larger MVC applications, as you have to mock all the model interations. 
+This means a model change can be reflected in a number of views, and an event triggered in a view can change multiple models. This can lead to **spaghetti events**, i.e. code that is difficult to maintains and understand. An event can create unexpected consequences. It is also difficult to test larger MVC applications, as you have to mock all the model interations. 
 
-The smart diffing algorithm allows you to create more functional approach to developing your application. You provide the previous state and the new state and let React do the hard work. You don't have to bind to model changes, just provide the new state and let React work out the best way to render this change to the DOM.
-
-Functional react components are deterministic, i.e. you provide an input and the output will always be the same. You can wrtie tests easily because you design your application to only function one way when provided with a given state.
+The smart diffing algorithm allows you to create more functional approach to developing your application. You provide the previous state and the new state and let React do the hard work. You don't have to bind to model changes, just provide the new state and React will work out the best way to render this change to the DOM.
 
 Props, state and context
 ------------------------
@@ -102,7 +101,9 @@ The vehicle has **props** (i.e. attributes) which configure the type and specs o
 
 **State**
 
-**State** is defined within the React component. They maintain the internal state of the component. React components change their own internal **state** but not that of their child or parent React components. State is mutable, i.e. state can be changed.
+**State** is defined within the React component. They maintain the internal state of the component. React components change their own internal **state** but not that of their child or parent React components (although state can be passed down as props to a component's children). 
+
+State is mutable, i.e. state can be changed.
 
 ```javascript
 import React, {Component} from 'React';
@@ -180,10 +181,10 @@ In the **Child** component we can we can reference the **items** which have been
 Common React methods
 ---------------------------- 
 
-React has a number of methods and variables available to aid in creating your application. There are certain methods that will use time and time again.
+React has a number of methods and static variable available to help you creating your application. There are certain React methods that will use time and time again.
 
 **constructor**
-We need to augment the constructor with the props that are passed down to the React component. If we don't do this then our React application won't work. We should also set our React state in this constructor
+We need to augment the class constructor with the props that are passed down to the React component. If we don't do this then our React application won't be able to access the props. We should also set our React state in this constructor
 
 ```javascript
 constructor (props) {
@@ -196,35 +197,49 @@ constructor (props) {
 
 **render**
 
-Render is mandatory for any react component. Render is where all the JSX code is placed. The render method is what gets painted to the DOM.
+Render is where all the JSX code is placed. The render method return the code that gets painted to the DOM. Render can also reference children React components.
 
 ```javascript
 render () {
 	return (
-		<div></div>
+		<div>
+			<ChildComponent />
+		</div>
 	)
 }
 ```
 **setState**
-SetState updates the state of the React Component. The method also invokes render() to paint the new state to the DOM.
+SetState updates the state of the React Component. The method also invokes **render()** to paint the new state to the DOM.
 
 ```javascript
 this.setState({
 	data : ['one','two','three']
 })
+
+render () {
+	return (
+		<p>{ this.state.data }</p>
+	)
+}
 ```
 
 **componentWillMount**
 
-This is a lifecycle methods this is called before the component mounts on the DOM. This is useful for fetching or parsing data before the render method is called.
+This is a lifecycle methods this is called before the component mounts on the DOM. This is useful for fetching or parsing data before the **render()** method is called.
 
 ```javascript
 componentWillMount (){
 	$.get(this.props.url, (data) => {
 		this.setState({
-			data : data
+			items : data
 		})
 	})
+}
+
+render () {
+	return (
+		<p>{ this.state.items }</p>
+	)
 }
 ```
 
@@ -248,7 +263,7 @@ render () {
 
 **propTypes**
 
-React allow you to define the props that you pass in to your react component. Proptypes make it easy for the you to validate and document your React application.  You will see a warning on the console if you invalidate one of your props.
+React allow you to define the props that you pass in to your react component. Proptypes make it easy for the you to validate and document your React application.  A warning will appear in the console if you invalidate one of your props.
 
 ```javascript
 <Component
@@ -265,10 +280,10 @@ Component.propTypes = {
 ```
 
 
-Counter React Component
--------------------------------
+An example React component
+------------------------------------
 
-A React components does not need to have many moving parts. Infact it is better to keep your React components simple. You should always look to make your React components do to as little as possible which will aid in make them re-usable throughout your applications.
+React components should not have many moving parts. Infact it is better to keep your React components simple. You should always look to make your React components to do as little as possible which will aid in make them re-usable throughout your applications.
 
 We are going to create a simple counter component that increments a count when a button is clicked.
 
@@ -312,15 +327,15 @@ ReactDOM.render(
 );
 
 ```
-We create our **Counter** component class by extending the React component class. This provides us will all the baked in React methods which you can augment in your new component.
+We create our **Counter** component by extending the React component class. This make all the baked in React methods available in your new component.
 
-We define the component **state** in the class constructor. We use the **super** method to inherit any other props that might be passed down to the **counter** component. The only **state** we are concerned with is the **count** which we initially set to the value of the **start prop**.
+We define the component **state** in the class constructor. We use the **super** method to inherit any other **props** that might be passed down to the **counter** component. The only **state** we are concerned with is the **count** which we initially set to the value of the **start** prop.
 
-Next we define a click handler called **increment()** which will update our **count** state. We use the React method **setState()** to update the new count value. **SetState()** will automatically make the **render()** method re-invoke. Therefore, the DOM will automatically update with the new count value when it is changed.
+Next, we define a click handler called **increment()** which will update our **count** state. We use the React method **setState()** to update the new count value. **SetState()** will automatically make the **render()** method re-invoke. Therefore, the DOM will automatically update with the new count value when it is changed.
 
-We define our **render()** method for the React component. React componets expect there to be a render method defined. This **render()** method informs the virtual DOM on how to map changes to bound data to the DOM. We use curly brackets ({}) to inject the **count** state value in to the DOM.  
+We define our **render()** method. React component's expect there to be a **render()** method defined. This **render()** method informs the virtual DOM on how to map changes to bound data to the DOM. We use curly brackets ({}) to inject the **count** state value in to the DOM.  
 
-**Render()** also provides a way of binding events ot the DOM. We have used the onClick even handler to bind the **increment()** method to a click on the button.
+**Render()** also provides a way of binding events ot the DOM. We have used the **onClick** even handler to bind the **increment()** method to a click on the button.
 
 Finally we inject the component in the the body of our HTML document. **ComponentDidMount()** will fire and console out the message 'mounted'.
 
@@ -343,35 +358,35 @@ React components are meant to be re-useable and as simple as possible. A React c
 </Table>
 ```
 
-There are two kind of components that can be created. Stateless and stateful components.
+There are two kind of components that can be created. **Stateless** and **stateful** components.
 
-**Stateless Components** (or dumb components) contains only props, no state. All the logic and handlers is provided props they receive.
+**Stateless Components** (or dumb components) contains only props, no state. All the logic and handlers are provided props they receive from a **stateful component**. The majority of rendering and formatting logic happens in **stateless components**.
 
-**Stateful Components** contain both props and state. They manage the applications state and provide handlers for children stateless components. A stateful component generally handles client-server communication (XHR, web sockets). The majority of visualization and formatting logic happens in stateless components.
+**Stateful Components** contain both props and state. They manage the applications state and provide handlers for children **stateless components**.  A **stateful component** generally handles client to server communication (e.g. XHR, web sockets).
 
-Your application will be made of a small number of stateful components and a larger number of stateless components. The aim is to keep all the state management in as few places as possible.
+Your application will be made of a small number of **stateful components** and a larger number of **stateless components**. The aim is to keep all the state management in as few places as possible.
 
 You can create simpler applications just by creating a collection of React components that manage their own state. This can become difficult to work with as your application grows.
 
 **Flux**
 
-Flux is an architecture to structure larger React applications. The idea was to remove state management to outside your react components and to manage the interaction your components have with that store.
+Flux is an architecture to structure larger React applications. The idea was to remove state management to outside your react components and to then manage the interaction your components have with that state.
 
 Flux was developed by Facebook as a way to move away from the more standard MVC (model-view-controller) towards a pattern with a uni-directional data flow.  
 
 ```javascript
 //MVC
-model -> view -> model
+model <-> view
 
 //Flux
-store -> view -> action -> dispatcher -> store
+store -> view -> action -> dispatcher -> back to store
 ```
 
-The MVC approach meant that the view could change a model and the model change a view, this could create spaghetti events that are difficult to debug. Backbone and Angular (1.x) can use React for the view components and follow MVC patterns.
+The MVC approach meant that the view could change a model and the model change a view, this could create **spaghetti events** that are difficult to debug. It is possible to use Javascript frameworks like Backbone or Angular (1.x) to use React for the view components and follow MVC patterns. This can work well in certain applications. 
 
-The Flux approach enforces the rule that the view never informs the model/store. A view, dispatcher and store have distinct inputs and outputs. It is a more functional approach to coding that relieves on an immutable data store and props of a React Components to pass down the new state.
+The Flux approach, however, enforces the rule that the view never informs the model/store. A view, dispatcher and store have distinct inputs and outputs. It is a more functional approach to coding that relieves on an immutable data store and the props of a React Components to pass down the new state. This can help you produce more deterministic, and thus easier to maintain applications. 
 
-Flux manages your state by passing **actions** to your Components these actions are **dispatched** and creates a new **store** which is passed back to the component.
+Flux manages your state by passing **actions** through props to your components. These actions are **dispatched** via handlers. This creates a new **store** informed from the received **action**, which is passed back to the component for binding with the DOM.
 
 **Store**
 
@@ -397,11 +412,11 @@ const addItemAction = {
 	}
 })
 ```
-The example action method has a **type** of 'UPDATING_LIST', and a **value** which has a task and the date it was created. An action will always send a payload with atleast a type and a value. It is possible to add additional parameters.
+An action will always have at least a type and a value but can have additional parameters.
 
 **Dispatcher**
 
-The **dispatcher** manages data flow in your application. It provides a bridge between the data **store** and the **actions**. It has no logic of its own. The dispatcher uses the **type** of the action to inform the store what it should do with the **value** via a callback. 
+The **dispatcher** manages data flow in your application. It provides a bridge between the **store** and the **actions**. It has no logic of its own. The dispatcher uses the **type** of the action to inform the store what it should do with the **value**. 
 
 Whilst you could create all your own flux management code, there are a number of libraries that provide helper methods and scaffolding to make your Flux architectured applications. These include:
 
@@ -409,13 +424,13 @@ Whilst you could create all your own flux management code, there are a number of
  - Redux
  - Alt
 
-Each flows the same paradigms but have different ways of implementing flux. It is worth reading about which suits your solution best.
+Each flows the same paradigms but have different ways of implementing flux. It is worth reading about which suits the application you are trying to build.
 
 
 Todo React Web Application
 ----------------------------------------
 
-Before we start, we need to have a base index.html page to instansiate our React aplication.
+Before we start, we need to have a base index.html page to instantiate our React application.
 
 ```html
 <html>
@@ -429,7 +444,7 @@ Before we start, we need to have a base index.html page to instansiate our React
   </body>
 </html>
 ```
-We include React and also a JSX transformer script. We can do JSX transformation as a build step (which we will demonstrate later) but we will add a shim here for brevity. We also have a container element which will contain the React application.
+We include React and also a JSX transformer script. We can do JSX transformation as a build step (which we will demonstrate in the next chapter) but we will add a javascript shim here for brevity. We also have a container element which will contain the React application.
 
 We provide a **text/jsx** type for our script which is used by the JSX Transformer. This can be removed when we have our JSX transpliation as part of the build tools. 
 
