@@ -673,10 +673,7 @@ import expect from 'expect';
 import TodoContainer from './TodoContainer';
 
 describe('TodoContainer render',() => {
-	
-	it('Component elements should exist',() => {
-	});
-
+	it('Component elements should exist',() => {});
 });
 ```
 
@@ -685,8 +682,6 @@ We include our React component, the **TestUtils** from React and the **expect** 
 The **describe()** and **it()** functions are parsed by mocha to produce descriptive reporting. **Describe()** provides descriptive and grouping context to your tests and **it()** is the individual tests
 
 ```javascript
-//render.spec.js
-
 describe('TodoContainer render',() => {
 
 	const items =  ['get milk', 'walk the dog'];
@@ -698,15 +693,15 @@ describe('TodoContainer render',() => {
 	    	<TodoContainer title={title} items={items} />
 	    );
     
-        this.todoList = TestUtils.findRenderedDOMComponentWithClass(
+        this.todos = TestUtils.findRenderedDOMComponentWithClass(
 	        renderedComponent,
-	        'todo-list'
+	        'todos'
 	    );
-    
+	    
         this.todoInput = TestUtils.findRenderedDOMComponentWithClass(
 	        renderedComponent,
 	        'todo-input'
-        );
+	    );
     
         this.todoTitle = TestUtils.findRenderedDOMComponentWithClass(
 	        renderedComponent,
@@ -719,31 +714,70 @@ describe('TodoContainer render',() => {
         );
     
     });
-  
-    it('Component elements should exist',() => {
-	    expect(this.todoList).toExist();
-	    expect(this.todoList).toExist();
-	    expect(this.todoInput).toExist();
-	    expect(this.todoItems).toExist();
-    });
-  
-    it('title should be "' + title+ '"',() => {
-	    expect(this.todoTitle.textContent).toBe(title);
-    });
-  
-    it('There should be "' + items.length+ '" list items',() => {
-        expect(this.listItems.length).toBe(items.length);
-    });
-  
-    it('The list item names should be Correct',() => {
-	    expect(this.listItems[0].textContent).toBe(items[0]);
     
-		expect(this.listItems[1].textContent).toBe(items[1]);
-    });
-
 });
 ```
 
-The 
+We next create a **before()** function that is run before each of our tests.  We render **TodoContainer** into the Virtual DOM and then pick out the elements that we are interested in testing. 
 
-**Redux**
+**FindRenderedDOMComponentWithClass()** finds one element buy classNameand **scryRenderedDOMComponentsWithClass()** find multiple elemtents by className.
+
+We now have out tests ready to run assertions with **expect**.
+```javascript
+   it('Component elements should exist', () => {
+	    expect(this.todos).toExist();
+	    expect(this.todoItems).toExist();
+   });
+ 
+   it('title should be "' + title+ '"',() => {
+	   expect(this.todoTitle.textContent).toBe(title);
+   });
+ 
+   it('There should be "' + items.length+ '" list items',() => {
+       expect(this.listItems.length).toBe(items.length);
+   });
+ 
+   it('The list item names should be Correct',() => {
+	   expect(this.listItems[0].textContent).toBe(items[0]);
+	   expect(this.listItems[1].textContent).toBe(items[1]);
+   });
+
+```
+
+We have tested that our components main container exist and then we test the content of those containers.
+
+If these tests pass then we know with confidence that our component will render the correct items, if it is give the correct props.
+
+**Behaviour test**
+
+We put our behaviour tests in a new file called **behaviour.spec.js**. We have the same imported files and the same **before()** function as our render tests.
+
+Behaviour tests are to look at how a user would interact with our React component. We will be looking at adding and deleting the of the todo items.
+
+```javascript
+//behaviour.spec.js
+
+it('click to li to add todo item', () => {
+	const input = this.todoInput.querySelectAll('input');
+	const btn = this.todoInput.querySelectAll('button');
+	input.value = 'wash car';
+    TestUtils.Simulate.click(btn);
+    expect(this.listItems.length).toBe(3);
+    expect(this.listItems[2].textContent).toBe('wash car');
+});
+
+it('click to li to delete todo item', () => {
+	expect(this.listItems[0].textContent).toBe('get milk');
+    expect(this.listItems.length).toBe(2);
+    TestUtils.Simulate.click(this.listItem[0]);
+    expect(this.listItems.length).toBe(1);
+    expect(this.listItems[0].textContent).toBe('walk the dog');
+});
+```
+
+We create a new todo called 'wash car' in the first test. The second test is reset by the **before()** method (i.e. the 'wash car' no longer exists) and we delete the 'get milk' item.
+
+We have confidence that our user interactions work correctly. Next we look at the state of our React component.
+
+**State test** 
+
