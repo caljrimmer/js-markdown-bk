@@ -820,3 +820,13 @@ describe('Todo State', () => {
 ```
 
 We have now tested our state is correct when instansiated from props. We also test that our state handling methods of **addListItem()** and **removeListItem()** correctly change the state.
+
+**Using tests to help build better React components**
+
+Breaking up your tests mean you can concentrate on building your understanding of your application before creating React Components.
+
+You can create your different application states and define your handler methods (i.e. **addListItem**, **removeListItem**) first. You test these before committing to building your components. Therefore you are building test for your **smart components** first.
+
+Once you know your states, then you can mock out your **render tests**. You will know all the possible states of your component and can render test against them. You Todo app can have some or no list items, it has a title and it always has a input field and button. We test that these all exist and that the content is correct in relation to the state.
+
+Finally you test the bound events which fire your handler methods. The final part of your tests will be the **behaviour** of your component. You are testing the resultant DOM after a component event has been triggered.
