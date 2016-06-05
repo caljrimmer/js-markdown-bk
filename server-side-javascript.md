@@ -1,0 +1,44 @@
+
+
+Server-side Javascript
+====================
+
+JavaScript has traditionally only run in the web browser. This has changed in recent years and is now increasingly used on the server-side too. There are a number reasons for this:
+
+- Writing the so same code that runs on both the server and the client saves time and resources. One developer can create a whole application, front to back.
+- JavaScript syntax can be utilised as a query language on a number of NoSQL databases (Mongo, Redis, CouchDB)
+- Web servers like Nginx (more popular than Apache and IIS) have Javascript syntax configuration files
+-  V8 javascript engine, which is the most popular server-side JavaScript engine, is very fast for certain applications
+- Node.js has become very popular as a server-side JavaScript environment
+- NPM provides a repository of thousands of useful modules for building, developing, testing and compiling JavaScript on the server.
+
+In this chapter we are going to focus on the following Javascript server-side technologies:
+
+- **Node.js** is an open-source, cross-platform runtime environment for developing server-side Web applications.
+- **MongoDB** is open-source, NoSQL, document database.
+- **NPM** is a package manager for Node.js.
+- **Webpack** is a module bundlers are suited for big web applications. It helps you build and publish your applications.
+
+
+Node.js
+---------
+
+Node.js is a server side JavaScript platform built on Google's V8 JavaScript Engine. Node.js was developed by Ryan Dahl in 2009 as a way to easily building fast and scalable network and web applications. 
+
+Node.js uses an event-driven and single-threaded model that makes it lightweight and efficient. Event-driven means that there is a main loop that listens for events (user interactions, received messages, triggered prompts), and then fires a callback function when one of those events is detected. Node.js applications are therefore asynchronous.
+
+**Asynchronous events explained**
+
+Take the example of a cheese counter at a supermarket.
+
+At some supermarkets, when you can ask for some cheese, the shop assistant will serve you and then, when finished, serve the next customer. This is a synchronous task. The ability to serve cheese to any number of customers is based on the speed and number of sales assistants. Queues are likely to form.
+
+At other supermarkets, you get a ticket and wait for your turn to be served cheese. You are free to continue with the rest of your shopping until your ticket is called. This is an asynchronous task. The ability to serve cheese is still dependent on the number and speed of sales assistants but it is very unlikely queues will form.
+
+The advantages to using Node.js include:
+
+- **Speed**. It is very fast as it runs on the Google’s V8 engine, which compiles the JavaScript directly into machine code.
+- **Standalone**. Node.js contains a built-in library to allow applications to act as a Web server without software such as Apache or IIS. We do still need to reverse proxy (i.e. route to the port your application runs on) but we can use Nginx which uses JavaScript syntax too. 
+- **Community**. Node.js also provides a rich library of various JavaScript modules (via NPM) which simplifies the development of web applications.
+- **Flexible**. You can create web services (like web sockets or http endpoints) or web applications or a combination of the two in one node instance. Node.js can do as much or as little as you like in your stack. 
+- **Scalability**. One node instance runs on once CPU core. This means you can scale very easily both on one server or over a number of servers (via a load balancer) by just spinning up more instances on demand.
