@@ -95,4 +95,28 @@ db.users.destroy({
 
 - MongoDB has built in spacial functions. This means you can find stored data by querying a location by latitude and longitude with a radius (i.e. all results 5 miles from Bristol).
 
-- MongoDB has a number of NPM packages that seamlessly integrate it into Node.js applications (eg. **mongoose**).
+- MongoDB has a number of **NPM** packages that seamlessly integrate it into Node.js applications (eg. **mongoose**).
+
+**NPM**
+
+NPM is a package manager for Node.js and other Javascript projects. It is repository of thousands of packages which can be versioned and included in your web applications.
+
+NPM allows you to specify all of your web application's dependencies inside a package.json file. The package.json defines the versions of the packages you need and also allows you to create scripts to either build, test or instantiate your Node.js application. 
+
+```javascript
+{
+    "name": "my-web-application",
+    "version": "0.0.1",
+    "description": "a simple web application",
+    "scripts": {
+        "start": "node ./app.js"
+    },
+    "dependencies": {
+        "express": "^3.4.7",
+        "lodash": "^2.1.0"
+    }
+}
+```
+This is an example package.json. You can define meta data about your project, scripts to start your application and finally dependencies by name. You can search for dependencies to use in your web application at https://www.npmjs.com/.
+
+Adding a package.json file to your Node.js application means anybody, at anytime can install (npm install) and run (npm start) your application. It also means you can publish your application to NPM to share it with other developers.
