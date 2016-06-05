@@ -124,3 +124,6 @@ Adding a package.json file to your Node.js application means anybody, at anytime
 Webpack
 -----------
 
+Webpack is a module bundler. It takes of assets like javascript, images, css, files and directories and turns that into a structured, minified package that can be server via a web server.
+
+Webpack supports advanced functionality such as compilation/transpilation (convert React JSX to browser friendly Javascript), intelligent asset loading (load assets only when your application requires them), hashing files (versioning to inhibit browser caching) and source maps (so an application can still be debugged in the browser). There are many more modules that can be added to perform other tasks.
