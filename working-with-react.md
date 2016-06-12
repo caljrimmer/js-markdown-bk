@@ -911,3 +911,16 @@ Finally you test the bound events which fire your handler methods. The final par
 Summary
 -----------
 
+In this chapter we have looked at React Components and why they we were created. We have looked at how structure our React applications, how to test them and coding paradigms that we should follow.
+
+We have introduced:
+
+- The smart diffing algorithm and virtual dom which makes React very efficient at rendering and binding data to the DOM.
+- How to use JSX as a markup language to create your HTML.
+- The difference between **props** and **state**.
+- Isomorphic Javascript and it's advantages  of performance, search engine indexing and common code base.
+- Flux architecture to help you create larger React applications.
+- Loading data into our React components from external resources.
+- Testing our react components
+
+In the next chapter, we will look at how to create server-side Javascript and the frameworks that are available to us. We will build a simple web server and a API for storing information into a NoSQL DB.
