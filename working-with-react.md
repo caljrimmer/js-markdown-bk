@@ -481,7 +481,7 @@ We provide a **text/jsx** type for our script which is used by the JSX Transform
 
 **Creating the Todo Container**
 
-First, we create a **TodoContainer** React component. This will be our parent React container and instansiate all the children React components of our application. **TodoContainer** is our smart component as it has **state**.
+First, we create a **TodoContainer** React component. This will be our parent React container and instantiate all the children React components of our application. **TodoContainer** is our smart component as it has **state**.
 
 ```javascript
 import React, {Component} from 'react';
@@ -576,7 +576,7 @@ TodoInput.propTypes = {
 ```
 We create our **TodoInput** component which adds new todo items. We pass the addItems **prop** to the component through the constructor.
 
-The **validateInput()** method validates that the inputed todo is not an empty string before passing it through the **addItem** handler which updates the items array state in the parent **TodoContainer**. We have introduced the **this.refs** locator which allows your react component to pick out a DOM element which is decorated with a **ref** attribute.
+The **validateInput()** method validates that the inputted todo is not an empty string before passing it through the **addItem** handler which updates the items array state in the parent **TodoContainer**. We have introduced the **this.refs** locator which allows your react component to pick out a DOM element which is decorated with a **ref** attribute.
 
 ```javascript
 
@@ -693,10 +693,10 @@ We should be testing all our components to give us confidence when developing an
 We can create React components in the Virtual DOM and then simulate interacting with these components. We can mock data, interactions and how the component would render in the DOM.
  
  - The rendering of a React component given a particular state.
- - The behaviour of a React component and how it affects the state.
+ - The behavior of a React component and how it affects the state.
  - The state or the application (the default values and expected state)
 
-The rendered React Component uses behaviour to amend state which affects the rendered Component. You should cover all this in your tests to provide you app with extensive test coverage. 
+The rendered React Component uses behavior to amend state which affects the rendered Component. You should cover all this in your tests to provide you app with extensive test coverage. 
 
  - All components will be rendered. Thus you will need rendering tests for each component.
  - Some components will have events bound to them which will affect the state. Thus you will will need behavioural tests for all components with bound events.
@@ -723,7 +723,7 @@ global.window = document.parentWindow;
 
 This script just creates a fake DOM for us to place our React component in. It is like having an index.html page served by a web server but much quicker as it only exists in memory.
 
-**Global** is a **Node** enviroment variable that does a similar function as **window** in the browser. We copy the **window** object to **global** so that is can be accessed and used in your tests.
+**Global** is a **Node** environment variable that does a similar function as **window** in the browser. We copy the **window** object to **global** so that is can be accessed and used in your tests.
 
 When **mocha** (our test reporting framework) runs our tests, it pulls in the **setup.js** first before our tests. The complete setting up of your test environment will be documented in the next chapter.
 
@@ -800,7 +800,7 @@ describe('TodoContainer render',() => {
 
 We next create a **before()** function that is run before each of our tests.  We render **TodoContainer** into the Virtual DOM and then pick out the elements that we are interested in testing. 
 
-**FindRenderedDOMComponentWithClass()** finds one element buy className and **scryRenderedDOMComponentsWithClass()** find multiple elemtents by className.
+**FindRenderedDOMComponentWithClass()** finds one element buy className and **scryRenderedDOMComponentsWithClass()** find multiple elements by className.
 
 Our test suite is now ready to run assertions with **expect**.
 
@@ -831,12 +831,12 @@ If these tests pass then we know with confidence that our component will render 
 
 **Behaviour test**
 
-We put our behaviour tests in a new file called **behaviour.spec.js**. We have the same imported files and the same **before()** function as our **render.spec.js** tests.
+We put our behaviour tests in a new file called **behavior.spec.js**. We have the same imported files and the same **before()** function as our **render.spec.js** tests.
 
-Behaviour tests are to look at how a user would interact with our React component. We will be looking at adding and deleting the todo items.
+Behavior tests are to look at how a user would interact with our React component. We will be looking at adding and deleting the todo items.
 
 ```javascript
-//behaviour.spec.js
+//behavior.spec.js
 
 describe('Todo Behaviour ', () => {
 
@@ -870,7 +870,7 @@ We have confidence that our user interactions work correctly. Next we look at th
 
 **State test** 
 
-Finally, we test that the state is correct on the initialising our component. We test on state changes  by firing the handler methods that touch our state. Our Todo components state interaction all exist in the smart component (.i.e. our parent **TodoContainer** component).
+Finally, we test that the state is correct on the initializing our component. We test on state changes  by firing the handler methods that touch our state. Our Todo components state interaction all exist in the smart component (.i.e. our parent **TodoContainer** component).
 
 ```javascript
 describe('Todo State', () => {
@@ -902,7 +902,7 @@ describe('Todo State', () => {
 });
 ```
 
-We have now tested our state is correct when instansiated from props. We also test that our state handling methods of **addListItem()** and **removeListItem()** correctly change the state.
+We have now tested our state is correct when instantiated from props. We also test that our state handling methods of **addListItem()** and **removeListItem()** correctly change the state.
 
 **Using tests to help build better React components**
 
@@ -929,4 +929,4 @@ We have introduced:
 - Loading data into our React components from external resources.
 - Testing our React components
 
-In the next chapter, we will look at how to create server-side Javascript and the frameworks that are available to us. We will build a simple web server and a API for storing information into a NoSQL DB.
+In the next chapter, we will look at how to create server-side Javascript and the frameworks (particularly **Node.js**) that are available to us. We will build a simple web server and a API for storing information into a NoSQL DB.
