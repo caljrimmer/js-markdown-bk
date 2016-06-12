@@ -8,7 +8,7 @@ React is analogous to Web Components, the upcoming standard for custom HTML5 use
 
 React is just the view layer of your web application. You cannot build a fully functioning web application with React.js alone. You can either augment other MVC frameworks with React.js (i.e. Angular 1.x or Backbone) or couching React.js in flux framework (i.e. Fluxxor, alt or Redux).
 
-Why use React.js
+Uses of React.js
 ------------------
 
 Traditionally HTML would be seperated from functionality. Javascript wouldn't includes in HTML directly ()i.e. onClick()). This make both the HTML easier to read and parse at runtime. 
@@ -49,7 +49,7 @@ The above example demonstrates how React components are broken up. A TodoContain
 
 JSX tags have a name, attributes, and children. If an attribute value is enclosed in quotes, the value is a string (or a number without quotes). If the attribute is wrapped in curly braces ({}) the value is a JavaScript expression or object.
 
-JSX needs to be either compiler or transpiled before consumed by the browser. JSX isn't supported natively in the browser. This means we have to have either have a build step (which we will discuss in the next chapter) or a javascript shim to provide support for our React components.
+JSX needs to be either compiler or transpiled before consumed by the browser. JSX isn't supported natively in the browser. This means we have to have either have a build step to convert the JSX into native Javascript (which we will discuss in the next chapter) or we provide an additional javascript polyfill script to provide browser support for our React components.
 
 > **Note**
 
@@ -393,11 +393,11 @@ Your application will be made of a small number of **stateful components** and a
 
 You can create simpler applications just by creating a collection of React components that manage their own state. This can become difficult to work with as your application grows.
 
-**Flux**
+**Flux Architecture**
 
-Flux is an architecture to structure larger React applications. The idea was to remove state management to outside your react components and to then manage the interaction your components have with that state.
+Flux is a code architecture to structure larger React applications. Flux architecture aim is to remove state management outside your React components.
 
-Flux was developed by Facebook as a way to move away from the more standard MVC (model-view-controller) towards a pattern with a uni-directional data flow.  
+Flux was developed by Facebook as a way to move away from the more standard MVC (model-view-controller) towards an architecture with an uni-directional (one-way) data flow.  
 
 ```javascript
 //MVC
@@ -682,10 +682,10 @@ Testing React Components
 
 We should be testing all our components to give us confidence when developing and deploying applications. Testing React components is made easy with React's Test Utilities. 
 
+**Components to be test**
+
 We can create React components in the Virtual DOM and then simulate interacting with these components. We can mock data, interactions and how the component would render in the DOM.
-
-**What to test**
-
+ 
  - The rendering of a React component given a particular state.
  - The behaviour of a React component and how it affects the state.
  - The state or the application (the default values and expected state)
@@ -907,3 +907,7 @@ You can create your different application states and define your handler methods
 Once you know your states, then you can mock out your **render tests**. You will know all the possible states of your component and can render test against them. You Todo app can have some or no list items, it has a title and it always has a input field and button. We test that these all exist and that the content is correct in relation to the state.
 
 Finally you test the bound events which fire your handler methods. The final part of your tests will be the **behaviour** of your component. You are testing the resultant DOM after a component event has been triggered.
+
+Summary
+-----------
+
