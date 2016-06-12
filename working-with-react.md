@@ -2,7 +2,7 @@
 Working with React.js
 ====================
 
-React is a JavaScript library for creating user interfaces created by Facebook and Instagram. React is takes data and properties, and renders it to HTML.
+React is a JavaScript library for creating user interfaces created by Facebook and Instagram. React takes data and properties, and renders it to HTML.
 
 React is analogous to Web Components, the upcoming standard for custom HTML5 user interface elements. React enforce building of components and subcomponents to provide a clean separation of concerns between different sections of your web application.
 
@@ -11,13 +11,13 @@ React is just the view layer of your web application. You cannot build a fully f
 Uses of React.js
 ------------------
 
-Traditionally HTML would be seperated from functionality. Javascript wouldn't includes in HTML directly ()i.e. onClick()). This make both the HTML easier to read and parse at runtime. 
+Traditionally HTML would be separated from functionality. Javascript wouldn't includes in HTML directly ()i.e. onClick()). This makes both the HTML easier to read and parse at runtime. 
 
-React, however,  enforces all the rendering and functionality to exist in the same component. React uses its own markup language called **JSX** to tie functionality directly to markup. At runtime, the javascript and HTML are sperated from each other. This allows you create an easy to maintian, self contained Component when developing. The rendered HTML remains clean and readable in the DOM.
+React, however,  enforces all the rendering and functionality to exist in the same component. React uses its own markup language called **JSX** to tie functionality directly to markup. At runtime, the javascript and HTML are separated from each other. This allows you create an easy to maintain, self contained Component when developing. The rendered HTML remains clean and readable in the DOM.
 
-React is very effcient when rendering HTML to the DOM. It is ideal either in low latency applications (i.e. data changes quickly) or large data sets (1000+ rows worth of data need rendering). This achieve with React's virtual DOM implementation.
+React is very efficient when rendering HTML to the DOM. It is ideal either in low latency applications (i.e. data changes quickly) or large data sets (1000+ rows worth of data need rendering). This achieve with React's virtual DOM implementation.
 
-React is also **Isomorphic**. This mean you can write React components that with either render on the client or on the server. This gives you flexibility on how you serve your views to users of your application. Server rendered pages can render faster and also provide better meta information for being indexed by search engines.
+React is also **Isomorphic**. This means you can write React components that with either render on the client or on the server. This gives you flexibility on how you serve your views to users of your application. Server rendered pages can render faster and also provide better meta information for being indexed by search engines.
 
 **React Native** is a couching framework for React that lets you write applications that will run as apps on mobile devices. You can have very similar React code that can run in the browser and also on mobile applications. This allows you to build one hybrid code base that can run in multiple environments.
 
@@ -26,7 +26,9 @@ React is also **Isomorphic**. This mean you can write React components that with
 JSX
 ---
 
-JSX is React.js rendering language. JSX adds XML syntax to JavaScript. You can use React without JSX but JSX makes React.js easier to read and more componentised.
+JSX is React.js rendering language. JSX adds XML syntax to JavaScript. You can use React without JSX but JSX makes React.js easier to read and more componentized.
+
+The below example demonstrates how React components are broken up. A TodoContainer component contains a TodoList and TodoControls component. Each component has a defined job. The more granular the components, the easy they are to test, re-use and maintain.
 
 React.js with JSX:
 ```javascript
@@ -45,8 +47,6 @@ ReactDOM.render(
 
 ```
 
-The above example demonstrates how React components are broken up. A TodoContainer component contains a TodoList and TodoControls component. Each component has a defined job. The more granular the components, the easy they are to test, re-use and maintain.
-
 JSX tags have a name, attributes, and children. If an attribute value is enclosed in quotes, the value is a string (or a number without quotes). If the attribute is wrapped in curly braces ({}) the value is a JavaScript expression or object.
 
 JSX needs to be either compiler or transpiled before consumed by the browser. JSX isn't supported natively in the browser. This means we have to have either have a build step to convert the JSX into native Javascript (which we will discuss in the next chapter) or we provide an additional javascript polyfill script to provide browser support for our React components.
@@ -63,14 +63,14 @@ React is very efficient at rendering to the DOM because it has the concept of a 
 
 React provides a series of Javascript methods that create an in-memory DOM tree and performs updates in-memory when data bound to it changes (determined by a smart diffing algorithm). Updating the virtual DOM is much quicker than updating the normal DOM directly. React does the hard work in the in-memory and then, once all the work is finished, renders the result in the normal DOM.
 
-This optimisation all happens behind the scenes. You can code your JSX, Javascript and event bindings without having to worry about interacting with the virtual DOM. You will just experience the normal DOM updating very fast.
+This optimization all happens behind the scenes. You can code your JSX, Javascript and event bindings without having to worry about interacting with the virtual DOM. You will just experience the normal DOM updating very fast.
 
 React also only interacts with specific parts of the DOM that needs to change. React., unlike say Backbone, will not re-render whole sections of the DOM but just the necessary DOM nodes where the bound data has changed.
 
 Smart diffing algorithm
 ---------------------------------------------------
 
-Most popular web application frameworks (e.g. Angular 1.x, Backbone) follow a MVC architecture. The views re-render when the model changes. the changes are propgated by events emitted when the model changes. Models can have a one-to-many relationship with the views, and the views can have a one-to-many relationship to the models. 
+Most popular web application frameworks (e.g. Angular 1.x, Backbone) follow a MVC architecture. The views re-render when the model changes. The changes are propagated by events emitted when the model changes. Models can have a one-to-many relationship with the views, and the views can have a one-to-many relationship to the models. 
 
 This means a model change can be reflected in a number of views, and an event triggered in a view can change multiple models. This can lead to **spaghetti events**, i.e. code that is difficult to maintains and understand. An event can create unexpected consequences. It is also difficult to test larger MVC applications, as you have to mock all the model interations. 
 
@@ -186,8 +186,10 @@ Isomorphic javascript JavaScript is shared code that runs on both the in the bro
 The advantages of server side rendering include:
 
  - On first page load, serve server-rendered HTML which is inflated with data. This is quicker than loading the HTML, pulling in the JS and then making requests back to the server for more data. It will increase the speed of your application when it first loads.
- - Search engine optimisation is improved as crawlers can access the raw html to decide what your application does. It is provides the least resistance for getting your application indexed well in a search engine.
- - A server rendered React component can seamlessly become a client side rendered application after initial load. This retains all the advantages of client-side rendered apps (e.g. low data transfer between server and client, mobile optimisation) 
+ - Search engine optimization is improved as crawlers can access the raw html to decide what your application does. It is provides the least resistance for getting your application indexed well in a search engine.
+ - A server rendered React component can seamlessly become a client side rendered application after initial load. This retains all the advantages of client-side rendered apps (e.g. low data transfer between server and client, mobile optimization) 
+
+**Client-side**
 
 Client-side rendering of React component which creates a DOM element in the browser.
 ```javascript
@@ -196,6 +198,8 @@ ReactDOM.render(
     document.getElementById('body')
 );
 ```
+
+**Server-side**
 
 Server-side rendering of React component which creates a string which can be sent to the browser and parsed.
 ```javascript
@@ -220,7 +224,7 @@ constructor (props) {
 } 
 ```
 
-**render**
+**Render**
 
 Render is where all the JSX code is placed. The render method return the code that gets painted to the DOM. Render can also reference children React components.
 
@@ -233,8 +237,8 @@ render () {
 	)
 }
 ```
-**setState**
-SetState updates the state of the React Component. The method also invokes **render()** to paint the new state to the DOM.
+**SetState**
+**SetState** updates the state of the React Component. The method also invokes **render()** to paint the new state to the DOM.
 
 ```javascript
 this.setState({
@@ -248,7 +252,7 @@ render () {
 }
 ```
 
-**componentWillMount**
+**ComponentWillMount**
 
 This is a lifecycle methods this is called before the component mounts on the DOM. This is useful for fetching or parsing data before the **render()** method is called.
 
@@ -268,7 +272,7 @@ render () {
 }
 ```
 
-**componentDidMount**
+**ComponentDidMount**
 
 These is also a lifecycle method that are called after the component mounts on the DOM. This is useful when you wish to reference a mounted element in the DOM. 
 
@@ -286,9 +290,9 @@ render () {
 }
 ```
 
-**propTypes**
+**PropTypes**
 
-React allow you to define the props that you pass in to your react component. Proptypes make it easy for the you to validate and document your React application.  A warning will appear in the console if you invalidate one of your props.
+React allow you to define the props that you pass in to your react component. Proptypes make it easy for you to validate and document your React application.  A warning will appear in the console if you invalidate one of your props.
 
 ```javascript
 <Component
@@ -308,7 +312,7 @@ Component.propTypes = {
 An example React component
 ------------------------------------
 
-React components should not have many moving parts. Infact it is better to keep your React components simple. You should always look to make your React components to do as little as possible which will aid in make them re-usable throughout your applications.
+React components should not have many moving parts. In fact it is better to keep your React components simple. You should always look to make your React components to do as little as possible which will aid in make them re-usable throughout your applications.
 
 We are going to create a simple counter component that increments a count when a button is clicked.
 
@@ -360,9 +364,9 @@ Next, we define a click handler called **increment()** which will update our **c
 
 We define our **render()** method. React component's expect there to be a **render()** method defined. This **render()** method informs the virtual DOM on how to map changes to bound data to the DOM. We use curly brackets ({}) to inject the **count** state value in to the DOM.  
 
-**Render()** also provides a way of binding events ot the DOM. We have used the **onClick** even handler to bind the **increment()** method to a click on the button.
+**Render()** also provides a way of binding events to the DOM. We have used the **onClick** even handler to bind the **increment()** method to a click on the button.
 
-Finally we inject the component in the the body of our HTML document. **ComponentDidMount()** will fire and console out the message 'mounted'.
+Finally we inject the component in the the body of our HTML document. **ComponentDidMount()** will fire and console out the message "mounted".
 
 > **Tip**
 > 
@@ -383,7 +387,7 @@ React components are meant to be re-useable and as simple as possible. A React c
 </Table>
 ```
 
-There are two kind of components that can be created. **Stateless** and **stateful** components.
+There are two kinds of components that can be created. **Stateless** and **stateful** components.
 
 **Stateless Components** (or dumb components) contains only props, no state. All the logic and handlers are provided props they receive from a **stateful component**. The majority of rendering and formatting logic happens in **stateless components**.
 
@@ -415,7 +419,7 @@ Flux manages your state by passing **actions** through props to your components.
 
 **Store**
 
-A **store** is just a simple object literal. It has no listeners bound to it (like a model) and gets amended when a **dispatcher** interacts with it.
+A **store** is just a simple object literal. It has no listeners bound to it (like a model).
 
 ```javascript
 const store = {
@@ -423,6 +427,8 @@ const store = {
 	lastUpdated : ''
 };
 ```
+
+It gets amended when a **dispatcher** interacts with it.
 
 **Actions**
 
@@ -443,13 +449,13 @@ An action will always have at least a type and a value but can have additional p
 
 The **dispatcher** manages data flow in your application. It provides a bridge between the **store** and the **actions**. It has no logic of its own. The dispatcher uses the **type** of the action to inform the store what it should do with the **value**. 
 
-Whilst you could create all your own flux management code, there are a number of libraries that provide helper methods and scaffolding to make your Flux architectured applications. These include:
+Whilst you could create all your own flux management code, there are a number of libraries that provide helper methods and scaffolding to make your Flux architecture applications. These include:
 
  - Fluxxor
  - Redux
  - Alt
 
-Each flows the same paradigms but have different ways of implementing flux. It is worth reading about which suits the application you are trying to build.
+Each follows the same paradigms but have different ways of implementing flux. It is worth reading about which suits the application you are trying to build.
 
 
 Todo React Web Application
