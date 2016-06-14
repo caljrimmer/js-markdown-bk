@@ -18,6 +18,7 @@ In this chapter we are going to focus on the following Javascript server-side te
 - **MongoDB** is open-source, NoSQL, document database.
 - **NPM** is a package manager for Node.js.
 - **Webpack** is a module bundlers are suited for big web applications. It helps you build and publish your applications.
+- **Command Line Tools** are applications that allow you run command-line instructions. These instructions communicate directly with your computer and instruct it to perform various tasks.
 
 
 Node.js
@@ -124,6 +125,208 @@ Adding a package.json file to your Node.js application means anybody, at anytime
 Webpack
 -----------
 
-Webpack is a module bundler. It takes of assets like javascript, images, css, files and directories and turns that into a structured, minified package that can be server via a web server.
+Webpack is a module bundler. It takes of assets like javascript, images, css, files and directories and turns that into a structured, minified package that can be distributed via a web server.
 
 Webpack supports advanced functionality such as compilation/transpilation (convert React JSX to browser friendly Javascript), intelligent asset loading (load assets only when your application requires them), hashing files (versioning to inhibit browser caching) and source maps (so an application can still be debugged in the browser). There are many more modules that can be added to perform other tasks.
+
+Command Line Tools
+-------------------------
+
+The command line lets you communicate directly with your computer and instruct it to perform various tasks. 
+
+We use command line to run **Node**, **Webpack** and **NPM**. We can also start, stop and query our **MongoDB**. Command line an essential medium for building and deploying your applications.
+
+Most of the time, it is quicker to use command line to access information or perform development tasks then it is to us the normal graphical file system.
+
+On a Mac, **terminal** (which comes natively installed) or **iterm**, are the main command line tools.
+
+On a Window's PC, **Windows Command Prompt** (which comes natively installed), **PowerShell** or **Cygwin** are the main command line tools.
+
+Creating an ES6 development setup
+------------------------------
+
+First, we need to find out what software is installed on your machine. You can do this via your preferred command line (**CLI**) tool.
+
+**Node.js**
+
+In your **CLI**, enter the following command
+
+```unix
+node -v
+```
+
+If you have **Node.js** already installed, then you should see the version returned (e.g. "v5.2.0"). 
+
+If **Node.js** isn't installed, then you should get a *command not found* error. The error report will be slightly different on different machines, but will be similar.
+
+**Installing**
+
+Installing Node.js is simple. You just need to visit the official Node.js website and follow the instructions.
+
+- Download the installer from https://nodejs.org.
+- Run the installer
+- Accept the default settings
+- Restart your computer
+
+You can test it has worked by re-running the above command.
+
+**NPM**
+
+**installing**
+
+**NPM** should be installed when you install **Node.js**. You can check that this is the case by running the following in your **CLI**.
+
+```unix
+npm -v
+```
+
+If you have **NPM** already installed, then you should see the version returned (e.g. "3.2.0"). 
+
+You can install the latest version of **NPM** at any point by running the following command.
+
+```unix
+sudo npm install npm -g
+``` 
+
+On Windows, you can drop the **sudo** but you should run it as administrator.
+
+**Creating your package.json**
+
+We first build our package.json to define both the application we are building and also the application dependencies.
+
+```javascript
+{
+  "name": "my-es6-app",
+  "version": "1.0.0",
+  "description": "My ES6 app description",
+  "scripts": {
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.20",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "webpack": "^1.12.2"
+  }
+}
+```
+
+We add some meta data about our project, two scripts which we can run in our CLI tool, and development dependencies to compile our ES6 code to backwards compatible native JavaScript code.
+
+>**Tip**
+>
+> You can version your dependencies by requesting the exact version you wish, any major version (prefix version with ^) or any minor version (prefix version with ~)
+
+**Create your Webpack config**
+
+Our webpack config will map where our code is, run it through **Babel** which compiles our ES6 javascript to native Javascript, and then we output it to a **bundle.js** file.
+
+```javascript
+var path = require('path');
+var webpack = require('webpack');
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: __dirname,
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                loader: 'babel-loader',
+                query: {
+                  presets: 'es2015'
+                }
+            }
+        ]
+    }
+};
+```
+
+We use commonJS to require **webpack** and a native node package called **path**. We aren't using the ES6 import syntax as this is not currently supported in **Node**.
+
+The **path** package is used to find the directory the webpack config file sits in on your computer.
+
+In the webpack config, we define the **entry** script to your ES6 application code and the **output** script where your compiled native Javascript code goes too.
+
+Finally, in **module**, we define the ES6 compilation steps using **Babel** as our compiler.
+
+**Create Index.html**
+
+We need a HTML page to host our application code. The HTML needs to reference our compiled **bundle.js**.
+
+```javascript
+<!doctype html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <title>ES6 app</title>
+	</head>
+	<body>
+		<script src="bundle.js"></script>
+	</body>
+</html>
+```
+
+**File structure**
+
+Let us bring it all the files together into one folder.
+
+```unix
+/app
+  - package.json
+  - webpack.config.js
+  - index.html
+  /src
+	- index.js
+```
+
+We are now ready to build our app and develop our code. In your CLI tool, navigate to the **app** folder you have created.
+
+```unix
+npm install
+npm run watch
+```
+
+Run **npm install** which will pull in the app development dependencies. Finally **npm run watch** which will automatically compile on any save on a file in the **src** directory.
+
+After running the NPM commands, the new file structure will look like:
+
+```unix
+/app
+  - package.json
+  - webpack.config.js
+  - index.html
+  - bundle.js
+  /src
+	- index.js
+  /node_modules
+```
+
+The **bundle.js** contains all your compiled code. The **node_modules** contains all the development dependencies. The **src** contains all your ES6 code.
+
+**MongoDB**
+
+**installing**
+
+MongoDB can be difficult to install for Windows PC's if you don't have administrator access to your machine. MongoDB is easier to install on a Mac. We shan't go into much detail on how to install MongoDB here but it is well documented here:
+
+https://docs.mongodb.com/manual/administration/install-community/
+
+There are many resources on the internet which will help you set up MongoDB and set it as a service on your computer.
+
+From this point on, we shall assume you have your MongoDB console mapped to **mongo** in your CLI tool.
+
+```unix
+mongo
+```
+
+This will start your mongo console where you can query and manage your mongo instance.
+
+
+
+
+
+We can use a build setup to manage our application dependencies, compile our code, minify, version, run linting and test. We create an environment that will help us build, test and deploy our application.
+
