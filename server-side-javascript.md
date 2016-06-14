@@ -234,6 +234,7 @@ module.exports = {
     module: {
         loaders: [
             {
+	            test: /\.js$/,
                 loader: 'babel-loader',
                 query: {
                   presets: 'es2015'
@@ -324,9 +325,48 @@ mongo
 
 This will start your mongo console where you can query and manage your mongo instance.
 
+ Webpack for React development
+---------------------------------------
 
+We can add to our ES6 webpack setup to also compile any React code. We need to add some extra dependencies to **package.json**.
 
+```javascript
+...
+  "dependencies": {
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.20",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "webpack": "^1.12.2"
+  }
+...
+```
 
+We have added **react** and **react-dom** to **dependencies** and **babel-preset-react** to **devDependencies**.
+
+**Dependencies** are used in your application code whereas **devDependencies** are used to help build your application.
+
+Next we need add a new preset to our **webpack.config.js**.
+
+```javascript
+module: {
+        loaders: [
+            {
+	            test: /\.js$/,
+                loader: 'babel-loader',
+                query: {
+                  presets: ['es2015','react']
+                }
+            }
+        ]
+    }
+```
+
+This means now webpack will compile our ES6 and React code to native JavaScripts that it will run on the majority of browsers.
 
 We can use a build setup to manage our application dependencies, compile our code, minify, version, run linting and test. We create an environment that will help us build, test and deploy our application.
 
