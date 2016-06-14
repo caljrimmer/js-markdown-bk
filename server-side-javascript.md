@@ -307,23 +307,7 @@ After running the NPM commands, the new file structure will look like:
 
 The **bundle.js** contains all your compiled code. The **node_modules** contains all the development dependencies. The **src** contains all your ES6 code.
 
-**MongoDB**
 
-**installing**
-
-MongoDB can be difficult to install for Windows PC's if you don't have administrator access to your machine. MongoDB is easier to install on a Mac. We shan't go into much detail on how to install MongoDB here but it is well documented here:
-
-https://docs.mongodb.com/manual/administration/install-community/
-
-There are many resources on the internet which will help you set up MongoDB and set it as a service on your computer.
-
-From this point on, we shall assume you have your MongoDB console mapped to **mongo** in your CLI tool.
-
-```unix
-mongo
-```
-
-This will start your mongo console where you can query and manage your mongo instance.
 
  Webpack for React development
 ---------------------------------------
@@ -353,20 +337,50 @@ We have added **react** and **react-dom** to **dependencies** and **babel-preset
 Next we need add a new preset to our **webpack.config.js**.
 
 ```javascript
+...
 module: {
-        loaders: [
-            {
-	            test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                  presets: ['es2015','react']
-                }
+    loaders: [
+        {
+         test: /\.js$/,
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015','react']
             }
-        ]
-    }
+        }
+    ]
+}
+...
 ```
 
 This means now webpack will compile our ES6 and React code to native JavaScripts that it will run on the majority of browsers.
+
+
+
+ Webpack for Deployment
+--------------------------
+
+
+
+We describe in the last chapter how to test React components. We used mocha, expect and JSDom as our test framework components. 
+
+
+**MongoDB**
+
+**installing**
+
+MongoDB can be difficult to install for Windows PC's if you don't have administrator access to your machine. MongoDB is easier to install on a Mac. We shan't go into much detail on how to install MongoDB here but it is well documented here:
+
+https://docs.mongodb.com/manual/administration/install-community/
+
+There are many resources on the internet which will help you set up MongoDB and set it as a service on your computer.
+
+From this point on, we shall assume you have your MongoDB console mapped to **mongo** in your CLI tool.
+
+```unix
+mongo
+```
+
+This will start your mongo console where you can query and manage your mongo instance.
 
 We can use a build setup to manage our application dependencies, compile our code, minify, version, run linting and test. We create an environment that will help us build, test and deploy our application.
 
