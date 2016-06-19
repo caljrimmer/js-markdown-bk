@@ -236,6 +236,7 @@ module.exports = {
             {
 	            test: /\.js$/,
                 loader: 'babel-loader',
+                exclude: '/node_modules/',
                 query: {
                   presets: 'es2015'
                 }
@@ -330,7 +331,7 @@ We can add to our ES6 webpack setup to also compile any React code. We need to a
 ...
 ```
 
-We have added **react** and **react-dom** to **dependencies** and **babel-preset-react** to **devDependencies**.
+We have added **react** and **react-dom** to dependencies and **babel-preset-react** to devDependencies.
 
 **Dependencies** are used in your application code whereas **devDependencies** are used to help build your application.
 
@@ -356,8 +357,26 @@ This means now webpack will compile our ES6 and React code to native JavaScripts
 
 
 
- Webpack for Deployment
---------------------------
+ Webpack for deploying your web application
+-------------------------------------------------------
+
+When we are looking to deploy your web applications, you need to consider the size of the assets and versioning the assets. We want to create a small footprint, quick loading web application, that will always show the freshest code to our users.
+
+Assets are all the static files of your application. The complied JavaScript, the stylesheets, the images and downloadable files (pdf, mp3 etc.). We will use webpack to put these all in one folder, compressed, rename the files and create a source map for debugging.
+
+First let's add versioning to our bundled Javascript via our webpack config file.
+
+```javascript
+...
+output: {
+    path: __dirname,
+    filename: 'bundle.js',
+    chunkFilename: '[name]-[chunkhash].js',
+}
+...
+```
+
+
 
 
 
