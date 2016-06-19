@@ -236,7 +236,7 @@ module.exports = {
             {
 	            test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: '/node_modules/',
+                exclude: /node_modules/,
                 query: {
                   presets: 'es2015'
                 }
@@ -370,17 +370,74 @@ First let's add versioning to our bundled Javascript via our webpack config file
 ...
 output: {
     path: __dirname,
+    publicPath: '/distro/'
     filename: 'bundle.js',
     chunkFilename: '[name]-[chunkhash].js',
 }
 ...
 ```
 
+The chunkhash adds a unique identifier to the end of the bundle.js file (i.e. bundle-123454212.js). This means your users browser won't cache the previous deployed Javascript and always serve the latest deployment. We output the new bundle.js file out too a folder called **distro**.
 
+Next we compress and optimise the JavaScript assets. This will lower the size of a JavaScript files and make our application load quicker.
 
+```javascript
+...
+plugins: [
+    new webpack.DefinePlugin({
+        'process.env': {
+            'NODE_ENV': JSON.stringify('production')
+        }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+]
+...
+```
 
+We have added two new plugins in to the webpack config. 
 
-We describe in the last chapter how to test React components. We used mocha, expect and JSDom as our test framework components. 
+**DefinePlugin()** is used to pass a production flag to all the JavaScript that will be minified. This is particularly important when minifying the React.js library.
+
+**Optimise.UglifyJsPlugin()** minifies and obfuscates all the JavaScript in both the files you code and the dependencies you include.
+
+This can reduce the size of your JavaScript files by up to 10 smaller than the original.
+
+Building a web server with Node.js
+-----------------------------------------
+
+A web server is used to serve files via HTTP. A web server can send most sort of files over HTTP. It can be used to host your web application on the internet. 
+
+Node.js make it easy to create a lightweight and scalable web server for your web applications.
+
+Node.js comes with a core http module which can be using to set up our own web server. We could make a package.json file for our new web server but it isn't necessary as everything we need comes built in to Node.js.
+
+Let us create a new file called **server.js**.
+
+```javascript
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+	res.end('This URL is ' + req.url);
+});
+
+server.listen(port, () => {
+    console.log("running at : http://localhost:3000");
+});
+```
+
+In our example we have required the http module to create a simple web server that will return a http message of what URL is being visited.
+
+We can run our web server on any port, here we choose :3000. You can have many node processes running on different ports which can be used to build multiple micro-services.
+
+To run the script:
+
+```unix
+node server.js
+```
+
+This will return a message of "running at : http://localhost:3000" when the web server has started. 
+
+If you now visit http://localhost:3000 in your browser, you will have message in the browser window showing the url you are visiting. 
 
 
 **MongoDB**
