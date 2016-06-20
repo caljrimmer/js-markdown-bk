@@ -402,7 +402,7 @@ We have added two new plugins in to the webpack config.
 
 This can reduce the size of your JavaScript files by up to 10 smaller than the original.
 
-Building a web server with Node.js
+Building a simple web server with Node.js
 -----------------------------------------
 
 A web server is used to serve files via HTTP. A web server can send most sort of files over HTTP. It can be used to host your web application on the internet. 
@@ -437,7 +437,74 @@ node server.js
 
 This will return a message of "running at : http://localhost:3000" when the web server has started. 
 
-If you now visit http://localhost:3000 in your browser, you will have message in the browser window showing the url you are visiting. 
+If you now visit http://localhost:3000 in your browser, you will have a http message showing the url you are visiting. 
+
+Building a simple web server with Express
+-----------------------------------------
+
+We have created a simple web server but it doesn't do very much. We need to server files and also add routing to make a platform to host our web app.
+
+We can code a web server from scratch but **Express** is a module that makes it easier for us to accomplish what we need with less code. 
+
+Let's make a package.json file for our new web server.
+
+```javascript
+{
+	"name": "web-server",
+	"version": "0.0.1",
+	"description": "Express Web Server",
+	"scripts": {
+	    "start": "node server.js"
+	},
+	"dependencies": {
+	    "express": "^4.0.0"
+    }
+}
+```
+
+We add Express as a dependency and create a simple npm start script.
+
+Next we shall create our new **Express** web server.
+
+```javascript
+//server.js
+var express = require('express')
+var server = express()
+
+server.use(express.static(__dirname + '/public'));  
+
+server.listen(3000)
+```
+
+In the example, we create a file called **server.js** that requires **Express**.
+
+We create a **server** using **express()** and then **use()** to configure what our **server** does.
+
+**Express.static** defines where our static files (or assets) exists. We used **__dirname** to get the root of where the **server.js** file exists and then define **public** as the folder where the static files reside.
+
+we can start the **server** on port **3000**. Next we need to add some files to for the server to serve.
+
+```unix
+server.js
+package.json
+/public
+    - index.html
+    - bundle.js
+    - style.css
+    - logo.png
+```
+
+ All we need to do now is install our dependencies and start the server.
+ 
+```unix
+npm install
+npm start
+```
+
+Then visit http://localhost:3000 and the contents of index.html will render.
+
+Building a simple REStful server with Express
+------------------------------------------------------
 
 
 **MongoDB**
